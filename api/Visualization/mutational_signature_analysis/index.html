@@ -1,0 +1,2638 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Python library for genetic mutation visualization">
+      
+      
+        <meta name="author" content="pyMut Development Team">
+      
+      
+        <link rel="canonical" href="https://luisruimor.github.io/pyMut/api/Visualization/mutational_signature_analysis/">
+      
+      
+        <link rel="prev" href="../oncoplot/">
+      
+      
+        <link rel="next" href="../lollipop_plot/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.18">
+    
+    
+      
+        <title>Mutational Signature Analysis - pyMut</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.66ac8b77.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mutational-signature-analysis" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="pyMut" class="md-header__button md-logo" aria-label="pyMut" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            pyMut
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Mutational Signature Analysis
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Luisruimor/pyMut" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Luisruimor/pyMut
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="pyMut" class="md-nav__button md-logo" aria-label="pyMut" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    pyMut
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Luisruimor/pyMut" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Luisruimor/pyMut
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    API Reference
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            API Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Core
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Core
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Core/pymutation_class/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PyMutation Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Data Loading
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Data Loading
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Data%20Loading/read_maf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Read MAF Files
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Data%20Loading/read_vcf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Read VCF Files
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Data Export
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Data Export
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Data%20Export/to_maf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Export to MAF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Data%20Export/to_vcf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Export to VCF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Data%20Combination/combine_data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Combination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Filters
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Filters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Filters/genomic_range/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Genomic Range Filters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Filters/pass_filter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quality Filter (PASS)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Filters/chrom_sample_filter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chromosome & Sample Filter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Filters/tissue_expression_filter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tissue Expression Filter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Analysis Methods
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Analysis Methods
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Analysis%20Methods/tmb_analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TMB Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Analysis%20Methods/pfam_domains/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pfam Domains Annotation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6_3" id="__nav_3_6_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Mutational Signatures
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Mutational Signatures
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Analysis%20Methods/Mutational%20Signatures/trinucleotideMatrix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Matriz Trinucleotide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Analysis%20Methods/Mutational%20Signatures/estimateSignatures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Estimated Signatures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Analysis%20Methods/Mutational%20Signatures/extract_signatures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Extract Signatures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Analysis%20Methods/Mutational%20Signatures/compare_signatures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compare Signatures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Annotation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            Annotation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Analysis%20Methods/known_cancer_annotation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Known Cancer Gene Annotation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_2" id="__nav_3_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    VEP Annotation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            VEP Annotation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Analysis%20Methods/VEP%20annotate/annotation_maf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MAF annotation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Analysis%20Methods/VEP%20annotate/annotation_vcf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VCF annotation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Analysis%20Methods/pfam_annotation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PFAM Annotation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Analysis%20Methods/actionable_mutation_annotation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Actionable Mutation Annotation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Visualization API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            Visualization API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../summary_plot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Summary Plot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../oncoplot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Oncoplot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Mutational Signature Analysis
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Mutational Signature Analysis
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-a-signature-bar-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel A: Signature Bar Chart
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-b-cosine-similarity-heatmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel B: Cosine Similarity Heatmap
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-c-signature-contribution-heatmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel C: Signature Contribution Heatmap
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-d-stacked-bar-chart-per-sample" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel D: Stacked Bar Chart per Sample
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-e-donut-plot-cohort-level-proportions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel E: Donut Plot - Cohort-Level Proportions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complete-mutational-signature-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complete Mutational Signature Analysis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#function-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function Parameters
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Function Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameter Categories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mutational_signature_analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      mutational_signature_analysis()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signature_bar_chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      signature_bar_chart()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cosine_similarity_heatmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      cosine_similarity_heatmap()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signature_contribution_heatmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      signature_contribution_heatmap()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signature_stacked_bar_chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      signature_stacked_bar_chart()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signature_donut_plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      signature_donut_plot()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lollipop_plot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lollipop Plot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../somatic_interactions_plot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Somatic Interactions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../comut_plot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CoMut Plot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Example Usage
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Example Usage
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Input Data
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Input Data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/data/input_read_vcf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reading VCF Files with pyMut
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/data/input_read_maf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reading MAF Files with pyMut
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Output Data
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Output Data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/data/vcf_to_maf_and_vcf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VCF to MAF and VCF Conversion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/data/maf_to_vcf_and_maf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MAF to VCF and MAF Conversion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/data/combination_2maf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Combining MAF Files with pyMut
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Filtering
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Filtering
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/filtering/example_filtering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PyMutation Filtering Methods Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/filtering/tissue_expression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tissue Expression Filter Test with TCGA LAML Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Annotation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Annotation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/annotation/vep_annotation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VEP Annotation Demo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/annotation/cosmic_cancer_annotation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    COSMIC Cancer Annotation Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/annotation/actionable_mutation_annotation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OncoKB Annotation Demo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Analysis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/analysis/mutation_burden/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tumor Mutational Burden (TMB) Analysis with PyMut-Bio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/analysis/mutational_signatures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trinucleotide Matrix Analysis Demo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/analysis/domains_pfam/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PFAM Annotation Module
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Visualizations
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Visualizations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/visualization/summary_plot_example/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Summary Plot Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/visualization/oncoplot_example/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Oncoplot Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/visualization/mutational_signature/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mutational Signature Analysis Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/visualization/lollipop_plot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lollipop Plot Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/visualization/somatic_interactions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Somatic Interactions Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/visualization/comut_plot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CoMut Plot Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-a-signature-bar-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel A: Signature Bar Chart
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-b-cosine-similarity-heatmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel B: Cosine Similarity Heatmap
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-c-signature-contribution-heatmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel C: Signature Contribution Heatmap
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-d-stacked-bar-chart-per-sample" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel D: Stacked Bar Chart per Sample
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-e-donut-plot-cohort-level-proportions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel E: Donut Plot - Cohort-Level Proportions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complete-mutational-signature-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complete Mutational Signature Analysis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#function-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function Parameters
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Function Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameter Categories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mutational_signature_analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      mutational_signature_analysis()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signature_bar_chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      signature_bar_chart()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cosine_similarity_heatmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      cosine_similarity_heatmap()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signature_contribution_heatmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      signature_contribution_heatmap()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signature_stacked_bar_chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      signature_stacked_bar_chart()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signature_donut_plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      signature_donut_plot()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="mutational-signature-analysis">Mutational Signature Analysis<a class="headerlink" href="#mutational-signature-analysis" title="Permanent link">&para;</a></h1>
+<p>This document explains the complete mutational signature analysis visualization and its component panels. It describes what each panel shows, the data it requires, and how to interpret the results.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>Somatic single-nucleotide variants (SNVs) arise from different mutational processes such as aging, UV exposure, APOBEC activity, and defective DNA repair mechanisms. Each process leaves a characteristic pattern across 96 trinucleotide mutation contexts, defined by the six base substitutions (C&gt;A, C&gt;G, C&gt;T, T&gt;A, T&gt;C, T&gt;G) combined with the 16 possible combinations of upstream and downstream flanking bases.</p>
+<p>The complete analysis consists of five complementary panels:</p>
+<ul>
+<li>Panel A: Signature profiles showing the trinucleotide distribution for each mutational signature  </li>
+<li>Panel B: Cosine similarity heatmap comparing extracted signatures with known COSMIC signatures  </li>
+<li>Panel C: Heatmap showing relative signature contributions per sample  </li>
+<li>Panel D: Stacked bar chart displaying signature distribution across samples  </li>
+<li>Panel E: Donut plot showing overall cohort-level signature proportions  </li>
+</ul>
+<p>These panels work together to provide a comprehensive view of mutational processes active in your dataset.</p>
+<h2 id="data-requirements">Data Requirements<a class="headerlink" href="#data-requirements" title="Permanent link">&para;</a></h2>
+<p>All visualization functions are methods of the <code>PyMutation</code> class and operate on the mutation data already loaded in the instance (<code>self.data</code>). The reference genome is only used to derive trinucleotide contexts when needed.</p>
+<p>To generate mutational signature visualizations, you need:</p>
+<ol>
+<li>
+<p>Variants: SNVs already loaded in your PyMutation instance</p>
+<ul>
+<li>Original format: MAF or VCF with chromosome, position, reference allele, alternative allele</li>
+<li>Sample identifier field: Tumor_Sample_Barcode (or equivalent)</li>
+<li>Only SNVs are considered; indels are automatically filtered out before trinucleotide context extraction</li>
+</ul>
+</li>
+<li>
+<p>Reference genome FASTA: To extract trinucleotide contexts (GRCh37 or GRCh38)</p>
+<ul>
+<li>Can be gzipped (.fa.gz)</li>
+<li>Chromosome names must match your variant file</li>
+<li>Examples: <code>hs37d5.fa</code>, <code>hg38.fa</code>, <code>GRCh38.primary_assembly.genome.fa</code></li>
+<li>Used to extract the upstream and downstream bases for each SNV</li>
+</ul>
+</li>
+<li>
+<p>COSMIC Catalog (optional, for signature comparison):</p>
+<ul>
+<li>TSV format with 96 rows representing trinucleotide contexts</li>
+<li>First column: context labels following COSMIC v3.x convention</li>
+<li>Row order must match COSMIC standard to ensure alignment between panels A and B</li>
+<li>Subsequent columns: COSMIC signatures (e.g., "SBS1", "SBS2")</li>
+<li>Download from: https://cancer.sanger.ac.uk/signatures/</li>
+<li>Recommended files: <code>COSMIC_v3.4_SBS_GRCh37.txt</code> or <code>COSMIC_v3.4_SBS_GRCh38.txt</code></li>
+</ul>
+</li>
+<li>
+<p>Number of signatures: Specified via the <code>n_signatures</code> parameter</p>
+<ul>
+<li>Must be set manually based on your dataset characteristics</li>
+<li>Typical range: 2-6 signatures for most datasets</li>
+<li>Start with n=3 and adjust based on biological interpretation and signature stability</li>
+</ul>
+</li>
+</ol>
+<p>Important - Pyrimidine Convention:
+All mutations are normalized to pyrimidine context (C or T as reference base) before analysis. If the mutated base is A or G, the mutation is converted to its reverse complement. This is why there are exactly 96 contexts (6 substitution types × 16 trinucleotide combinations) instead of 192. This convention ensures compatibility with COSMIC signature definitions.</p>
+<h2 id="panel-a-signature-bar-chart">Panel A: Signature Bar Chart<a class="headerlink" href="#panel-a-signature-bar-chart" title="Permanent link">&para;</a></h2>
+<p>The <code>signature_bar_chart()</code> function creates a multi-panel visualization where each panel shows one mutational signature as a bar chart with 96 bars.</p>
+<p>What it shows:
+Each signature is displayed as a profile of 96 trinucleotide contexts following the COSMIC v3.x standard order. The bars are visually grouped under the 6 substitution classes (C&gt;A, C&gt;G, C&gt;T, T&gt;A, T&gt;C, T&gt;G), with each group containing 16 bars representing the different upstream and downstream base combinations. The Y-axis shows the percentage contribution of each trinucleotide motif within that signature.</p>
+<p>Each signature is normalized so that all 96 bars sum to 100%, representing it as a probability distribution over trinucleotide contexts.</p>
+<p>Color scheme (standard COSMIC colors):<br />
+- C&gt;A: cyan (#02bdee)<br />
+- C&gt;G: black (#010101)<br />
+- C&gt;T: red (#e32925)<br />
+- T&gt;A: gray (#cac9c9)<br />
+- T&gt;C: green (#a1cf63)<br />
+- T&gt;G: pink (#ecc7c4)  </p>
+<p>The trinucleotide context labels appear at the bottom of the last panel, showing the specific upstream and downstream bases for each bar (e.g., A[C&gt;A]A, A[C&gt;A]C, etc.).</p>
+<p>COSMIC alignment:
+If <code>cosmic_path</code> is provided, signatures are automatically reordered and renamed based on their best COSMIC match (using cosine similarity ≥ 0.5). This helps with immediate biological interpretation, showing names like "SBS1-like (cos=0.95)" instead of generic "Signature 1". Unmatched signatures retain generic names and are sorted to the end.</p>
+<h2 id="panel-b-cosine-similarity-heatmap">Panel B: Cosine Similarity Heatmap<a class="headerlink" href="#panel-b-cosine-similarity-heatmap" title="Permanent link">&para;</a></h2>
+<p>The <code>cosine_similarity_heatmap()</code> function creates a heatmap comparing your extracted signatures with the COSMIC catalog of known mutational signatures.</p>
+<p>What it shows:
+A matrix where each cell represents the similarity between one of your extracted signatures (Y-axis) and one COSMIC reference signature (X-axis). The cosine similarity metric ranges from 0 (completely different) to 1 (identical). Darker blue cells indicate higher similarity.</p>
+<p>Both signature sets are L2-normalized before computing cosine similarity to ensure fair comparison. The calculation follows: cosine(u, v) = (u · v) / (||u|| × ||v||).</p>
+<p>Interpretation:
+High similarity values (typically ≥ 0.85) suggest that your extracted signature closely matches a known biological process. For example, if Signature 1 shows high similarity to SBS1 and SBS5, it likely represents the aging-related mutational process. This panel helps you identify which biological mechanisms are active in your dataset.</p>
+<h2 id="panel-c-signature-contribution-heatmap">Panel C: Signature Contribution Heatmap<a class="headerlink" href="#panel-c-signature-contribution-heatmap" title="Permanent link">&para;</a></h2>
+<p>The <code>signature_contribution_heatmap()</code> function shows how much each signature contributes to each sample as a heatmap.</p>
+<p>What it shows:
+A matrix where signatures are on the Y-axis and samples are on the X-axis. Each cell shows the proportion of mutations in that sample attributable to that signature. Values range from 0 to 1, with darker blue indicating higher contribution.</p>
+<p>Normalization:
+Column-normalized H (each sample sums to 1): H_normalized = H / H.sum(axis=0), where each sample column sums to 1 (100%).</p>
+<p>Interpretation:
+This panel reveals sample-level heterogeneity in mutational processes. For instance, you might observe that some samples are dominated by a single signature while others show contributions from multiple signatures. This can help identify subgroups within your cohort based on their active mutational mechanisms.</p>
+<h2 id="panel-d-stacked-bar-chart-per-sample">Panel D: Stacked Bar Chart per Sample<a class="headerlink" href="#panel-d-stacked-bar-chart-per-sample" title="Permanent link">&para;</a></h2>
+<p>The <code>signature_stacked_bar_chart()</code> function displays signature contributions across samples as stacked bars.</p>
+<p>What it shows:
+Each vertical bar represents one sample, with colored segments showing the relative proportion of each signature. Every bar has a total height of 1 (100%), making it easy to compare the relative composition of mutational signatures across samples.</p>
+<p>Normalization:
+Column-normalized H (each sample sums to 1): uses the same normalization as Panel C (H_normalized = H / H.sum(axis=0)), ensuring consistency between panels.</p>
+<p>Interpretation:
+This panel provides an intuitive view of signature heterogeneity across your cohort. Samples can be optionally sorted by their dominant signature to reveal patterns and clusters. For example, you might see groups of samples with similar signature compositions, suggesting shared etiologies or exposures.</p>
+<h2 id="panel-e-donut-plot-cohort-level-proportions">Panel E: Donut Plot - Cohort-Level Proportions<a class="headerlink" href="#panel-e-donut-plot-cohort-level-proportions" title="Permanent link">&para;</a></h2>
+<p>The <code>signature_donut_plot()</code> function shows the overall distribution of mutational signatures across the entire cohort.</p>
+<p>What it shows:
+A donut chart where each slice represents the proportion of all mutations in the dataset attributable to each signature. Percentages are displayed on the chart showing each signature's contribution to the total mutational burden.</p>
+<p>This panel uses absolute contributions summed across all samples: cohort_exposure = contributions_abs.sum(axis=1), then normalized to percentages. This is the ONLY panel that uses absolute counts rather than per-sample normalization.</p>
+<p>Interpretation:
+This panel answers the question: "Which mutational processes dominate my entire dataset?" For example, if Signature 1 accounts for 47% of all mutations and shows high similarity to SBS1/SBS5, this indicates that aging is the predominant mutational process in your cohort. This cohort-level view complements the per-sample views in Panels C and D.</p>
+<p>Important note:
+Unlike Panels C and D which show relative proportions per sample, this panel reflects both the activity and prevalence of each signature across the entire cohort. This means samples with more mutations contribute more to the overall percentages (activity × prevalence).</p>
+<h2 id="complete-mutational-signature-analysis">Complete Mutational Signature Analysis<a class="headerlink" href="#complete-mutational-signature-analysis" title="Permanent link">&para;</a></h2>
+<p>The <code>mutational_signature_analysis()</code> function generates a comprehensive figure containing all five panels described above in a single publication-ready visualization.</p>
+<p>Layout:<br />
+- Top section (larger): Panel A showing all signature profiles<br />
+- Bottom section, left to right:<br />
+      - Panel B: Cosine similarity heatmap<br />
+      - Panel C: Sample contribution heatmap<br />
+      - Panel D: Stacked bar chart<br />
+      - Panel E: Donut plot  </p>
+<p>This combined visualization provides a complete view of mutational processes in your dataset, from the detailed trinucleotide patterns of each signature to their distribution across samples and overall cohort-level proportions.</p>
+<h2 id="function-parameters">Function Parameters<a class="headerlink" href="#function-parameters" title="Permanent link">&para;</a></h2>
+<p>All functions below are methods of the <code>PyMutation</code> class. They automatically use the mutation data loaded in the instance. </p>
+<p><strong>Important Note on Data Processing:</strong>
+Each visualization function internally recomputes the trinucleotide context matrix from <code>self.data</code> and the reference genome. The parameters <code>ref_genome</code>, <code>prefix</code>, <code>add</code>, <code>ignoreChr</code>, and <code>useSyn</code> control this preprocessing step. This means the context matrix is generated fresh each time a visualization is called, allowing you to experiment with different filtering strategies without modifying your original data.</p>
+<h3 id="parameter-categories">Parameter Categories<a class="headerlink" href="#parameter-categories" title="Permanent link">&para;</a></h3>
+<p>Parameters fall into three categories:</p>
+<ol>
+<li><strong>Data Preprocessing</strong> (<code>ref_genome</code>, <code>prefix</code>, <code>add</code>, <code>ignoreChr</code>, <code>useSyn</code>): Control how variant data is converted to trinucleotide contexts  </li>
+<li><strong>Analysis</strong> (<code>n_signatures</code>, <code>cosmic_path</code>, <code>signature_names</code>): Control signature extraction and annotation  </li>
+<li><strong>Visualization</strong> (<code>figsize</code>, <code>title</code>, <code>cmap</code>, <code>show_values</code>, etc.): Control plot appearance  </li>
+</ol>
+<hr />
+<h3 id="mutational_signature_analysis"><code>mutational_signature_analysis()</code><a class="headerlink" href="#mutational_signature_analysis" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>ref_genome</code> (str): Path to reference genome FASTA file. Required to extract trinucleotide contexts from variant positions in <code>self.data</code>.  </li>
+<li><code>cosmic_path</code> (str): Path to COSMIC signature catalog TSV file. Required for Panel B comparison and signature annotation.  </li>
+<li><code>n_signatures</code> (int, default=3): Number of mutational signatures to extract from the data.  </li>
+<li><code>prefix</code> (str, optional): Prefix to add or remove from chromosome names to match the reference genome. Use when chromosome naming differs between your variants and FASTA (e.g., 'chr').  </li>
+<li><code>add</code> (bool, default=True): If True, adds the prefix to chromosome names; if False, removes it.  </li>
+<li><code>ignoreChr</code> (list, optional): List of chromosomes to exclude from analysis (e.g., ['chrM', 'chrY']).  </li>
+<li><code>useSyn</code> (bool, default=True): Include synonymous variants in the analysis. Set to False to exclude them.  </li>
+<li><code>signature_names</code> (list, optional): Custom names for the extracted signatures. If not provided, uses generic names like "Signature 1", "Signature 2", etc.  </li>
+<li><code>selected_signatures</code> (list, optional): Subset of signature indices to display (0-based indexing). Use this to focus on specific signatures of interest.  </li>
+<li><code>figsize</code> (tuple, default=(24, 12)): Figure size as (width, height) in inches.  </li>
+<li><code>title</code> (str, default="Mutational Signature Analysis"): Main title displayed at the top of the figure.  </li>
+</ul>
+<h3 id="signature_bar_chart"><code>signature_bar_chart()</code><a class="headerlink" href="#signature_bar_chart" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>ref_genome</code> (str): Path to reference genome FASTA file.  </li>
+<li><code>n_signatures</code> (int, default=3): Number of signatures to extract.  </li>
+<li><code>cosmic_path</code> (str, optional): Path to COSMIC catalog. If provided, signatures are reordered and renamed based on their best COSMIC match.  </li>
+<li><code>figsize</code> (tuple, optional): Figure size. If not specified, automatically calculated as (12, 3 × n_signatures).  </li>
+<li><code>title</code> (str, default="Mutational Signature Profiles"): Figure title.  </li>
+</ul>
+<h3 id="cosine_similarity_heatmap"><code>cosine_similarity_heatmap()</code><a class="headerlink" href="#cosine_similarity_heatmap" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>ref_genome</code> (str): Path to reference genome FASTA file.  </li>
+<li><code>cosmic_path</code> (str): Path to COSMIC signature catalog (required).  </li>
+<li><code>n_signatures</code> (int, default=3): Number of signatures to extract.  </li>
+<li><code>prefix</code> (str, optional): Chromosome name prefix adjustment.  </li>
+<li><code>add</code> (bool, default=True): Whether to add or remove the prefix.  </li>
+<li><code>ignoreChr</code> (list, optional): Chromosomes to exclude.  </li>
+<li><code>useSyn</code> (bool, default=True): Include synonymous variants.  </li>
+<li><code>signature_names</code> (list, optional): Custom signature names.  </li>
+<li><code>figsize</code> (tuple, default=(14, 3)): Figure size.  </li>
+<li><code>title</code> (str, default="Cosine Similarity: Extracted vs COSMIC Signatures"): Plot title.  </li>
+</ul>
+<h3 id="signature_contribution_heatmap"><code>signature_contribution_heatmap()</code><a class="headerlink" href="#signature_contribution_heatmap" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>ref_genome</code> (str): Path to reference genome FASTA file.  </li>
+<li><code>n_signatures</code> (int, default=3): Number of signatures to extract.  </li>
+<li><code>prefix</code> (str, optional): Chromosome name prefix adjustment.  </li>
+<li><code>add</code> (bool, default=True): Whether to add or remove the prefix.  </li>
+<li><code>ignoreChr</code> (list, optional): Chromosomes to exclude.  </li>
+<li><code>useSyn</code> (bool, default=True): Include synonymous variants.  </li>
+<li><code>signature_names</code> (list, optional): Custom signature names.  </li>
+<li><code>cosmic_path</code> (str, optional): Path to COSMIC catalog for signature alignment.  </li>
+<li><code>figsize</code> (tuple, optional): Figure size. Auto-calculated if not specified.  </li>
+<li><code>cmap</code> (str, default='Blues'): Colormap name for the heatmap.  </li>
+<li><code>show_values</code> (bool, default=False): Display numerical values in heatmap cells.  </li>
+<li><code>show_labels</code> (bool, default=True): Show sample and signature labels on axes.  </li>
+<li><code>title</code> (str, default="Signature Contributions per Sample"): Plot title.  </li>
+</ul>
+<h3 id="signature_stacked_bar_chart"><code>signature_stacked_bar_chart()</code><a class="headerlink" href="#signature_stacked_bar_chart" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>ref_genome</code> (str): Path to reference genome FASTA file.  </li>
+<li><code>n_signatures</code> (int, default=3): Number of signatures to extract.  </li>
+<li><code>prefix</code> (str, optional): Chromosome name prefix adjustment.  </li>
+<li><code>add</code> (bool, default=True): Whether to add or remove the prefix.  </li>
+<li><code>ignoreChr</code> (list, optional): Chromosomes to exclude.  </li>
+<li><code>useSyn</code> (bool, default=True): Include synonymous variants.  </li>
+<li><code>signature_names</code> (list, optional): Custom signature names.  </li>
+<li><code>figsize</code> (tuple, optional): Figure size. Auto-calculated if not specified.  </li>
+<li><code>title</code> (str, default="Signature Contributions per Sample"): Plot title.  </li>
+<li><code>sort_samples</code> (bool, default=False): Sort samples by their dominant signature for better pattern visualization.  </li>
+<li><code>max_samples</code> (int, optional): Maximum number of samples to display. Shows only the first N samples if specified.  </li>
+<li><code>show_labels</code> (bool, default=True): Show sample labels on X-axis and legend.  </li>
+</ul>
+<h3 id="signature_donut_plot"><code>signature_donut_plot()</code><a class="headerlink" href="#signature_donut_plot" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>ref_genome</code> (str): Path to reference genome FASTA file.  </li>
+<li><code>n_signatures</code> (int, default=3): Number of signatures to extract.  </li>
+<li><code>prefix</code> (str, optional): Chromosome name prefix adjustment.  </li>
+<li><code>add</code> (bool, default=True): Whether to add or remove the prefix.  </li>
+<li><code>ignoreChr</code> (list, optional): Chromosomes to exclude.  </li>
+<li><code>useSyn</code> (bool, default=True): Include synonymous variants.  </li>
+<li><code>signature_names</code> (list, optional): Custom signature names.  </li>
+<li><code>figsize</code> (tuple, default=(8, 8)): Figure size.  </li>
+<li><code>title</code> (str, default="Relative Contribution of Mutational Signatures"): Plot title.  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 pyMut Development Team
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "navigation.instant", "navigation.tracking", "search.highlight", "search.suggest"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.3220b9d7.min.js"></script>
+      
+    
+  </body>
+</html>

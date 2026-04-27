@@ -1,0 +1,2484 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Python library for genetic mutation visualization">
+      
+      
+        <meta name="author" content="pyMut Development Team">
+      
+      
+        <link rel="canonical" href="https://luisruimor.github.io/pyMut/api/Visualization/summary_plot/">
+      
+      
+        <link rel="prev" href="../../Analysis%20Methods/actionable_mutation_annotation/">
+      
+      
+        <link rel="next" href="../oncoplot/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.18">
+    
+    
+      
+        <title>Summary Plot - pyMut</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.66ac8b77.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#maf-summary-dashboard" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="pyMut" class="md-header__button md-logo" aria-label="pyMut" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            pyMut
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Summary Plot
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Luisruimor/pyMut" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Luisruimor/pyMut
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="pyMut" class="md-nav__button md-logo" aria-label="pyMut" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    pyMut
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Luisruimor/pyMut" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Luisruimor/pyMut
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    API Reference
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            API Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Core
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Core
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Core/pymutation_class/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PyMutation Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Data Loading
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Data Loading
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Data%20Loading/read_maf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Read MAF Files
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Data%20Loading/read_vcf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Read VCF Files
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Data Export
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Data Export
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Data%20Export/to_maf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Export to MAF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Data%20Export/to_vcf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Export to VCF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Data%20Combination/combine_data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Combination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Filters
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Filters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Filters/genomic_range/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Genomic Range Filters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Filters/pass_filter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quality Filter (PASS)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Filters/chrom_sample_filter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chromosome & Sample Filter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Filters/tissue_expression_filter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tissue Expression Filter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Analysis Methods
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Analysis Methods
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Analysis%20Methods/tmb_analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TMB Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Analysis%20Methods/pfam_domains/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pfam Domains Annotation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6_3" id="__nav_3_6_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Mutational Signatures
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Mutational Signatures
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Analysis%20Methods/Mutational%20Signatures/trinucleotideMatrix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Matriz Trinucleotide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Analysis%20Methods/Mutational%20Signatures/estimateSignatures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Estimated Signatures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Analysis%20Methods/Mutational%20Signatures/extract_signatures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Extract Signatures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Analysis%20Methods/Mutational%20Signatures/compare_signatures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compare Signatures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Annotation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            Annotation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Analysis%20Methods/known_cancer_annotation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Known Cancer Gene Annotation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7_2" id="__nav_3_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    VEP Annotation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            VEP Annotation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Analysis%20Methods/VEP%20annotate/annotation_maf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MAF annotation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Analysis%20Methods/VEP%20annotate/annotation_vcf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VCF annotation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Analysis%20Methods/pfam_annotation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PFAM Annotation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Analysis%20Methods/actionable_mutation_annotation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Actionable Mutation Annotation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Visualization API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            Visualization API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Summary Plot
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Summary Plot
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameters
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input-data-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input data formats
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#required-data-columns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Required data columns
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-1-variant-classification-topleft-variant_classification_plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 1: Variant Classification (top‑left) - variant_classification_plot()
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-2-variant-type-topmiddle-variant_type_plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 2: Variant Type (top‑middle) - variant_type_plot()
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-3-snv-class-topright-snv_class_plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 3: SNV Class (top‑right) - snv_class_plot()
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-4-variants-per-sample-bottomleft-variants_per_sample_plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 4: Variants per sample (bottom‑left) - variants_per_sample_plot()
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-5-variant-classification-summary-bottommiddle-variant_classification_summary_plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 5: Variant Classification summary (bottom‑middle) - variant_classification_summary_plot()
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-6-top-mutated-genes-bottomright-top_mutated_genes_plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 6: Top mutated genes (bottom‑right) - top_mutated_genes_plot()
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../oncoplot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Oncoplot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mutational_signature_analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mutational Signature Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lollipop_plot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lollipop Plot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../somatic_interactions_plot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Somatic Interactions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../comut_plot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CoMut Plot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Example Usage
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Example Usage
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Input Data
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Input Data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/data/input_read_vcf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reading VCF Files with pyMut
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/data/input_read_maf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reading MAF Files with pyMut
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Output Data
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Output Data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/data/vcf_to_maf_and_vcf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VCF to MAF and VCF Conversion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/data/maf_to_vcf_and_maf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MAF to VCF and MAF Conversion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/data/combination_2maf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Combining MAF Files with pyMut
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Filtering
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Filtering
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/filtering/example_filtering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PyMutation Filtering Methods Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/filtering/tissue_expression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tissue Expression Filter Test with TCGA LAML Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Annotation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Annotation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/annotation/vep_annotation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VEP Annotation Demo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/annotation/cosmic_cancer_annotation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    COSMIC Cancer Annotation Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/annotation/actionable_mutation_annotation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OncoKB Annotation Demo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Analysis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/analysis/mutation_burden/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tumor Mutational Burden (TMB) Analysis with PyMut-Bio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/analysis/mutational_signatures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trinucleotide Matrix Analysis Demo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/analysis/domains_pfam/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PFAM Annotation Module
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Visualizations
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Visualizations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/visualization/summary_plot_example/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Summary Plot Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/visualization/oncoplot_example/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Oncoplot Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/visualization/mutational_signature/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mutational Signature Analysis Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/visualization/lollipop_plot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lollipop Plot Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/visualization/somatic_interactions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Somatic Interactions Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/visualization/comut_plot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CoMut Plot Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameters
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input-data-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input data formats
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#required-data-columns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Required data columns
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-1-variant-classification-topleft-variant_classification_plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 1: Variant Classification (top‑left) - variant_classification_plot()
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-2-variant-type-topmiddle-variant_type_plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 2: Variant Type (top‑middle) - variant_type_plot()
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-3-snv-class-topright-snv_class_plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 3: SNV Class (top‑right) - snv_class_plot()
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-4-variants-per-sample-bottomleft-variants_per_sample_plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 4: Variants per sample (bottom‑left) - variants_per_sample_plot()
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-5-variant-classification-summary-bottommiddle-variant_classification_summary_plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 5: Variant Classification summary (bottom‑middle) - variant_classification_summary_plot()
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panel-6-top-mutated-genes-bottomright-top_mutated_genes_plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Panel 6: Top mutated genes (bottom‑right) - top_mutated_genes_plot()
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="maf-summary-dashboard">MAF Summary Dashboard<a class="headerlink" href="#maf-summary-dashboard" title="Permanent link">&para;</a></h1>
+<p>The <code>summary_plot()</code> function provides a compact, high‑level overview of all somatic variants in a cohort. It is designed to answer key questions about the mutational landscape:</p>
+<ul>
+<li><em>Which mutation types are most common in this cohort?</em>  </li>
+<li><em>How many variants does each sample have?</em>  </li>
+<li><em>Which genes are mutated most often?</em>  </li>
+</ul>
+<p>The visualization consists of six coordinated panels, all computed from the same input data and sharing a consistent color palette for variant classifications (e.g., Missense_Mutation, Nonsense_Mutation, Splice_Site), ensuring visual coherence across the dashboard.</p>
+<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h2>
+<p>The <code>summary_plot()</code> function accepts the following parameters:  </p>
+<ul>
+<li><code>figsize</code>: Figure size as (width, height) in inches. Default is <code>(16, 12)</code>.  </li>
+<li><code>title</code>: Main title for the summary plot. Default is <code>"Mutation Summary"</code>.  </li>
+<li><code>max_samples</code>: Maximum number of samples to display in the "Variants per sample" panel. If None, all samples are shown. Default is <code>200</code>.  </li>
+<li><code>top_genes_count</code>: Number of top genes to display in the "Top mutated genes" panel. Default is <code>10</code>.  </li>
+</ul>
+<h2 id="input-data-formats">Input data formats<a class="headerlink" href="#input-data-formats" title="Permanent link">&para;</a></h2>
+<p>The function automatically detects and supports two input formats:</p>
+<p>Long format (MAF-like): Each row represents one somatic variant. This is the standard MAF structure where the same sample or gene can appear in multiple rows. Sample identifiers are stored in the <code>Tumor_Sample_Barcode</code> column.</p>
+<p>Wide format (matrix-like): Each row represents one variant with samples as columns (e.g., TCGA-XX-XXXX). Cell values contain genotype information in formats like <code>A|G</code> (heterozygous variant), <code>A|A</code> or <code>0|0</code> (homozygous reference, no variant). The function detects this format when <code>Tumor_Sample_Barcode</code> is absent.</p>
+<p>The format is detected automatically. Panels 1–3 (classification, type, SNV class) work identically in both formats by counting variant rows. Panels 4–6 (per-sample and per-gene views) adapt their behavior based on the detected format.</p>
+<h2 id="required-data-columns">Required data columns<a class="headerlink" href="#required-data-columns" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>Hugo_Symbol</code>: gene symbol  </li>
+<li><code>Variant_Classification</code>: functional effect of the variant on the coding sequence  </li>
+<li><code>Variant_Type</code>: structural type of variant (SNP, INS, DEL, etc.)  </li>
+<li><code>REF</code>: reference allele  </li>
+<li><code>ALT</code>: alternative allele (used to classify SNVs into substitution classes)  </li>
+<li><code>Tumor_Sample_Barcode</code>: sample identifier (required only in long format)  </li>
+<li>Sample columns: TCGA-XX-XXXX or similar (required only in wide format)  </li>
+</ul>
+<hr />
+<h2 id="panel-1-variant-classification-topleft-variant_classification_plot">Panel 1: Variant Classification (top‑left) - <code>variant_classification_plot()</code><a class="headerlink" href="#panel-1-variant-classification-topleft-variant_classification_plot" title="Permanent link">&para;</a></h2>
+<p>This panel displays a horizontal barplot showing the distribution of variant classifications across the entire cohort. Each bar represents a different classification type, with the bar length indicating the total number of mutations of that type.</p>
+<p>Typical variant classifications include:</p>
+<ul>
+<li><code>Missense_Mutation</code>: single amino‑acid change in the protein  </li>
+<li><code>Nonsense_Mutation</code>: introduces a premature stop codon, truncating the protein  </li>
+<li><code>Splice_Site</code>: variant near exon–intron boundaries that may disrupt splicing  </li>
+<li><code>Frame_Shift_Ins</code> / <code>Frame_Shift_Del</code>: insertions or deletions that change the reading frame  </li>
+<li><code>In_Frame_Ins</code> / <code>In_Frame_Del</code>: insertions or deletions that preserve the reading frame  </li>
+</ul>
+<p>Bars are sorted by frequency (high to low), with the most common classifications appearing at the top. Each bar is annotated with its exact count.</p>
+<p><strong>Note:</strong> By default, silent (synonymous) mutations and non-coding variants are excluded. Set <code>include_silent=True</code> to include all variants.</p>
+<p><strong>Parameters (standalone function only):</strong></p>
+<ul>
+<li><code>figsize</code>: Figure size. Default: <code>(10, 6)</code></li>
+<li><code>title</code>: Plot title. Default: <code>"Variant Classification"</code></li>
+<li><code>include_silent</code>: Whether to include silent/synonymous and non-coding variants. Default: <code>False</code></li>
+</ul>
+<p>Required data: <code>Variant_Classification</code> column, one row per somatic variant.</p>
+<hr />
+<h2 id="panel-2-variant-type-topmiddle-variant_type_plot">Panel 2: Variant Type (top‑middle) - <code>variant_type_plot()</code><a class="headerlink" href="#panel-2-variant-type-topmiddle-variant_type_plot" title="Permanent link">&para;</a></h2>
+<p>This panel shows a horizontal barplot summarizing variant types based on their structural characteristics:</p>
+<ul>
+<li><code>SNP</code>: single nucleotide polymorphism (change of one base)  </li>
+<li><code>INS</code>: small insertion  </li>
+<li><code>DEL</code>: small deletion  </li>
+<li><code>TNP</code> / <code>ONP</code>: tri‑ and oligo‑nucleotide changes (when present in the dataset)  </li>
+</ul>
+<p>Each bar represents the total number of variants of that type across all samples. Bars are sorted by frequency (low to high) and annotated with exact counts.</p>
+<p>This view focuses on the structural nature of the DNA change, independent of its biological effect on proteins.</p>
+<p><strong>Note:</strong> By default, silent (synonymous) mutations and non-coding variants are excluded. Set <code>include_silent=True</code> to include all variants.</p>
+<p><strong>Parameters (standalone function only):</strong></p>
+<ul>
+<li><code>figsize</code>: Figure size. Default: <code>(10, 6)</code></li>
+<li><code>title</code>: Plot title. Default: <code>"Variant Type"</code></li>
+<li><code>include_silent</code>: Whether to include silent/synonymous and non-coding variants. Default: <code>False</code></li>
+</ul>
+<p>Required data: <code>Variant_Type</code> column, one row per variant.</p>
+<hr />
+<h2 id="panel-3-snv-class-topright-snv_class_plot">Panel 3: SNV Class (top‑right) - <code>snv_class_plot()</code><a class="headerlink" href="#panel-3-snv-class-topright-snv_class_plot" title="Permanent link">&para;</a></h2>
+<p>This panel displays a horizontal barplot for single‑nucleotide variant (SNV) substitution classes. Each bar corresponds to one base substitution pattern (e.g., C&gt;T, G&gt;A, A&gt;G), showing the total number of SNVs of each class across all samples in the cohort.</p>
+<p><strong>Important:</strong> By default, this visualization normalizes all SNVs to pyrimidine context (C or T as reference). This means complementary substitutions are merged into a single class (e.g., both A&gt;C and T&gt;G are counted as A&gt;C when normalized). This follows the convention used in mutational signature analysis and matches maftools behavior, showing 6 canonical substitution classes instead of 12.</p>
+<p>To see all 12 substitution types without normalization, use the <code>normalize_pyrimidine=False</code> parameter in the standalone function.</p>
+<p><strong>Note:</strong> Unlike other panels, this includes silent mutations by default to show the complete SNV spectrum, which is important for mutational signature analysis.</p>
+<p>Bars are sorted by frequency (low to high) and annotated with exact counts.</p>
+<p><strong>Parameters (standalone function only):</strong></p>
+<ul>
+<li><code>figsize</code>: Figure size. Default: <code>(10, 6)</code></li>
+<li><code>title</code>: Plot title. Default: <code>"SNV Class"</code></li>
+<li><code>ref_column</code>: Column containing reference alleles. Default: <code>"REF"</code></li>
+<li><code>alt_column</code>: Column containing alternative alleles. Default: <code>"ALT"</code></li>
+<li><code>normalize_pyrimidine</code>: Whether to normalize to pyrimidine bases (C/T as reference). Default: <code>True</code> (shows 6 canonical classes). Set to <code>False</code> to show all 12 possible substitution types.</li>
+</ul>
+<p>Required data: <code>REF</code> and <code>ALT</code> columns. Only rows where both are single nucleotides are included.</p>
+<hr />
+<h2 id="panel-4-variants-per-sample-bottomleft-variants_per_sample_plot">Panel 4: Variants per sample (bottom‑left) - <code>variants_per_sample_plot()</code><a class="headerlink" href="#panel-4-variants-per-sample-bottomleft-variants_per_sample_plot" title="Permanent link">&para;</a></h2>
+<p>This panel shows a stacked barplot where each bar represents a sample, sorted by decreasing total variant count. The height of each bar indicates the total number of variants in that sample, and the bar is stacked by variant classification using the same color scheme as Panel 1.</p>
+<p>This visualization reveals the tumor mutational burden (TMB) per sample and how that burden is composed (e.g., predominantly missense mutations or many frameshifts). A red dashed horizontal line marks the median number of variants per sample across the cohort.</p>
+<p>If the <code>max_samples</code> parameter is specified, only the top N samples (by variant count) are displayed.</p>
+<p><strong>Note:</strong> By default, silent (synonymous) mutations and non-coding variants are excluded. Set <code>include_silent=True</code> to include all variants.</p>
+<p><strong>Parameters (standalone function only):</strong></p>
+<ul>
+<li><code>figsize</code>: Figure size. Default: <code>(12, 6)</code></li>
+<li><code>title</code>: Plot title. Default: <code>"Variants per Sample"</code></li>
+<li><code>variant_column</code>: Column containing variant classifications. Default: <code>"Variant_Classification"</code></li>
+<li><code>sample_column</code>: Column containing sample identifiers. Default: <code>"Tumor_Sample_Barcode"</code></li>
+<li><code>max_samples</code>: Maximum number of samples to display. Default: <code>200</code></li>
+<li><code>include_silent</code>: Whether to include silent/synonymous and non-coding variants. Default: <code>False</code></li>
+</ul>
+<p>Required data: <code>Tumor_Sample_Barcode</code> (in long format) or sample columns (in wide format, e.g., TCGA-XX-XXXX), and <code>Variant_Classification</code>.</p>
+<hr />
+<h2 id="panel-5-variant-classification-summary-bottommiddle-variant_classification_summary_plot">Panel 5: Variant Classification summary (bottom‑middle) - <code>variant_classification_summary_plot()</code><a class="headerlink" href="#panel-5-variant-classification-summary-bottommiddle-variant_classification_summary_plot" title="Permanent link">&para;</a></h2>
+<p>This panel contains boxplots, one for each variant classification type. Each boxplot summarizes the distribution of per‑sample variant counts for that classification across the entire cohort.</p>
+<p>For a given classification (e.g., <em>Missense_Mutation</em>), the boxplot shows:</p>
+<ul>
+<li>The median (red line) and interquartile range of variant counts per sample  </li>
+<li>Whiskers extending to the most extreme non‑outlier values  </li>
+<li>Outliers displayed as small gray dots  </li>
+</ul>
+<p>This answers questions like "In a typical sample, how many missense mutations are present?" and "Are splice‑site mutations rare in this cohort?"</p>
+<p>Boxplots are ordered by total variant count (most common classifications appear first from left to right) and colored using the same palette as other panels.</p>
+<p><strong>Note:</strong> By default, silent (synonymous) mutations and non-coding variants are excluded. Set <code>include_silent=True</code> to include all variants.</p>
+<p><strong>Parameters (standalone function only):</strong></p>
+<ul>
+<li><code>figsize</code>: Figure size. Default: <code>(10, 6)</code></li>
+<li><code>title</code>: Plot title. Default: <code>"Variant Classification Summary"</code></li>
+<li><code>variant_column</code>: Column containing variant classifications. Default: <code>"Variant_Classification"</code></li>
+<li><code>sample_column</code>: Column containing sample identifiers. Default: <code>"Tumor_Sample_Barcode"</code></li>
+<li><code>include_silent</code>: Whether to include silent/synonymous and non-coding variants. Default: <code>False</code></li>
+</ul>
+<p>Required data: <code>Tumor_Sample_Barcode</code> (in long format) or sample columns (in wide format), and <code>Variant_Classification</code>.</p>
+<hr />
+<h2 id="panel-6-top-mutated-genes-bottomright-top_mutated_genes_plot">Panel 6: Top mutated genes (bottom‑right) - <code>top_mutated_genes_plot()</code><a class="headerlink" href="#panel-6-top-mutated-genes-bottomright-top_mutated_genes_plot" title="Permanent link">&para;</a></h2>
+<p>This panel displays a horizontal stacked barplot showing the most frequently mutated genes in the cohort. By default, the top 10 genes are shown (controlled by the <code>top_genes_count</code> parameter).</p>
+<p>For each gene:</p>
+<ul>
+<li>The y‑axis lists gene symbols (e.g., <em>FLT3</em>, <em>TET2</em>, <em>NRAS</em>), ordered from bottom to top by increasing mutation count  </li>
+<li>The x‑axis shows the count metric (total variants or affected samples, depending on mode)  </li>
+<li>Each bar is stacked by variant classification, using the same color palette as other panels  </li>
+<li>The total count is annotated at the right end of each bar  </li>
+</ul>
+<p>Two counting modes are available:</p>
+<ol>
+<li>
+<p><code>mode='variants'</code> (default): Counts the total number of variants in each gene across all samples. The annotation shows the total variant count.</p>
+</li>
+<li>
+<p><code>mode='samples'</code>: Counts the number of distinct samples with at least one variant in each gene. The annotation shows the percentage of affected samples (e.g., "25.0%").</p>
+</li>
+</ol>
+<p><strong>Important note:</strong> In the <code>summary_plot()</code> dashboard, this panel always uses <code>mode='variants'</code>. The mode parameter is only available when calling the standalone <code>top_mutated_genes_plot()</code> function.</p>
+<p><strong>Note:</strong> By default, this panel includes silent (synonymous) mutations to match maftools behavior. Set <code>include_silent=False</code> to exclude them.</p>
+<p>This panel highlights recurrently mutated genes and reveals which types of mutations they tend to carry.</p>
+<p><strong>Parameters (standalone function only):</strong></p>
+<ul>
+<li><code>figsize</code>: Figure size. Default: <code>(10, 6)</code></li>
+<li><code>title</code>: Plot title. Default: <code>"Top Mutated Genes"</code></li>
+<li><code>mode</code>: Counting mode. Options: <code>"variants"</code> (total variants) or <code>"samples"</code> (affected samples). Default: <code>"variants"</code></li>
+<li><code>variant_column</code>: Column containing variant classifications. Default: <code>"Variant_Classification"</code></li>
+<li><code>gene_column</code>: Column containing gene symbols. Default: <code>"Hugo_Symbol"</code></li>
+<li><code>sample_column</code>: Column containing sample identifiers. Default: <code>"Tumor_Sample_Barcode"</code></li>
+<li><code>count</code>: Number of top genes to display. Default: <code>10</code></li>
+<li><code>include_silent</code>: Whether to include silent/synonymous and non-coding variants. Default: <code>True</code></li>
+</ul>
+<p>Required data: <code>Hugo_Symbol</code>, <code>Tumor_Sample_Barcode</code> (in long format) or sample columns (in wide format), and <code>Variant_Classification</code>.</p>
+<hr />
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>The <code>summary_plot()</code> dashboard combines sample‑level, gene‑level, and cohort‑level views into a single comprehensive figure:</p>
+<ul>
+<li>Panels 1–3 describe what kinds of variants exist in the cohort (functional consequence, structural type, and base‑change patterns)  </li>
+<li><strong>Panels 1–2</strong> exclude silent mutations by default to focus on protein-altering variants</li>
+<li><strong>Panel 3</strong> includes silent mutations by default (important for mutational signature analysis) and normalizes SNVs to pyrimidine context</li>
+<li>Panel 4 shows how many variants each sample carries and how those variants are distributed across classifications (excludes silent mutations by default)</li>
+<li>Panel 5 summarizes per‑sample distributions for each classification type (excludes silent mutations by default)</li>
+<li>Panel 6 highlights which genes are recurrently mutated and what types of mutations they harbor (includes silent mutations by default to match maftools behavior)</li>
+</ul>
+<p>Together, these six views provide a rapid assessment of the input data and a compact overview of the mutational landscape.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 pyMut Development Team
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "navigation.instant", "navigation.tracking", "search.highlight", "search.suggest"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.3220b9d7.min.js"></script>
+      
+    
+  </body>
+</html>
