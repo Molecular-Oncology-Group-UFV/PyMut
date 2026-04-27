@@ -1,0 +1,16 @@
+name: PyMutTFG
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+  - bbglab
+dependencies:
+  - python=3.10
+  - bcftools
+  - ensembl-vep=115.* 
+  - htslib
+  - tabix
+  - perl
+  - perl-compress-raw-zlib>=2.201
+  - perl-io-compress>=2.201
+  - pip

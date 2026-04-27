@@ -1,0 +1,9 @@
+{
+  "assembly": "37",
+  "aa_column": "aa_pos",
+  "top_n": 10,
+  "include_synonymous": false,
+  "prefer_database": false,
+  "uniprot_alias": null,
+  "input_path": "tests/unit/io/fixtures/data/test_tcga_laml_100variants.maf"
+}
