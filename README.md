@@ -13,7 +13,7 @@ A Python library designed for the preprocessing, analysis and visualization of s
 #### Option 1: Basic Installation (pip)
 
 ```bash
-pip install pymut-bio
+pip install PyMut-Library
 ```
 
 **Note**: The pip installation provides core functionality for mutation data visualization, but some advanced features may be limited as certain bioinformatics tools are not available through PyPI.
