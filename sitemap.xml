@@ -1,248 +1,199 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://luisruimor.github.io/pyMut/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/installation/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/installation/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/api/Analysis%20Methods/actionable_mutation_annotation/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/api/Analysis%20Methods/actionable_mutation_annotation/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/api/Analysis%20Methods/known_cancer_annotation/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/api/Analysis%20Methods/known_cancer_annotation/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/api/Analysis%20Methods/pfam_annotation/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/api/Analysis%20Methods/pfam_annotation/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/api/Analysis%20Methods/pfam_domains/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/api/Analysis%20Methods/pfam_domains/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/api/Analysis%20Methods/tmb_analysis/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/api/Analysis%20Methods/tmb_analysis/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/api/Analysis%20Methods/Mutational%20Signatures/compare_signatures/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/api/Analysis%20Methods/Mutational%20Signatures/compare_signatures/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/api/Analysis%20Methods/Mutational%20Signatures/estimateSignatures/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/api/Analysis%20Methods/Mutational%20Signatures/estimateSignatures/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/api/Analysis%20Methods/Mutational%20Signatures/extract_signatures/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/api/Analysis%20Methods/Mutational%20Signatures/extract_signatures/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/api/Analysis%20Methods/Mutational%20Signatures/trinucleotideMatrix/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/api/Analysis%20Methods/Mutational%20Signatures/trinucleotideMatrix/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/api/Analysis%20Methods/VEP%20annotate/annotation_maf/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/api/Analysis%20Methods/VEP%20annotate/annotation_maf/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/api/Analysis%20Methods/VEP%20annotate/annotation_vcf/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/api/Analysis%20Methods/VEP%20annotate/annotation_vcf/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/api/Core/pymutation_class/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/api/Core/pymutation_class/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/api/Data%20Combination/combine_data/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/api/Data%20Combination/combine_data/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/api/Data%20Export/to_maf/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/api/Data%20Export/to_maf/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/api/Data%20Export/to_vcf/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/api/Data%20Export/to_vcf/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/api/Data%20Loading/read_maf/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/api/Data%20Loading/read_maf/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/api/Data%20Loading/read_vcf/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/api/Data%20Loading/read_vcf/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/api/Filters/chrom_sample_filter/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/api/Filters/chrom_sample_filter/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/api/Filters/genomic_range/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/api/Filters/genomic_range/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/api/Filters/pass_filter/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/api/Filters/pass_filter/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/api/Filters/tissue_expression_filter/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/api/Filters/tissue_expression_filter/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/api/Visualization/comut_plot/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/api/Visualization/comut_plot/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/api/Visualization/lollipop_plot/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/api/Visualization/lollipop_plot/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/api/Visualization/mutational_signature_analysis/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/api/Visualization/mutational_signature_analysis/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/api/Visualization/oncoplot/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/api/Visualization/oncoplot/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/api/Visualization/somatic_interactions_plot/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/api/Visualization/somatic_interactions_plot/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/api/Visualization/summary_plot/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/api/Visualization/summary_plot/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/examples/analysis/domains_pfam/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/examples/analysis/domains_pfam/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/examples/analysis/mutation_burden/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/examples/analysis/mutation_burden/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/examples/analysis/mutational_signatures/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/examples/analysis/mutational_signatures/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/examples/analysis/mutational_signatures_VCF/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/examples/analysis/mutational_signatures_VCF/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/examples/annotation/actionable_mutation_annotation/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/examples/annotation/actionable_mutation_annotation/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/examples/annotation/cosmic_cancer_annotation/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/examples/annotation/cosmic_cancer_annotation/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/examples/annotation/vep_annotation/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/examples/annotation/vep_annotation/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/examples/data/combination_2maf/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/examples/data/combination_2maf/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/examples/data/input_read_maf/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/examples/data/input_read_maf/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/examples/data/input_read_vcf/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/examples/data/input_read_vcf/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/examples/data/maf_to_vcf_and_maf/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/examples/data/maf_to_vcf_and_maf/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/examples/data/vcf_to_maf_and_vcf/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/examples/data/vcf_to_maf_and_vcf/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/examples/filtering/example_filtering/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/examples/filtering/example_filtering/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/examples/filtering/tissue_expression/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/examples/filtering/tissue_expression/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/examples/visualization/comut_plot/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/examples/visualization/comut_plot/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/examples/visualization/lollipop_plot/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/examples/visualization/lollipop_plot/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/examples/visualization/mutational_signature/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/examples/visualization/mutational_signature/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/examples/visualization/oncoplot_example/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/examples/visualization/oncoplot_example/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/examples/visualization/somatic_interactions/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/examples/visualization/somatic_interactions/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
     <url>
-         <loc>https://luisruimor.github.io/pyMut/examples/visualization/summary_plot_example/</loc>
-         <lastmod>2026-04-27</lastmod>
-         <changefreq>daily</changefreq>
+         <loc>https://Molecular-Oncology-Group-UFV.github.io/PyMut/examples/visualization/summary_plot_example/</loc>
+         <lastmod>2026-04-29</lastmod>
     </url>
 </urlset>
