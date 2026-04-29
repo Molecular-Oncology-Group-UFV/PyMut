@@ -1,13 +1,10 @@
-name: PyMutTFG
+name: PyMut_env
 channels:
   - conda-forge
   - bioconda
   - defaults
 dependencies:
-  # Python base
   - python=3.10
-
-  # Dependencias de Python (de tu pyproject.toml)
   - numpy=1.26.*
   - pandas>=2.3.1,<3.0.0
   - duckdb>=1.3.2,<2.0.0
@@ -22,8 +19,8 @@ dependencies:
   - seaborn>=0.13.2,<0.14.0
   - matplotlib>=3.10.3,<4.0.0
   - mkdocs>=1.6.1,<2.0.0
-
-  # Herramientas bioinformáticas (sistema)
+  - mkdocs-material>=9.0.0,<10.0.0
+  - mkdocs-jupyter>=0.3.0,<0.4.0
   - bcftools
   - ensembl-vep=115.*
   - htslib
@@ -31,12 +28,9 @@ dependencies:
   - perl
   - perl-compress-raw-zlib>=2.201
   - perl-io-compress>=2.201
-
-  # Dependencias de desarrollo
   - ruff>=0.12.5
   - pytest>=8.4.1
   - jupyterlab>=4.4.5
   - ipykernel>=6.30.0
 
-  # Pip para lo que no esté en conda
   - pip

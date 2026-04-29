@@ -4,9 +4,9 @@ site_author: pyMut Development Team
 docs_dir: docs
 
 # Repository
-repo_name: Luisruimor/pyMut
-repo_url: https://github.com/Luisruimor/pyMut
-site_url: https://luisruimor.github.io/pyMut/
+repo_name: Molecular-Oncology-Group-UFV/PyMut
+repo_url: https://github.com/Molecular-Oncology-Group-UFV/PyMut
+site_url: https://Molecular-Oncology-Group-UFV.github.io/PyMut/
 
 # Configuration
 theme:

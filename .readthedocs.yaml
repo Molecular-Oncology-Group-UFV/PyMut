@@ -1,0 +1,20 @@
+# .readthedocs.yaml
+# https://docs.readthedocs.io/en/stable/config-file/v2.html
+
+version: 2
+
+# Define el sistema operativo y las herramientas
+build:
+  os: ubuntu-22.04
+  tools:
+    python: "3.10"
+
+# Especifica que tu documentación usa MkDocs
+mkdocs:
+  configuration: mkdocs.yml
+
+# (Opcional pero muy recomendado) Declara las dependencias de Python
+# para asegurar que el tema 'material' y otros plugins se instalen.
+python:
+  install:
+    - requirements: docs/requirements.txt
