@@ -40,7 +40,3 @@ dependencies:
 
   # Pip para lo que no esté en conda
   - pip
-  - pip:
-      # Si algún paquete no está disponible en conda, se instala con pip
-      # pyensembl a veces funciona mejor con pip
-      - --editable .
