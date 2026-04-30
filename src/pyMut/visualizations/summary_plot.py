@@ -798,7 +798,7 @@ def _create_top_mutated_genes_plot(
             ax.text(bar_length + offset, i, f'{percentage:.1f}%', va='center', fontsize=10)
 
     # Títulos y ejes
-    title_suffix = "(variants)" if mode == "variants" else "(Sample Prevalence)"
+    title_suffix = "(variants)" if mode == "variants" else "(Freq)"
     if set_title:
         ax.set_title(f"Top {count} Mutated Genes {title_suffix}", fontsize=14, fontweight='bold')
 
