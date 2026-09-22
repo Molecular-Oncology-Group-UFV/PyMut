@@ -290,11 +290,18 @@ def _create_snv_class_plot(
         ax: Optional[Axes] = None,
         set_title: bool = True,
         normalize_pyrimidine: bool = True,
+    include_silent: bool = True,
+    non_syn_classifications: Optional[Set[str]] = None,
 ) -> Axes:
     """
     Create a horizontal bar chart showing the distribution of SNV classes.
     """
-    data = py_mut.data
+    data = _filter_non_synonymous(
+        py_mut.data,
+        "Variant_Classification",
+        include_silent,
+        non_syn_classifications,
+    )
 
     if ref_column not in data.columns or alt_column not in data.columns:
         if ax is None:
@@ -934,11 +941,15 @@ def _create_summary_plot(py_mut: PyMutation,
         non_syn_classifications=non_syn_classifications,
     )
     
-    _create_snv_class_plot(py_mut,
-                         ref_column="REF",
-                         alt_column="ALT",
-                         ax=axs[0, 2],
-                         set_title=True)
+    _create_snv_class_plot(
+        py_mut,
+        ref_column="REF",
+        alt_column="ALT",
+        ax=axs[0, 2],
+        set_title=True,
+        include_silent=include_silent,
+        non_syn_classifications=non_syn_classifications,
+    )
     
     variants_ax = _create_variants_per_sample_plot(
         py_mut,

@@ -234,9 +234,8 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
                         If there are fewer genes than this number, all will be shown.
             include_silent: If False (default, matches maftools' default vc_nonSyn
                         whitelist), silent/synonymous and non-coding variants are
-                        excluded from every subplot except SNV Class (which always
-                        shows all SNPs, like maftools' TiTv view). Applies uniformly
-                        to all six panels, including Top Mutated Genes.
+                        excluded from every subplot. If True, all variants are
+                        included in every panel.
             non_syn_classifications: Custom whitelist of "non-synonymous" variant
                         classifications, mirroring maftools' vc_nonSyn argument.
                         If None, uses maftools' own default whitelist. Ignored
