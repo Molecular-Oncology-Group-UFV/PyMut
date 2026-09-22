@@ -3,6 +3,7 @@ import os
 import re
 from typing import Optional, Dict
 
+import numpy as np
 import pandas as pd
 
 # Logger configuration
@@ -25,25 +26,33 @@ class MutationBurdenMixin:
 
     def calculate_tmb_analysis(self,
                                variant_classification_column: Optional[str] = None,
-                               genome_size_bp: int = 60456963,
+                               genome_size_bp: int = 50_000_000,
                                output_dir: str = ".",
                                save_files: bool = True) -> Dict[str, pd.DataFrame]:
         """
         Calculate Tumor Mutation Burden (TMB) analysis for each sample in a PyMutation object.
 
-        This method analyzes mutation data from PyMutation objects to calculate TMB metrics 
-        for each sample, including total mutations, non-synonymous mutations, and normalized 
-        TMB values. It's designed to work with the VCF-like structure that PyMutation uses.
+        This method analyzes mutation data from PyMutation objects to calculate
+        per-sample TMB, reproducing maftools' ``tmb()`` output exactly: same
+        9-class "non-silent" Variant_Classification set, and
+        ``total_perMB = non_synonymous_count / captureSize_Mb``. With the default
+        ``genome_size_bp`` (50,000,000 bp = 50 Mb, maftools' own default
+        ``captureSize``), ``total_perMB`` here reproduces maftools' ``total_perMB``
+        column exactly for the same MAF. To compare against a maftools/pyMutR run
+        that used a different ``captureSize`` (Mb), pass
+        ``genome_size_bp = captureSize * 1_000_000``.
 
         Parameters
         ----------
         variant_classification_column : str, optional
             Name of the column containing variant classification information.
             If None, will automatically detect variant classification columns.
-        genome_size_bp : int, default 60456963
-            Size of the interrogated region in base pairs for exact TMB normalization.
-            Default 60,456,963 bp is the standard for Whole Exome Sequencing (WES).
-            Use approximately 3,000,000,000 bp for Whole Genome Sequencing (WGS).
+        genome_size_bp : int, default 50_000_000
+            Size of the interrogated region in base pairs used to normalize TMB
+            (maftools' ``captureSize``, expressed in bp instead of Mb). Default is
+            50,000,000 bp (50 Mb), matching maftools' own default ``captureSize = 50``.
+            Use the exact capture kit size (bp) for a real WES/panel, or
+            ~3,000,000,000 bp for Whole Genome Sequencing (WGS).
         output_dir : str, default "."
             Directory where output files will be saved.
         save_files : bool, default True
@@ -53,28 +62,41 @@ class MutationBurdenMixin:
         -------
         Dict[str, pd.DataFrame]
             Dictionary containing:
-            - 'analysis': Per-sample TMB analysis DataFrame
-            - 'statistics': Global TMB statistics DataFrame
+            - 'analysis': Per-sample TMB DataFrame, with exactly maftools' ``tmb()``
+              columns: ``Tumor_Sample_Barcode``, ``total`` (non-silent mutation
+              count), ``total_perMB``, ``total_perMB_log`` (log10 of
+              ``total_perMB``). Ordered ascending by ``total_perMB``, like maftools.
+            - 'statistics': Global TMB statistics DataFrame (``total`` /
+              ``total_perMB`` summarized: mean, median, quartiles, etc.)
 
         Notes
         -----
-        Non-synonymous mutations are defined as those with variant classifications
-        that typically have biological impact, including:
-        - MISSENSE_MUTATION, NONSENSE_MUTATION, FRAME_SHIFT_DEL, FRAME_SHIFT_INS
-        - NONSTOP_MUTATION, TRANSLATION_START_SITE, SPLICE_SITE
+        Non-synonymous mutations are defined using maftools' default
+        ``vc_nonSyn`` ("non-silent") Variant_Classification set (see
+        ``maftools:::validateMaf``):
+        - Missense_Mutation, Nonsense_Mutation, Frame_Shift_Del, Frame_Shift_Ins
+        - Nonstop_Mutation, Translation_Start_Site, Splice_Site
+        - In_Frame_Del, In_Frame_Ins
+
+        Everything else — including Silent, Intron, 3'UTR/5'UTR, IGR, Flank, RNA,
+        Splice_Region, and (perhaps counter-intuitively) De_novo_Start_InFrame,
+        De_novo_Start_OutOfFrame, Start_Codon_SNP/Ins, Stop_Codon_Del — is treated
+        by maftools as "silent" and excluded from TMB, so it is excluded here too.
 
         The method generates two output files:
         - TMB_analysis.tsv: Per-sample analysis with mutation counts and normalized TMB
         - TMB_statistics.tsv: Global statistics (mean, median, quartiles, etc.)
         """
 
-        # Define non-synonymous mutation types (more comprehensive list)
+        # Non-synonymous ("non-silent") mutation types, exactly matching maftools'
+        # default vc_nonSyn list used inside read.maf()/validateMaf() to build the
+        # "total" column that tmb() normalizes. Do NOT add extra classes here:
+        # maftools explicitly classifies De_novo_Start_In/OutOfFrame, Start_Codon_*
+        # and Stop_Codon_Del as SILENT, not non-synonymous.
         non_synonymous_types = {
             'MISSENSE_MUTATION', 'NONSENSE_MUTATION', 'FRAME_SHIFT_DEL', 'FRAME_SHIFT_INS',
             'NONSTOP_MUTATION', 'TRANSLATION_START_SITE', 'SPLICE_SITE', 'IN_FRAME_DEL',
-            'IN_FRAME_INS', 'START_CODON_SNP', 'START_CODON_DEL', 'START_CODON_INS',
-            'STOP_CODON_DEL', 'STOP_CODON_INS', 'DE_NOVO_START_IN_FRAME',
-            'DE_NOVO_START_OUT_FRAME'
+            'IN_FRAME_INS'
         }
 
         # Validate PyMutation structure
@@ -110,6 +132,16 @@ class MutationBurdenMixin:
         if variant_classification_column and variant_classification_column not in self.data.columns:
             raise ValueError(f"Column provide '{variant_classification_column}' not found in data")
 
+        # Precompute the non-synonymous flag once for the whole table (vectorized),
+        # instead of recomputing it per sample.
+        if variant_classification_column:
+            classifications = self.data[variant_classification_column].astype(str).str.upper()
+            is_non_syn = classifications.isin(non_synonymous_types) & self.data[variant_classification_column].notna()
+        else:
+            is_non_syn = pd.Series(False, index=self.data.index)
+
+        ref_alleles = self.data['REF'].astype(str)
+
         # Initialize results
         results = []
 
@@ -120,71 +152,38 @@ class MutationBurdenMixin:
                 continue
 
             # Find mutations for this sample, when the genotype is not REF|REF
-            # Compute validity on the original series to avoid turning NaN into the string 'nan'
+            # (or REF/REF). Compute validity on the original series to avoid
+            # turning NaN into the string 'nan'.
             original_genotypes = self.data[sample]
             valid_genotypes = original_genotypes.notna() & (original_genotypes != '') & (original_genotypes != '.')
 
-            # Work with string representations for parsing
-            sample_genotypes = original_genotypes.astype(str)
+            # Normalize the '/' phasing separator to '|' so both are handled the
+            # same way, then split into (at most) two alleles - vectorized, no
+            # per-row Python loop.
+            genotypes = original_genotypes.astype(str).str.replace('/', '|', regex=False)
+            alleles = genotypes.str.split('|', expand=True)
 
-            # Create mutation mask by checking if genotype contains ALT allele
-            mutation_mask = valid_genotypes.copy()
+            # A mutation exists if any allele differs from REF (and isn't missing).
+            has_mutation = pd.Series(False, index=self.data.index)
+            for col in alleles.columns:
+                allele = alleles[col].str.strip()
+                has_mutation |= allele.notna() & (allele != '') & (allele != '.') & (allele != ref_alleles)
 
-            for idx in valid_genotypes[valid_genotypes].index:
-                genotype = sample_genotypes.loc[idx]
-                ref_allele = str(self.data.loc[idx, 'REF'])
-                alt_allele = str(self.data.loc[idx, 'ALT'])
+            mutation_mask = valid_genotypes & has_mutation
 
-                # Check if genotype contains the ALT allele
-                if '|' in genotype:
-                    alleles = genotype.split('|')
-                elif '/' in genotype:
-                    alleles = genotype.split('/')
-                else:
-                    # Single allele or malformed genotype
-                    alleles = [genotype]
+            # Count non-synonymous ("non-silent") mutations for this sample -
+            # this is maftools' "total" (see getSampleSummary()).
+            total = int((mutation_mask & is_non_syn).sum())
 
-                # A mutation exists if any allele matches ALT or is not REF
-                has_mutation = False
-                for allele in alleles:
-                    allele = allele.strip()
-                    if allele == alt_allele or (allele != ref_allele and allele != '.' and allele != ''):
-                        has_mutation = True
-                        break
+            # total_perMB = total / captureSize_Mb, same formula as maftools' tmb().
+            total_perMB = (total / genome_size_bp) * 1_000_000 if genome_size_bp > 0 else 0
 
-                mutation_mask.loc[idx] = has_mutation
-
-            # Get mutations for this sample
-            sample_mutations = self.data[mutation_mask]
-            total_mutations = len(sample_mutations)
-
-            # Count non-synonymous mutations
-            non_synonymous_mutations = 0
-            if variant_classification_column and not sample_mutations.empty:
-                if variant_classification_column in sample_mutations.columns:
-                    # Handle missing values in variant classification
-                    valid_classifications = sample_mutations[variant_classification_column].notna()
-                    valid_sample_mutations = sample_mutations[valid_classifications]
-
-                    if not valid_sample_mutations.empty:
-                        # Convert to uppercase and check against non-synonymous types
-                        classifications = valid_sample_mutations[variant_classification_column].astype(str).str.upper()
-                        non_synonymous_mask = classifications.isin(non_synonymous_types)
-                        non_synonymous_mutations = non_synonymous_mask.sum()
-
-            # Calculate normalized TMB (mutations per million bases)
-            # TMB = (mutations / genome_size_bp) * 1,000,000
-            tmb_total_normalized = (total_mutations / genome_size_bp) * 1_000_000 if genome_size_bp > 0 else 0
-            tmb_non_synonymous_normalized = (
-                                                    non_synonymous_mutations / genome_size_bp) * 1_000_000 if genome_size_bp > 0 else 0
-
-            # Store results (keep full precision until final output)
+            # Store results (keep full precision until final output). Columns match
+            # maftools::tmb() exactly: Tumor_Sample_Barcode / total / total_perMB.
             results.append({
-                'Sample': sample,
-                'Total_Mutations': total_mutations,
-                'Non_Synonymous_Mutations': non_synonymous_mutations,
-                'TMB_Total_Normalized': tmb_total_normalized,
-                'TMB_Non_Synonymous_Normalized': tmb_non_synonymous_normalized
+                'Tumor_Sample_Barcode': sample,
+                'total': total,
+                'total_perMB': total_perMB,
             })
 
         # Create analysis DataFrame
@@ -193,10 +192,17 @@ class MutationBurdenMixin:
 
         analysis_df = pd.DataFrame(results)
 
+        # total_perMB_log mirrors maftools' tmb()$total_perMB_log (log10 of
+        # total_perMB; 0 mutations -> -inf, same as R's log10(0)).
+        with np.errstate(divide='ignore'):
+            analysis_df['total_perMB_log'] = np.log10(analysis_df['total_perMB'])
+
+        # maftools' tmb() returns the table ordered ascending by total_perMB.
+        analysis_df = analysis_df.sort_values('total_perMB', ascending=True).reset_index(drop=True)
+
         # Calculate global statistics
         stats_data = []
-        metrics = ['Total_Mutations', 'Non_Synonymous_Mutations',
-                   'TMB_Total_Normalized', 'TMB_Non_Synonymous_Normalized']
+        metrics = ['total', 'total_perMB']
 
         for metric in metrics:
             if metric in analysis_df.columns:
@@ -237,6 +243,117 @@ class MutationBurdenMixin:
             'statistics': statistics_df
         }
 
+    def calculate_tcga_compare(self,
+                                cohort_name: str = "Input",
+                                capture_size: Optional[float] = 50.0,
+                                tcga_capture_size: float = 35.8,
+                                tcga_cohorts: Optional[list] = None,
+                                primary_site: bool = False,
+                                rm_hyper: bool = False,
+                                rm_zero: bool = True,
+                                decreasing: bool = False,
+                                output_dir: str = ".",
+                                save_files: bool = True) -> Dict[str, pd.DataFrame]:
+        """
+        Place this cohort's per-sample TMB in the context of the ~33 TCGA
+        cohorts bundled with maftools, reproducing the data behind
+        maftools' ``tcgaCompare()`` (without the plot - see
+        ``PyMutation.tcga_compare()`` for the plotting counterpart).
+
+        Non-synonymous mutation counts are computed with
+        :meth:`calculate_tmb_analysis`, so the "total" per sample matches it
+        exactly. Those counts are combined with the bundled TCGA reference
+        table (``pyMut/data/tcga_cohort.txt.gz``, maftools' own
+        ``tcga_cohort.txt.gz``) and, optionally, normalized to
+        mutations/Mb using ``capture_size``/``tcga_capture_size``.
+
+        Parameters
+        ----------
+        cohort_name : str, default "Input"
+            Label used for this cohort in the comparison (equivalent to
+            maftools' ``cohortName``).
+        capture_size : float, optional, default 50.0
+            Interrogated region size in Mb used to normalize this cohort's
+            TMB (maftools' ``capture_size``). If None, raw non-synonymous
+            counts are compared instead (maftools' own default), which is
+            only meaningful when TCGA cohorts were also sequenced with a
+            comparable capture size.
+        tcga_capture_size : float, default 35.8
+            Interrogated region size in Mb used to normalize the TCGA
+            cohorts (maftools' ``tcga_capture_size`` default: the typical
+            TCGA whole-exome capture size). Ignored if ``capture_size`` is
+            None.
+        tcga_cohorts : list of str, optional
+            Restrict the comparison to these TCGA cohort codes (e.g.
+            ``["LAML", "PAAD"]``). If None, all ~33 bundled cohorts are used.
+        primary_site : bool, default False
+            Group TCGA samples by tumor primary site instead of by TCGA
+            project code.
+        rm_hyper : bool, default False
+            Remove per-cohort outliers (Tukey's boxplot.stats rule) before
+            comparing, matching maftools' ``rm_hyper``.
+        rm_zero : bool, default True
+            Drop samples with zero non-synonymous mutations from this
+            cohort before comparing, matching maftools' ``rm_zero``.
+        decreasing : bool, default False
+            Sort cohorts by descending median TMB instead of ascending.
+        output_dir : str, default "."
+            Directory where output files are saved when ``save_files=True``.
+        save_files : bool, default True
+            Whether to save the results to TSV files.
+
+        Returns
+        -------
+        Dict[str, pd.DataFrame]
+            - 'median_mutation_burden': one row per cohort (this one plus
+              every TCGA cohort compared against), with ``Cohort``,
+              ``Cohort_Size`` and ``Median_Mutations``, sorted by
+              ``Median_Mutations`` (maftools' ``median_mutation_burden``).
+            - 'mutation_burden_perSample': per-sample ``total`` (and
+              ``total_perMB`` when ``capture_size`` is given) for every
+              sample in every compared cohort (maftools'
+              ``mutation_burden_perSample``).
+            - 'pairwise_t_test': pooled-variance pairwise t-tests between
+              every pair of cohorts (Benjamini-Hochberg/FDR adjusted),
+              equivalent to maftools' ``pairwise_t_test``.
+        """
+        from ..visualizations.tcga_compare_plot import compute_tcga_compare
+
+        result = compute_tcga_compare(
+            self,
+            cohort_name=cohort_name,
+            capture_size=capture_size,
+            tcga_capture_size=tcga_capture_size,
+            tcga_cohorts=tcga_cohorts,
+            primary_site=primary_site,
+            rm_hyper=rm_hyper,
+            rm_zero=rm_zero,
+            decreasing=decreasing,
+        )
+
+        public_result = {
+            'median_mutation_burden': result['median_mutation_burden'],
+            'mutation_burden_perSample': result['mutation_burden_perSample'],
+            'pairwise_t_test': result['pairwise_t_test'],
+        }
+
+        if save_files:
+            os.makedirs(output_dir, exist_ok=True)
+
+            median_path = os.path.join(output_dir, "tcga_compare_median_mutation_burden.tsv")
+            persample_path = os.path.join(output_dir, "tcga_compare_mutation_burden_perSample.tsv")
+            pairwise_path = os.path.join(output_dir, "tcga_compare_pairwise_t_test.tsv")
+
+            public_result['median_mutation_burden'].to_csv(median_path, sep='\t', index=False, float_format='%.6f')
+            public_result['mutation_burden_perSample'].to_csv(persample_path, sep='\t', index=False, float_format='%.6f')
+            public_result['pairwise_t_test'].to_csv(pairwise_path, sep='\t', index=False, float_format='%.6g')
+
+            logger.info(f"TCGA compare median mutation burden saved to: {median_path}")
+            logger.info(f"TCGA compare per-sample mutation burden saved to: {persample_path}")
+            logger.info(f"TCGA compare pairwise t-test saved to: {pairwise_path}")
+
+        return public_result
+
 
 def log_tmb_summary(analysis_df: pd.DataFrame) -> None:
     """
@@ -260,26 +377,24 @@ def log_tmb_summary(analysis_df: pd.DataFrame) -> None:
 
     # Basic statistics
     total_samples = len(analysis_df)
-    avg_total_mutations = analysis_df['Total_Mutations'].mean()
-    avg_non_synonymous = analysis_df['Non_Synonymous_Mutations'].mean()
-    avg_tmb_total = analysis_df['TMB_Total_Normalized'].mean()
-    avg_tmb_non_synonymous = analysis_df['TMB_Non_Synonymous_Normalized'].mean()
+    avg_total = analysis_df['total'].mean()
+    avg_tmb = analysis_df['total_perMB'].mean()
+    median_tmb = analysis_df['total_perMB'].median()
 
     logger.info(f"• Total samples analyzed: {total_samples}")
-    logger.info(f"• Average total mutations per sample: {avg_total_mutations:.1f}")
-    logger.info(f"• Average non-synonymous mutations per sample: {avg_non_synonymous:.1f}")
-    logger.info(f"• Average normalized TMB (total): {avg_tmb_total:.6f} mutations/Mb")
-    logger.info(f"• Average normalized TMB (non-synonymous): {avg_tmb_non_synonymous:.6f} mutations/Mb")
+    logger.info(f"• Average non-synonymous mutations per sample: {avg_total:.1f}")
+    logger.info(f"• Average TMB: {avg_tmb:.6f} mutations/Mb")
+    logger.info(f"• Median TMB: {median_tmb:.6f} mutations/Mb")
 
     # Extreme values
-    max_tmb_idx = analysis_df['TMB_Total_Normalized'].idxmax()
-    min_tmb_idx = analysis_df['TMB_Total_Normalized'].idxmin()
+    max_tmb_idx = analysis_df['total_perMB'].idxmax()
+    min_tmb_idx = analysis_df['total_perMB'].idxmin()
 
-    max_tmb_sample = analysis_df.loc[max_tmb_idx, 'Sample']
-    max_tmb_value = analysis_df['TMB_Total_Normalized'].max()
+    max_tmb_sample = analysis_df.loc[max_tmb_idx, 'Tumor_Sample_Barcode']
+    max_tmb_value = analysis_df['total_perMB'].max()
 
-    min_tmb_sample = analysis_df.loc[min_tmb_idx, 'Sample']
-    min_tmb_value = analysis_df['TMB_Total_Normalized'].min()
+    min_tmb_sample = analysis_df.loc[min_tmb_idx, 'Tumor_Sample_Barcode']
+    min_tmb_value = analysis_df['total_perMB'].min()
 
     logger.info(f"• Sample with highest TMB: {max_tmb_sample}")
     logger.info(f"  - TMB value: {max_tmb_value:.6f} mutations/Mb")

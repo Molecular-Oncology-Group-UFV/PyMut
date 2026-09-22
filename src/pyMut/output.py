@@ -122,7 +122,8 @@ class OutputMixin:
             # Create base columns using PyArrow and convert CHROM to Chromosome (extract chromosome number only)
             chrom_array = pc.cast(table['CHROM'], pa.string())
             # Remove 'chr' prefix if it exists
-            chrom_array = pc.utf8_replace_substring(chrom_array, 'chr', '')
+            #chrom_array = pc.utf8_replace_substring(chrom_array, 'chr', '')
+            chrom_array = pc.replace_substring(chrom_array, 'chr', '')
             table = table.append_column('Chromosome', chrom_array)
 
             # Other base columns
@@ -181,23 +182,44 @@ class OutputMixin:
                 sample_data['Tumor_Seq_Allele1'] = sample_data['REF']
                 sample_data['Tumor_Seq_Allele2'] = sample_data['ALT']
 
-            # Calculate End_Position in a vectorized way for different variant types
-            snp_mask = (sample_data['Reference_Allele'].str.len() == 1) & (sample_data['Tumor_Seq_Allele2'].str.len() == 1)
-            sample_data.loc[snp_mask, 'End_Position'] = sample_data.loc[snp_mask, 'Start_Position'].astype(int)
+            # Calculate End_Position in a vectorized way for different variant types.
+            # MAF convention:
+            #   - SNP/DNP/TNP/ONP (equal-length REF/ALT, REF != '-'): End = Start + len(REF) - 1
+            #   - Insertion (REF == '-'): Start/End flank the insertion point -> End = Start + 1
+            #   - Deletion (ALT == '-' or len(REF) > len(ALT)): End = Start + len(REF) - 1
+            #
+            # NOTE: the previous version treated REF == '-' (len 1) as a "SNP-like"
+            # or fell through to a default of End = Start for anything that wasn't
+            # SNP/deletion -- which silently mis-set End_Position for insertions
+            # (should be Start + 1, not Start). Order matters below: insertion and
+            # deletion checks must run before any length==1 based SNP check, since
+            # '-' has length 1 and would otherwise be misclassified.
+            ref = sample_data['Reference_Allele']
+            alt = sample_data['Tumor_Seq_Allele2']
 
-            del_mask = sample_data['Reference_Allele'].str.len() > sample_data['Tumor_Seq_Allele2'].str.len()
-            sample_data.loc[del_mask, 'End_Position'] = (sample_data.loc[del_mask, 'Start_Position'] + sample_data.loc[
-                del_mask, 'Reference_Allele'].str.len() - 1).astype(int)
+            ins_mask = (ref == '-') | (ref.str.len() < alt.str.len())
+            del_mask = (alt == '-') | (ref.str.len() > alt.str.len())
+            sub_mask = ~(ins_mask | del_mask)  # SNP/DNP/TNP/ONP: equal-length substitution
 
-            other_mask = ~(snp_mask | del_mask)
-            sample_data.loc[other_mask, 'End_Position'] = sample_data.loc[other_mask, 'Start_Position'].astype(int)
+            sample_data.loc[ins_mask, 'End_Position'] = (
+                sample_data.loc[ins_mask, 'Start_Position'] + 1
+            ).astype(int)
+            sample_data.loc[del_mask, 'End_Position'] = (
+                sample_data.loc[del_mask, 'Start_Position'] + ref[del_mask].str.len() - 1
+            ).astype(int)
+            sample_data.loc[sub_mask, 'End_Position'] = (
+                sample_data.loc[sub_mask, 'Start_Position'] + ref[sub_mask].str.len() - 1
+            ).astype(int)
 
             # Select relevant columns
             maf_cols = ['Chromosome', 'Start_Position', 'End_Position', 'Reference_Allele', 'Tumor_Seq_Allele1',
                         'Tumor_Seq_Allele2', 'Tumor_Sample_Barcode', 'NCBI_Build', 'dbSNP_RS']
 
-            # Add other columns that are neither VCF nor samples
-            other_cols = [col for col in data.columns if col not in vcf_like_cols + samples]
+            # Add other columns that are neither VCF nor samples nor already
+            # covered by maf_cols (avoids duplicated columns like
+            # 'Tumor_Sample_Barcode', which also survives as a leftover
+            # annotation column from the original read_maf() call).
+            other_cols = [col for col in data.columns if col not in vcf_like_cols + samples + maf_cols]
             all_cols = maf_cols + other_cols
 
             # Select only columns that exist in the data

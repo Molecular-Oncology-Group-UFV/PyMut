@@ -630,6 +630,40 @@ def _consolidate_variants(maf_df, samples):
 
         # 2. Anotaciones de los duplicados:
         # En vez de usar el lentísimo groupby().first(), simplemente eliminamos duplicados. Es instantáneo.
+        # NOTA sobre pérdida de información: cuando la misma variante (mismo
+        # CHROM/POS/REF/ALT) aparece en varias filas -típicamente porque está
+        # mutada en varias muestras, o porque el MAF trae varias anotaciones
+        # de transcrito para la misma variante-, solo se conserva UNA fila de
+        # anotación por variante (`keep='first'`). Los genotipos de cada
+        # muestra sí se preservan correctamente (ver el bloque de abajo),
+        # pero cualquier columna de anotación que varíe por muestra (p. ej.
+        # t_depth, t_ref_count, t_alt_count, Matched_Norm_Sample_Barcode,
+        # Validation_Status, etc.) se colapsa a un único valor arbitrario.
+        # Avisamos de ello en vez de perderlo en silencio; si se necesita
+        # fidelidad exacta de esas columnas, usar consolidate_variants=False.
+        if annotation_cols and len(df_dupes) <= 200_000:
+            try:
+                n_distinct = df_dupes.groupby(group_cols, dropna=False)[annotation_cols].nunique(dropna=False)
+                lossy_cols = [c for c in annotation_cols if (n_distinct[c] > 1).any()]
+                if lossy_cols:
+                    logger.warning(
+                        "Consolidating duplicate variants is discarding differing "
+                        "per-row annotation values in %d column(s) (%s%s) - only "
+                        "the first occurrence is kept for each variant. Sample "
+                        "genotypes are unaffected. Use consolidate_variants=False "
+                        "if you need to preserve these columns exactly.",
+                        len(lossy_cols),
+                        ", ".join(lossy_cols[:10]),
+                        ", ..." if len(lossy_cols) > 10 else "",
+                    )
+            except Exception as e:
+                logger.debug("Skipped annotation-loss check during consolidation: %s", e)
+        elif annotation_cols:
+            logger.debug(
+                "Skipped annotation-loss check during consolidation (%d duplicate "
+                "rows > 200,000 threshold).", len(df_dupes)
+            )
+
         ann_dupes = df_dupes.drop_duplicates(subset=group_cols, keep='first')[group_cols + annotation_cols]
 
         # 3. Procesar las muestras (solo para los duplicados)
@@ -703,6 +737,15 @@ def read_maf(path: str | Path, assembly: str, cache_dir: Optional[str | Path] = 
         If True, consolidates identical variants that appear in multiple samples
         into a single row. If False, maintains the original behavior where each
         MAF row becomes a separate DataFrame row.
+        Note: consolidation preserves every sample's genotype correctly, but
+        for a variant reported in several rows (several samples, or several
+        transcript annotations for the same sample) it keeps only ONE row of
+        annotation values. Any annotation column whose value genuinely varies
+        across those rows (e.g. per-sample fields like t_depth, t_ref_count,
+        t_alt_count, Matched_Norm_Sample_Barcode, Validation_Status) will be
+        collapsed to a single arbitrary value (a warning is logged when this
+        happens). Set this to False if you need those columns preserved
+        exactly on a subsequent `to_maf()` round-trip.
 
     Returns
     -------
@@ -860,7 +903,43 @@ def read_maf(path: str | Path, assembly: str, cache_dir: Optional[str | Path] = 
     else:
         maf["ID"] = "."
     maf["REF"] = maf["Reference_Allele"].astype(str)
-    maf["ALT"] = maf["Tumor_Seq_Allele2"].fillna(maf["Tumor_Seq_Allele1"]).astype(str)
+
+    # ─── Determine ALT and preserve the true genotype (zygosity/phase) ──────
+    # MAF does not guarantee which of Tumor_Seq_Allele1 / Tumor_Seq_Allele2
+    # carries the mutated base — for heterozygous calls it can legitimately
+    # be either one. The previous logic assumed ALT == Tumor_Seq_Allele2
+    # (falling back to Tumor_Seq_Allele1 only when Allele2 was missing).
+    # Whenever the mutated base was actually recorded in Tumor_Seq_Allele1
+    # (with Allele2 == Reference_Allele), that produced ALT == REF: the
+    # variant silently became indistinguishable from a REF/REF call and was
+    # later dropped entirely on export in `to_maf` (the "REF|REF filter").
+    # This is fixed below by comparing BOTH tumor alleles against REF.
+    allele1_raw = maf["Tumor_Seq_Allele1"].astype(str)
+    allele2_raw = maf["Tumor_Seq_Allele2"].astype(str)
+
+    allele1_valid = maf["Tumor_Seq_Allele1"].notna() & (allele1_raw.str.lower() != "nan")
+    allele2_valid = maf["Tumor_Seq_Allele2"].notna() & (allele2_raw.str.lower() != "nan")
+
+    allele2_differs = allele2_valid & (allele2_raw != maf["REF"])
+    allele1_differs = allele1_valid & (allele1_raw != maf["REF"])
+
+    maf["ALT"] = np.select(
+        [allele2_differs, allele1_differs],
+        [allele2_raw, allele1_raw],
+        default=np.where(allele2_valid, allele2_raw, allele1_raw),
+    )
+
+    both_differ_distinctly = allele1_differs & allele2_differs & (allele1_raw != allele2_raw)
+    if both_differ_distinctly.any():
+        logger.warning(
+            "Found %d row(s) where Tumor_Seq_Allele1 and Tumor_Seq_Allele2 "
+            "both differ from Reference_Allele AND from each other "
+            "(compound-heterozygous / multi-allelic call). Only one allele "
+            "can be represented in the CHROM/POS/REF/ALT schema; the "
+            "genotype column still preserves both alleles exactly as read.",
+            int(both_differ_distinctly.sum()),
+        )
+
     # Check if QUAL and FILTER columns exist before defaulting to "."
     if "QUAL" not in maf.columns:
         maf["QUAL"] = "."
@@ -883,10 +962,19 @@ def read_maf(path: str | Path, assembly: str, cache_dir: Optional[str | Path] = 
     # Add all columns at once
     maf = pd.concat([maf, default_cols], axis=1)
 
-    ref_alt = maf["REF"] + "|" + maf["ALT"]
+    # Genotype for the owning sample: use the ACTUAL Tumor_Seq_Allele1 /
+    # Tumor_Seq_Allele2 pair as read from the MAF, preserving zygosity
+    # (e.g. ALT|ALT for a homozygous call, not always REF|ALT) and the
+    # allele order recorded in the file, instead of forcing every mutated
+    # sample to "REF|ALT" regardless of what was actually genotyped.
+    genotype = (
+        allele1_raw.where(allele1_valid, maf["REF"])
+        + "|"
+        + allele2_raw.where(allele2_valid, maf["ALT"])
+    )
     for sample in samples:
         mask = maf["Tumor_Sample_Barcode"] == sample
-        maf.loc[mask, sample] = ref_alt[mask]
+        maf.loc[mask, sample] = genotype[mask]
 
     # ─── 5.5) CONSOLIDATE DUPLICATE VARIANTS (OPTIONAL) ----------------
     if consolidate_variants:

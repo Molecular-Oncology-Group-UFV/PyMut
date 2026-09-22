@@ -42,14 +42,26 @@ def format_chr(string: str):
     Formats chromosome identifiers to a standard format.
 
     Converts chromosome identifiers to the standard 'chr' format:
-    - Converts "23" to "X"
-    - Converts "24" to "Y"
-    - Converts "25" to "MT"
+    - Converts "23" to "chrX"
+    - Converts "24" to "chrY"
+    - Converts "25" to "chrM"
     - Converts "chr23" to "chrX"
     - Converts "chr24" to "chrY"
     - Converts "chr25" to "chrM"
     - Adds "chr" prefix if not already present
     - Leaves existing "chr" prefixed identifiers unchanged
+
+    Note
+    ----
+    Every branch of this function returns a 'chr'-prefixed identifier.
+    This is required for the function to be idempotent/round-trip safe:
+    format_chr(format_chr(x)) must always equal format_chr(x). Returning
+    a bare "X"/"Y"/"MT" for the numeric codes (as an earlier version of
+    this function did) breaks that invariant for any pipeline that reads
+    chromosome X/Y/MT encoded numerically (e.g. PLINK-style "23" for X),
+    because re-reading a file that was re-exported using the text form
+    ("X") would then produce a *different* CHROM ("chrX") than reading
+    the original numeric-coded file did ("X").
 
     Parameters
     ----------
@@ -59,18 +71,18 @@ def format_chr(string: str):
     Returns
     -------
     str
-        Standardized chromosome identifier with 'chr' prefix or 'X'/'Y'/'MT' for special chromosomes.
+        Standardized chromosome identifier, always with a 'chr' prefix.
 
     Examples
     --------
     >>> format_chr("1")
     'chr1'
     >>> format_chr("23")
-    'X'
+    'chrX'
     >>> format_chr("24")
-    'Y'
+    'chrY'
     >>> format_chr("25")
-    'MT'
+    'chrM'
     >>> format_chr("chr23")
     'chrX'
     >>> format_chr("chr24")
@@ -82,11 +94,11 @@ def format_chr(string: str):
     """
     # Handle numeric chromosome identifiers
     if string == "23":
-        return "X"
+        return "chrX"
     elif string == "24":
-        return "Y"
+        return "chrY"
     elif string == "25":
-        return "MT"
+        return "chrM"
     # Handle chr-prefixed chromosome identifiers
     elif string == "chr23":
         return "chrX"

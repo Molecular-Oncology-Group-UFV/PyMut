@@ -25,7 +25,7 @@ import logging
 import re
 import time
 from collections import defaultdict
-from typing import TYPE_CHECKING, Dict, List, Optional, Tuple
+from typing import TYPE_CHECKING, Dict, List, Optional, Tuple, Union
 
 import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
@@ -166,11 +166,13 @@ def resolve_protein_length(data: pd.DataFrame,
     """
     Determine protein length from various sources.
     
-    Priority order:
-    1. Query UniProt for canonical protein (most reliable)
-    2. If protein_id/transcript_id provided: query internal database
-    3. Use maximum observed position + 10% margin
-    4. Use 95th percentile of positions + 20% margin (robust to outliers)
+     Priority order:
+     1. If transcript_id is provided, use transcript-specific length from the
+         curated Pfam database when available (best match for maftools-like plots)
+     2. Query UniProt for canonical protein length
+     3. If protein_id/transcript_id provided: query internal database fallback
+     4. Use maximum observed position + 10% margin
+     5. Use 95th percentile of positions + 20% margin (robust to outliers)
     
     Args:
         data: DataFrame with mutation data
@@ -183,7 +185,32 @@ def resolve_protein_length(data: pd.DataFrame,
     Returns:
         int: Protein length (from UniProt or estimated)
     """
-    # Method 1: Query UniProt for canonical protein length (MOST RELIABLE)
+    # Method 1: Prefer transcript-specific length when an explicit transcript
+    # was requested. This keeps the protein coordinate system aligned with
+    # maftools-style plots, which use the selected RefSeq transcript.
+    if transcript_id:
+        try:
+            import os
+
+            module_dir = os.path.dirname(os.path.abspath(__file__))
+            domains_file = os.path.join(module_dir, '..', 'data', 'pfam_domains.csv')
+
+            if os.path.exists(domains_file):
+                domains_df = pd.read_csv(domains_file, low_memory=False)
+                matched = domains_df[
+                    (domains_df['refseq.ID'] == transcript_id) &
+                    (domains_df['HGNC'] == gene)
+                ]
+
+                if not matched.empty and 'aa.length' in matched.columns:
+                    lengths = matched['aa.length'].dropna().astype(int).unique()
+                    if len(lengths) > 0:
+                        transcript_length = int(max(lengths))
+                        return transcript_length
+        except Exception as e:
+            logger.debug(f"Could not get protein length from transcript database: {e}")
+
+    # Method 2: Query UniProt for canonical protein length (MOST RELIABLE)
     try:
         _, uniprot_length = query_uniprot_domains(gene)
         if uniprot_length > 0:
@@ -191,12 +218,12 @@ def resolve_protein_length(data: pd.DataFrame,
     except Exception as e:
         logger.debug(f"Could not get protein length from UniProt: {e}")
     
-    # Method 2: Query from database if identifiers provided
+    # Method 3: Query from database if identifiers provided
     if (protein_id or transcript_id) and py_mut:
         # TODO: Implement database lookup when available
         pass
     
-    # Method 3: Estimate from observed positions
+    # Method 4: Estimate from observed positions
     valid_positions = aa_positions.dropna()
     
     if len(valid_positions) == 0:
@@ -695,105 +722,123 @@ def compute_lollipop_layout(aggregated_data: Dict[Tuple[int, str], Dict],
 
 def apply_label_repel(layout: Dict[Tuple[int, str], Dict],
                      label_top_n: int,
-                     protein_length: int) -> List[Dict]:
+                     protein_length: int,
+                     label_pos: Optional[Union[int, List[int], str]] = None) -> List[Dict]:
     """
     Apply label repulsion algorithm to avoid overlaps.
-    
+
     This implements a simplified force-directed label placement:
-    1. Select top N AA changes by mutation count
+    1. Select which AA changes to label (see ``label_pos``)
     2. Initialize label positions above the circles
     3. Apply repulsion forces between overlapping labels
     4. Return final label coordinates with leader lines
-    
+
     Args:
         layout: Layout dictionary with (position, conv) keys
-        label_top_n: Number of top AA changes to label
+        label_top_n: Number of top AA changes to label. Only used when
+            ``label_pos`` is None (mirrors maftools' lollipopPlot default
+            behaviour of labelling the most recurrent positions).
         protein_length: Length of protein (for bounds checking)
-        
+        label_pos: Mirrors the ``labelPos`` argument of maftools'
+            ``lollipopPlot()``:
+            - None (default): fall back to ``label_top_n`` and label the
+              most mutated positions.
+            - "all": label every mutated position.
+            - int or list of int: label only those specific protein
+              positions, regardless of ``label_top_n``.
+
     Returns:
         List of label dictionaries with keys: position, text, x, y, x_line, y_line
     """
-    # Sort AA changes by total count and select top N
-    sorted_positions = sorted(
-        layout.items(),
-        key=lambda x: x[1]["total"],
-        reverse=True
-    )[:label_top_n]
-    
+    # Aggregate by protein position so multiple amino-acid changes at the same
+    # residue are labeled together (e.g. R882C/H/P), which matches maftools.
+    position_groups: Dict[int, Dict] = defaultdict(lambda: {
+        "total": 0,
+        "labels": set(),
+        "max_height": 0.0,
+    })
+
+    for _, data in layout.items():
+        position = data["position"]
+        position_groups[position]["total"] += data["total"]
+        position_groups[position]["labels"].update(data["labels"])
+        position_groups[position]["max_height"] = max(position_groups[position]["max_height"], data["height"])
+
+    if label_pos is None:
+        # Default: sort positions by total count and select top N
+        sorted_positions = sorted(
+            position_groups.items(),
+            key=lambda x: x[1]["total"],
+            reverse=True
+        )[:label_top_n]
+    elif isinstance(label_pos, str):
+        if label_pos != "all":
+            raise ValueError(
+                f"Invalid label_pos string '{label_pos}'. Use 'all' to label "
+                "every mutated position, or pass an int/list of int for "
+                "specific positions."
+            )
+        # Label every mutated position, sorted by position for a stable order
+        sorted_positions = sorted(position_groups.items(), key=lambda x: x[0])
+    else:
+        requested_positions = {int(label_pos)} if isinstance(label_pos, (int, np.integer)) \
+            else {int(p) for p in label_pos}
+
+        sorted_positions = sorted(
+            (item for item in position_groups.items() if item[0] in requested_positions),
+            key=lambda x: x[0]
+        )
+
+        if not sorted_positions:
+            available = sorted(position_groups.keys())
+            logger.warning(
+                f"label_pos {sorted(requested_positions)} doesn't match any mutated "
+                f"position. Mutated positions found: {available}"
+            )
+
     if not sorted_positions:
         return []
     
+    def _format_label(label_set: set, position: int) -> str:
+        if len(label_set) == 0:
+            return str(position)
+
+        parsed = []
+        for raw in label_set:
+            raw_label = str(raw).strip()
+            match = re.match(r'^p\.([A-Z]+)(\d+)(.*)$', raw_label, re.IGNORECASE)
+            if not match:
+                continue
+
+            ref_aa = match.group(1)
+            pos = match.group(2)
+            variant = match.group(3)
+
+            variant_clean = variant.replace('*', '').replace('fs', '').replace('_', '')
+            if variant_clean and not variant_clean.startswith('del') and not variant_clean.startswith('ins'):
+                parsed.append((ref_aa, pos, variant_clean))
+
+        if not parsed:
+            first_label = str(next(iter(label_set))).strip()
+            match = re.match(r'^p\.([A-Z]+)(\d+)', first_label, re.IGNORECASE)
+            return f"{match.group(1)}{match.group(2)}" if match else f"{position}*"
+
+        ref_aa = parsed[0][0]
+        pos = parsed[0][1]
+        variants = sorted({variant for _, _, variant in parsed})
+
+        if len(variants) == 1:
+            return f"{ref_aa}{pos}{variants[0]}"
+
+        return f"{ref_aa}{pos}{'/'.join(variants)}"
+
     # Initialize label positions
     labels = []
-    for key, data in sorted_positions:
-        position = data["position"]  # Extract position from data
-        # Create label text from HGVS notations (cleaned format)
-        label_set = data["labels"]
-        
-        if len(label_set) == 0:
-            label_text = str(position)
-        elif len(label_set) == 1:
-            # Single mutation: extract clean format (R882H style, without "p.")
-            raw_label = str(list(label_set)[0]).strip()
-            
-            # Parse HGVS notation: p.R882H -> R882H or p.R882* -> R882
-            # Support various formats: p.R882H, p.R882*, p.R882fs, etc.
-            match = re.match(r'^p\.([A-Z]+)(\d+)(.*)$', raw_label, re.IGNORECASE)
-            if match:
-                # Format: R882H (ref AA + position + variant)
-                ref_aa = match.group(1)
-                pos = match.group(2)
-                variant = match.group(3)
-                
-                # p.R882* -> R882 (not R882*)
-                # p.R882fs -> R882
-                # p.R882H -> R882H
-                variant_clean = variant.replace('*', '').replace('fs', '').replace('_', '')
-                
-                if variant_clean and not variant_clean.startswith('del') and not variant_clean.startswith('ins'):
-                    label_text = f"{ref_aa}{pos}{variant_clean}"
-                else:
-                    # For stop codons, frameshifts, etc.: just show position
-                    label_text = f"{ref_aa}{pos}"
-            else:
-                # Fallback: just remove "p." prefix and asterisks
-                label_text = raw_label.replace("p.", "").replace("*", "")
-        else:
-            # Multiple mutations at same position: show the most frequent one
-            # Count occurrence of each label and pick the most common
-            label_counts = {}
-            for label in label_set:
-                label_str = str(label).strip()
-                # Extract just the variant part for comparison
-                match = re.match(r'^p\.([A-Z]+)(\d+)(.+)$', label_str, re.IGNORECASE)
-                if match:
-                    variant_part = match.group(3)
-                    # Count this variant
-                    if variant_part not in label_counts:
-                        label_counts[variant_part] = 0
-                    label_counts[variant_part] += 1
-            
-            # Get most frequent variant
-            if label_counts:
-                most_frequent = max(label_counts.items(), key=lambda x: x[1])[0]
-                # Get reference AA from first label
-                first_label = str(list(label_set)[0]).strip()
-                match = re.match(r'^p\.([A-Z]+)(\d+)', first_label, re.IGNORECASE)
-                if match:
-                    ref_aa = match.group(1)
-                    # Show most frequent variant or just position if multiple different ones
-                    if len(label_counts) == 1:
-                        label_text = f"{ref_aa}{position}{most_frequent}"
-                    else:
-                        # Multiple different variants: just show position with asterisk
-                        label_text = f"{ref_aa}{position}*"
-                else:
-                    label_text = f"{position}*"
-            else:
-                label_text = f"{position}*"
+    for position, data in sorted_positions:
+        label_text = _format_label(data["labels"], position)
         
         # Initial label position: above the highest circle
-        max_y = data["height"]
+        max_y = data["max_height"]
         
         labels.append({
             "position": position,
@@ -825,18 +870,19 @@ def _create_lollipop_plot(py_mut: 'PyMutation',
                          custom_domains: Optional[List[Dict]] = None,
                          count_by: str = DEFAULT_COUNT_BY,
                          label_top_n: int = DEFAULT_LABEL_TOP_N,
+                         label_pos: Optional[Union[int, List[int], str]] = None,
                          show_lollipops: bool = True,
                          figsize: Tuple[int, int] = DEFAULT_LOLLIPOP_FIGSIZE,
                          title: Optional[str] = None) -> Figure:
     """
     Create a lollipop plot for a specific gene.
-    
+
     This visualization shows:
     - Protein domain architecture (PFAM domains)
     - Mutation distribution along the protein sequence (if show_lollipops=True)
     - Mutation hotspots with size proportional to frequency
     - Top mutated positions with labels
-    
+
     Args:
         py_mut: PyMutation object with mutation data
         gene: Gene symbol to visualize
@@ -846,7 +892,11 @@ def _create_lollipop_plot(py_mut: 'PyMutation',
         domains_source: "pfam" to use PFAM domains, or None
         custom_domains: Custom domain definitions (overrides domains_source)
         count_by: "mutations" (count all) or "samples" (unique samples only)
-        label_top_n: Number of top positions to label
+        label_top_n: Number of top positions to label. Ignored when label_pos is set.
+        label_pos: Mirrors maftools' lollipopPlot() ``labelPos`` argument:
+            - None (default): label the ``label_top_n`` most mutated positions.
+            - "all": label every mutated position.
+            - int or list of int: label only those specific protein positions.
         show_lollipops: If True (default), show mutation lollipops; if False, show only protein domains
         figsize: Figure size (width, height) in inches
         title: Plot title (auto-generated if None)
@@ -949,7 +999,7 @@ def _create_lollipop_plot(py_mut: 'PyMutation',
     )
     
     # Step 7: Prepare labels with repel algorithm
-    labels = apply_label_repel(layout, label_top_n, protein_length)
+    labels = apply_label_repel(layout, label_top_n, protein_length, label_pos=label_pos)
     
     # Step 8: Create figure
     fig, ax = plt.subplots(figsize=figsize)
@@ -975,7 +1025,11 @@ def _create_lollipop_plot(py_mut: 'PyMutation',
     
     # Use distinct colors for multiple domains
     if len(domains_sorted) > 1:
-        domain_colors = cm.get_cmap('Pastel1')(np.linspace(0.1, 0.9, len(domains_sorted)))
+        try:
+            cmap = plt.colormaps.get_cmap('Pastel1')
+        except AttributeError:
+            cmap = plt.get_cmap('Pastel1')
+        domain_colors = cmap(np.linspace(0.1, 0.9, len(domains_sorted)))
     else:
         domain_colors = ['#D5E5F5']
     

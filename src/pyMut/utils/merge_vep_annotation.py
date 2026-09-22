@@ -11,6 +11,62 @@ from .format import format_chr
 logger = logging.getLogger(__name__)
 
 
+def _normalize_maf_columns(df: pd.DataFrame) -> pd.DataFrame:
+    if df is None or not hasattr(df, "columns"):
+        return df
+
+    lower_to_original = {str(c).strip().lower(): c for c in df.columns}
+    aliases = {
+        "hugo_symbol": "Hugo_Symbol",
+        "entrez_gene_id": "Entrez_Gene_Id",
+        "chromosome": "Chromosome",
+        "start_position": "Start_Position",
+        "end_position": "End_Position",
+        "strand": "Strand",
+        "variant_classification": "Variant_Classification",
+        "variant_type": "Variant_Type",
+        "reference_allele": "Reference_Allele",
+        "tumor_seq_allele1": "Tumor_Seq_Allele1",
+        "tumor_seq_allele2": "Tumor_Seq_Allele2",
+        "tumor_sample_barcode": "Tumor_Sample_Barcode",
+        "matched_norm_sample_barcode": "Matched_Norm_Sample_Barcode",
+        "dbsnp_rs": "dbSNP_RS",
+        "dbsnp_val_status": "dbSNP_Val_Status",
+    }
+
+    rename_map = {}
+    for lower_name, canonical in aliases.items():
+        if lower_name in lower_to_original and canonical not in df.columns:
+            rename_map[lower_to_original[lower_name]] = canonical
+
+    if rename_map:
+        df = df.rename(columns=rename_map)
+    return df
+
+
+def _region_key_from_location(location_value: object) -> str | None:
+    if pd.isna(location_value):
+        return None
+
+    value = str(location_value).strip()
+    if not value or value == "nan":
+        return None
+
+    if value.lower().startswith("chr"):
+        value = value[3:]
+
+    if ":" not in value:
+        return value
+
+    chrom, pos = value.split(":", 1)
+    if "-" in pos:
+        start, end = pos.split("-", 1)
+    else:
+        start = end = pos
+
+    return f"{chrom}:{start}-{end}"
+
+
 def _parse_vep_extra_column(extra_str: str) -> Dict[str, str]:
     """
     Parse the VEP Extra column which contains semicolon-separated key-value pairs.
@@ -39,6 +95,17 @@ def _parse_vep_extra_column(extra_str: str) -> Dict[str, str]:
     return result
 
 
+def _get_field(row: pd.Series, name: str):
+    """Fetch a field from a MAF row regardless of the casing used for its column name."""
+    if name in row.index:
+        return row[name]
+    lower_to_original = {str(c).strip().lower(): c for c in row.index}
+    original = lower_to_original.get(name.lower())
+    if original is None:
+        raise KeyError(name)
+    return row[original]
+
+
 def _create_region_key_from_maf(row: pd.Series) -> str:
     """
     Create a region key from MAF row that matches the VEP Uploaded_variation format.
@@ -51,19 +118,19 @@ def _create_region_key_from_maf(row: pd.Series) -> str:
     Parameters
     ----------
     row : pd.Series
-        MAF row with Chromosome, Start_Position, End_position, Reference_Allele, 
-        Tumor_Seq_Allele1, and Tumor_Seq_Allele2
+        MAF row with Chromosome, Start_Position, End_Position, Reference_Allele, 
+        Tumor_Seq_Allele1, and Tumor_Seq_Allele2 (any casing of these column names)
 
     Returns
     -------
     str
         Region key in format chr:start-end:len(ref)/alt
     """
-    chrom = format_chr(str(row['Chromosome']))  # "chr1…chrX, chrY"
-    start = int(row['Start_Position'])
-    end = int(row['End_position'])  # Use the real range
-    ref = str(row['Reference_Allele'])
-    alt = str(row['Tumor_Seq_Allele2'] or row['Tumor_Seq_Allele1'] or "-")
+    chrom = format_chr(str(_get_field(row, 'Chromosome')))  # "chr1…chrX, chrY"
+    start = int(_get_field(row, 'Start_Position'))
+    end = int(_get_field(row, 'End_Position'))  # Use the real range
+    ref = str(_get_field(row, 'Reference_Allele'))
+    alt = str(_get_field(row, 'Tumor_Seq_Allele2') or _get_field(row, 'Tumor_Seq_Allele1') or "-")
 
     return f"{chrom}:{start}-{end}:{len(ref)}/{alt}"
 
@@ -126,6 +193,7 @@ def merge_maf_with_vep_annotations(
     else:
         maf_df = pd.read_csv(maf_file, sep='\t', comment='#', low_memory=False)
 
+    maf_df = _normalize_maf_columns(maf_df)
     logger.info(f"MAF file loaded: {maf_df.shape[0]} rows, {maf_df.shape[1]} columns")
 
     logger.info(f"Reading VEP file: {vep_file}")
@@ -257,3 +325,79 @@ def merge_maf_with_vep_annotations(
     conn.close()
 
     return result_df, output_file
+
+
+# ---------------------------------------------------------------------------
+# Alternative, lighter-weight merge based on the VEP "Location" column
+# ---------------------------------------------------------------------------
+# This path does not rely on DuckDB nor on reconstructing VEP's
+# Uploaded_variation format from the MAF; instead it normalizes both sides to
+# a simple "chrom:start-end" key derived from VEP's own Location column.
+
+def _build_maf_region_key(df):
+    df = _normalize_maf_columns(df)
+    required = ["Chromosome", "Start_Position", "End_Position"]
+    missing = [c for c in required if c not in df.columns]
+    if missing:
+        raise KeyError(f"Missing required MAF columns for region merge: {missing}")
+
+    df = df.copy()
+    df["_maf_region_key"] = (
+        df["Chromosome"].astype(str).str.replace("chr", "", regex=False).str.strip()
+        + ":"
+        + df["Start_Position"].astype(str).str.strip()
+        + "-"
+        + df["End_Position"].astype(str).str.strip()
+    )
+    return df
+
+
+def merge_vep_annotation(maf_file, vep_file, output_file=None, **kwargs):
+    """
+    Lightweight alternative to ``merge_maf_with_vep_annotations`` that joins
+    on a ``chrom:start-end`` key derived directly from VEP's ``Location``
+    column, instead of reconstructing VEP's ``Uploaded_variation`` format.
+
+    Parameters
+    ----------
+    maf_file : str | Path
+        Path to the MAF file (tab-separated, ``#`` comment lines allowed).
+    vep_file : str | Path
+        Path to the VEP annotation file (tab-separated, ``#`` comment lines
+        allowed), expected to contain a ``Location`` column.
+    output_file : str | Path, optional
+        If provided, the merged result is written there as TSV.
+    **kwargs
+        Reserved for future options; currently unused.
+
+    Returns
+    -------
+    pd.DataFrame
+        The merged MAF + VEP annotation table.
+    """
+    maf_df = pd.read_csv(maf_file, sep="\t", comment="#", low_memory=False)
+    maf_df = _normalize_maf_columns(maf_df)
+    maf_df = _build_maf_region_key(maf_df)
+
+    vep_df = pd.read_csv(vep_file, sep="\t", comment="#", low_memory=False)
+    location_col = next((c for c in vep_df.columns if str(c).lower() == "location"), None)
+    if location_col is None:
+        raise KeyError("VEP annotation file is missing a 'Location' column required for merge.")
+
+    vep_df = vep_df.copy()
+    vep_df["_vep_region_key"] = vep_df[location_col].map(_region_key_from_location)
+
+    merged = maf_df.merge(
+        vep_df[[c for c in vep_df.columns if c != "_vep_region_key"] + ["_vep_region_key"]],
+        left_on="_maf_region_key",
+        right_on="_vep_region_key",
+        how="left",
+        suffixes=("_maf", "_vep"),
+    )
+
+    if output_file is not None:
+        out_path = Path(output_file)
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        merged.to_csv(out_path, sep="\t", index=False)
+
+    return merged

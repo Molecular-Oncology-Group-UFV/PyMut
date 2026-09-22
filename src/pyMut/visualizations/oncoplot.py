@@ -33,6 +33,23 @@ if TYPE_CHECKING:
     from ..core import PyMutation
 
 
+# maftools' default `vc_nonSyn` whitelist (see R/read_maf_dt.R): variant
+# classifications considered "non-synonymous"/mutated. Anything NOT in this
+# set is treated as silent by default, not just rows literally labeled
+# "Silent". This mirrors maftools' read.maf() default behavior exactly.
+DEFAULT_NON_SYNONYMOUS_CLASSIFICATIONS = {
+    "Frame_Shift_Del",
+    "Frame_Shift_Ins",
+    "Splice_Site",
+    "Translation_Start_Site",
+    "Nonsense_Mutation",
+    "Nonstop_Mutation",
+    "In_Frame_Del",
+    "In_Frame_Ins",
+    "Missense_Mutation",
+}
+
+
 def is_mutated(genotype: str, ref: str, alt: str) -> bool:
     """
     Determines if a genotype represents a mutation.
@@ -77,13 +94,17 @@ def is_mutated(genotype: str, ref: str, alt: str) -> bool:
     return alt_str in alleles
 
 
-def detect_sample_columns(data: pd.DataFrame) -> List[str]:
+def detect_sample_columns(
+    data: pd.DataFrame,
+    sample_prefix: Optional[str] = None,
+) -> List[str]:
     """
     Automatically detects columns representing samples in the DataFrame.
 
     Searches for common sample naming patterns:
     - TCGA format: columns starting with "TCGA-"
     - GT format: columns ending with ".GT"
+    - Custom format: columns starting with ``sample_prefix``
 
     Args:
         data: DataFrame with mutation data
@@ -100,6 +121,11 @@ def detect_sample_columns(data: pd.DataFrame) -> List[str]:
         ['TCGA-AB-2988', 'TCGA-AB-2869']
     """
     sample_columns = []
+
+    if sample_prefix is not None:
+        sample_columns.extend(
+            [col for col in data.columns if str(col).startswith(sample_prefix)]
+        )
 
     tcga_cols = [col for col in data.columns if str(col).startswith("TCGA-")]
     sample_columns.extend(tcga_cols)
@@ -178,7 +204,41 @@ def process_mutation_matrix(
     ref_column: str = REF_COLUMN,
     alt_column: str = ALT_COLUMN,
     sample_columns: Optional[List[str]] = None,
-) -> Tuple[pd.DataFrame, Dict[str, int]]:
+    sample_prefix: Optional[str] = None,
+    include_silent: bool = False,
+    non_syn_classifications: Optional[Set[str]] = None,
+) -> Tuple[pd.DataFrame, Dict[str, int], Dict[str, int]]:
+    """
+    Args:
+        ...
+        include_silent: If False (default, matches maftools' default
+            behavior), only variant classifications in
+            `non_syn_classifications` (maftools' default `vc_nonSyn`
+            whitelist unless overridden) count as mutations. Everything
+            else -- including "Silent" but also things like "Intron",
+            "3'UTR", "5'UTR", "IGR", "RNA", "Splice_Region", etc. -- is
+            excluded from the mutation matrix, gene counts, and all
+            downstream percentages, exactly like maftools does. If True,
+            every variant classification counts as a mutation (no
+            filtering at all).
+        non_syn_classifications: Custom whitelist of variant
+            classifications to treat as mutations when include_silent is
+            False. Mirrors maftools' `vc_nonSyn` argument in read.maf().
+            If None, uses DEFAULT_NON_SYNONYMOUS_CLASSIFICATIONS (maftools'
+            own default). Ignored when include_silent=True.
+
+    Returns:
+        mutation_matrix: genes x samples matrix of variant types ("None" if
+            not mutated).
+        mutation_counts: per gene, number of samples with >=1 mutation
+            (used for the main gene ranking, equivalent to maftools'
+            MutatedSamples).
+        gene_total_events: per gene, total number of mutation events/rows
+            (equivalent to maftools' `total` column in gene.summary). A
+            sample with two mutations in the same gene contributes 2 here
+            but only 1 to mutation_counts. Used as the tie-break when two
+            genes have the same mutation_counts, matching maftools.
+    """
     required_columns = [gene_column, variant_column]
     missing_columns = [col for col in required_columns if col not in data.columns]
     if missing_columns:
@@ -186,7 +246,7 @@ def process_mutation_matrix(
 
     if sample_columns is None:
         try:
-            sample_columns = detect_sample_columns(data)
+            sample_columns = detect_sample_columns(data, sample_prefix=sample_prefix)
         except ValueError:
             excluded_cols = {gene_column, variant_column, ref_column, alt_column,
                             "Tumor_Sample_Barcode"}
@@ -231,11 +291,26 @@ def process_mutation_matrix(
 
     # Filter to rows with valid gene/variant
     valid = melted[gene_column].notna() & melted[variant_column].notna()
+
+    # By default, only count variant classifications in the maftools-style
+    # non-synonymous whitelist as mutations (matches maftools' default
+    # `vc_nonSyn` behavior exactly -- this excludes "Silent" AND any other
+    # classification not in the whitelist, e.g. "Intron", "3'UTR", "IGR").
+    # This propagates to everything downstream (mutation_matrix,
+    # mutation_counts, gene ranking, heatmap cells, TMB panel, and all
+    # percentages), since they all derive from this filtered `melted` frame.
+    if not include_silent:
+        whitelist = non_syn_classifications if non_syn_classifications is not None \
+            else DEFAULT_NON_SYNONYMOUS_CLASSIFICATIONS
+        whitelist_lower = {str(v).strip().lower() for v in whitelist}
+        valid &= melted[variant_column].astype(str).str.strip().str.lower().isin(whitelist_lower)
+
     melted = melted[valid]
 
     # For each gene-sample pair, collect variant types
     mutation_matrix = pd.DataFrame("None", index=unique_genes, columns=sample_columns)
-    mutation_counts = {gene: 0 for gene in unique_genes}
+    mutation_counts = {gene: 0 for gene in unique_genes}  # samples mutated per gene
+    gene_total_events = {gene: 0 for gene in unique_genes}  # total mutation events per gene
 
     # Stack sample columns into long form efficiently
     gene_col_vals = melted[gene_column].values
@@ -261,8 +336,9 @@ def process_mutation_matrix(
         else:
             mutation_matrix.loc[gene_str, sample_col] = "Multi_Hit"
         mutation_counts[gene_str] += 1
+        gene_total_events[gene_str] += len(variant_list)
 
-    return mutation_matrix, mutation_counts
+    return mutation_matrix, mutation_counts, gene_total_events
 
 
 def _create_oncoplot_plot(
@@ -276,6 +352,9 @@ def _create_oncoplot_plot(
     figsize: Optional[Tuple[int, int]] = None,
     title: str = "Oncoplot",
     ax: Optional[plt.Axes] = None,
+    sample_prefix: Optional[str] = None,
+    include_silent: bool = False,
+    non_syn_classifications: Optional[Set[str]] = None,
 ) -> plt.Figure:
     """
     Creates a complete oncoplot visualization.
@@ -297,6 +376,17 @@ def _create_oncoplot_plot(
         figsize: Figure size (width, height) in inches
         title: Title for the plot
         ax: Existing matplotlib axes (optional, for simple mode without panels)
+        sample_prefix: Optional prefix used to identify custom sample columns
+        include_silent: If False (default, matches maftools' default
+            behavior exactly), only variant classifications in
+            `non_syn_classifications` count as mutations -- this excludes
+            "Silent" but also anything else not in that whitelist (e.g.
+            "Intron", "3'UTR", "IGR"). Set to True to count every variant
+            classification as a mutation (no filtering).
+        non_syn_classifications: Custom whitelist of "non-synonymous"
+            variant classifications, mirroring maftools' `vc_nonSyn`
+            argument. If None, uses maftools' own default 9-classification
+            whitelist. Ignored when include_silent=True.
 
     Returns:
         matplotlib Figure object with the complete oncoplot
@@ -308,15 +398,25 @@ def _create_oncoplot_plot(
     data = py_mut.data
 
     try:
-        mutation_matrix, mutation_counts = process_mutation_matrix(
-            data, gene_column, variant_column, ref_column, alt_column
+        mutation_matrix, mutation_counts, gene_total_events = process_mutation_matrix(
+            data, gene_column, variant_column, ref_column, alt_column,
+            sample_prefix=sample_prefix,
+            include_silent=include_silent, non_syn_classifications=non_syn_classifications,
         )
 
         if mutation_matrix.empty:
             raise ValueError("No mutation data to visualize")
 
-        top_genes = sorted(mutation_counts.items(), key=lambda x: x[1], reverse=True)
-        top_genes = [gene for gene, count in top_genes[:top_genes_count] if count > 0]
+        # Rank genes the same way maftools does (see summarizeMaf.R /
+        # oncoplot.R): primarily by number of mutated samples (descending),
+        # then, for ties, by total number of mutation events across all
+        # samples (descending), then alphabetically by gene symbol
+        # (ascending) as the final tie-break.
+        top_genes = sorted(
+            mutation_counts.keys(),
+            key=lambda g: (-mutation_counts[g], -gene_total_events[g], g),
+        )
+        top_genes = [gene for gene in top_genes[:top_genes_count] if mutation_counts[gene] > 0]
 
         if not top_genes:
             raise ValueError("No genes with mutations found")
@@ -574,20 +674,19 @@ def _create_oncoplot_plot(
 
                 ax_genes.set_yticklabels(["" for _ in sorted_genes])
 
-                sample_cols_for_percentage = [
-                    col for col in data.columns if str(col).startswith("TCGA-")
-                ]
-                total_samples_in_dataset = len(sample_cols_for_percentage)
-
-                # Pre-compute ref genotypes
-                ref_geno = data[ref_column].astype(str) + "|" + data[ref_column].astype(str)
-                sample_df = data[sample_cols_for_percentage]
-                has_mut = sample_df.notna() & sample_df.ne(ref_geno, axis=0)
+                # Reuse mutation_matrix (already built by process_mutation_matrix
+                # with the same include_silent/non_syn_classifications
+                # filtering applied), instead of recomputing mutation status
+                # from scratch with a hardcoded "TCGA-" column filter and no
+                # variant-classification awareness. This keeps percentages
+                # consistent with the heatmap and with maftools.
+                total_samples_in_dataset = mutation_matrix.shape[1]
 
                 for i, gene in enumerate(df_stacked.index):
                     gene_in_original_order = sorted_genes[len(sorted_genes) - 1 - i]
-                    gene_mask = data[gene_column] == gene_in_original_order
-                    num_unique_samples_affected = has_mut.loc[gene_mask].any(axis=0).sum()
+                    num_unique_samples_affected = (
+                        mutation_matrix.loc[gene_in_original_order] != "None"
+                    ).sum()
                     real_percentage = (num_unique_samples_affected / total_samples_in_dataset) * 100 \
                         if total_samples_in_dataset > 0 else 0
                     if real_percentage > 0:

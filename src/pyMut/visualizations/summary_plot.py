@@ -6,7 +6,7 @@ that show different statistics from mutation data.
 """
 
 import logging
-from typing import Dict, Optional, Tuple
+from typing import Dict, Optional, Set, Tuple
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -15,8 +15,52 @@ from matplotlib.axes import Axes
 from matplotlib.figure import Figure
 
 from ..core import PyMutation
+from .oncoplot import DEFAULT_NON_SYNONYMOUS_CLASSIFICATIONS
 
 logger = logging.getLogger(__name__)
+
+
+def _filter_non_synonymous(
+    data: pd.DataFrame,
+    variant_column: str,
+    include_silent: bool,
+    non_syn_classifications: Optional[Set[str]] = None,
+) -> pd.DataFrame:
+    """
+    Filter a mutation DataFrame down to "non-synonymous" variant
+    classifications, matching maftools' default read.maf() behavior
+    (the `vc_nonSyn` whitelist) exactly. This is the single source of
+    truth used by every panel in this module, instead of each function
+    keeping its own copy of the classification list.
+
+    Args:
+        data: DataFrame with a variant classification column.
+        variant_column: Name of the column holding the variant
+            classification (e.g. "Variant_Classification").
+        include_silent: If True, `data` is returned unchanged -- every
+            variant classification counts as a mutation, nothing is
+            filtered. If False (default elsewhere in this module), only
+            rows whose classification is in the whitelist are kept.
+        non_syn_classifications: Custom whitelist to use instead of
+            DEFAULT_NON_SYNONYMOUS_CLASSIFICATIONS. Ignored when
+            include_silent=True.
+
+    Returns:
+        The filtered (or original) DataFrame. Comparison against the
+        whitelist is case-insensitive and whitespace-trimmed, so it isn't
+        thrown off by casing differences between datasets (e.g.
+        "Missense_Mutation" vs "MISSENSE_MUTATION").
+    """
+    if include_silent:
+        return data
+    whitelist = (
+        non_syn_classifications
+        if non_syn_classifications is not None
+        else DEFAULT_NON_SYNONYMOUS_CLASSIFICATIONS
+    )
+    whitelist_lower = {str(v).strip().lower() for v in whitelist}
+    mask = data[variant_column].astype(str).str.strip().str.lower().isin(whitelist_lower)
+    return data[mask]
 
 
 def _count_variants_from_samples(
@@ -61,13 +105,14 @@ def _create_variant_classification_plot(
     color_map: Optional[Dict] = None,
     set_title: bool = True,
     include_silent: bool = False,
+    non_syn_classifications: Optional[Set[str]] = None,
 ) -> Axes:
     """
     Create a horizontal bar chart showing the distribution of variant classifications.
 
     This visualization displays the count of each variant classification type present
     in the mutation data, sorted by frequency. By default, silent/synonymous mutations
-    and non-coding variants are excluded.
+    and non-coding variants are excluded (matching maftools' default vc_nonSyn whitelist).
 
     Args:
         py_mut: PyMutation object with mutation data.
@@ -77,31 +122,19 @@ def _create_variant_classification_plot(
         set_title: Whether to set the title on the plot.
         include_silent: Whether to include silent/synonymous and non-coding variants.
                        Default is False.
+        non_syn_classifications: Custom whitelist of variant classifications to
+                       treat as non-synonymous, mirroring maftools' vc_nonSyn.
+                       If None, uses the maftools default. Ignored when
+                       include_silent=True.
 
     Returns:
         Matplotlib axis with the visualization.
     """
     data = py_mut.data
 
-    # Define non-synonymous (protein-altering) variant classifications
-    # These are the default variants shown
-    nonsyn_variants = [
-        "FRAME_SHIFT_DEL",
-        "FRAME_SHIFT_INS",
-        "SPLICE_SITE",
-        "TRANSLATION_START_SITE",
-        "NONSENSE_MUTATION",
-        "NONSTOP_MUTATION",
-        "IN_FRAME_DEL",
-        "IN_FRAME_INS",
-        "MISSENSE_MUTATION",
-    ]
-
-    # Filter data to non-synonymous variants unless include_silent is True
-    if not include_silent:
-        data_filtered = data[data[variant_column].isin(nonsyn_variants)]
-    else:
-        data_filtered = data
+    data_filtered = _filter_non_synonymous(
+        data, variant_column, include_silent, non_syn_classifications
+    )
 
     # Count variants properly from sample columns (handles consolidated format)
     variant_counts = _count_variants_from_samples(data_filtered, variant_column)
@@ -155,12 +188,14 @@ def _create_variant_type_plot(
     ax: Optional[Axes] = None,
     set_title: bool = True,
     include_silent: bool = False,
+    non_syn_classifications: Optional[Set[str]] = None,
 ) -> Axes:
     """
     Create a horizontal bar chart showing the distribution of variant types.
 
     This visualization displays the count of each variant type (SNP, INS, DEL, etc.)
-    present in the mutation data, sorted by frequency. By default, excludes silent/synonymous mutations.
+    present in the mutation data, sorted by frequency. By default, excludes silent/synonymous
+    mutations (matching maftools' default vc_nonSyn whitelist).
 
     Args:
         py_mut: PyMutation object with mutation data.
@@ -169,30 +204,21 @@ def _create_variant_type_plot(
         set_title: Whether to set the title on the plot.
         include_silent: Whether to include silent/synonymous and non-coding variants.
                        Default is False.
+        non_syn_classifications: Custom whitelist of variant classifications to
+                       treat as non-synonymous, mirroring maftools' vc_nonSyn.
+                       If None, uses the maftools default. Ignored when
+                       include_silent=True.
 
     Returns:
         Matplotlib axis with the visualization.
     """
     data = py_mut.data
 
-    # Define non-synonymous variant classifications (same as variant_classification_plot)
-    nonsyn_variants = [
-        "FRAME_SHIFT_DEL",
-        "FRAME_SHIFT_INS",
-        "SPLICE_SITE",
-        "TRANSLATION_START_SITE",
-        "NONSENSE_MUTATION",
-        "NONSTOP_MUTATION",
-        "IN_FRAME_DEL",
-        "IN_FRAME_INS",
-        "MISSENSE_MUTATION",
-    ]
-
-    # Filter data to non-synonymous variants unless include_silent is True
-    if not include_silent:
-        data_filtered = data[data["Variant_Classification"].isin(nonsyn_variants)]
-    else:
-        data_filtered = data
+    # Filtering is always based on Variant_Classification, regardless of what
+    # variant_column points to here (which is Variant_Type for this plot).
+    data_filtered = _filter_non_synonymous(
+        data, "Variant_Classification", include_silent, non_syn_classifications
+    )
 
     # Count variants properly from sample columns (handles consolidated format)
     variant_counts = _count_variants_from_samples(data_filtered, variant_column)
@@ -372,6 +398,7 @@ def _create_variants_per_sample_plot(
         set_title: bool = True,
         max_samples: Optional[int] = 200,
         include_silent: bool = False,
+        non_syn_classifications: Optional[Set[str]] = None,
 ) -> Axes:
     """
     Create a stacked bar plot showing variants per sample (tumor mutation burden).
@@ -388,13 +415,7 @@ def _create_variants_per_sample_plot(
         ax.axis("off")
         return ax
 
-    nonsyn_variants = [
-        "FRAME_SHIFT_DEL", "FRAME_SHIFT_INS", "SPLICE_SITE", "TRANSLATION_START_SITE",
-        "NONSENSE_MUTATION", "NONSTOP_MUTATION", "IN_FRAME_DEL", "IN_FRAME_INS", "MISSENSE_MUTATION",
-    ]
-
-    if not include_silent:
-        data = data[data[variant_column].isin(nonsyn_variants)]
+    data = _filter_non_synonymous(data, variant_column, include_silent, non_syn_classifications)
 
     samples_as_columns = sample_column not in data.columns
 
@@ -489,19 +510,12 @@ def _create_variant_classification_summary_plot(
         color_map: Optional[Dict] = None,
         set_title: bool = True,
         include_silent: bool = False,
+        non_syn_classifications: Optional[Set[str]] = None,
 ) -> Axes:
     """
     Create a boxplot showing the distribution of variant counts per sample.
     """
     data = py_mut.data
-
-    nonsyn_variants = [
-        "FRAME_SHIFT_DEL", "FRAME_SHIFT_INS", "SPLICE_SITE", "TRANSLATION_START_SITE",
-        "NONSENSE_MUTATION", "NONSTOP_MUTATION", "IN_FRAME_DEL", "IN_FRAME_INS", "MISSENSE_MUTATION",
-    ]
-
-    if not include_silent:
-        data = data[data[variant_column].isin(nonsyn_variants)]
 
     if variant_column not in data.columns:
         logger.warning(f"Column not found: {variant_column}")
@@ -512,6 +526,8 @@ def _create_variant_classification_summary_plot(
             ax.set_title("Variant Classification Summary", fontsize=14, fontweight="bold")
         ax.axis("off")
         return ax
+
+    data = _filter_non_synonymous(data, variant_column, include_silent, non_syn_classifications)
 
     samples_as_columns = sample_column not in data.columns
 
@@ -635,10 +651,14 @@ def _create_top_mutated_genes_plot(
         ax: Optional[Axes] = None,
         color_map: Optional[Dict] = None,
         set_title: bool = True,
-        include_silent: bool = True,
+        include_silent: bool = False,
+        non_syn_classifications: Optional[Set[str]] = None,
 ) -> Axes:
     """
     Create a horizontal bar plot showing the most mutated genes.
+
+    By default, excludes silent/synonymous mutations (matching maftools'
+    default vc_nonSyn whitelist), same as every other panel in this module.
     """
     data = py_mut.data
 
@@ -665,12 +685,9 @@ def _create_top_mutated_genes_plot(
     data_filtered = data_filtered[
         (data_filtered[gene_column] != "Unknown") & (data_filtered[variant_column] != "Unknown")]
 
-    if not include_silent:
-        nonsyn_variants = [
-            "FRAME_SHIFT_DEL", "FRAME_SHIFT_INS", "SPLICE_SITE", "TRANSLATION_START_SITE",
-            "NONSENSE_MUTATION", "NONSTOP_MUTATION", "IN_FRAME_DEL", "IN_FRAME_INS", "MISSENSE_MUTATION",
-        ]
-        data_filtered = data_filtered[data_filtered[variant_column].isin(nonsyn_variants)]
+    data_filtered = _filter_non_synonymous(
+        data_filtered, variant_column, include_silent, non_syn_classifications
+    )
 
     if data_filtered.empty:
         ax.text(0.5, 0.5, "No data available after filtering", ha="center", va="center", fontsize=12)
@@ -841,7 +858,9 @@ def _create_summary_plot(py_mut: PyMutation,
                       figsize: Tuple[int, int] = (16, 12),
                       title: str = "Mutation Summary",
                       max_samples: Optional[int] = 200,
-                      top_genes_count: int = 10) -> Figure:
+                      top_genes_count: int = 10,
+                      include_silent: bool = False,
+                      non_syn_classifications: Optional[Set[str]] = None) -> Figure:
     """
     Create a multi-panel summary plot with comprehensive mutation visualizations.
 
@@ -860,7 +879,17 @@ def _create_summary_plot(py_mut: PyMutation,
         max_samples: Maximum number of samples to display in variants per sample plot.
                     If None, all samples are shown.
         top_genes_count: Number of top genes to display in the mutated genes plot.
-        
+        include_silent: If False (default, matches maftools' default vc_nonSyn
+                    whitelist), silent/synonymous and non-coding variants are
+                    excluded from every panel except SNV Class (which, like
+                    maftools' TiTv view, always shows all SNPs regardless of
+                    coding consequence). If True, every variant classification
+                    counts everywhere.
+        non_syn_classifications: Custom whitelist of "non-synonymous" variant
+                    classifications, mirroring maftools' vc_nonSyn argument.
+                    If None, uses maftools' own default whitelist. Ignored
+                    when include_silent=True.
+
     Returns:
         Figure object containing all summary visualizations.
     """
@@ -894,10 +923,16 @@ def _create_summary_plot(py_mut: PyMutation,
         variant_column=variant_classification_col,
         ax=axs[0, 0],
         color_map=variant_color_map,
-        set_title=True
+        set_title=True,
+        include_silent=include_silent,
+        non_syn_classifications=non_syn_classifications,
     )
     
-    _create_variant_type_plot(py_mut, ax=axs[0, 1], set_title=True)
+    _create_variant_type_plot(
+        py_mut, ax=axs[0, 1], set_title=True,
+        include_silent=include_silent,
+        non_syn_classifications=non_syn_classifications,
+    )
     
     _create_snv_class_plot(py_mut,
                          ref_column="REF",
@@ -912,7 +947,9 @@ def _create_summary_plot(py_mut: PyMutation,
         ax=axs[1, 0],
         color_map=variant_color_map,
         set_title=True,
-        max_samples=max_samples
+        max_samples=max_samples,
+        include_silent=include_silent,
+        non_syn_classifications=non_syn_classifications,
     )
     
     var_boxplot_ax = _create_variant_classification_summary_plot(
@@ -921,7 +958,9 @@ def _create_summary_plot(py_mut: PyMutation,
         sample_column=sample_column,
         ax=axs[1, 1],
         color_map=variant_color_map,
-        set_title=True
+        set_title=True,
+        include_silent=include_silent,
+        non_syn_classifications=non_syn_classifications,
     )
     
     top_genes_ax = _create_top_mutated_genes_plot(
@@ -933,7 +972,9 @@ def _create_summary_plot(py_mut: PyMutation,
         count=top_genes_count,
         ax=axs[1, 2],
         color_map=variant_color_map,
-        set_title=True
+        set_title=True,
+        include_silent=include_silent,
+        non_syn_classifications=non_syn_classifications,
     )
     
     if var_class_ax.get_legend() is not None:

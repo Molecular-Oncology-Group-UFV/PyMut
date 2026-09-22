@@ -7,9 +7,10 @@ visualizaciones a partir de datos de mutación.
 """
 
 import logging
+import os
 import time
 from datetime import datetime
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional, Tuple, Union
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -34,6 +35,7 @@ from .utils.constants import (
     DEFAULT_PLOT_FIGSIZE,
     DEFAULT_PLOT_TITLE,
     DEFAULT_SUMMARY_FIGSIZE,
+    DEFAULT_TCGA_COMPARE_FIGSIZE,
     DEFAULT_TOP_GENES_COUNT,
     FUNCOTATION_COLUMN,
     GENE_COLUMN,
@@ -46,6 +48,59 @@ from .utils.constants import (
 )
 
 logger = logging.getLogger(__name__)
+
+# Bundled SBS mutational signature catalogs shipped with pyMut
+# (data/examples/COSMIC_catalogue-signatures_SBS96_v3.4/), used as the
+# default cosmic_path for signature_bar_chart(), cosine_similarity_heatmap()
+# and mutational_signature_analysis() when the user doesn't supply their own.
+_SIGNATURE_CATALOG_DIR = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)),
+    "data", "examples", "COSMIC_catalogue-signatures_SBS96_v3.4",
+)
+_BUNDLED_COSMIC_CATALOGS = {
+    "official": os.path.join(_SIGNATURE_CATALOG_DIR, "COSMIC_v3.4_SBS_GRCh37.txt"),
+    "maftools": os.path.join(_SIGNATURE_CATALOG_DIR, "maftools_SBS_catalog.tsv"),
+}
+
+
+def _resolve_cosmic_catalog_path(cosmic_path):
+    """
+    Resolve a cosmic_path argument to an actual COSMIC catalog file path.
+
+    - None (default): use the official bundled COSMIC v3.4 SBS (GRCh37)
+      catalog (86 signatures) - no need for the user to supply anything.
+    - "maftools": use the older, 67-signature catalog bundled with maftools
+      instead, e.g. to reproduce results obtained with maftools itself.
+    - False: explicitly disable COSMIC alignment (only meaningful for
+      signature_bar_chart(), which can also run without matching COSMIC).
+    - Any other string: used as-is, as a path to a user-supplied catalog.
+    """
+    if cosmic_path is False:
+        return False
+    if cosmic_path is None:
+        return _BUNDLED_COSMIC_CATALOGS["official"]
+    if isinstance(cosmic_path, str) and cosmic_path.lower() == "maftools":
+        return _BUNDLED_COSMIC_CATALOGS["maftools"]
+    return cosmic_path
+
+
+_BUNDLED_AETIOLOGY_CATALOG = os.path.join(_SIGNATURE_CATALOG_DIR, "maftools_SBS_aetiology.tsv")
+
+
+def _resolve_aetiology_catalog_path(aetiology_path):
+    """
+    Resolve an aetiology_path argument to an actual aetiology TSV file path.
+
+    - None (default): no aetiology table is used - panel titles show just
+      "SBSx-like (cos=..)" with no aetiology line, unchanged from before.
+    - "maftools": use the bundled maftools SBS aetiology table.
+    - Any other string: used as-is, as a path to a user-supplied TSV.
+    """
+    if aetiology_path is None:
+        return None
+    if isinstance(aetiology_path, str) and aetiology_path.lower() == "maftools":
+        return _BUNDLED_AETIOLOGY_CATALOG
+    return aetiology_path
 
 class MutationMetadata:
     """
@@ -157,7 +212,8 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
         mpl.rcParams['savefig.edgecolor'] = 'none'
 
     def summary_plot(self, figsize: Tuple[int, int] = DEFAULT_SUMMARY_FIGSIZE, title: str = DEFAULT_PLOT_TITLE,
-                     max_samples: Optional[int] = 200, top_genes_count: int = DEFAULT_TOP_GENES_COUNT) -> Figure:
+                     max_samples: Optional[int] = 200, top_genes_count: int = DEFAULT_TOP_GENES_COUNT,
+                     include_silent: bool = False, non_syn_classifications: Optional[set] = None) -> Figure:
         """
         Generate a comprehensive summary plot with general mutation statistics.
 
@@ -176,6 +232,15 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
                         If None, all samples are shown.
             top_genes_count: Number of top genes to show in the top mutated genes plot.
                         If there are fewer genes than this number, all will be shown.
+            include_silent: If False (default, matches maftools' default vc_nonSyn
+                        whitelist), silent/synonymous and non-coding variants are
+                        excluded from every subplot except SNV Class (which always
+                        shows all SNPs, like maftools' TiTv view). Applies uniformly
+                        to all six panels, including Top Mutated Genes.
+            non_syn_classifications: Custom whitelist of "non-synonymous" variant
+                        classifications, mirroring maftools' vc_nonSyn argument.
+                        If None, uses maftools' own default whitelist. Ignored
+                        when include_silent=True.
 
         Returns:
             Matplotlib Figure object with the summary plot.
@@ -184,6 +249,9 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
             >>> py_mut = PyMutation(data)
             >>> fig = py_mut.summary_plot(max_samples=100, top_genes_count=15)
             >>> py_mut.save_figure(fig, 'summary.png')
+
+            >>> # Include silent mutations in every panel
+            >>> fig = py_mut.summary_plot(include_silent=True)
         """
         start_time = time.time()
         logger.info("Generating summary plot...")
@@ -200,7 +268,9 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
         self.data = extract_variant_types(self.data, variant_column=VARIANT_TYPE_COLUMN,
                                           funcotation_column=FUNCOTATION_COLUMN)
 
-        fig = _create_summary_plot(self, figsize, title, max_samples, top_genes_count)
+        fig = _create_summary_plot(self, figsize, title, max_samples, top_genes_count,
+                                   include_silent=include_silent,
+                                   non_syn_classifications=non_syn_classifications)
 
         plt.close(fig)
         
@@ -214,6 +284,7 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
         figsize: Tuple[int, int] = DEFAULT_PLOT_FIGSIZE,
         title: str = "Variant Classification",
         include_silent: bool = False,
+        non_syn_classifications: Optional[set] = None,
     ) -> Figure:
         """
         Generate a horizontal bar plot showing the distribution of variant classifications.
@@ -227,6 +298,10 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
             title: Plot title.
             include_silent: Whether to include silent/synonymous and non-coding variants.
                            Default is False.
+            non_syn_classifications: Custom whitelist of "non-synonymous" variant
+                           classifications, mirroring maftools' vc_nonSyn argument.
+                           If None, uses maftools' own default whitelist. Ignored
+                           when include_silent=True.
 
         Returns:
             Matplotlib Figure object with the variant classification plot.
@@ -250,7 +325,8 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
 
         fig, ax = plt.subplots(figsize=figsize)
         _create_variant_classification_plot(
-            self, ax=ax, set_title=False, include_silent=include_silent
+            self, ax=ax, set_title=False, include_silent=include_silent,
+            non_syn_classifications=non_syn_classifications,
         )
 
         if title:
@@ -271,6 +347,7 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
         figsize: Tuple[int, int] = DEFAULT_PLOT_FIGSIZE,
         title: str = "Variant Type",
         include_silent: bool = False,
+        non_syn_classifications: Optional[set] = None,
     ) -> Figure:
         """
         Generate a horizontal bar plot showing the distribution of variant types.
@@ -283,6 +360,10 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
             title: Plot title.
             include_silent: Whether to include silent/synonymous and non-coding variants.
                            Default is False.
+            non_syn_classifications: Custom whitelist of "non-synonymous" variant
+                           classifications, mirroring maftools' vc_nonSyn argument.
+                           If None, uses maftools' own default whitelist. Ignored
+                           when include_silent=True.
 
         Returns:
             Matplotlib Figure object with the variant types plot.
@@ -302,7 +383,8 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
 
         fig, ax = plt.subplots(figsize=figsize)
         _create_variant_type_plot(
-            self, ax=ax, set_title=False, include_silent=include_silent
+            self, ax=ax, set_title=False, include_silent=include_silent,
+            non_syn_classifications=non_syn_classifications,
         )
 
         if title:
@@ -373,6 +455,7 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
         sample_column: str = "Tumor_Sample_Barcode",
         max_samples: Optional[int] = 200,
         include_silent: bool = False,
+        non_syn_classifications: Optional[set] = None,
     ) -> Figure:
         """
         Generate a stacked bar plot showing the number of variants per sample (TMB).
@@ -390,6 +473,10 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
                         Samples are sorted by TMB and the top samples are displayed.
             include_silent: Whether to include silent/synonymous and non-coding variants.
                            Default is False.
+            non_syn_classifications: Custom whitelist of "non-synonymous" variant
+                           classifications, mirroring maftools' vc_nonSyn argument.
+                           If None, uses maftools' own default whitelist. Ignored
+                           when include_silent=True.
 
         Returns:
             Matplotlib Figure object with the variants per sample plot.
@@ -424,6 +511,7 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
             set_title=False,
             max_samples=max_samples,
             include_silent=include_silent,
+            non_syn_classifications=non_syn_classifications,
         )
 
         if title and not title.startswith("Variants per Sample"):
@@ -446,6 +534,7 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
         variant_column: str = "Variant_Classification",
         sample_column: str = "Tumor_Sample_Barcode",
         include_silent: bool = False,
+        non_syn_classifications: Optional[set] = None,
     ) -> Figure:
         """
         Generate a boxplot showing the distribution of variant counts per sample for each variant classification.
@@ -462,6 +551,10 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
                            If it doesn't exist, samples are assumed to be columns (wide format).
             include_silent: Whether to include silent/synonymous and non-coding variants.
                            Default is False.
+            non_syn_classifications: Custom whitelist of "non-synonymous" variant
+                           classifications, mirroring maftools' vc_nonSyn argument.
+                           If None, uses maftools' own default whitelist. Ignored
+                           when include_silent=True.
 
         Returns:
             Matplotlib Figure object with the boxplot.
@@ -497,6 +590,7 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
             ax=ax,
             set_title=False,
             include_silent=include_silent,
+            non_syn_classifications=non_syn_classifications,
         )
 
         if title:
@@ -513,13 +607,20 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
     def top_mutated_genes_plot(self, figsize: Tuple[int, int] = DEFAULT_PLOT_FIGSIZE, title: str = "Top Mutated Genes",
                                mode: str = MODE_VARIANTS, variant_column: str = VARIANT_CLASSIFICATION_COLUMN,
                                gene_column: str = GENE_COLUMN, sample_column: str = SAMPLE_COLUMN,
-                               count: int = DEFAULT_TOP_GENES_COUNT, include_silent: bool = True) -> Figure:
+                               count: int = DEFAULT_TOP_GENES_COUNT, include_silent: bool = False,
+                               non_syn_classifications: Optional[set] = None) -> Figure:
         """
         Generate a horizontal bar plot showing the most mutated genes.
 
         This plot displays the top mutated genes with bars stacked by variant classification type.
         Two counting modes are available: total variant count or affected sample count.
-        By default, includes all variants including silent/synonymous mutations.
+        By default, excludes silent/synonymous mutations (matching maftools' default
+        vc_nonSyn whitelist), consistent with every other plot in this module.
+
+        NOTE: the default for include_silent used to be True in earlier versions of
+        this method, which was inconsistent with every other plot here (and with
+        maftools). It is now False by default. Pass include_silent=True explicitly
+        if you relied on the old behavior of counting every variant classification.
 
         Args:
             figsize: Figure size as (width, height) in inches.
@@ -531,7 +632,11 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
             sample_column: Name of the column containing the sample identifier.
             count: Number of top genes to show.
             include_silent: Whether to include silent/synonymous and non-coding variants.
-                           Default is True (includes all variants).
+                           Default is False.
+            non_syn_classifications: Custom whitelist of "non-synonymous" variant
+                           classifications, mirroring maftools' vc_nonSyn argument.
+                           If None, uses maftools' own default whitelist. Ignored
+                           when include_silent=True.
 
         Returns:
             Matplotlib Figure object with the top mutated genes plot.
@@ -544,8 +649,8 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
             >>> fig = py_mut.top_mutated_genes_plot(count=20, mode="samples")
             >>> py_mut.save_figure(fig, 'top_genes.png')
             
-            >>> # Exclude silent mutations
-            >>> fig = py_mut.top_mutated_genes_plot(count=10, include_silent=False)
+            >>> # Include silent mutations too
+            >>> fig = py_mut.top_mutated_genes_plot(count=10, include_silent=True)
         """
         start_time = time.time()
         logger.info(f"Generating top mutated genes plot (mode={mode}, count={count})...")
@@ -581,7 +686,8 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
         fig, ax = plt.subplots(figsize=figsize)
         _create_top_mutated_genes_plot(self, mode=mode, variant_column=variant_column, gene_column=gene_column,
                                        sample_column=sample_column, count=count, ax=ax, set_title=False,
-                                       include_silent=include_silent)
+                                       include_silent=include_silent,
+                                       non_syn_classifications=non_syn_classifications)
 
         if title:
             if mode == "variants" and title == "Top Mutated Genes":
@@ -603,7 +709,9 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
     def oncoplot(self, figsize: Optional[Tuple[int, int]] = None, title: str = "Oncoplot",
                  gene_column: str = GENE_COLUMN, variant_column: str = VARIANT_CLASSIFICATION_COLUMN,
                  ref_column: str = REF_COLUMN, alt_column: str = ALT_COLUMN, top_genes_count: int = None,
-                 max_samples: int = None) -> Figure:
+                 max_samples: int = None, include_silent: bool = False,
+                 non_syn_classifications: Optional[set] = None,
+                 sample_prefix: Optional[str] = None) -> Figure:
         """
         Generates an oncoplot showing mutation patterns in a heatmap.
         
@@ -612,6 +720,7 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
         
         Features:
         - Automatic detection of sample columns (TCGA and .GT format)
+        - Optional custom sample-column prefix
         - Support for multiple genotype formats (A|G, A/G, etc.)
         - Multi_Hit detection for samples with multiple mutations
         - Standard color schemes for mutation types
@@ -630,6 +739,25 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
                            If None, uses DEFAULT_ONCOPLOT_TOP_GENES.
             max_samples: Maximum number of samples to show.
                         If None, uses DEFAULT_ONCOPLOT_MAX_SAMPLES.
+            include_silent: If False (default, matches maftools' default
+                           behavior exactly), only variant classifications in
+                           `non_syn_classifications` count as mutations --
+                           this excludes "Silent" but also anything else not
+                           in that whitelist (e.g. "Intron", "3'UTR", "IGR").
+                           Set to True to count every variant classification
+                           as a mutation (no filtering at all).
+            non_syn_classifications: Custom whitelist of "non-synonymous"
+                           variant classifications to treat as mutations,
+                           mirroring maftools' `vc_nonSyn` argument in
+                           read.maf(). If None, uses maftools' own default
+                           9-classification whitelist (Frame_Shift_Del,
+                           Frame_Shift_Ins, Splice_Site,
+                           Translation_Start_Site, Nonsense_Mutation,
+                           Nonstop_Mutation, In_Frame_Del, In_Frame_Ins,
+                           Missense_Mutation). Ignored when
+                           include_silent=True.
+            sample_prefix: Optional prefix used to identify custom sample
+                           columns, for example ``"C3[A::Z]-"``.
             
         Returns:
             plt.Figure: matplotlib Figure object with the oncoplot.
@@ -649,6 +777,14 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
             ...     title="TCGA Samples Oncoplot",
             ...     top_genes_count=20,
             ...     max_samples=100
+            ... )
+
+            Including silent mutations in the counts/percentages:
+            >>> fig = py_mut.oncoplot(include_silent=True)
+
+            Using a custom non-synonymous whitelist (like maftools' vc_nonSyn):
+            >>> fig = py_mut.oncoplot(
+            ...     non_syn_classifications={"Missense_Mutation", "Nonsense_Mutation"}
             ... )
             
         Note:
@@ -687,7 +823,9 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
             fig = _create_oncoplot_plot(py_mut=self, gene_column=gene_column, variant_column=variant_column,
                                         ref_column=ref_column, alt_column=alt_column, top_genes_count=top_genes_count,
                                         max_samples=max_samples,
-                                        figsize=figsize, title=title)
+                                        figsize=figsize, title=title, include_silent=include_silent,
+                                        non_syn_classifications=non_syn_classifications,
+                                        sample_prefix=sample_prefix)
             plt.close(fig)
             return fig
 
@@ -773,9 +911,14 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
     def signature_bar_chart(self,
                            ref_genome: str,
                            n_signatures: int = 3,
-                           cosmic_path: Optional[str] = None,
+                           cosmic_path: Optional[Union[str, bool]] = None,
                            figsize: Optional[Tuple[int, int]] = None,
-                           title: str = "Mutational Signature Profiles") -> Figure:
+                           title: str = "Mutational Signature Profiles",
+                           update_data: bool = False,
+                           ignoreChr: Optional[list] = None,
+                           pConstant: Optional[float] = None,
+                           exclude_artifacts: bool = True,
+                           aetiology_path: Optional[str] = None) -> Figure:
         """
         Generate a bar chart visualization showing mutational signature profiles.
         
@@ -794,10 +937,37 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
             ref_genome: Path to the reference genome FASTA file.
                         Required to generate trinucleotide contexts if not present.
             n_signatures: Number of signatures to extract (default: 3)
-            cosmic_path: Path to COSMIC catalog file (optional). If provided, signatures
-                        will be aligned with COSMIC and renamed (e.g., "SBS1-like (cos=0.95)").
+            cosmic_path: Path to a COSMIC-format SBS catalog file. If None
+                        (default), uses the official bundled COSMIC v3.4 SBS
+                        (GRCh37) catalog automatically - no need to supply a
+                        file. Pass "maftools" to use the older, 67-signature
+                        catalog bundled with maftools instead, a custom path
+                        to use your own catalog, or False to skip COSMIC
+                        alignment entirely and show raw NMF signature shapes.
             figsize: Figure size (width, height). If None, automatically calculated as (12, 3 * n_signatures)
             title: Plot title
+            update_data: If True, permanently replaces self.data with the
+                        filtered SNV-only subset used to compute the trinucleotide
+                        matrix (indels/multiallelic/unresolved-context variants
+                        dropped). Off by default — only enable this if you
+                        specifically want to keep working with that reduced,
+                        signature-ready subset for the rest of your session.
+                        See trinucleotideMatrix()'s update_data docs for details.
+            ignoreChr: Chromosomes to exclude before building the context matrix
+                        (e.g. ['X']). Passed straight through to trinucleotideMatrix().
+            pConstant: Small positive pseudo-count added to the context matrix
+                        before NMF. Passed straight through to extractSignatures().
+            exclude_artifacts: If True (default), known artifact/sequencing-noise
+                        COSMIC signatures (SBS27, SBS43, SBS45-60, SBS95, and any
+                        signature ending in 'c' or containing 'artefact') are
+                        excluded when matching against cosmic_path. Set to False
+                        to allow matches against those too — e.g. to reproduce
+                        maftools' plotSignatures(), which doesn't exclude them.
+            aetiology_path: Path to a two-column TSV (Signature, Aetiology), e.g.
+                        data/examples/maftools_SBS_aetiology.tsv. When given,
+                        each panel's title gets a second line with the proposed
+                        aetiology of its matched signature, matching maftools'
+                        plotSignatures() (which always shows it).
 
         Returns:
             matplotlib.figure.Figure: Figure with signature bar charts
@@ -831,40 +1001,56 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
         start_time = time.time()
         logger.info("Generating signature bar chart...")
         
-        # Generate trinucleotide matrix from mutation data
-        contexts_df, enriched_data = self.trinucleotideMatrix(ref_genome=ref_genome)
-        self.data = enriched_data
-        
+        # Generate trinucleotide matrix from mutation data. By default this does
+        # NOT touch self.data (see update_data docstring above) — pass
+        # update_data=True explicitly if you want to permanently keep the
+        # filtered/enriched SNV-only subset as self.data going forward.
+        contexts_df, _ = self.trinucleotideMatrix(
+            ref_genome=ref_genome, update_data=update_data, ignoreChr=ignoreChr
+        )
+
         # Extract mutational signatures using NMF
         try:
-            result = extractSignatures(contexts_df, n=n_signatures)
+            result = extractSignatures(contexts_df, n=n_signatures, pConstant=pConstant)
         except Exception as e:
             raise ValueError(f"Signature extraction failed: {e}") from e
         
-        # Align with COSMIC catalog if provided
-        if cosmic_path is not None:
+        # Align with COSMIC catalog unless explicitly disabled (cosmic_path=False)
+        cosmic_path = _resolve_cosmic_catalog_path(cosmic_path)
+        aetiology_path = _resolve_aetiology_catalog_path(aetiology_path)
+        if cosmic_path is not False:
             W_aligned, _, signature_names = align_signatures_to_cosmic(
                 W=result['signatures'],
                 H=result['contributions'],
                 cosmic_path=cosmic_path,
-                min_cosine=0.5
+                min_cosine=0.5,
+                exclude_artifacts=exclude_artifacts,
+                aetiology_path=aetiology_path
             )
             signatures = W_aligned.values
         else:
             signatures = result['signatures'].values
             signature_names = [f"Signature {i+1}" for i in range(n_signatures)]
         
+        # Panel titles grow to two lines when aetiology_path is set ("SBSx-like
+        # (cos=..)" + "Aetiology: ..."), so they need extra vertical room —
+        # otherwise the top panel's title collides with the figure suptitle.
+        has_aetiology_line = aetiology_path is not None
+        if figsize is None and has_aetiology_line:
+            figsize = (12, 3.6 * n_signatures)
+
         # Create visualization
         fig, _ = create_signature_bar_chart(
             signatures=signatures,
             signature_names=signature_names,
             figsize=figsize
         )
-        
+
         # Add main title with proper spacing
         if title:
             fig.suptitle(title, fontsize=16, fontweight='bold', y=0.995)
-            plt.subplots_adjust(top=0.93, hspace=0.4)
+            top_margin = 0.90 if has_aetiology_line else 0.93
+            plt.subplots_adjust(top=top_margin, hspace=0.55 if has_aetiology_line else 0.4)
         
         # Close to prevent automatic display in notebooks
         plt.close(fig)
@@ -877,7 +1063,7 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
     def cosine_similarity_heatmap(
         self,
         ref_genome: str,
-        cosmic_path: str,
+        cosmic_path: Optional[str] = None,
         n_signatures: int = 3,
         prefix: Optional[str] = None,
         add: bool = True,
@@ -886,6 +1072,8 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
         signature_names: Optional[List[str]] = None,
         figsize: Tuple[int, int] = (14, 3),
         title: str = "Cosine Similarity: Extracted vs COSMIC Signatures",
+        update_data: bool = False,
+        pConstant: Optional[float] = None,
     ) -> Figure:
         """
         Generate cosine similarity heatmap comparing extracted signatures with COSMIC catalog.
@@ -907,9 +1095,11 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
         ref_genome : str
             Path to reference genome FASTA file (e.g., "hg38.fa").
             Used to extract trinucleotide contexts around each mutation.
-        cosmic_path : str
-            Path to COSMIC signature catalog TSV file.
-            Example: "COSMIC_v3.4_SBS_GRCh38.txt"
+        cosmic_path : Optional[str], default None
+            Path to COSMIC signature catalog TSV file. If None (default),
+            uses the official bundled COSMIC v3.4 SBS (GRCh37) catalog
+            automatically. Pass "maftools" to use the bundled maftools
+            catalog instead, or a custom path to use your own.
             Must have 96 rows (trinucleotide contexts) and columns for each signature.
         n_signatures : int, default 3
             Number of mutational signatures to extract from the data.
@@ -930,6 +1120,12 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
             Figure size as (width, height) in inches.
         title : str, default "Cosine Similarity: Extracted vs COSMIC Signatures"
             Title for the plot. Set to empty string "" to hide the title.
+        update_data : bool, default False
+            If True, permanently replaces self.data with the filtered SNV-only
+            subset used to compute the trinucleotide matrix. Off by default,
+            matching maftools' behavior of never mutating your mutation table
+            as a side effect of a plotting call. See trinucleotideMatrix()'s
+            update_data docs for details.
 
         Returns
         -------
@@ -997,7 +1193,8 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
             prefix=prefix,
             add=add,
             ignoreChr=ignoreChr,
-            useSyn=useSyn
+            useSyn=useSyn,
+            update_data=update_data
         )
         
         if contexts_df.sum().sum() == 0:
@@ -1009,9 +1206,10 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
         result = extractSignatures(
             contexts_df=contexts_df,
             n=n_signatures,
-            parallel=4
+            parallel=4,
+            pConstant=pConstant
         )
-        
+
         W = result['signatures'].values
         
         if signature_names is None:
@@ -1019,7 +1217,7 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
         
         fig, _ = create_cosine_similarity_heatmap(
             W=W,
-            cosmic_path=cosmic_path,
+            cosmic_path=_resolve_cosmic_catalog_path(cosmic_path),
             signature_names=signature_names,
             figsize=figsize,
             title=title
@@ -1042,12 +1240,15 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
                                       ignoreChr: Optional[list] = None,
                                       useSyn: bool = True,
                                       signature_names: Optional[List[str]] = None,
-                                      cosmic_path: Optional[str] = None,
+                                      cosmic_path: Optional[Union[str, bool]] = None,
                                       figsize: Optional[Tuple[float, float]] = None,
                                       cmap: str = 'Blues',
                                       show_values: bool = False,
                                       show_labels: bool = True,
-                                      title: str = "Signature Contributions per Sample") -> Figure:
+                                      title: str = "Signature Contributions per Sample",
+                                      update_data: bool = False,
+                                      exclude_artifacts: bool = True,
+                                      aetiology_path: Optional[str] = None) -> Figure:
         """
         Generate heatmap showing relative signature contributions per sample (Panel C).
         
@@ -1084,9 +1285,12 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
         signature_names : Optional[List[str]], default None
             Custom names for signatures (e.g., ["SBS1-like", "SBS5-like"]).
             If None, uses generic names like "Signature 1", "Signature 2", etc.
-        cosmic_path : Optional[str], default None
-            Path to COSMIC catalog file. If provided, signatures will be aligned
-            with COSMIC and automatically renamed (e.g., "SBS1-like (cos=0.95)").
+        cosmic_path : Optional[Union[str, bool]], default None
+            Path to a COSMIC-format SBS catalog file. If None (default), uses
+            the official bundled COSMIC v3.4 SBS (GRCh37) catalog automatically
+            to align and rename signatures (e.g., "SBS1-like (cos=0.95)").
+            Pass "maftools" to use the bundled maftools catalog instead, a
+            custom path to use your own, or False to skip COSMIC alignment.
         figsize : Optional[Tuple[float, float]], default None
             Figure size as (width, height) in inches.
             If None, automatically calculated based on number of samples.
@@ -1100,6 +1304,12 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
             or composite plots to reduce clutter.
         title : str, default "Signature Contributions per Sample"
             Title for the plot.
+        update_data : bool, default False
+            If True, permanently replaces self.data with the filtered SNV-only
+            subset used to compute the trinucleotide matrix. Off by default,
+            matching maftools' behavior of never mutating your mutation table
+            as a side effect of a plotting call. See trinucleotideMatrix()'s
+            update_data docs for details.
         
         Returns
         -------
@@ -1169,7 +1379,8 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
             prefix=prefix,
             add=add,
             ignoreChr=ignoreChr,
-            useSyn=useSyn
+            useSyn=useSyn,
+            update_data=update_data
         )
         
         if contexts_df.sum().sum() == 0:
@@ -1189,13 +1400,17 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
         common_samples = [s for s in maf_sample_order if s in contributions_df.columns]
         contributions_df = contributions_df[common_samples]
         
-        # Optionally align with COSMIC for signature naming
-        if cosmic_path is not None:
+        # Optionally align with COSMIC for signature naming (unless explicitly disabled)
+        cosmic_path = _resolve_cosmic_catalog_path(cosmic_path)
+        aetiology_path = _resolve_aetiology_catalog_path(aetiology_path)
+        if cosmic_path is not False:
             _, H_aligned, signature_names_aligned = align_signatures_to_cosmic(
                 W=result['signatures'],
                 H=contributions_df,
                 cosmic_path=cosmic_path,
-                min_cosine=0.5
+                min_cosine=0.5,
+                exclude_artifacts=exclude_artifacts,
+                aetiology_path=aetiology_path
             )
             
             contributions_df = H_aligned
@@ -1234,7 +1449,8 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
                                       useSyn: bool = True,
                                       signature_names: Optional[List[str]] = None,
                                       figsize: Tuple[int, int] = (10, 8),
-                                      title: str = "Relative Signature Contributions") -> Figure:
+                                      title: str = "Relative Signature Contributions",
+                                      update_data: bool = False) -> Figure:
         """
         Generate a bar plot showing relative signature contributions across the cohort.
         
@@ -1252,6 +1468,8 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
             signature_names: Optional custom signature names
             figsize: Figure size
             title: Plot title
+            update_data: If True, permanently replaces self.data with the
+                filtered SNV-only subset used internally. Off by default.
             
         Returns:
             matplotlib.figure.Figure: Figure with bar plot
@@ -1272,7 +1490,8 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
             useSyn=useSyn,
             signature_names=signature_names,
             figsize=figsize,
-            title=title
+            title=title,
+            update_data=update_data
         )
 
     def signature_donut_plot(
@@ -1286,6 +1505,7 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
         signature_names: Optional[List[str]] = None,
         figsize: Tuple[int, int] = (8, 8),
         title: str = "Relative Contribution of Mutational Signatures",
+        update_data: bool = False,
     ) -> Figure:
         """
         Generate a donut plot showing the global proportion of each signature across the cohort.
@@ -1308,6 +1528,11 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
             signature_names: Optional custom names for signatures. If None, uses generic names.
             figsize: Figure size (width, height) in inches
             title: Plot title
+            update_data: If True, permanently replaces self.data with the
+                filtered SNV-only subset used to compute the trinucleotide
+                matrix. Off by default, matching maftools' behavior of never
+                mutating your mutation table as a side effect of a plotting
+                call. See trinucleotideMatrix()'s update_data docs for details.
 
         Returns:
             matplotlib.figure.Figure: Figure with donut plot
@@ -1348,6 +1573,7 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
             add=add,
             ignoreChr=ignoreChr,
             useSyn=useSyn,
+            update_data=update_data,
         )
 
         if contexts_df.sum().sum() == 0:
@@ -1392,6 +1618,7 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
         sort_samples: bool = False,
         max_samples: Optional[int] = None,
         show_labels: bool = True,
+        update_data: bool = False,
     ) -> Figure:
         """
         Generate a stacked bar chart showing signature contributions per sample.
@@ -1414,6 +1641,11 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
             sort_samples: If True, sort samples by dominant signature. Default is False (original order).
             max_samples: Maximum number of samples to display. If None, shows all.
             show_labels: If True, show sample labels on X-axis. Default is True.
+            update_data: If True, permanently replaces self.data with the
+                filtered SNV-only subset used to compute the trinucleotide
+                matrix. Off by default, matching maftools' behavior of never
+                mutating your mutation table as a side effect of a plotting
+                call. See trinucleotideMatrix()'s update_data docs for details.
 
         Returns:
             matplotlib.figure.Figure: Figure with stacked bar chart
@@ -1445,7 +1677,8 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
             prefix=prefix,
             add=add,
             ignoreChr=ignoreChr,
-            useSyn=useSyn
+            useSyn=useSyn,
+            update_data=update_data
         )
         
         if contexts_df.sum().sum() == 0:
@@ -1487,7 +1720,7 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
     def mutational_signature_analysis(
         self,
         ref_genome: str,
-        cosmic_path: str,
+        cosmic_path: Optional[str] = None,
         n_signatures: int = 3,
         sample_column: str = SAMPLE_COLUMN,
         prefix: Optional[str] = None,
@@ -1498,6 +1731,8 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
         selected_signatures: Optional[List[str]] = None,
         figsize: Tuple[int, int] = (24, 12),
         title: str = "Mutational Signature Analysis",
+        update_data: bool = False,
+        pConstant: Optional[float] = None,
     ) -> Figure:
         """
         Create a comprehensive mutational signature analysis visualization.
@@ -1517,8 +1752,11 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
         ----------
         ref_genome : str
             Reference genome FASTA file path for trinucleotide context extraction.
-        cosmic_path : str
-            Path to COSMIC signature catalog file (TSV format).
+        cosmic_path : Optional[str], default None
+            Path to COSMIC signature catalog file (TSV format). If None
+            (default), uses the official bundled COSMIC v3.4 SBS (GRCh37)
+            catalog automatically. Pass "maftools" to use the bundled
+            maftools catalog instead, or a custom path to use your own.
         n_signatures : int, default 3
             Number of signatures to extract via NMF decomposition.
         sample_column : str, default "Tumor_Sample_Barcode"
@@ -1544,6 +1782,14 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
             with equal width columns (1/2 left, 1/2 right).
         title : str, default "Mutational Signature Analysis"
             Main title for the entire figure.
+        update_data : bool, default False
+            If True, permanently replaces self.data with the filtered SNV-only
+            subset used to compute the trinucleotide matrix (indels, multiallelic
+            variants, and unresolved-context SNVs dropped; synonymous variants
+            too if useSyn=False). Off by default, matching maftools' behavior
+            of never mutating your mutation table as a side effect of a
+            plotting/analysis call. See trinucleotideMatrix()'s update_data
+            docs for details.
 
         Returns
         -------
@@ -1640,7 +1886,8 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
             prefix=prefix,
             add=add,
             ignoreChr=ignoreChr,
-            useSyn=useSyn
+            useSyn=useSyn,
+            update_data=update_data
         )
         
         if contexts_df.empty:
@@ -1649,7 +1896,8 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
         # Extract signatures using NMF
         signature_result = extractSignatures(
             contexts_df,
-            n=n_signatures
+            n=n_signatures,
+            pConstant=pConstant
         )
         
         W = signature_result['signatures'].values  # 96 x n_signatures (numpy array)
@@ -1686,7 +1934,7 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
             W=W,
             H=H,
             sample_names=sample_names,
-            cosmic_path=cosmic_path,
+            cosmic_path=_resolve_cosmic_catalog_path(cosmic_path),
             contributions_abs=contributions_abs,
             signature_names=signature_names,
             selected_signatures=selected_signatures,
@@ -1709,6 +1957,7 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
                      custom_domains: Optional[List[Dict]] = None,
                      count_by: str = "mutations",
                      label_top_n: int = 20,
+                     label_pos: Optional[Union[int, List[int], str]] = None,
                      show_lollipops: bool = True,
                      figsize: Tuple[int, int] = (16, 9),
                      title: Optional[str] = None) -> Figure:
@@ -1742,6 +1991,12 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
                      - "mutations": Count all mutation events (default)
                      - "samples": Count unique samples (deduplicate by sample)
             label_top_n: Number of top mutated positions to label (default: 20).
+                        Ignored when label_pos is provided.
+            label_pos: Mirrors the `labelPos` argument of maftools' lollipopPlot():
+                      - None (default): label the `label_top_n` most mutated positions.
+                      - "all": label every mutated position.
+                      - int or list of int: label only those specific protein
+                        positions (e.g. 882 or [132, 882]).
             show_lollipops: If True (default), show mutation lollipops; if False, show only protein domains.
             figsize: Figure size as (width, height) in inches. Default: (16, 9).
             title: Custom plot title. If None, auto-generated from gene name and counts.
@@ -1773,6 +2028,13 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
             >>> # Use alternative protein change column
             >>> fig = py_mut.lollipop_plot(gene="NRAS", aa_col="Protein_Change")
 
+            >>> # Label only specific hotspot positions (like maftools' labelPos)
+            >>> fig = py_mut.lollipop_plot(gene="DNMT3A", aa_col="Protein_Change", label_pos=882)
+            >>> fig = py_mut.lollipop_plot(gene="TP53", label_pos=[175, 248, 273])
+
+            >>> # Label every mutated position
+            >>> fig = py_mut.lollipop_plot(gene="TP53", label_pos="all")
+
         Notes:
             - The plot uses a fixed color palette for reproducibility
             - Circle size represents mutation count at each position
@@ -1790,9 +2052,105 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
             custom_domains=custom_domains,
             count_by=count_by,
             label_top_n=label_top_n,
+            label_pos=label_pos,
             show_lollipops=show_lollipops,
             figsize=figsize,
             title=title
+        )
+
+        plt.close(fig)
+        return fig
+
+    def tcga_compare(self,
+                     cohort_name: str = "Input",
+                     capture_size: Optional[float] = 50.0,
+                     tcga_capture_size: float = 35.8,
+                     tcga_cohorts: Optional[List[str]] = None,
+                     primary_site: bool = False,
+                     logscale: bool = True,
+                     rm_hyper: bool = False,
+                     rm_zero: bool = True,
+                     decreasing: bool = False,
+                     figsize: Tuple[int, int] = DEFAULT_TCGA_COMPARE_FIGSIZE,
+                     title: Optional[str] = None) -> Figure:
+        """
+        Compare this cohort's tumor mutation burden (TMB) against the ~33
+        TCGA cohorts bundled with maftools, reproducing maftools'
+        ``tcgaCompare()`` plot.
+
+        Each TCGA cohort (plus this one, labeled `cohort_name`) is drawn as
+        a column of dots - one per sample, sorted by TMB - with a red median
+        line, ordered left to right by ascending median TMB (or descending,
+        if `decreasing=True`). This cohort's dots are drawn in black, every
+        TCGA cohort's in gray, matching maftools' default `col`.
+
+        Non-synonymous mutation counts reuse `calculate_tmb_analysis`, so
+        results are directly comparable with the rest of this module's TMB
+        outputs. For the underlying tables (median TMB per cohort, per-sample
+        TMB, pairwise t-tests) without plotting, see `calculate_tcga_compare`.
+
+        Args:
+            cohort_name: Label for this cohort in the comparison (maftools'
+                        `cohortName`).
+            capture_size: Interrogated region size in Mb used to normalize
+                        this cohort's TMB (maftools' `capture_size`). If
+                        None, raw non-synonymous counts are compared instead
+                        (maftools' own default) - only meaningful when the
+                        TCGA cohorts were sequenced with a comparable
+                        capture size.
+            tcga_capture_size: Interrogated region size in Mb used to
+                        normalize the TCGA cohorts (maftools'
+                        `tcga_capture_size`; default 35.8, the typical TCGA
+                        whole-exome capture size). Ignored if `capture_size`
+                        is None.
+            tcga_cohorts: Restrict the comparison to these TCGA cohort codes
+                        (e.g. `["LAML", "PAAD"]`). If None, all ~33 bundled
+                        cohorts are used.
+            primary_site: Group TCGA samples by tumor primary site instead
+                        of by TCGA project code.
+            logscale: Plot TMB on a log10 y-axis (maftools' default).
+            rm_hyper: Remove per-cohort outliers (Tukey's boxplot.stats
+                        rule) before comparing, matching maftools'
+                        `rm_hyper`.
+            rm_zero: Drop samples with zero non-synonymous mutations from
+                        this cohort before comparing, matching maftools'
+                        `rm_zero`.
+            decreasing: Order cohorts by descending median TMB instead of
+                        ascending.
+            figsize: Figure size as (width, height) in inches.
+            title: Custom plot title. If None, auto-generated from
+                        `cohort_name`.
+
+        Returns:
+            matplotlib Figure object with the TCGA comparison plot.
+
+        Raises:
+            ValueError: If no samples remain for this cohort, or
+                        `tcga_cohorts` matches no bundled TCGA cohort.
+
+        Examples:
+            >>> fig = py_mut.tcga_compare(cohort_name="LAML-TB", capture_size=50)
+            >>> py_mut.save_figure(fig, "tcga_compare.png")
+
+            >>> # Restrict to a handful of TCGA cohorts, raw mutation counts
+            >>> fig = py_mut.tcga_compare(cohort_name="PAAD-TB", capture_size=None,
+            ...                           tcga_cohorts=["PAAD", "LAML", "SKCM"])
+        """
+        from .visualizations.tcga_compare_plot import _create_tcga_compare_plot
+
+        fig = _create_tcga_compare_plot(
+            py_mut=self,
+            cohort_name=cohort_name,
+            capture_size=capture_size,
+            tcga_capture_size=tcga_capture_size,
+            tcga_cohorts=tcga_cohorts,
+            primary_site=primary_site,
+            logscale=logscale,
+            rm_hyper=rm_hyper,
+            rm_zero=rm_zero,
+            decreasing=decreasing,
+            figsize=figsize,
+            title=title,
         )
 
         plt.close(fig)
@@ -1807,7 +2165,9 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
                             vmin: float = -3.0,
                             vmax: float = 3.0,
                             pvalue: Tuple[float, float] = (0.05, 0.1),
-                            show_counts: bool = True) -> Figure:
+                            show_counts: bool = True,
+                            fdr_correction: bool = False,
+                            fdr_method: str = "fdr_bh") -> Figure:
         """
         Create somatic interactions heatmap showing co-occurrence and mutual exclusivity.
 
@@ -1835,15 +2195,27 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
             sample_column: Column name containing sample identifiers
                 (default: "Tumor_Sample_Barcode").
             figsize: Figure size as (width, height) in inches (default: (12, 10)).
-            title: Custom plot title. If None, auto-generated with top_genes count.
+            title: Custom plot title. If None, auto-generated with top_genes count
+                (and an "[FDR-corrected]" suffix when `fdr_correction=True`).
             vmin: Minimum value for color scale (default: -3.0).
                 Controls saturation for mutual exclusivity.
             vmax: Maximum value for color scale (default: 3.0).
                 Controls saturation for co-occurrence.
             pvalue: Tuple of p-value thresholds for significance markers.
                 Default: (0.05, 0.1) where 0.05 shows asterisks and 0.1 shows dots.
+                Applied to whichever p-value is displayed (see `fdr_correction`).
             show_counts: Whether to display sample counts next to gene names (default: True).
                 Format: "GENE [count]" (e.g., "TP53 [52]").
+            fdr_correction: If False (default), the heatmap colors and significance
+                markers are based on the RAW Fisher's exact test p-value, exactly
+                as before. If True, both are based on the p-value after False
+                Discovery Rate correction (see `fdr_method`), computed across the
+                C(top_genes, 2) pairwise tests performed on this gene set. The
+                colorbar label and legend automatically indicate which p-value
+                is being shown.
+            fdr_method: Multiple-testing correction method forwarded to
+                `statsmodels.stats.multitest.multipletests` (default: "fdr_bh",
+                Benjamini-Hochberg). Only used when `fdr_correction=True`.
 
         Returns:
             matplotlib Figure object with the somatic interactions heatmap.
@@ -1868,16 +2240,23 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
             >>> # Smaller figure for presentations
             >>> fig = py_mut.somatic_interactions(top_genes=15, figsize=(8, 7))
 
+            >>> # Color/mark significance using the FDR-adjusted p-value instead
+            >>> fig = py_mut.somatic_interactions(top_genes=25, fdr_correction=True)
+
         Notes:
             - Only the upper-left triangle is displayed (avoids redundant pairs)
             - Diagonal is excluded (gene vs itself)
             - Fisher's exact test is used for statistical testing
             - P-values < 1e-10 are clipped to avoid log(0)
             - Results are deterministic and reproducible
+            - The FDR correction (when enabled) is recomputed for the exact
+              `top_genes` requested, so it always reflects C(top_genes, 2) tests
 
         See Also:
             - oncoplot(): Visualize mutation patterns across samples
             - top_mutated_genes_plot(): Identify most frequently mutated genes
+            - somatic_interactions_table(): Get the underlying pairwise results
+              (raw + FDR-adjusted p-values) as a printable DataFrame
         """
         from .visualizations.somatic_interactions import (
             _create_somatic_interactions_plot,
@@ -1894,11 +2273,83 @@ class PyMutation(CancerAnnotateMixin, ActionableMutationMixin, MutationBurdenMix
             vmax=vmax,
             pvalue=pvalue,
             show_counts=show_counts,
+            fdr_correction=fdr_correction,
+            fdr_method=fdr_method,
         )
 
         plt.close(fig)
 
         return fig
+
+    def somatic_interactions_table(self,
+                                  top_genes: int = 25,
+                                  gene_column: str = GENE_COLUMN,
+                                  sample_column: str = SAMPLE_COLUMN,
+                                  fdr_method: str = "fdr_bh") -> pd.DataFrame:
+        """
+        Compute the somatic interactions pairwise table (co-occurrence /
+        mutual exclusivity) for the top mutated genes, including False
+        Discovery Rate (FDR) corrected p-values.
+
+        This is the tabular counterpart of `somatic_interactions()`: it uses
+        the exact same variant filtering and top-k gene selection, so the
+        table is always consistent with what the heatmap displays for the
+        same `top_genes`. The FDR correction is recomputed over the
+        C(top_genes, 2) pairwise tests actually performed, so it
+        automatically adapts to whatever `top_genes` value is selected.
+
+        Args:
+            top_genes: Number of most frequently mutated genes to include (default: 25).
+                Genes are ranked by number of samples with mutations.
+            gene_column: Column name containing gene symbols (default: "Hugo_Symbol").
+            sample_column: Column name containing sample identifiers
+                (default: "Tumor_Sample_Barcode").
+            fdr_method: Multiple-testing correction method forwarded to
+                `statsmodels.stats.multitest.multipletests` (default: "fdr_bh",
+                Benjamini-Hochberg). Other options include "bonferroni", "holm", etc.
+
+        Returns:
+            pandas DataFrame with one row per gene pair, sorted by FDR-adjusted
+            p-value ascending, with columns:
+                - Gene 1, Gene 2
+                - Altered samples gene 1, Altered samples gene 2
+                - Both altered, Only gene 1 altered, Only gene 2 altered, Neither altered
+                - Odds ratio
+                - P-value (raw Fisher's exact test p-value, clipped at 1e-10)
+                - P-value adjusted (FDR)
+                - Significant (FDR < 0.05)
+                - Association ("co-occurrence" / "mutual_exclusivity" / "neutral")
+
+        Raises:
+            ValueError: If fewer than 2 genes are mutated in the dataset.
+
+        Examples:
+            >>> # Get the table and print it directly
+            >>> table = py_mut.somatic_interactions_table(top_genes=25)
+            >>> print(table)
+
+            >>> # Export it, same as any other DataFrame
+            >>> table.to_csv("somatic_interactions.csv", index=False)
+            >>> table.to_excel("somatic_interactions.xlsx", index=False)
+
+            >>> # Inspect specific gene pairs
+            >>> table[table["Gene 1"].isin(["NPM1", "FLT3"]) &
+            ...       table["Gene 2"].isin(["NPM1", "FLT3"])]
+
+        See Also:
+            - somatic_interactions(): Heatmap visualization of the same analysis
+        """
+        from .visualizations.somatic_interactions import (
+            _get_somatic_interactions_table,
+        )
+
+        return _get_somatic_interactions_table(
+            py_mut=self,
+            top_genes=top_genes,
+            gene_column=gene_column,
+            sample_column=sample_column,
+            fdr_method=fdr_method,
+        )
 
     def comut_mutation_burden(self,
                             sample_column: str = SAMPLE_COLUMN,

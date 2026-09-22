@@ -30,6 +30,9 @@ DEFAULT_ONCOPLOT_TOP_GENES = 10
 DEFAULT_ONCOPLOT_MAX_SAMPLES = 193
 DEFAULT_ONCOPLOT_FIGSIZE = (16, 10)
 
+# TCGA cohort comparison specific parameters (see visualizations/tcga_compare_plot.py)
+DEFAULT_TCGA_COMPARE_FIGSIZE = (14, 7)
+
 # Visualization modes
 MODE_VARIANTS = "variants"
 MODE_SAMPLES = "samples"
