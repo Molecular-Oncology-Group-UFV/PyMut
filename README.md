@@ -23,18 +23,18 @@ pip install PyMut-Library
 For complete functionality including all bioinformatics tools, use the conda environment:
 
 ```bash
-# 0) Descargar el environment.yml (elige curl o wget)
+# 0) Download environment.yml (choose curl or wget)
 curl -fsSL https://raw.githubusercontent.com/Molecular-Oncology-Group-UFV/PyMut/main/environment.yml -o environment.yml
-# ó:
-# wget -O environment.yml curl -fsSL https://raw.githubusercontent.com/Molecular-Oncology-Group-UFV/PyMut/main/environment.yml -o environment.yml
+# or:
+# wget -O environment.yml https://raw.githubusercontent.com/Molecular-Oncology-Group-UFV/PyMut/main/environment.yml
 
-# 1) crear el entorno (añade tus binarios al environment.yml)
+# 1) Create the environment (add your binaries to environment.yml)
 conda env create -f environment.yml
 
-# 2) activar el entorno
-conda activate NOMBRE-DEL-ENTORNO
+# 2) Activate the environment
+conda activate ENVIRONMENT-NAME
 
-# 3) instalar tu librería desde PyPI en ese entorno
+# 3) Install your library from PyPI in that environment
 pip install PyMut-Library
 ```
 
@@ -48,7 +48,7 @@ These tools enable advanced genomic data processing capabilities that are not av
 
 ## 📚 Documentation
 
-- **[Complete Documentation](https://luisruimor.github.io/pyMut/)** - Comprehensive guides and API reference
+- **[Complete Documentation]()** - Comprehensive guides and API reference
 - **[Installation Guide](https://luisruimor.github.io/pyMut/installation/)** - Detailed installation instructions
 - **[API Reference](https://luisruimor.github.io/pyMut/api/Core/pymutation_class/)** - Complete API documentation
 - **[Examples](https://luisruimor.github.io/pyMut/examples/data/input_read_maf/#example-loading-tcga-laml-maf-file)** - Real-world usage examples
@@ -56,7 +56,7 @@ These tools enable advanced genomic data processing capabilities that are not av
 
 ## 📋 Requirements
 
-| Librería                  | Dependencias inmediatas                                                                                                                                                                                                                                                                     |
+| Librery                | Dependencies                                                                                                                                                                                                                                                                     |
 |---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **duckdb** 1.3.2          | – Ninguna                                                                                                                                                                                                                                                                                   |
 | **fastparquet** 2024.11.0 | – cramjam ≥ 2.3<br>– fsspec<br>– numpy<br>– packaging<br>– pandas ≥ 1.5.0                                                                                                                                                                                                                   |
