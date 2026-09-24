@@ -1,0 +1,35 @@
+# ============================================================================
+# PyMut repository .gitignore
+# ============================================================================
+
+# --- Python / R noise -------------------------------------------------------
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.Rhistory
+.RData
+*.egg-info/
+.pytest_cache/
+
+# --- Input data (TCGA controlled access -- NEVER commit) --------------------
+data/
+*.maf
+*.maf.gz
+*.vcf
+*.vcf.gz
+*.rds
+.pymut_cache/
+
+# --- Validation generated outputs -------------------------------------------
+# Everything under validation/*/results/ is generated, EXCEPT the small
+# text reports (md/json/txt/csv), which are kept as evidence of the
+# validation results.
+validation/*/results/*
+!validation/*/results/*.md
+!validation/*/results/*.json
+!validation/*/results/*.txt
+!validation/*/results/*.csv
+
+# --- OS noise ---------------------------------------------------------------
+.DS_Store
+Thumbs.db
