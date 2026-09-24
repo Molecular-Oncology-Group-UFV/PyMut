@@ -1,0 +1,97 @@
+{
+  "settings": {
+    "keys": [
+      "Hugo_Symbol",
+      "Chromosome",
+      "Start_Position",
+      "End_Position",
+      "Tumor_Sample_Barcode"
+    ],
+    "cohorts": [
+      "TCGA-LAML",
+      "TCGA-PAAD"
+    ]
+  },
+  "thresholds": {
+    "global_match_min": 0.995
+  },
+  "cases": [
+    {
+      "name": "laml_chromosome_filter",
+      "label": "TCGA-LAML\nChromosome filter",
+      "cohort": "TCGA-LAML",
+      "filter_kind": "chromosome",
+      "maf_py": "/home/albalopez/Documentos/PyMut_DocsAlba/validation/filter_concordance/results/tcga_laml_chr_filter_py.maf",
+      "maf_maftools": "/home/albalopez/Documentos/PyMut_DocsAlba/validation/filter_concordance/results/tcga_laml_chr_filter_maftools.maf",
+      "n_rows_py": 624,
+      "n_rows_maftools": 624,
+      "n_unique_py": 624,
+      "n_unique_maftools": 624,
+      "n_shared": 624,
+      "n_py_only": 0,
+      "n_maftools_only": 0,
+      "n_union": 624,
+      "jaccard_index": 1.0,
+      "pass_threshold": true,
+      "pass_exact": true
+    },
+    {
+      "name": "laml_dnmt3a_region_filter",
+      "label": "TCGA-LAML\nDNMT3A region",
+      "cohort": "TCGA-LAML",
+      "filter_kind": "gene_locus",
+      "maf_py": "/home/albalopez/Documentos/PyMut_DocsAlba/validation/filter_concordance/results/tcga_laml_dnmt3a_region_py.maf",
+      "maf_maftools": "/home/albalopez/Documentos/PyMut_DocsAlba/validation/filter_concordance/results/tcga_laml_dnmt3a_region_maftools.maf",
+      "n_rows_py": 54,
+      "n_rows_maftools": 54,
+      "n_unique_py": 54,
+      "n_unique_maftools": 54,
+      "n_shared": 54,
+      "n_py_only": 0,
+      "n_maftools_only": 0,
+      "n_union": 54,
+      "jaccard_index": 1.0,
+      "pass_threshold": true,
+      "pass_exact": true
+    },
+    {
+      "name": "paad_chromosome_filter",
+      "label": "TCGA-PAAD\nChromosome filter",
+      "cohort": "TCGA-PAAD",
+      "filter_kind": "chromosome",
+      "maf_py": "/home/albalopez/Documentos/PyMut_DocsAlba/validation/filter_concordance/results/tcga_paad_chr_filter_py.maf",
+      "maf_maftools": "/home/albalopez/Documentos/PyMut_DocsAlba/validation/filter_concordance/results/tcga_paad_chr_filter_maftools.maf",
+      "n_rows_py": 12839,
+      "n_rows_maftools": 12839,
+      "n_unique_py": 12839,
+      "n_unique_maftools": 12839,
+      "n_shared": 12839,
+      "n_py_only": 0,
+      "n_maftools_only": 0,
+      "n_union": 12839,
+      "jaccard_index": 1.0,
+      "pass_threshold": true,
+      "pass_exact": true
+    },
+    {
+      "name": "paad_tp53_region_filter",
+      "label": "TCGA-PAAD\nTP53 region",
+      "cohort": "TCGA-PAAD",
+      "filter_kind": "gene_locus",
+      "maf_py": "/home/albalopez/Documentos/PyMut_DocsAlba/validation/filter_concordance/results/tcga_paad_tp53_region_py.maf",
+      "maf_maftools": "/home/albalopez/Documentos/PyMut_DocsAlba/validation/filter_concordance/results/tcga_paad_tp53_region_maftools.maf",
+      "n_rows_py": 119,
+      "n_rows_maftools": 119,
+      "n_unique_py": 119,
+      "n_unique_maftools": 119,
+      "n_shared": 119,
+      "n_py_only": 0,
+      "n_maftools_only": 0,
+      "n_union": 119,
+      "jaccard_index": 1.0,
+      "pass_threshold": true,
+      "pass_exact": true
+    }
+  ],
+  "pass_all": true
+}

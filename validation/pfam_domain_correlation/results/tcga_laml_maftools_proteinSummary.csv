@@ -1,0 +1,1517 @@
+"HGNC","AAPos","Variant_Classification","N","total","fraction","DomainLabel","pfam","Description"
+"DNMT3A",882,"Missense_Mutation",27,54,0.5,"AdoMet_MTases","AdoMet-MTases are enzymes that use S-adenosyl-L-methionine (SAM or AdoMet) as a substrate for methyltransfer, creating the product S-adenosyl-L-homocysteine (AdoHcy)","S-adenosylmethionine-dependent methyltransferases (SAM or AdoMet-MTase), class I"
+"IDH1",132,"Missense_Mutation",18,18,1,"PTZ00435","Provisional","isocitrate dehydrogenase"
+"IDH2",140,"Missense_Mutation",17,20,0.85,"PTZ00435","Provisional","isocitrate dehydrogenase"
+"FLT3",835,"Missense_Mutation",14,52,0.269230769230769,"PKc_like","cl09925","Protein Kinases, catalytic domain"
+"FLT3",599,"In_Frame_Ins",10,52,0.192307692307692,"PKc_like","cl09925","Protein Kinases, catalytic domain"
+"U2AF1",34,"Missense_Mutation",7,8,0.875,"zf-CCCH","pfam00642","Zinc finger C-x8-C-x5-C-x3-H type (and similar)"
+"NRAS",61,"Missense_Mutation",6,15,0.4,"H_N_K_Ras_like","cd04138","Ras GTPase family containing H-Ras,N-Ras and K-Ras4A/4B"
+"KIT",816,"Missense_Mutation",5,10,0.5,"PTKc_Kit","cd05104","Catalytic domain of the Protein Tyrosine Kinase, Kit"
+"NRAS",13,"Missense_Mutation",5,15,0.333333333333333,"H_N_K_Ras_like","cd04138","Ras GTPase family containing H-Ras,N-Ras and K-Ras4A/4B"
+"FLT3",601,"In_Frame_Ins",4,52,0.0769230769230769,"PKc_like","cl09925","Protein Kinases, catalytic domain"
+"NRAS",12,"Missense_Mutation",4,15,0.266666666666667,"H_N_K_Ras_like","cd04138","Ras GTPase family containing H-Ras,N-Ras and K-Ras4A/4B"
+"RUNX1",174,"Nonsense_Mutation",4,19,0.210526315789474,"Runt","pfam00853","Runt domain"
+"RUNX1",135,"Missense_Mutation",4,19,0.210526315789474,"Runt","pfam00853","Runt domain"
+"FLT3",604,"In_Frame_Ins",3,52,0.0576923076923077,"PKc_like","cl09925","Protein Kinases, catalytic domain"
+"FLT3",595,"In_Frame_Ins",3,52,0.0576923076923077,"PKc_like","cl09925","Protein Kinases, catalytic domain"
+"FLT3",598,"In_Frame_Ins",3,52,0.0576923076923077,"PKc_like","cl09925","Protein Kinases, catalytic domain"
+"FLT3",597,"In_Frame_Ins",3,52,0.0576923076923077,"PKc_like","cl09925","Protein Kinases, catalytic domain"
+"FLT3",593,"In_Frame_Ins",3,52,0.0576923076923077,"PKc_like","cl09925","Protein Kinases, catalytic domain"
+"IDH2",172,"Missense_Mutation",3,20,0.15,"PTZ00435","Provisional","isocitrate dehydrogenase"
+"KRAS",12,"Missense_Mutation",3,8,0.375,"COG1100",NA,"GTPase SAR1 and related small G proteins [General function prediction only]"
+"CEBPA",310,"In_Frame_Ins",2,19,0.105263157894737,"bZIP_2","pfam07716","Basic region leucine zipper"
+"DNMT3A",736,"Missense_Mutation",2,54,0.037037037037037,"Dcm","COG0270","Site-specific DNA methylase [DNA replication, recombination, and repair]"
+"DNMT3A",729,"Missense_Mutation",2,54,0.037037037037037,"Dcm","COG0270","Site-specific DNA methylase [DNA replication, recombination, and repair]"
+"PTPN11",510,"Missense_Mutation",2,9,0.222222222222222,"PTPc","smart00194","Protein tyrosine phosphatase, catalytic domain"
+"RBBP4",330,"Missense_Mutation",2,2,1,"COG2319",NA,"FOG: WD40 repeat [General function prediction only]"
+"TET2",1422,"Frame_Shift_Ins",2,27,0.0740740740740741,"Tet_JBP","pfam12851","Oxygenase domain of the 2OGFeDO superfamily"
+"WT1",169,"Frame_Shift_Ins",2,12,0.166666666666667,"WT1","pfam02165","Wilm's tumour protein"
+"ABCA10",960,"Splice_Site",1,1,1,"ABC2_membrane","pfam01061","ABC-2 type transporter"
+"ABCA4",1517,"Missense_Mutation",1,1,1,"rim_protein","TIGR01257","retinal-specific rim ABC transporter"
+"ABCB11",1283,"Missense_Mutation",1,1,1,"PTZ00265","Provisional","multidrug resistance protein (mdr1)"
+"ABCC3",1271,"Missense_Mutation",1,1,1,"MRP_assoc_pro","TIGR00957","multi drug resistance-associated protein (MRP)"
+"ABCF1",658,"Missense_Mutation",1,1,1,"Uup","COG0488","ATPase components of ABC transporters with duplicated ATPase domains [General function prediction only]"
+"ABCG4",567,"Missense_Mutation",1,1,1,"3a01204","TIGR00955","The Eye Pigment Precursor Transporter (EPP) Family protein"
+"ABCG8",208,"Missense_Mutation",1,1,1,"ABCG_White","cd03234","The White subfamily represents ABC transporters homologous to the Drosophila white gene, which acts as a dimeric importer for eye pigment precursors.  The eye pigmentation of Drosophila is developed from the synthesis and deposition in the cells of red..."
+"ACOXL",46,"Missense_Mutation",1,1,1,"ACAD","cl09933","Acyl-CoA dehydrogenase"
+"ACPL2",184,"Missense_Mutation",1,1,1,"HP_HAP_like","contains a His residue which is phosphorylated during the reaction","Histidine phosphatase domain found in histidine acid phosphatases and phytases"
+"ACSM2A",247,"Splice_Site",1,1,1,"Acs","COG0365","Acyl-coenzyme A synthetases/AMP-(fatty) acid ligases [Lipid metabolism]"
+"ACSS3",266,"Missense_Mutation",1,1,1,"prpE","Provisional","propionyl-CoA synthetase"
+"ACTBL2",266,"Missense_Mutation",1,1,1,"Actin","pfam00022","Actin"
+"ACTL7A",426,"Missense_Mutation",1,1,1,"Actin","pfam00022","Actin"
+"ADAM11",72,"Missense_Mutation",1,2,0.5,"Pep_M12B_propep","pfam01562","Reprolysin family propeptide"
+"ADAMTS1",330,"Missense_Mutation",1,1,1,"ZnMc_ADAMTS_like","cd04273","Zinc-dependent metalloprotease, ADAMTS_like subgroup. ADAMs (A Disintegrin And Metalloprotease) are glycoproteins, which play roles in cell signaling, cell fusion, and cell-cell interactions. This particular subfamily represents domain architectures that..."
+"ADAMTS16",770,"Missense_Mutation",1,1,1,"ADAM_spacer1","pfam05986","ADAM-TS Spacer 1"
+"ADCY10",66,"Missense_Mutation",1,1,1,"CHD","cd07302","cyclase homology domain"
+"AFF2",362,"Splice_Site",1,1,1,"AF-4","pfam05110","AF-4 proto-oncoprotein"
+"AFF4",781,"Missense_Mutation",1,1,1,"AF-4","pfam05110","AF-4 proto-oncoprotein"
+"AGXT2",139,"Missense_Mutation",1,1,1,"GabT","COG0160","4-aminobutyrate aminotransferase and related aminotransferases [Amino acid transport and metabolism]"
+"AKAP13",2014,"Frame_Shift_Del",1,1,1,"RhoGEF","Also called Dbl-homologous (DH) domain. It appears that PH domains invariably occur C-terminal to RhoGEF/DH domains","Guanine nucleotide exchange factor for Rho/Rac/Cdc42-like GTPases"
+"AKAP5",102,"Missense_Mutation",1,1,1,"domain",NA,"essential to the intracellular anchoring function"
+"AKR7A2",297,"Missense_Mutation",1,1,1,"Aldo_ket_red","cd06660","Aldo-keto reductases (AKRs) are a superfamily of soluble NAD(P)(H) oxidoreductases whose chief purpose is to reduce aldehydes and ketones to primary and secondary alcohols. AKRs are present in all phyla and are of importance to both health and industrial..."
+"ALDH1A3",98,"Missense_Mutation",1,1,1,"ALDH_F1AB_F2_RALDH1","cd07141","NAD+-dependent retinal dehydrogenase 1, ALDH families 1A, 1B, and 2-like"
+"ALG6",189,"Missense_Mutation",1,1,1,"Alg6_Alg8","pfam03155","ALG6, ALG8 glycosyltransferase family"
+"ANKRD26",1300,"Missense_Mutation",1,1,1,"SbcC","COG0419","ATPase involved in DNA repair [DNA replication, recombination, and repair]"
+"ANO3",728,"Missense_Mutation",1,1,1,"Anoctamin","pfam04547","Calcium-activated chloride channel"
+"AP1G2",346,"Missense_Mutation",1,1,1,"Adaptin_N","pfam01602","Adaptin N terminal region"
+"AP1M1",192,"Missense_Mutation",1,1,1,"AP-1_Mu1A_Cterm","cd09258","C-terminal domain of medium Mu1A subunit in ubiquitously expressed clathrin-associated adaptor protein (AP) complex AP-1"
+"AP3S2",112,"Missense_Mutation",1,1,1,"Clat_adaptor_s","pfam01217","Clathrin adaptor complex small chain"
+"AQP5",163,"Missense_Mutation",1,1,1,"MIP","cd00333","Major intrinsic protein (MIP) superfamily. Members of the MIP superfamily function as membrane channels that selectively transport water, small neutral molecules, and ions out of and between cells. The channel proteins share a common fold: the N-terminal..."
+"ARAP2",934,"Missense_Mutation",1,2,0.5,"PH","cd00821","Pleckstrin homology (PH) domain"
+"ARHGAP35",390,"Missense_Mutation",1,1,1,"FF","smart00441","Contains two conserved F residues"
+"ARHGAP5",205,"Missense_Mutation",1,1,1,"P-loop_NTPase","cl09099","P-loop containing Nucleoside Triphosphate Hydrolases"
+"ARHGEF10L",315,"Splice_Site",1,1,1,"RhoGEF","Also called Dbl-homologous (DH) domain. It appears that PH domains invariably occur C-terminal to RhoGEF/DH domains","Guanine nucleotide exchange factor for Rho/Rac/Cdc42-like GTPases"
+"ARHGEF11",65,"Missense_Mutation",1,1,1,"PDZ_signaling","cd00992","PDZ domain found in a variety of Eumetazoan signaling molecules, often in tandem arrangements. May be responsible for specific protein-protein interactions, as most PDZ domains bind C-terminal polypeptides, and binding to internal (non-C-terminal)..."
+"ARHGEF19",751,"Splice_Site",1,1,1,"SH3_ARHGEF5_19","cd11940","Src homology 3 domain of the Rho guanine nucleotide exchange factors ARHGEF5 and ARHGEF19"
+"ARHGEF6",391,"Frame_Shift_Del",1,1,1,"RhoGEF","Also called Dbl-homologous (DH) domain. It appears that PH domains invariably occur C-terminal to RhoGEF/DH domains","Guanine nucleotide exchange factor for Rho/Rac/Cdc42-like GTPases"
+"ARL3",96,"Missense_Mutation",1,1,1,"Arl3","cd04155","Arf-like 3 (Arl3) GTPase"
+"ARSF",381,"Missense_Mutation",1,1,1,"AslA","COG3119","Arylsulfatase A and related enzymes [Inorganic ion transport and metabolism]"
+"ASB11",256,"Missense_Mutation",1,1,1,"Ank_2","pfam12796","Ankyrin repeats (3 copies)"
+"ASB15",353,"Missense_Mutation",1,1,1,"ANK","ankyrin repeats mediate protein-protein interactions in very diverse families of proteins. The number of ANK repeats in a protein can range from 2 to over 20 (ankyrins, for example). ANK repeats may occur in combinations with other...","ankyrin repeats"
+"ASXL3",335,"Missense_Mutation",1,1,1,"Asx-hm","pfam13919","Transcriptional enhancer, Asx-hm domain"
+"ATG16L1",558,"Missense_Mutation",1,1,1,"WD40","typically contains a GH dipeptide 11-24 residues from...","WD40 domain, found in a number of eukaryotic proteins that cover a wide variety of functions including adaptor/regulatory modules in signal transduction, pre-mRNA processing and cytoskeleton assembly"
+"ATG4C",354,"Missense_Mutation",1,1,1,"Peptidase_C54","pfam03416","Peptidase family C54"
+"ATP10B",1181,"Missense_Mutation",1,2,0.5,"MgtA","COG0474","Cation transport ATPase [Inorganic ion transport and metabolism]"
+"ATP10B",139,"Missense_Mutation",1,2,0.5,"E1-E2_ATPase","pfam00122","E1-E2 ATPase"
+"ATP11B",404,"Missense_Mutation",1,1,1,"ATPase-Plipid","TIGR01652","phospholipid-translocating P-type ATPase, flippase"
+"ATP13A5",824,"Missense_Mutation",1,1,1,"P-ATPase-V","TIGR01657","P-type ATPase of unknown pump specificity (type V)"
+"ATP1B4",185,"Missense_Mutation",1,1,1,"Na_K-ATPase","cl08255","Sodium / potassium ATPase beta chain"
+"ATP2A2",242,"Missense_Mutation",1,1,1,"ATPase-IIA1_Ca","TIGR01116","sarco/endoplasmic reticulum calcium-translocating P-type ATPase"
+"ATP2B2",900,"Missense_Mutation",1,1,1,"ATPase-IIB_Ca","TIGR01517","plasma-membrane calcium-translocating P-type ATPase"
+"ATP2B3",429,"Missense_Mutation",1,1,1,"MgtA","COG0474","Cation transport ATPase [Inorganic ion transport and metabolism]"
+"ATP2C1",703,"Missense_Mutation",1,1,1,"ATPase-IIA2_Ca","TIGR01522","golgi membrane calcium-translocating P-type ATPase"
+"ATP6V1C1",197,"Missense_Mutation",1,1,1,"V-ATPase_C","pfam03223","V-ATPase subunit C"
+"ATP6V1G3",14,"Missense_Mutation",1,1,1,"V-ATPase_G","cl03922","Vacuolar (H+)-ATPase G subunit"
+"AURKB",147,"Missense_Mutation",1,1,1,"S_TKc","smart00220","Serine/Threonine protein kinases, catalytic domain"
+"AURKC",142,"Missense_Mutation",1,1,1,"S_TKc","smart00220","Serine/Threonine protein kinases, catalytic domain"
+"B3GALT5",236,"Missense_Mutation",1,1,1,"Galactosyl_T","pfam01762","Galactosyltransferase"
+"BAAT",376,"Missense_Mutation",1,1,1,"BAAT_C","pfam08840","BAAT / Acyl-CoA thioester hydrolase C terminal"
+"BAIAP2L1",373,"Missense_Mutation",1,1,1,"SH3_BAIAP2L1","cd11913","Src Homology 3 domain of Brain-specific Angiogenesis Inhibitor 1-Associated Protein 2-Like 1, also called Insulin Receptor Tyrosine Kinase Substrate (IRTKS)"
+"BCAN",167,"Missense_Mutation",1,1,1,"Link_domain_CSPGs_modules_1_3","this extracellular link domain is found in the first and third link modules of the chondroitin sulfate proteoglycan core protein (CSPG) aggrecan. In addition, it is found in the first link module of three other CSPGs:...","Link_domain_CSPGs_modules_1_3"
+"BCHE",116,"Frame_Shift_Del",1,1,1,"Esterase_lipase","cd00312","Esterases and lipases (includes fungal lipases, cholinesterases, etc.)  These enzymes act on carboxylic esters (EC: 3.1.1.-). The catalytic apparatus involves three residues (catalytic triad): a serine, a glutamate or aspartate and a histidine.These..."
+"BCMO1",69,"Missense_Mutation",1,1,1,"RPE65","pfam03055","Retinal pigment epithelial membrane protein"
+"BECN1",181,"Missense_Mutation",1,1,1,"APG6","pfam04111","Autophagy protein Apg6"
+"BMP10",411,"Missense_Mutation",1,1,1,"TGFB","smart00204","Transforming growth factor-beta (TGF-beta) family"
+"BMP6",250,"Missense_Mutation",1,1,1,"TGFb_propeptide","pfam00688","TGF-beta propeptide"
+"BMPER",617,"Missense_Mutation",1,2,0.5,"C8","pfam08742","C8 domain"
+"BRCC3",81,"Nonsense_Mutation",1,1,1,"MPN_BRCC36","cd08068","Mov34/MPN/PAD-1 family: BRCC36, a subunit of BRCA1-A complex"
+"BRMS1",82,"Nonsense_Mutation",1,1,1,"Sds3","pfam08598","Sds3-like"
+"BRS3",316,"Missense_Mutation",1,1,1,"7tm_1","pfam00001","7 transmembrane receptor (rhodopsin family)"
+"BRWD3",373,"Missense_Mutation",1,1,1,"WD40","typically contains a GH dipeptide 11-24 residues from...","WD40 domain, found in a number of eukaryotic proteins that cover a wide variety of functions including adaptor/regulatory modules in signal transduction, pre-mRNA processing and cytoskeleton assembly"
+"BTD",355,"Missense_Mutation",1,1,1,"biotinidase_like","cd07567","biotinidase and vanins (class 4 nitrilases)"
+"BUB3",202,"Missense_Mutation",1,1,1,"COG2319",NA,"FOG: WD40 repeat [General function prediction only]"
+"C10orf118",566,"Missense_Mutation",1,1,1,"SMC_prok_B","TIGR02168","chromosome segregation protein SMC, common bacterial type"
+"C10orf76",481,"Missense_Mutation",1,1,1,"DUF1741","pfam08427","Domain of unknown function (DUF1741)"
+"C1RL",329,"Missense_Mutation",1,1,1,"Tryp_SPc","Many of these are synthesized as inactive precursor zymogens that are cleaved during limited proteolysis to generate their active forms. Alignment contains also inactive enzymes that have substitutions of the catalytic triad...","Trypsin-like serine protease"
+"C1orf105",77,"Frame_Shift_Del",1,1,1,"DUF4548",NA,NA
+"C2",200,"Missense_Mutation",1,1,1,"vWFA","cl00057","Von Willebrand factor type A (vWA) domain was originally found in the blood coagulation protein von Willebrand factor (vWF). Typically, the vWA domain is made up of approximately 200 amino acid residues folded into a classic a/b para-rossmann type of..."
+"C3",710,"Missense_Mutation",1,1,1,"ANATO","C3a, C4a and C5a anaphylatoxins are protein fragments generated enzymatically in serum during activation of complement molecules C3, C4, and C5. They induce smooth muscle contraction. These fragments are homologous to...","Anaphylatoxin homologous domain"
+"C4BPB",60,"Missense_Mutation",1,1,1,"CCP","cd00033","Complement control protein (CCP) modules (aka short consensus repeats SCRs or SUSHI repeats) have been identified in several proteins of the complement system"
+"C6orf106",62,"Missense_Mutation",1,1,1,"UBA_4",NA,NA
+"C7",800,"In_Frame_Del",1,1,1,"FIMAC","smart00057","factor I membrane attack complex"
+"C7orf10",165,"Missense_Mutation",1,1,1,"CaiB","COG1804","Predicted acyl-CoA transferases/carnitine dehydratase [Energy production and conversion]"
+"C9orf43",181,"Missense_Mutation",1,1,1,"DUF4647",NA,NA
+"CACNA1B",1237,"Splice_Site",1,3,0.333333333333333,"Ion_trans","pfam00520","Ion transport protein"
+"CACNA1E",1507,"Missense_Mutation",1,3,0.333333333333333,"Ion_trans","pfam00520","Ion transport protein"
+"CACNA1E",590,"Missense_Mutation",1,3,0.333333333333333,"Ion_trans","pfam00520","Ion transport protein"
+"CACNA1G",807,"Missense_Mutation",1,1,1,"Ion_trans","pfam00520","Ion transport protein"
+"CACNG2",57,"Missense_Mutation",1,1,1,"PMP22_Claudin","pfam00822","PMP-22/EMP/MP20/Claudin family"
+"CADM2",373,"Missense_Mutation",1,2,0.5,"4.1m","smart00294","putative band 4.1 homologues' binding motif"
+"CADM3",162,"Missense_Mutation",1,1,1,"Ig2_Necl-1","cd07705","Second immunoglobulin (Ig)-like domain of nectin-like molcule-1 (Necl-1, also known as cell adhesion molecule3 (CADM3))"
+"CAGE1",177,"Missense_Mutation",1,1,1,"SMC_prok_B","TIGR02168","chromosome segregation protein SMC, common bacterial type"
+"CALR",173,"Frame_Shift_Ins",1,2,0.5,"Calreticulin","pfam00262","Calreticulin family"
+"CAPN6",53,"Missense_Mutation",1,1,1,"CysPc","calcium-dependent cytoplasmic cysteine proteinases, papain-like. Functions in cytoskeletal remodeling processes, cell differentiation, apoptosis and signal transduction","Calpains, domains IIa, IIb"
+"CARD18",7,"Missense_Mutation",1,1,1,"CARD_CASP1-like","cd08325","Caspase activation and recruitment domain found in Caspase-1 and related proteins"
+"CATSPER4",199,"Missense_Mutation",1,1,1,"Ion_trans","pfam00520","Ion transport protein"
+"CBFB",153,"Frame_Shift_Ins",1,2,0.5,"CBF_beta","pfam02312","Core binding factor beta subunit"
+"CBFB",78,"Nonsense_Mutation",1,2,0.5,"CBF_beta","pfam02312","Core binding factor beta subunit"
+"CBX5",41,"Nonsense_Mutation",1,1,1,"CHROMO","cd00024","Chromatin organization modifier (chromo) domain is a conserved region of around 50 amino acids found in a variety of chromosomal proteins, which appear to play a role in the functional organization of the eukaryotic nucleus. Experimental evidence..."
+"CC2D2A",1114,"Missense_Mutation",1,1,1,"C2","cl14603","C2 domain"
+"CCDC67",72,"Missense_Mutation",1,1,1,"SMC_prok_B","TIGR02168","chromosome segregation protein SMC, common bacterial type"
+"CCL11",76,"Missense_Mutation",1,1,1,"Chemokine_CC","includes a number of secreted growth factors and interferons involved in mitogenic, chemotactic, and inflammatory activity","Chemokine_CC:  1 of 4 subgroup designations based on the arrangement of the two N-terminal cysteine residues"
+"CCL20",60,"Missense_Mutation",1,1,1,"Chemokine_CC_DCCL","includes a number of small inducible cytokines capable of reversibly inhibiting normal hematopoietic...","Chemokine_CC_DCCL:  subgroup of the Chemokine_CC subgroup based on the presence of a DCCL motif involving the two N-terminal cysteine residues"
+"CD109",987,"Splice_Site",1,1,1,"A2M_2","cd02897","Proteins similar to alpha2-macroglobulin (alpha (2)-M). This group also contains the pregnancy zone protein (PZP).  Alpha(2)-M and PZP are broadly specific proteinase inhibitors. Alpha (2)-M is a major carrier protein in serum. The structural thioester..."
+"CD320",74,"Missense_Mutation",1,1,1,"LDLa","the receptor protein binds LDL and transports it into cells by endocytosis","Low Density Lipoprotein Receptor Class A domain, a cysteine-rich repeat that plays a central role in mammalian cholesterol metabolism"
+"CD70",157,"Missense_Mutation",1,1,1,"TNF","TNF superfamily members include the cytokines: TNF (TNF-alpha), LT (lymphotoxin-alpha, TNF-beta), CD40 ligand, Apo2L (TRAIL), Fas ligand, and osteoprotegerin (OPG) ligand. These proteins generally have an intracellular N-terminal...","Tumor Necrosis Factor"
+"CD74",206,"Missense_Mutation",1,2,0.5,"MHCassoc_trimer","pfam08831","Class II MHC-associated invariant chain trimerisation domain"
+"CDC42",30,"Missense_Mutation",1,1,1,"COG1100",NA,"GTPase SAR1 and related small G proteins [General function prediction only]"
+"CDH16",594,"Missense_Mutation",1,1,1,"Cadherin_repeat","cd11304","Cadherin tandem repeat domain"
+"CDH24",590,"Nonsense_Mutation",1,1,1,"Cadherin_repeat","cd11304","Cadherin tandem repeat domain"
+"CDH4",127,"Missense_Mutation",1,1,1,"CA_like","cl15786","Cadherin repeat-like domain"
+"CDHR2",1004,"Missense_Mutation",1,1,1,"Cadherin_repeat","cd11304","Cadherin tandem repeat domain"
+"CEBPA",317,"In_Frame_Ins",1,19,0.0526315789473684,"bZIP_2","pfam07716","Basic region leucine zipper"
+"CEBPA",318,"In_Frame_Del",1,19,0.0526315789473684,"bZIP_2","pfam07716","Basic region leucine zipper"
+"CEBPA",300,"Missense_Mutation",1,19,0.0526315789473684,"bZIP_2","pfam07716","Basic region leucine zipper"
+"CEBPA",286,"Frame_Shift_Ins",1,19,0.0526315789473684,"bZIP_2","pfam07716","Basic region leucine zipper"
+"CEBPA",308,"In_Frame_Ins",1,19,0.0526315789473684,"bZIP_2","pfam07716","Basic region leucine zipper"
+"CEBPA",305,"In_Frame_Ins",1,19,0.0526315789473684,"bZIP_2","pfam07716","Basic region leucine zipper"
+"CEBPA",307,"In_Frame_Del",1,19,0.0526315789473684,"bZIP_2","pfam07716","Basic region leucine zipper"
+"CEBPA",304,"In_Frame_Ins",1,19,0.0526315789473684,"bZIP_2","pfam07716","Basic region leucine zipper"
+"CELSR1",2600,"Missense_Mutation",1,1,1,"7tm_2","pfam00002","7 transmembrane receptor (Secretin family)"
+"CENPB",84,"Nonsense_Mutation",1,1,1,"DNA binding domain",NA,NA
+"CENPF",2299,"Missense_Mutation",1,1,1,"SMC_prok_B","TIGR02168","chromosome segregation protein SMC, common bacterial type"
+"CENPN",185,"Missense_Mutation",1,1,1,"CENP-N","pfam05238","Kinetochore protein CHL4 like"
+"CGN",919,"Missense_Mutation",1,1,1,"Myosin_tail_1","pfam01576","Myosin tail"
+"CHD4",975,"Missense_Mutation",1,2,0.5,"SNF2_N","pfam00176","SNF2 family N-terminal domain"
+"CHIC2",125,"Missense_Mutation",1,1,1,"Erf4","pfam10256","Golgin subfamily A member 7/ERF4 family"
+"CHIT1",432,"Missense_Mutation",1,1,1,"ChtBD2","smart00494","Chitin-binding domain type 2"
+"CHST6",190,"Missense_Mutation",1,1,1,"Sulfotransfer_1","pfam00685","Sulfotransferase domain"
+"CIC",167,"Missense_Mutation",1,1,1,"NHP6B","COG5648","Chromatin-associated proteins containing the HMG domain [Chromatin structure and dynamics]"
+"CLCN1",422,"Missense_Mutation",1,1,1,"ClC_1_like","cd03683","ClC-1-like chloride channel proteins. This CD includes isoforms ClC-0, ClC-1, ClC-2 and ClC_K. ClC-1 is expressed in skeletal muscle and its mutation leads to both recessively and dominantly-inherited forms of muscle stiffness or myotonia. ClC-K is..."
+"CLDN11",82,"Missense_Mutation",1,1,1,"PMP22_Claudin","cl15797","PMP-22/EMP/MP20/Claudin family"
+"CLDN14",129,"Missense_Mutation",1,1,1,"PMP22_Claudin","cl15797","PMP-22/EMP/MP20/Claudin family"
+"CLDN18",88,"Missense_Mutation",1,1,1,"PMP22_Claudin","cl15797","PMP-22/EMP/MP20/Claudin family"
+"CNGA3",247,"Missense_Mutation",1,1,1,"Ion_trans","pfam00520","Ion transport protein"
+"CNOT6",335,"Missense_Mutation",1,1,1,"Deadenylase_CCR4a","cd10313","C-terminal deadenylase domain of CCR4a, also known as CCR4-NOT transcription complex subunit 6"
+"CNOT6L",419,"Missense_Mutation",1,1,1,"Deadenylase_CCR4b","cd10312","C-terminal deadenylase domain of CCR4b, also known as CCR4-NOT transcription complex subunit 6-like"
+"CNTLN",178,"Nonsense_Mutation",1,1,1,"SMC_prok_B","TIGR02168","chromosome segregation protein SMC, common bacterial type"
+"CNTN5",1003,"Missense_Mutation",1,2,0.5,"FN3","One of three types of internal repeats found in the plasma protein fibronectin. Its tenth fibronectin type III repeat contains an RGD cell recognition sequence in a flexible loop between 2 strands. Approximately 2% of all...","Fibronectin type 3 domain"
+"CNTN5",514,"Missense_Mutation",1,2,0.5,"I-set","pfam07679","Immunoglobulin I-set domain"
+"CNTN6",600,"Missense_Mutation",1,1,1,"FN3","One of three types of internal repeats found in the plasma protein fibronectin. Its tenth fibronectin type III repeat contains an RGD cell recognition sequence in a flexible loop between 2 strands. Approximately 2% of all...","Fibronectin type 3 domain"
+"CNTNAP4",144,"Missense_Mutation",1,2,0.5,"FA58C","Cell surface-attached carbohydrate-binding domain, present in eukaryotes and assumed to have horizontally transferred to eubacterial genomes","Coagulation factor 5/8 C-terminal domain, discoidin domain"
+"CNTNAP5",152,"Missense_Mutation",1,1,1,"FA58C","Cell surface-attached carbohydrate-binding domain, present in eukaryotes and assumed to have horizontally transferred to eubacterial genomes","Coagulation factor 5/8 C-terminal domain, discoidin domain"
+"COL12A1",72,"Missense_Mutation",1,3,0.333333333333333,"vWA_collagen_alphaI-XII-like","cd01482","Collagen: The extracellular matrix represents a complex alloy of variable members of diverse protein families defining structural integrity and various physiological functions. The most abundant family is the collagens with more than 20 different..."
+"COL12A1",1339,"Missense_Mutation",1,3,0.333333333333333,"vWA_collagen_alphaI-XII-like","cd01482","Collagen: The extracellular matrix represents a complex alloy of variable members of diverse protein families defining structural integrity and various physiological functions. The most abundant family is the collagens with more than 20 different..."
+"COL12A1",2614,"Splice_Site",1,3,0.333333333333333,"TSPN","smart00210","Thrombospondin N-terminal -like domains"
+"CORIN",524,"Missense_Mutation",1,1,1,"CRD_corin_2","cd07888","One of two cysteine-rich domains of the corin protein, a type II transmembrane serine protease"
+"CPNE3",234,"Missense_Mutation",1,1,1,"C2B_Copine","cd04047","C2 domain second repeat in Copine"
+"CR1",2173,"Missense_Mutation",1,1,1,"CCP","cd00033","Complement control protein (CCP) modules (aka short consensus repeats SCRs or SUSHI repeats) have been identified in several proteins of the complement system"
+"CRB1",483,"Missense_Mutation",1,1,1,"LamG","Laminin G-like domains are usually Ca++ mediated receptors that can have binding sites for steroids, beta1 integrins, heparin, sulfatides, fibulin-1, and alpha-dystroglycans. Proteins that contain LamG domains serve a variety of...","Laminin G domain"
+"CRISPLD1",371,"Missense_Mutation",1,2,0.5,"LCCL","smart00603","LCCL domain"
+"CSMD1",2060,"Frame_Shift_Del",1,3,0.333333333333333,"CUB","extracellular domain","CUB domain"
+"CSMD1",2240,"Missense_Mutation",1,3,0.333333333333333,"CUB","extracellular domain","CUB domain"
+"CSMD1",1467,"Missense_Mutation",1,3,0.333333333333333,"CUB","extracellular domain","CUB domain"
+"CSMD3",1135,"Missense_Mutation",1,2,0.5,"CUB","extracellular domain","CUB domain"
+"CSMD3",910,"Missense_Mutation",1,2,0.5,"CUB","extracellular domain","CUB domain"
+"CTCF",457,"Nonsense_Mutation",1,1,1,"COG5048",NA,"FOG: Zn-finger [General function prediction only]"
+"CTNNA2",141,"Missense_Mutation",1,1,1,"Vinculin","pfam01044","Vinculin family"
+"CTSG",87,"Missense_Mutation",1,1,1,"Tryp_SPc","Many of these are synthesized as inactive precursor zymogens that are cleaved during limited proteolysis to generate their active forms. Alignment contains also inactive enzymes that have substitutions of the catalytic triad...","Trypsin-like serine protease"
+"CUL1",141,"Missense_Mutation",1,2,0.5,"Cullin","pfam00888","Cullin family"
+"CUL1",241,"Missense_Mutation",1,2,0.5,"Cullin","pfam00888","Cullin family"
+"CYBB",446,"Missense_Mutation",1,1,1,"NOX_Duox_like_FAD_NADP","cd06186","NADPH oxidase (NOX) catalyzes the generation of reactive oxygen species (ROS) such as superoxide and hydrogen peroxide. ROS were originally identified as bactericidal agents in phagocytes, but are now also implicated in cell signaling and metabolism. NOX..."
+"CYP26A1",322,"Missense_Mutation",1,1,1,"CypX","cl12078","Cytochrome P450 [Secondary metabolites biosynthesis, transport, and catabolism]"
+"CYP4A22",505,"Missense_Mutation",1,1,1,"p450","pfam00067","Cytochrome P450"
+"CYP4F12",272,"Missense_Mutation",1,1,1,"p450","pfam00067","Cytochrome P450"
+"CYP4F2",276,"Missense_Mutation",1,1,1,"p450","pfam00067","Cytochrome P450"
+"DAG1",134,"Missense_Mutation",1,1,1,"Dystroglycan_repeat","cd11303","Cadherin-like repeat domain of alpha dystroglycan"
+"DAOA",139,"Frame_Shift_Del",1,1,1,"DAOA",NA,NA
+"DAXX",371,"Missense_Mutation",1,1,1,"Daxx","pfam03344","Daxx Family"
+"DAZAP2",146,"Missense_Mutation",1,1,1,"DAZAP2","pfam11029","DAZ associated protein 2 (DAZAP2)"
+"DCAF6",219,"Missense_Mutation",1,1,1,"WD40","typically contains a GH dipeptide 11-24 residues from...","WD40 domain, found in a number of eukaryotic proteins that cover a wide variety of functions including adaptor/regulatory modules in signal transduction, pre-mRNA processing and cytoskeleton assembly"
+"DCHS2",675,"Missense_Mutation",1,1,1,"Cadherin_repeat","cd11304","Cadherin tandem repeat domain"
+"DCLK1",292,"Missense_Mutation",1,2,0.5,"PKc_like","cl09925","Protein Kinases, catalytic domain"
+"DCLK1",326,"Missense_Mutation",1,2,0.5,"PKc_like","cl09925","Protein Kinases, catalytic domain"
+"DDX23",54,"Missense_Mutation",1,1,1,"RS domain",NA,NA
+"DDX41",525,"Missense_Mutation",1,2,0.5,"HELICc","associated with DEXDc-, DEAD-, and DEAH-box proteins, yeast initiation factor 4A, Ski2p, and Hepatitis C virus NS3 helicases","Helicase superfamily c-terminal domain"
+"DHX32",81,"Missense_Mutation",1,1,1,"Preny group binding site; CAAX box",NA,NA
+"DHX34",648,"Missense_Mutation",1,1,1,"HrpA","COG1643","HrpA-like helicases [DNA replication, recombination, and repair]"
+"DIO2",28,"Nonsense_Mutation",1,1,1,"Thioredoxin_like","cl00388","Protein Disulfide Oxidoreductases and Other Proteins with a Thioredoxin fold"
+"DIS3",514,"Missense_Mutation",1,3,0.333333333333333,"VacB","COG0557","Exoribonuclease R [Transcription]"
+"DIS3",667,"Missense_Mutation",1,3,0.333333333333333,"VacB","COG0557","Exoribonuclease R [Transcription]"
+"DIS3",488,"Missense_Mutation",1,3,0.333333333333333,"VacB","COG0557","Exoribonuclease R [Transcription]"
+"DLC1",54,"Missense_Mutation",1,2,0.5,"SAM_2","pfam07647","SAM domain (Sterile alpha motif)"
+"DLC1",1086,"Missense_Mutation",1,2,0.5,"RhoGAP_DLC1","cd04375","RhoGAP_DLC1: RhoGAP (GTPase-activator protein [GAP] for Rho-like small GTPases) domain of DLC1-like proteins. DLC1 shows in vitro GAP activity towards RhoA and CDC42. Beside its C-terminal GAP domain, DLC1 also contains a SAM (sterile alpha motif) and a..."
+"DLD",254,"Missense_Mutation",1,1,1,"PRK06327","Validated","dihydrolipoamide dehydrogenase"
+"DMD",2377,"Missense_Mutation",1,1,1,"central rod domain",NA,NA
+"DNAH11",2834,"Missense_Mutation",1,1,1,"P-loop_NTPase","cl09099","P-loop containing Nucleoside Triphosphate Hydrolases"
+"DNAH3",2615,"Missense_Mutation",1,1,1,"P-loop_NTPase","cl09099","P-loop containing Nucleoside Triphosphate Hydrolases"
+"DNAH5",786,"Missense_Mutation",1,1,1,"DHC_N1","pfam08385","Dynein heavy chain, N-terminal region 1"
+"DNAH9",771,"Missense_Mutation",1,3,0.333333333333333,"Dynein_heavy","pfam03028","Dynein heavy chain and region D6 of dynein motor"
+"DNAH9",1959,"Missense_Mutation",1,3,0.333333333333333,"AAA_6","pfam12774","Hydrolytic ATP binding site of dynein motor region D1"
+"DNAI1",532,"Missense_Mutation",1,1,1,"COG2319",NA,"FOG: WD40 repeat [General function prediction only]"
+"DNM2",471,"Frame_Shift_Ins",1,1,1,"Dynamin_M","pfam01031","Dynamin central region"
+"DNMT3A",803,"Splice_Site",1,54,0.0185185185185185,"AdoMet_MTases","AdoMet-MTases are enzymes that use S-adenosyl-L-methionine (SAM or AdoMet) as a substrate for methyltransfer, creating the product S-adenosyl-L-homocysteine (AdoHcy)","S-adenosylmethionine-dependent methyltransferases (SAM or AdoMet-MTase), class I"
+"DNMT3A",515,"Nonsense_Mutation",1,54,0.0185185185185185,"Dcm","COG0270","Site-specific DNA methylase [DNA replication, recombination, and repair]"
+"DNMT3A",615,"Frame_Shift_Del",1,54,0.0185185185185185,"AdoMet_MTases","AdoMet-MTases are enzymes that use S-adenosyl-L-methionine (SAM or AdoMet) as a substrate for methyltransfer, creating the product S-adenosyl-L-homocysteine (AdoHcy)","S-adenosylmethionine-dependent methyltransferases (SAM or AdoMet-MTase), class I"
+"DNMT3A",615,"Nonsense_Mutation",1,54,0.0185185185185185,"AdoMet_MTases","AdoMet-MTases are enzymes that use S-adenosyl-L-methionine (SAM or AdoMet) as a substrate for methyltransfer, creating the product S-adenosyl-L-homocysteine (AdoHcy)","S-adenosylmethionine-dependent methyltransferases (SAM or AdoMet-MTase), class I"
+"DNMT3A",829,"Missense_Mutation",1,54,0.0185185185185185,"AdoMet_MTases","AdoMet-MTases are enzymes that use S-adenosyl-L-methionine (SAM or AdoMet) as a substrate for methyltransfer, creating the product S-adenosyl-L-homocysteine (AdoHcy)","S-adenosylmethionine-dependent methyltransferases (SAM or AdoMet-MTase), class I"
+"DNMT3A",468,"Missense_Mutation",1,54,0.0185185185185185,"Dcm","COG0270","Site-specific DNA methylase [DNA replication, recombination, and repair]"
+"DNMT3A",485,"Nonsense_Mutation",1,54,0.0185185185185185,"Dcm","COG0270","Site-specific DNA methylase [DNA replication, recombination, and repair]"
+"DNMT3A",718,"Missense_Mutation",1,54,0.0185185185185185,"AdoMet_MTases","AdoMet-MTases are enzymes that use S-adenosyl-L-methionine (SAM or AdoMet) as a substrate for methyltransfer, creating the product S-adenosyl-L-homocysteine (AdoHcy)","S-adenosylmethionine-dependent methyltransferases (SAM or AdoMet-MTase), class I"
+"DNMT3A",792,"Missense_Mutation",1,54,0.0185185185185185,"Dcm","COG0270","Site-specific DNA methylase [DNA replication, recombination, and repair]"
+"DNMT3A",497,"Missense_Mutation",1,54,0.0185185185185185,"Dcm","COG0270","Site-specific DNA methylase [DNA replication, recombination, and repair]"
+"DNMT3A",781,"Missense_Mutation",1,54,0.0185185185185185,"Dcm","COG0270","Site-specific DNA methylase [DNA replication, recombination, and repair]"
+"DNMT3A",320,"Nonsense_Mutation",1,54,0.0185185185185185,"ADDz_Dnmt3a","cd11729","ADDz domain of DNA (cytosine-5) methyltransferases (C5-MTases) 3 a (Dnmt3a)"
+"DNMT3A",646,"Splice_Site",1,54,0.0185185185185185,"AdoMet_MTases","AdoMet-MTases are enzymes that use S-adenosyl-L-methionine (SAM or AdoMet) as a substrate for methyltransfer, creating the product S-adenosyl-L-homocysteine (AdoHcy)","S-adenosylmethionine-dependent methyltransferases (SAM or AdoMet-MTase), class I"
+"DNMT3A",315,"Frame_Shift_Del",1,54,0.0185185185185185,"ADDz_Dnmt3a","cd11729","ADDz domain of DNA (cytosine-5) methyltransferases (C5-MTases) 3 a (Dnmt3a)"
+"DNMT3A",590,"Frame_Shift_Del",1,54,0.0185185185185185,"Dcm","COG0270","Site-specific DNA methylase [DNA replication, recombination, and repair]"
+"DNMT3A",505,"Nonsense_Mutation",1,54,0.0185185185185185,"Dcm","COG0270","Site-specific DNA methylase [DNA replication, recombination, and repair]"
+"DNMT3A",741,"Missense_Mutation",1,54,0.0185185185185185,"Dcm","COG0270","Site-specific DNA methylase [DNA replication, recombination, and repair]"
+"DNMT3A",477,"Splice_Site",1,54,0.0185185185185185,"Dcm","COG0270","Site-specific DNA methylase [DNA replication, recombination, and repair]"
+"DNMT3A",723,"Frame_Shift_Del",1,54,0.0185185185185185,"Dcm","COG0270","Site-specific DNA methylase [DNA replication, recombination, and repair]"
+"DNMT3B",538,"Missense_Mutation",1,1,1,"ADDz_Dnmt3b","cd11728","ADDz domain of DNA (cytosine-5) methyltransferases (C5-MTases) 3 b (Dnmt3b)"
+"DOCK8",1681,"Frame_Shift_Ins",1,1,1,"DHR2_DOCK","cl06123","Dock Homology Region 2, a GEF domain, of Dedicator of Cytokinesis proteins"
+"DOCK9",1918,"Missense_Mutation",1,1,1,"DHR2_DOCK9","cd11698","Dock Homology Region 2, a GEF domain, of Class D Dedicator of Cytokinesis 9"
+"DOK2",24,"Missense_Mutation",1,1,1,"PH","smart00233","Pleckstrin homology domain"
+"DSCAM",765,"Missense_Mutation",1,1,1,"I-set","pfam07679","Immunoglobulin I-set domain"
+"DST",2458,"Missense_Mutation",1,2,0.5,"SPEC","family members include spectrin, alpha-actinin and dystrophin","Spectrin repeats, found in several proteins involved in cytoskeletal structure"
+"DUOXA2",83,"Missense_Mutation",1,1,1,"DuoxA","pfam10204","Dual oxidase maturation factor"
+"DUSP26",115,"Missense_Mutation",1,1,1,"DSPc","Ser/Thr and Tyr protein phosphatases. Structurally similar to tyrosine-specific phosphatases but with a shallower active site cleft and a distinctive active site signature motif, HCxxGxxR. Characterized as VHR- or...","Dual specificity phosphatases (DSP)"
+"DYRK4",176,"Missense_Mutation",1,1,1,"PKc_like","cl09925","Protein Kinases, catalytic domain"
+"ECM2",151,"Missense_Mutation",1,1,1,"VWC","pfam00093","von Willebrand factor type C domain"
+"EDC4",365,"Missense_Mutation",1,1,1,"COG2319",NA,"FOG: WD40 repeat [General function prediction only]"
+"EED",196,"Missense_Mutation",1,2,0.5,"COG2319",NA,"FOG: WD40 repeat [General function prediction only]"
+"EFTUD1",231,"Missense_Mutation",1,1,1,"EF2","cd01885","Elongation Factor 2 (EF2) in archaea and eukarya"
+"EGFLAM",899,"Missense_Mutation",1,1,1,"LamG","Laminin G-like domains are usually Ca++ mediated receptors that can have binding sites for steroids, beta1 integrins, heparin, sulfatides, fibulin-1, and alpha-dystroglycans. Proteins that contain LamG domains serve a variety of...","Laminin G domain"
+"EGFR",638,"Missense_Mutation",1,2,0.5,"TM_ErbB1","cd12093","Transmembrane domain of Epidermal Growth Factor Receptor or ErbB1, a Protein Tyrosine Kinase"
+"EHD2",292,"Missense_Mutation",1,1,1,"EHD","cd09913","Eps15 homology domain (EHD), C-terminal domain"
+"ELF4",267,"Missense_Mutation",1,1,1,"Ets","pfam00178","Ets-domain"
+"ENC1",471,"Missense_Mutation",1,1,1,"PHA03098","Provisional","kelch-like protein"
+"ENTPD1",280,"Missense_Mutation",1,1,1,"NBD_sugar-kinase_HSP70_actin","cl17037","Nucleotide-Binding Domain of the sugar kinase/HSP70/actin superfamily"
+"EPB41L5",378,"Missense_Mutation",1,1,1,"FA","pfam08736","FERM adjacent (FA)"
+"EPHA10",721,"Missense_Mutation",1,1,1,"PTKc_EphR_A10","cd05064","Catalytic domain of the Protein Tyrosine Kinase, Ephrin Receptor A10"
+"EPHA2",146,"Missense_Mutation",1,1,1,"EphR_LBD_A2","cd10480","Ligand Binding Domain of Ephrin type-A Receptor 2"
+"EPHA3",958,"Missense_Mutation",1,1,1,"SAM_2","pfam07647","SAM domain (Sterile alpha motif)"
+"EPHA8",382,"Missense_Mutation",1,1,1,"FN3","One of three types of internal repeats found in the plasma protein fibronectin. Its tenth fibronectin type III repeat contains an RGD cell recognition sequence in a flexible loop between 2 strands. Approximately 2% of all...","Fibronectin type 3 domain"
+"EPHB1",459,"Nonsense_Mutation",1,1,1,"FN3","One of three types of internal repeats found in the plasma protein fibronectin. Its tenth fibronectin type III repeat contains an RGD cell recognition sequence in a flexible loop between 2 strands. Approximately 2% of all...","Fibronectin type 3 domain"
+"ETF1",131,"Missense_Mutation",1,1,1,"eRF1_1","pfam03463","eRF1 domain 1"
+"ETV3",79,"Missense_Mutation",1,1,1,"Ets","pfam00178","Ets-domain"
+"ETV6",418,"Splice_Site",1,2,0.5,"Ets","pfam00178","Ets-domain"
+"ETV6",104,"Frame_Shift_Del",1,2,0.5,"SAM_PNT-Tel_Yan","cd08535","Sterile alpha motif (SAM)/Pointed domain of Tel/Yan protein"
+"EXD1",239,"Nonsense_Mutation",1,1,1,"Egl_like_exo","cd06148","DEDDy 3'-5' exonuclease domain of Drosophila Egalitarian (Egl) and similar proteins"
+"EZH2",685,"Missense_Mutation",1,4,0.25,"SET","smart00317","SET (Su(var)3-9, Enhancer-of-zeste, Trithorax) domain"
+"EZR",554,"Missense_Mutation",1,1,1,"ERM","pfam00769","Ezrin/radixin/moesin family"
+"FAM115A",193,"Missense_Mutation",1,1,1,"M60-like","pfam13402","Peptidase M60-like family"
+"FAM154B",97,"Missense_Mutation",1,2,0.5,"STOP","pfam05217","STOP protein"
+"FAM154B",107,"Missense_Mutation",1,2,0.5,"STOP","pfam05217","STOP protein"
+"FAM171A1",243,"Missense_Mutation",1,1,1,"UPF0560","pfam10577","Uncharacterized protein family UPF0560"
+"FAM194A",544,"Missense_Mutation",1,1,1,"FAM194",NA,NA
+"FAM19A4",88,"Missense_Mutation",1,1,1,"TAFA","pfam12020","TAFA family"
+"FAM57B",151,"Nonsense_Mutation",1,2,0.5,"TLC","smart00724","TRAM, LAG1 and CLN8 homology domains"
+"FAM57B",254,"Missense_Mutation",1,2,0.5,"TLC","smart00724","TRAM, LAG1 and CLN8 homology domains"
+"FAM5C",109,"Missense_Mutation",1,6,0.166666666666667,"MACPF","smart00457","membrane-attack complex / perforin"
+"FAM5C",119,"Missense_Mutation",1,6,0.166666666666667,"MACPF","smart00457","membrane-attack complex / perforin"
+"FAM65A",154,"Missense_Mutation",1,2,0.5,"HR1","cl00087","Protein kinase C-related kinase homology region 1 (HR1) domain that binds Rho family small GTPases"
+"FANCC",43,"Missense_Mutation",1,1,1,"Fanconi_C","pfam02106","Fanconi anaemia group C protein"
+"FANCI",1011,"Missense_Mutation",1,1,1,"FANCI","cd11720","Fanconi anemia I protein"
+"FANCM",535,"Missense_Mutation",1,1,1,"MPH1","COG1111","ERCC4-like helicases [DNA replication, recombination, and repair]"
+"FAT1",1099,"Missense_Mutation",1,1,1,"cadherin-type repeats region",NA,NA
+"FAT2",1561,"Missense_Mutation",1,1,1,"Cadherin_repeat","cd11304","Cadherin tandem repeat domain"
+"FAT4",2170,"Missense_Mutation",1,1,1,"Cadherin_repeat","cd11304","Cadherin tandem repeat domain"
+"FBXO11",811,"Frame_Shift_Ins",1,1,1,"Beta_helix","pfam13229","Right handed beta helix region"
+"FCGBP",3164,"Missense_Mutation",1,3,0.333333333333333,"TIL","pfam01826","Trypsin Inhibitor like cysteine rich domain"
+"FCGBP",3192,"Missense_Mutation",1,3,0.333333333333333,"TIL","pfam01826","Trypsin Inhibitor like cysteine rich domain"
+"FCHSD1",78,"Splice_Site",1,1,1,"F-BAR_FCHSD1","cd07678","The F-BAR (FES-CIP4 Homology and Bin/Amphiphysin/Rvs) domain of FCH and double SH3 domains 1 (FCHSD1)"
+"FEZF2",355,"Missense_Mutation",1,1,1,"COG5048",NA,"FOG: Zn-finger [General function prediction only]"
+"FGL2",321,"Missense_Mutation",1,1,1,"FReD","C terminal globular domain of fibrinogen. Fibrinogen is involved in blood clotting, being activated by thrombin to assemble into fibrin clots. The N-termini of 2 times 3 chains come together to form a globular...","Fibrinogen-related domains (FReDs)"
+"FLT3",600,"In_Frame_Ins",1,52,0.0192307692307692,"PKc_like","cl09925","Protein Kinases, catalytic domain"
+"FLT3",602,"In_Frame_Ins",1,52,0.0192307692307692,"PKc_like","cl09925","Protein Kinases, catalytic domain"
+"FLT3",594,"In_Frame_Del",1,52,0.0192307692307692,"PKc_like","cl09925","Protein Kinases, catalytic domain"
+"FLT3",839,"Missense_Mutation",1,52,0.0192307692307692,"PKc_like","cl09925","Protein Kinases, catalytic domain"
+"FLT3",611,"Splice_Site",1,52,0.0192307692307692,"PKc_like","cl09925","Protein Kinases, catalytic domain"
+"FLT3",573,"In_Frame_Ins",1,52,0.0192307692307692,"PKc_like","cl09925","Protein Kinases, catalytic domain"
+"FLT3",582,"In_Frame_Ins",1,52,0.0192307692307692,"PKc_like","cl09925","Protein Kinases, catalytic domain"
+"FN1",1983,"Nonsense_Mutation",1,1,1,"FN3","One of three types of internal repeats found in the plasma protein fibronectin. Its tenth fibronectin type III repeat contains an RGD cell recognition sequence in a flexible loop between 2 strands. Approximately 2% of all...","Fibronectin type 3 domain"
+"FREM2",2077,"Missense_Mutation",1,1,1,"Calx-beta","cl02522","Calx-beta domain"
+"FRYL",924,"Missense_Mutation",1,2,0.5,"MOR2-PAG1_mid","pfam14228","Cell morphogenesis central region"
+"FRZB",69,"Missense_Mutation",1,1,1,"CRD_SFRP3","cd07441","Cysteine-rich domain of the secreted frizzled-related protein 3 (SFRP3, alias FRZB), a Wnt antagonist"
+"FZD1",517,"Missense_Mutation",1,1,1,"Frizzled","pfam01534","Frizzled/Smoothened family membrane region"
+"G6PC",211,"Missense_Mutation",1,1,1,"PAP2_glucose_6_phosphatase","cd03381","PAP2_like proteins, glucose-6-phosphatase subfamily. Glucose-6-phosphatase converts glucose-6-phosphate into free glucose and is active in the lumen of the endoplasmic reticulum, where it is bound to the membrane. The generation of free glucose is an..."
+"GABBR1",470,"Missense_Mutation",1,1,1,"PBP1_GABAb_receptor","cd06366","Ligand-binding domain of GABAb receptors, which are metabotropic transmembrane receptors for gamma-aminobutyric acid (GABA)"
+"GABRA4",254,"Missense_Mutation",1,1,1,"LIC","TIGR00860","Cation transporter family protein"
+"GABRB1",220,"Missense_Mutation",1,1,1,"LIC","TIGR00860","Cation transporter family protein"
+"GABRG2",332,"Missense_Mutation",1,1,1,"LIC","TIGR00860","Cation transporter family protein"
+"GABRR1",292,"Missense_Mutation",1,1,1,"LIC","TIGR00860","Cation transporter family protein"
+"GALNT2",521,"Splice_Site",1,1,1,"RICIN","Carbohydrate-binding domain formed from presumed gene triplication. The domain is found in a variety of molecules serving diverse functions such as enzymatic activity, inhibitory toxicity and signal transduction. Highly specific...","Ricin-type beta-trefoil"
+"GALNTL4",516,"Missense_Mutation",1,2,0.5,"Ricin_B_lectin","pfam00652","Ricin-type beta-trefoil lectin domain"
+"GALNTL4",274,"Missense_Mutation",1,2,0.5,"pp-GalNAc-T","cd02510","pp-GalNAc-T initiates the formation of mucin-type O-linked glycans"
+"GANC",812,"Missense_Mutation",1,1,1,"COG1501",NA,"Alpha-glucosidases, family 31 of glycosyl hydrolases [Carbohydrate transport and metabolism]"
+"GATA2",385,"Missense_Mutation",1,2,0.5,"ZnF_GATA","binds specifically to DNA consensus sequence [AT]GATA[AG] promoter elements","Zinc finger DNA binding domain"
+"GATA2",304,"Missense_Mutation",1,2,0.5,"ZnF_GATA","binds specifically to DNA consensus sequence [AT]GATA[AG] promoter elements","Zinc finger DNA binding domain"
+"GBP1",506,"Missense_Mutation",1,1,1,"GBP_C","pfam02841","Guanylate-binding protein, C-terminal domain"
+"GBP4",499,"Missense_Mutation",1,3,0.333333333333333,"GBP_C","pfam02841","Guanylate-binding protein, C-terminal domain"
+"GBP4",526,"Missense_Mutation",1,3,0.333333333333333,"GBP_C","pfam02841","Guanylate-binding protein, C-terminal domain"
+"GBP4",121,"Splice_Site",1,3,0.333333333333333,"GBP","cd01851","Guanylate-binding protein (GBP) family (N-terminal domain)"
+"GCLM",116,"Missense_Mutation",1,1,1,"Aldo_ket_red","cl00470","Aldo-keto reductases (AKRs) are a superfamily of soluble NAD(P)(H) oxidoreductases whose chief purpose is to reduce aldehydes and ketones to primary and secondary alcohols. AKRs are present in all phyla and are of importance to both health and industrial..."
+"GCM2",110,"Missense_Mutation",1,1,1,"GCM","pfam03615","GCM motif protein"
+"GDF10",177,"Missense_Mutation",1,1,1,"TGFb_propeptide","pfam00688","TGF-beta propeptide"
+"GJB4",98,"Missense_Mutation",1,1,1,"Connexin","pfam00029","Connexin"
+"GNA15",160,"Missense_Mutation",1,1,1,"G_alpha","smart00275","G protein alpha subunit"
+"GNAI2",179,"Missense_Mutation",1,1,1,"G-alpha","cd00066","Alpha subunit of G proteins (guanine nucleotide binding)"
+"GNB1",57,"Missense_Mutation",1,1,1,"COG2319",NA,"FOG: WD40 repeat [General function prediction only]"
+"GNRHR",139,"Missense_Mutation",1,1,1,"7tm_1","pfam00001","7 transmembrane receptor (rhodopsin family)"
+"GPR124",879,"Missense_Mutation",1,1,1,"7tm_2","cl12142","7 transmembrane receptor (Secretin family)"
+"GPR128",548,"Missense_Mutation",1,1,1,"7tm_2","cl12142","7 transmembrane receptor (Secretin family)"
+"GPR6",185,"Missense_Mutation",1,1,1,"7tm_1","pfam00001","7 transmembrane receptor (rhodopsin family)"
+"GPRC5B",275,"Missense_Mutation",1,1,1,"7tm_3","pfam00003","7 transmembrane sweet-taste receptor of 3 GCPR"
+"GPRC6A",405,"Missense_Mutation",1,1,1,"PBP1_GPC6A_like","cd06361","Ligand-binding domain of the promiscuous L-alpha-amino acid receptor GPRC6A which is a broad-spectrum amino acid-sensing receptor"
+"GPX2",84,"Missense_Mutation",1,1,1,"GSH_Peroxidase","tetrameric selenoenzymes that catalyze the reduction of a variety of hydroperoxides including lipid peroxidases, using GSH as a specific electron donor substrate. GSH peroxidase contains one selenocysteine residue per...","Glutathione (GSH) peroxidase family"
+"GRB10",422,"Missense_Mutation",1,1,1,"BPS","pfam08947","BPS (Between PH and SH2)"
+"GRID1",742,"Missense_Mutation",1,2,0.5,"Lig_chan","pfam00060","Ligand-gated ion channel"
+"GRID1",690,"Nonsense_Mutation",1,2,0.5,"Lig_chan","pfam00060","Ligand-gated ion channel"
+"GRIK2",41,"Missense_Mutation",1,2,0.5,"Periplasmic_Binding_Protein_Type_1","cl10011","Type 1 periplasmic binding fold superfamily"
+"GRIK3",450,"Missense_Mutation",1,1,1,"PBPb","cd00134","Bacterial periplasmic transport systems use membrane-bound complexes and substrate-bound, membrane-associated, periplasmic binding proteins (PBPs) to transport a wide variety of  substrates, such as, amino acids, peptides, sugars, vitamins and inorganic..."
+"GRIK4",709,"Missense_Mutation",1,2,0.5,"Lig_chan","pfam00060","Ligand-gated ion channel"
+"GRIK4",180,"Missense_Mutation",1,2,0.5,"PBP1_iGluR_Kainate_KA1_2","cd06394","N-terminal leucine/isoleucine/valine-binding protein (LIVBP)-like domain of the KA1 and KA2 subunits of Kainate receptor"
+"GRM3",513,"Missense_Mutation",1,2,0.5,"NCD3G","pfam07562","Nine Cysteines Domain of family 3 GPCR"
+"GRM3",288,"Missense_Mutation",1,2,0.5,"PBP1_mGluR_groupII","cd06375","Ligand binding domain of the group II metabotropic glutamate receptor"
+"GRM8",686,"Missense_Mutation",1,2,0.5,"7tm_3","pfam00003","7 transmembrane sweet-taste receptor of 3 GCPR"
+"GRM8",729,"Missense_Mutation",1,2,0.5,"7tm_3","pfam00003","7 transmembrane sweet-taste receptor of 3 GCPR"
+"GRWD1",311,"Missense_Mutation",1,1,1,"COG2319",NA,"FOG: WD40 repeat [General function prediction only]"
+"GSTM3",91,"Splice_Site",1,1,1,"PTZ00057","Provisional","glutathione s-transferase"
+"GUCA2A",56,"Missense_Mutation",1,1,1,"Guanylin","pfam02058","Guanylin precursor"
+"GUCY2C",574,"Missense_Mutation",1,1,1,"PKc_like","cl09925","Protein Kinases, catalytic domain"
+"GUCY2D",769,"Missense_Mutation",1,1,1,"Pkinase_Tyr","pfam07714","Protein tyrosine kinase"
+"GZMB",151,"Missense_Mutation",1,1,1,"Tryp_SPc","Many of these are synthesized as inactive precursor zymogens that are cleaved during limited proteolysis to generate their active forms. Alignment contains also inactive enzymes that have substitutions of the catalytic triad...","Trypsin-like serine protease"
+"HADH",216,"Missense_Mutation",1,1,1,"FadB","COG1250","3-hydroxyacyl-CoA dehydrogenase [Lipid metabolism]"
+"HCFC1",72,"Missense_Mutation",1,1,1,"PLN02153",NA,"epithiospecifier protein"
+"HDAC2",175,"Missense_Mutation",1,1,1,"HDAC2","cd10011","Histone deacetylase 2 (HDAC2)"
+"HDAC3",148,"Missense_Mutation",1,1,1,"AcuC","COG0123","Deacetylases, including yeast histone deacetylase and acetoin utilization protein [Chromatin structure and dynamics / Secondary metabolites biosynthesis, transport, and catabolism]"
+"HECW1",1272,"Missense_Mutation",1,2,0.5,"HECTc","C-terminal catalytic domain of a subclass of Ubiquitin-protein ligase (E3). It binds specific ubiquitin-conjugating enzymes (E2), accepts ubiquitin from E2, transfers ubiquitin to substrate lysine side chains, and transfers additional...","HECT domain"
+"HECW1",1585,"Missense_Mutation",1,2,0.5,"HECTc","C-terminal catalytic domain of a subclass of Ubiquitin-protein ligase (E3). It binds specific ubiquitin-conjugating enzymes (E2), accepts ubiquitin from E2, transfers ubiquitin to substrate lysine side chains, and transfers additional...","HECT domain"
+"HIST1H3D",28,"Missense_Mutation",1,1,1,"PTZ00018","Provisional","histone H3"
+"HK1",853,"Missense_Mutation",1,1,1,"PTZ00107","Provisional","hexokinase"
+"HKR1",602,"Missense_Mutation",1,1,1,"COG5048",NA,"FOG: Zn-finger [General function prediction only]"
+"HMCN1",1017,"Splice_Site",1,1,1,"Ig","cl11960","Immunoglobulin domain"
+"HNRNPK",68,"Frame_Shift_Del",1,3,0.333333333333333,"PCBP_like_KH","cd02396","K homology RNA-binding domain, PCBP_like. Members of this group possess KH domains in a tandem arrangement. Most members, similar to the poly(C) binding proteins (PCBPs) and Nova, containing three KH domains, with the first and second domains, which are..."
+"HNRNPUL1",301,"Missense_Mutation",1,1,1,"SPRY","pfam00622","SPRY domain"
+"HOOK3",351,"Missense_Mutation",1,1,1,"HOOK","pfam05622","HOOK protein"
+"HSD17B1",202,"Missense_Mutation",1,1,1,"PRK06182","Validated","short chain dehydrogenase"
+"HSD3B1",100,"Missense_Mutation",1,1,1,"3b-HSD_HSDB1_like_SDR_e","cd09811","human 3beta-HSD (hydroxysteroid dehydrogenase) and HSD3B1(delta 5-delta 4-isomerase)-like, extended (e) SDRs"
+"HSPA13",462,"Missense_Mutation",1,1,1,"HSPA13-like_NBD","cd10237","Nucleotide-binding domain of human HSPA13 and similar proteins"
+"HSPA4",586,"Nonsense_Mutation",1,1,1,"HSP70","pfam00012","Hsp70 protein"
+"HSPB7",153,"Missense_Mutation",1,1,1,"IbpA","COG0071","Molecular chaperone (small heat shock protein) [Posttranslational modification, protein turnover, chaperones]"
+"HSPG2",2259,"Missense_Mutation",1,1,1,"I-set","pfam07679","Immunoglobulin I-set domain"
+"HTR5A",95,"Missense_Mutation",1,1,1,"7tm_1","pfam00001","7 transmembrane receptor (rhodopsin family)"
+"HYAL4",253,"Missense_Mutation",1,1,1,"Glyco_hydro_56","pfam01630","Hyaluronidase"
+"IGSF9B",89,"Missense_Mutation",1,1,1,"V-set","pfam07686","Immunoglobulin V-set domain"
+"IMMP2L",118,"Missense_Mutation",1,1,1,"sigpep_I_bact","TIGR02227","signal peptidase I, bacterial type"
+"IPO7",639,"Missense_Mutation",1,1,1,"SXM1","COG5656","Importin, protein involved in nuclear import [Posttranslational modification, protein turnover, chaperones]"
+"ITGAX",685,"Missense_Mutation",1,1,1,"Integrin_alpha2","pfam08441","Integrin alpha"
+"JAM2",108,"Missense_Mutation",1,1,1,"IG_like","smart00410","Immunoglobulin like"
+"KCNA4",389,"Missense_Mutation",1,2,0.5,"Ion_trans","pfam00520","Ion transport protein"
+"KCNH8",610,"Missense_Mutation",1,1,1,"Crp","COG0664","cAMP-binding proteins - catabolite gene activator and regulatory subunit of cAMP-dependent protein kinases [Signal transduction mechanisms]"
+"KCNJ6",223,"Missense_Mutation",1,1,1,"IRK","pfam01007","Inward rectifier potassium channel"
+"KCNQ3",384,"Missense_Mutation",1,1,1,"KCNQ_channel","pfam03520","KCNQ voltage-gated potassium channel"
+"KDM6A",333,"Missense_Mutation",1,3,0.333333333333333,"TPR_11","pfam13414","TPR repeat"
+"KDR",1041,"Missense_Mutation",1,2,0.5,"PTKc_VEGFR2","cd05103","Catalytic domain of the Protein Tyrosine Kinase, Vascular Endothelial Growth Factor Receptor 2"
+"KDR",264,"Missense_Mutation",1,2,0.5,"V-set","pfam07686","Immunoglobulin V-set domain"
+"KHDRBS3",86,"Missense_Mutation",1,1,1,"SF1_like-KH","cd02395","Splicing factor 1 (SF1) K homology RNA-binding domain (KH). Splicing factor 1 (SF1) specifically recognizes the intron branch point sequence (BPS) UACUAAC in the pre-mRNA transcripts during spliceosome assembly. We show that the KH-QUA2 region of SF1..."
+"KIF1C",155,"Nonsense_Mutation",1,1,1,"KISc_KIF1A_KIF1B","cd01365","Kinesin motor domain, KIF1_like proteins. KIF1A (Unc104) transports synaptic vesicles to the nerve terminal, KIF1B has been implicated in transport of mitochondria. Both proteins are expressed in neurons. This catalytic (head) domain has ATPase activity..."
+"KIF2B",310,"Missense_Mutation",1,2,0.5,"KISc_KIF2_like","alternative splice forms have been implicated in lysosomal translocation. This catalytic (head) domain...","Kinesin motor domain, KIF2-like group. KIF2 is a protein expressed in neurons, which has been associated with axonal transport and neuron development"
+"KLHDC3",15,"Missense_Mutation",1,1,1,"Kelch_6","pfam13964","Kelch motif"
+"KLHL12",425,"Missense_Mutation",1,1,1,"PHA03098","Provisional","kelch-like protein"
+"KLHL18",499,"Missense_Mutation",1,1,1,"PHA03098","Provisional","kelch-like protein"
+"KLHL2",495,"Missense_Mutation",1,1,1,"PHA03098","Provisional","kelch-like protein"
+"KLK7",216,"Nonsense_Mutation",1,1,1,"Tryp_SPc","Many of these are synthesized as inactive precursor zymogens that are cleaved during limited proteolysis to generate their active forms. Alignment contains also inactive enzymes that have substitutions of the catalytic triad...","Trypsin-like serine protease"
+"KRAS",61,"Missense_Mutation",1,8,0.125,"COG1100",NA,"GTPase SAR1 and related small G proteins [General function prediction only]"
+"KRAS",59,"Missense_Mutation",1,8,0.125,"COG1100",NA,"GTPase SAR1 and related small G proteins [General function prediction only]"
+"KRAS",36,"Missense_Mutation",1,8,0.125,"COG1100",NA,"GTPase SAR1 and related small G proteins [General function prediction only]"
+"KRAS",146,"Missense_Mutation",1,8,0.125,"COG1100",NA,"GTPase SAR1 and related small G proteins [General function prediction only]"
+"KRAS",13,"Missense_Mutation",1,8,0.125,"COG1100",NA,"GTPase SAR1 and related small G proteins [General function prediction only]"
+"KRT13",337,"Missense_Mutation",1,1,1,"Filament","pfam00038","Intermediate filament protein"
+"KRT19",327,"Missense_Mutation",1,1,1,"Filament","pfam00038","Intermediate filament protein"
+"KRT20",80,"Missense_Mutation",1,1,1,"Filament","pfam00038","Intermediate filament protein"
+"KRTAP24-1",94,"Missense_Mutation",1,1,1,"PMG","pfam05287","PMG protein"
+"KRTAP26-1",81,"Missense_Mutation",1,1,1,"PMG","pfam05287","PMG protein"
+"KRTAP4-2",35,"Missense_Mutation",1,1,1,"Keratin_B2_2",NA,NA
+"KSR2",802,"Missense_Mutation",1,1,1,"Pkinase_Tyr","pfam07714","Protein tyrosine kinase"
+"LAMA1",593,"Nonsense_Mutation",1,1,1,"Laminin_B","pfam00052","Laminin B (Domain IV)"
+"LAMA2",1687,"Missense_Mutation",1,1,1,"Laminin_I","pfam06008","Laminin Domain I"
+"LAMA3",617,"Missense_Mutation",1,1,1,"Laminin_EGF","pfam00053","Laminin EGF-like (Domains III and V)"
+"LARS",177,"Missense_Mutation",1,1,1,"PLN02959",NA,"aminoacyl-tRNA ligase"
+"LCE1B",49,"Nonsense_Mutation",1,1,1,"LCE",NA,NA
+"LILRB2",262,"Missense_Mutation",1,1,1,"Ig","cl11960","Immunoglobulin domain"
+"LIMS2",97,"Missense_Mutation",1,1,1,"LIM1_PINCH","cd09331","The first LIM domain of protein PINCH"
+"LMOD1",55,"Missense_Mutation",1,1,1,"Tropomodulin",NA,NA
+"LNX1",176,"Missense_Mutation",1,1,1,"PDZ_signaling","cd00992","PDZ domain found in a variety of Eumetazoan signaling molecules, often in tandem arrangements. May be responsible for specific protein-protein interactions, as most PDZ domains bind C-terminal polypeptides, and binding to internal (non-C-terminal)..."
+"LRIG3",399,"Missense_Mutation",1,1,1,"LRR_RI","cl15309","Leucine-rich repeats (LRRs), ribonuclease inhibitor (RI)-like subfamily. LRRs are 20-29 residue sequence motifs present in many proteins that participate in protein-protein interactions and have different functions and cellular locations. LRRs correspond..."
+"LRRC2",164,"Splice_Site",1,1,1,"LRR_8","pfam13855","Leucine rich repeat"
+"LRRTM2",144,"Missense_Mutation",1,1,1,"LRR_RI","cl15309","Leucine-rich repeats (LRRs), ribonuclease inhibitor (RI)-like subfamily. LRRs are 20-29 residue sequence motifs present in many proteins that participate in protein-protein interactions and have different functions and cellular locations. LRRs correspond..."
+"LTA4H",107,"Missense_Mutation",1,1,1,"M1_LTA4H","cd09599","Peptidase M1 family contains leukotriene A4 hydrolase"
+"LTBP3",364,"Missense_Mutation",1,1,1,"EGF_CA","cd00054","Calcium-binding EGF-like domain, present in a large number of membrane-bound and extracellular (mostly animal) proteins. Many of these proteins require calcium for their biological function and calcium-binding sites have been found to be located at the..."
+"MAEL",139,"Missense_Mutation",1,1,1,"Maelstrom","pfam13017","piRNA pathway germ-plasm component"
+"MAGI1",476,"Missense_Mutation",1,1,1,"PDZ_signaling","cd00992","PDZ domain found in a variety of Eumetazoan signaling molecules, often in tandem arrangements. May be responsible for specific protein-protein interactions, as most PDZ domains bind C-terminal polypeptides, and binding to internal (non-C-terminal)..."
+"MAGI3",158,"Missense_Mutation",1,1,1,"P-loop_NTPase","cl09099","P-loop containing Nucleoside Triphosphate Hydrolases"
+"MAP2",430,"Missense_Mutation",1,2,0.5,"MAP2_projctn","pfam08377","MAP2/Tau projection domain"
+"MAP2",814,"Missense_Mutation",1,2,0.5,"MAP2_projctn","pfam08377","MAP2/Tau projection domain"
+"MAPK1",172,"Missense_Mutation",1,1,1,"STKc_ERK1_2_like","cd07849","Catalytic domain of Extracellular signal-Regulated Kinase 1 and 2-like Serine/Threonine Kinases"
+"MAT1A",163,"Missense_Mutation",1,1,1,"metK","TIGR01034","S-adenosylmethionine synthetase"
+"MAX",60,"Missense_Mutation",1,1,1,"HLH","60-100 amino acids long. A DNA-binding basic region is followed by two alpha-helices separated by a variable loop region","Helix-loop-helix domain, found in specific DNA- binding proteins that act as transcription factors"
+"MBTPS1",714,"Missense_Mutation",1,1,1,"DUF4350","pfam14258","Domain of unknown function (DUF4350)"
+"MCHR2",152,"Missense_Mutation",1,1,1,"7tm_1","pfam00001","7 transmembrane receptor (rhodopsin family)"
+"MCM10",544,"Splice_Site",1,1,1,"Mcm10","pfam09332","Mcm10 replication factor"
+"MDFI",154,"Missense_Mutation",1,1,1,"MDFI",NA,NA
+"MDH1B",274,"Missense_Mutation",1,1,1,"MDH_like","cd05295","Malate dehydrogenase-like"
+"MECR",82,"Missense_Mutation",1,1,1,"ETR","cd08290","2-enoyl thioester reductase (ETR)"
+"MED21",23,"Missense_Mutation",1,1,1,"Med21","pfam11221","Subunit 21 of Mediator complex"
+"MEFV",410,"Missense_Mutation",1,2,0.5,"BBOX","zinc binding domain (CHC3H2)","B-Box-type zinc finger"
+"MEGF10",66,"Missense_Mutation",1,1,1,"EMI","pfam07546","EMI domain"
+"MFN1",158,"Missense_Mutation",1,1,1,"DLP_2","cd09912","Dynamin-like protein including dynamins, mitofusins, and guanylate-binding proteins"
+"MFSD6",76,"Missense_Mutation",1,1,1,"MFS","cd06174","The Major Facilitator Superfamily (MFS) is a large and diverse group of secondary transporters that includes uniporters, symporters, and antiporters. MFS proteins facilitate the transport across cytoplasmic or internal membranes of a variety of..."
+"MGAT4C",257,"Missense_Mutation",1,1,1,"Glyco_transf_54","pfam04666","N-Acetylglucosaminyltransferase-IV (GnT-IV) conserved region"
+"MGAT5B",501,"Missense_Mutation",1,1,1,"Glyco_transf_18",NA,NA
+"MICAL2",595,"Missense_Mutation",1,1,1,"CH","actin-binding domain which may be present as a single copy or in tandem repeats (which increases binding affinity). The CH domain is found in cytoskeletal and signal transduction proteins, including actin-binding proteins like...","Calponin homology domain"
+"MIER3",288,"Missense_Mutation",1,1,1,"SANT","smart00717","SANT SWI3, ADA2, N-CoR and TFIIIB'' DNA-binding domains"
+"MMP25",179,"Missense_Mutation",1,1,1,"ZnMc_MMP","cd04278","Zinc-dependent metalloprotease, matrix metalloproteinase (MMP) sub-family. MMPs are responsible for a great deal of pericellular proteolysis of extracellular matrix and cell surface molecules, playing crucial roles in morphogenesis, cell fate..."
+"MNDA",215,"Missense_Mutation",1,1,1,"HIN","pfam02760","HIN-200/IF120x domain"
+"MPI",156,"In_Frame_Del",1,1,1,"PMI_typeI","pfam01238","Phosphomannose isomerase type I"
+"MST1R",504,"Missense_Mutation",1,1,1,"Sema_RON","cd11279","The Sema domain, a protein interacting module, of RON Receptor Tyrosine Kinase"
+"MTA2",283,"Missense_Mutation",1,2,0.5,"SANT","smart00717","SANT SWI3, ADA2, N-CoR and TFIIIB'' DNA-binding domains"
+"MTA2",289,"Missense_Mutation",1,2,0.5,"SANT","smart00717","SANT SWI3, ADA2, N-CoR and TFIIIB'' DNA-binding domains"
+"MTMR3",208,"Missense_Mutation",1,1,1,"Myotub-related","pfam06602","Myotubularin-related"
+"MUC6",511,"Missense_Mutation",1,1,1,"VWD","smart00216","von Willebrand factor (vWF) type D domain"
+"MXRA5",627,"Missense_Mutation",1,1,1,"IG_like","smart00410","Immunoglobulin like"
+"MYB",82,"Missense_Mutation",1,1,1,"SANT","smart00717","SANT SWI3, ADA2, N-CoR and TFIIIB'' DNA-binding domains"
+"MYC",59,"Missense_Mutation",1,1,1,"Myc_N","pfam01056","Myc amino-terminal region"
+"MYF5",21,"Missense_Mutation",1,1,1,"BASIC","smart00520","Basic domain in HLH proteins of MYOD family"
+"MYH15",214,"Missense_Mutation",1,1,1,"MYSc","smart00242","Myosin. Large ATPases"
+"MYH6",109,"Nonsense_Mutation",1,1,1,"MYSc","smart00242","Myosin. Large ATPases"
+"MYLK",680,"Missense_Mutation",1,1,1,"I-set","pfam07679","Immunoglobulin I-set domain"
+"MYLK2",453,"Missense_Mutation",1,1,1,"PKc","cd00180","Catalytic domain of Protein Kinases"
+"MYO3A",182,"Missense_Mutation",1,1,1,"STKc_myosinIIIA","cd06638","Catalytic domain of the Protein Serine/Threonine Kinase, Class IIIA myosin"
+"MYO5B",238,"Missense_Mutation",1,1,1,"MYSc","smart00242","Myosin. Large ATPases"
+"MYOC",365,"Nonsense_Mutation",1,1,1,"OLF","cl02549","Olfactomedin-like domain"
+"N4BP1",765,"Missense_Mutation",1,1,1,"RNase_Zc3h12a","pfam11977","Zc3h12a-like Ribonuclease NYN domain"
+"NAA15",258,"Nonsense_Mutation",1,1,1,"NARP1","pfam12569","NMDA receptor-regulated protein 1"
+"NAE1",121,"Missense_Mutation",1,1,1,"APPBP1_RUB","cd01493","Ubiquitin activating enzyme (E1) subunit APPBP1. APPBP1 is part of the heterodimeric activating enzyme (E1), specific for the Rub family of ubiquitin-like proteins (Ubls). E1 enzymes are part of a conjugation cascade to attach Ub or Ubls, covalently to..."
+"NAPSA",343,"Missense_Mutation",1,1,1,"pepsin_retropepsin_like","cl11403","Cellular and retroviral pepsin-like aspartate proteases"
+"NAT8L",188,"Missense_Mutation",1,1,1,"NAT_SF","cd04301","N-Acyltransferase superfamily: Various enzymes that characteristically catalyze the transfer of an acyl group to a substrate"
+"NAV1",1254,"Missense_Mutation",1,1,1,"AAA","smart00382","ATPases associated with a variety of cellular activities"
+"NBEAL1",2145,"Missense_Mutation",1,1,1,"Beach","cd06071","BEACH (Beige and Chediak-Higashi) domains, implicated in membrane trafficking,  are present in a family of proteins conserved throughout eukaryotes. This group contains human lysosomal trafficking regulator (LYST), LPS-responsive and beige-like anchor"
+"NCCRP1",269,"Missense_Mutation",1,1,1,"FBA","pfam04300","F-box associated region"
+"NF1",1276,"Missense_Mutation",1,2,0.5,"RasGAP_Neurofibromin","cd05130","Neurofibromin is the product of the neurofibromatosis type 1 gene (NF1) and shares a region of similarity with catalytic domain of the mammalian p120RasGAP protein and an extended similarity with the Saccharomyces cerevisiae RasGAP proteins Ira1 and Ira2"
+"NF1",1306,"Nonsense_Mutation",1,2,0.5,"RasGAP_Neurofibromin","cd05130","Neurofibromin is the product of the neurofibromatosis type 1 gene (NF1) and shares a region of similarity with catalytic domain of the mammalian p120RasGAP protein and an extended similarity with the Saccharomyces cerevisiae RasGAP proteins Ira1 and Ira2"
+"NLRC4",811,"Missense_Mutation",1,1,1,"LRR_RI","cl15309","Leucine-rich repeats (LRRs), ribonuclease inhibitor (RI)-like subfamily. LRRs are 20-29 residue sequence motifs present in many proteins that participate in protein-protein interactions and have different functions and cellular locations. LRRs correspond..."
+"NLRP11",201,"Missense_Mutation",1,1,1,"P-loop_NTPase","cl09099","P-loop containing Nucleoside Triphosphate Hydrolases"
+"NMNAT2",282,"Missense_Mutation",1,1,1,"NMNAT_Eukarya","cd09286","Nicotinamide/nicotinate mononucleotide adenylyltransferase, Eukaryotic"
+"NMUR2",140,"Missense_Mutation",1,2,0.5,"7tm_1","pfam00001","7 transmembrane receptor (rhodopsin family)"
+"NONO",75,"Missense_Mutation",1,1,1,"RRM","cd00590","RRM (RNA recognition motif), also known as RBD (RNA binding domain) or RNP (ribonucleoprotein domain), is a highly abundant domain in eukaryotes found in proteins involved in post-transcriptional gene expression processes including mRNA and rRNA..."
+"NOS1",1158,"Missense_Mutation",1,1,1,"CysJ","COG0369","Sulfite reductase, alpha subunit (flavoprotein) [Inorganic ion transport and metabolism]"
+"NOTCH1",1936,"Missense_Mutation",1,1,1,"Ank_2","pfam12796","Ankyrin repeats (3 copies)"
+"NOX3",108,"Missense_Mutation",1,1,1,"COG4097",NA,"Predicted ferric reductase [Inorganic ion transport and metabolism]"
+"NPC1",1103,"Missense_Mutation",1,1,1,"2A060601","TIGR00917","Niemann-Pick C type protein family"
+"NR2E1",175,"Missense_Mutation",1,2,0.5,"NR_LBD_Tlx_PNR_like","cd06950","The ligand binding domain of Tailless-like proteins,  orphan nuclear receptors"
+"NR2E1",227,"Missense_Mutation",1,2,0.5,"NR_LBD_Tlx_PNR_like","cd06950","The ligand binding domain of Tailless-like proteins,  orphan nuclear receptors"
+"NRAP",1415,"Missense_Mutation",1,1,1,"Nebulin","cl11595","Nebulin repeat"
+"NRCAM",635,"Splice_Site",1,1,1,"FN3","One of three types of internal repeats found in the plasma protein fibronectin. Its tenth fibronectin type III repeat contains an RGD cell recognition sequence in a flexible loop between 2 strands. Approximately 2% of all...","Fibronectin type 3 domain"
+"NRF1",206,"Missense_Mutation",1,1,1,"Nrf1_DNA-bind","pfam10491","NLS-binding and DNA-binding and dimerisation domains of Nrf1"
+"NRXN1",773,"Missense_Mutation",1,1,1,"LamG","Laminin G-like domains are usually Ca++ mediated receptors that can have binding sites for steroids, beta1 integrins, heparin, sulfatides, fibulin-1, and alpha-dystroglycans. Proteins that contain LamG domains serve a variety of...","Laminin G domain"
+"NRXN3",326,"Missense_Mutation",1,2,0.5,"LamG","Laminin G-like domains are usually Ca++ mediated receptors that can have binding sites for steroids, beta1 integrins, heparin, sulfatides, fibulin-1, and alpha-dystroglycans. Proteins that contain LamG domains serve a variety of...","Laminin G domain"
+"NRXN3",95,"Missense_Mutation",1,2,0.5,"LamG","Laminin G-like domains are usually Ca++ mediated receptors that can have binding sites for steroids, beta1 integrins, heparin, sulfatides, fibulin-1, and alpha-dystroglycans. Proteins that contain LamG domains serve a variety of...","Laminin G domain"
+"NTRK3",695,"Missense_Mutation",1,1,1,"PTKc_TrkC","cd05094","Catalytic domain of the Protein Tyrosine Kinase, Tropomyosin Related Kinase C"
+"NTSR2",327,"Missense_Mutation",1,1,1,"7tm_1","pfam00001","7 transmembrane receptor (rhodopsin family)"
+"NUMA1",1367,"Frame_Shift_Ins",1,1,1,"SMC_prok_B","TIGR02168","chromosome segregation protein SMC, common bacterial type"
+"NUP93",111,"Missense_Mutation",1,1,1,"Nic96","pfam04097","Nup93/Nic96"
+"OBSCN",3062,"Missense_Mutation",1,1,1,"I-set","pfam07679","Immunoglobulin I-set domain"
+"OIT3",317,"Missense_Mutation",1,1,1,"Zona_pellucida","pfam00100","Zona pellucida-like domain"
+"OPRM1",116,"Missense_Mutation",1,1,1,"7tm_1","pfam00001","7 transmembrane receptor (rhodopsin family)"
+"OR11H12",98,"Missense_Mutation",1,2,0.5,"7tm_1","pfam00001","7 transmembrane receptor (rhodopsin family)"
+"OR2AG1",131,"Missense_Mutation",1,1,1,"7tm_1","pfam00001","7 transmembrane receptor (rhodopsin family)"
+"OR2M2",239,"Missense_Mutation",1,1,1,"7tm_1","pfam00001","7 transmembrane receptor (rhodopsin family)"
+"OR2M3",256,"Nonsense_Mutation",1,1,1,"7tm_1","pfam00001","7 transmembrane receptor (rhodopsin family)"
+"OR2T10",257,"Nonsense_Mutation",1,1,1,"7tm_1","pfam00001","7 transmembrane receptor (rhodopsin family)"
+"OR3A2",243,"Missense_Mutation",1,1,1,"7tm_1","pfam00001","7 transmembrane receptor (rhodopsin family)"
+"OR4C15",296,"Missense_Mutation",1,1,1,"7tm_4","pfam13853","Olfactory receptor"
+"OR51A7",281,"Missense_Mutation",1,1,1,"7tm_1","pfam00001","7 transmembrane receptor (rhodopsin family)"
+"OR51L1",239,"Missense_Mutation",1,1,1,"7tm_1","pfam00001","7 transmembrane receptor (rhodopsin family)"
+"OR51S1",65,"Missense_Mutation",1,1,1,"7tm_4","cl10458","Olfactory receptor"
+"OR5AR1",180,"Missense_Mutation",1,1,1,"7tm_1","pfam00001","7 transmembrane receptor (rhodopsin family)"
+"OR5AS1",67,"Missense_Mutation",1,1,1,"7tm_1","pfam00001","7 transmembrane receptor (rhodopsin family)"
+"OR5K3",271,"Missense_Mutation",1,1,1,"7tm_1","pfam00001","7 transmembrane receptor (rhodopsin family)"
+"OR5W2",144,"Missense_Mutation",1,1,1,"7tm_1","pfam00001","7 transmembrane receptor (rhodopsin family)"
+"OR7D4",174,"Missense_Mutation",1,1,1,"7tm_1","pfam00001","7 transmembrane receptor (rhodopsin family)"
+"OR8A1",112,"Missense_Mutation",1,1,1,"7tm_1","pfam00001","7 transmembrane receptor (rhodopsin family)"
+"OR8B12",258,"Missense_Mutation",1,1,1,"7tm_1","pfam00001","7 transmembrane receptor (rhodopsin family)"
+"ORAI1",106,"Missense_Mutation",1,1,1,"Orai-1","pfam07856","Mediator of CRAC channel activity"
+"OTOA",760,"Missense_Mutation",1,1,1,"Mesothelin","pfam06060","Pre-pro-megakaryocyte potentiating factor precursor (Mesothelin)"
+"P2RY2",131,"Missense_Mutation",1,1,1,"7tm_1","pfam00001","7 transmembrane receptor (rhodopsin family)"
+"PA2G4",119,"Missense_Mutation",1,1,1,"PA2G4-like","cd01089","Related to aminopepdidase M, this family contains proliferation-associated protein 2G4. Family members have been implicated in cell cycle control"
+"PABPC3",106,"Missense_Mutation",1,1,1,"PABP-1234","TIGR01628","polyadenylate binding protein, human types 1, 2, 3, 4 family"
+"PARP14",876,"Missense_Mutation",1,1,1,"Macro_Af1521_BAL_like","cd02907","Macro domain, Af1521- and BAL-like family. The macro domain is a high-affinity ADP-ribose binding module found in a variety of proteins as a stand-alone domain or in combination with other domains like in histone macroH2A and some PARPs (poly ADP-ribose..."
+"PARP2",150,"Nonsense_Mutation",1,1,1,"WGR_PARP2_like","cd08003","WGR domain of poly(ADP-ribose) polymerases"
+"PARP6",308,"Missense_Mutation",1,1,1,"ADP_ribosyl","cd01341","ADP_ribosylating enzymes catalyze the transfer of ADP_ribose from NAD+ to substrates. Bacterial toxins are cytoplasmic and catalyze the transfer of a single ADP_ribose unit to eukaryotic elongation factor 2, halting protein synthesis and killing the cell"
+"PAX3",270,"Missense_Mutation",1,1,1,"homeodomain","DNA binding domains involved in the transcriptional regulation of key eukaryotic developmental processes","Homeodomain"
+"PCDH11X",617,"Missense_Mutation",1,1,1,"Cadherin_repeat","cd11304","Cadherin tandem repeat domain"
+"PCDHA4",432,"Missense_Mutation",1,1,1,"Cadherin_repeat","cd11304","Cadherin tandem repeat domain"
+"PCDHA8",618,"Missense_Mutation",1,1,1,"Cadherin_repeat","cd11304","Cadherin tandem repeat domain"
+"PCDHB11",375,"Missense_Mutation",1,1,1,"Cadherin_repeat","cd11304","Cadherin tandem repeat domain"
+"PCDHB16",405,"Missense_Mutation",1,1,1,"Cadherin_repeat","cd11304","Cadherin tandem repeat domain"
+"PCDHB3",221,"Missense_Mutation",1,1,1,"Cadherin_repeat","cd11304","Cadherin tandem repeat domain"
+"PCDHB6",158,"Missense_Mutation",1,1,1,"Cadherin_repeat","cd11304","Cadherin tandem repeat domain"
+"PCDHGA10",342,"In_Frame_Del",1,1,1,"Cadherin_repeat","cd11304","Cadherin tandem repeat domain"
+"PCDHGA3",202,"Missense_Mutation",1,1,1,"Cadherin_repeat","cd11304","Cadherin tandem repeat domain"
+"PCDHGA5",374,"Missense_Mutation",1,1,1,"Cadherin_repeat","cd11304","Cadherin tandem repeat domain"
+"PDC",59,"Missense_Mutation",1,1,1,"Phd_like_Phd","Phd is a cytosolic regulator of G protein functions. It specifically binds G protein betagamma (Gbg)-subunits with high affinity, resulting in the solubilization of Gbg from the plasma membrane. This impedes...","Phosducin (Phd)-like family, Phd subfamily"
+"PDCD2L",264,"Missense_Mutation",1,2,0.5,"PDCD2_C","pfam04194","Programmed cell death protein 2, C-terminal putative domain"
+"PDCD2L",214,"Missense_Mutation",1,2,0.5,"PDCD2_C","pfam04194","Programmed cell death protein 2, C-terminal putative domain"
+"PDCL3",21,"Frame_Shift_Ins",1,1,1,"Phd_like_VIAF","VIAF is a Phd-like protein that functions in caspase activation during apoptosis. It was identified as an IAP binding protein through a screen of a human...","Phosducin (Phd)-like family, Viral inhibitor of apoptosis (IAP)-associated factor (VIAF) subfamily"
+"PDGFRB",604,"Missense_Mutation",1,1,1,"PKc_like","cl09925","Protein Kinases, catalytic domain"
+"PDK4",271,"Missense_Mutation",1,1,1,"BaeS","COG0642","Signal transduction histidine kinase [Signal transduction mechanisms]"
+"PEAR1",77,"Missense_Mutation",1,1,1,"EMI","pfam07546","EMI domain"
+"PEX13",159,"Frame_Shift_Del",1,1,1,"Peroxin-13_N","pfam04088","Peroxin 13, N-terminal region"
+"PGBD1",682,"Missense_Mutation",1,1,1,"DDE_Tnp_1_7","pfam13843","Transposase IS4"
+"PGM3",365,"Missense_Mutation",1,1,1,"PGM3","cd03086","PGM3 (phosphoglucomutase 3), also known as PAGM (phosphoacetylglucosamine mutase) and AGM1 (N-acetylglucosamine-phosphate mutase), is an essential enzyme found in eukaryotes that reversibly catalyzes the conversion of GlcNAc-6-phosphate into..."
+"PHF6",242,"Missense_Mutation",1,6,0.166666666666667,"zf-HC5HC2H","pfam13771","PHD-like zinc-binding domain"
+"PHF6",287,"Missense_Mutation",1,6,0.166666666666667,"zf-HC5HC2H","pfam13771","PHD-like zinc-binding domain"
+"PHIP",210,"Missense_Mutation",1,2,0.5,"WD40","typically contains a GH dipeptide 11-24 residues from...","WD40 domain, found in a number of eukaryotic proteins that cover a wide variety of functions including adaptor/regulatory modules in signal transduction, pre-mRNA processing and cytoskeleton assembly"
+"PHIP",1316,"Frame_Shift_Ins",1,2,0.5,"Bromo_WDR9_II","WDR9 repeat II_like subfamily. WDR9 is a human gene located in the Down Syndrome critical region-2 of chromosome 21. It encodes for a nuclear protein containing WD40 repeats and two bromodomains, which may function as a transcriptional...","Bromodomain"
+"PHLPP1",580,"Missense_Mutation",1,1,1,"PH","cd00821","Pleckstrin homology (PH) domain"
+"PIK3CB",68,"Missense_Mutation",1,1,1,"PI3K_p85B","pfam02192","PI3-kinase family, p85-binding domain"
+"PKD2L1",504,"Missense_Mutation",1,1,1,"PKD_channel","pfam08016","Polycystin cation channel"
+"PKHD1L1",413,"Missense_Mutation",1,2,0.5,"PA14","cl08459","PA14 domain"
+"PKIB",52,"Missense_Mutation",1,1,1,"PKI","pfam02827","cAMP-dependent protein kinase inhibitor"
+"PLA2G2D",135,"Missense_Mutation",1,1,1,"PLA2c","the latter are either Ca dependent or Ca independent. PLA2 cleaves the sn-2 position of the glycerol backbone of phospholipids (PC or phosphatidylethanolamine), usually in a...","PLA2c: Phospholipase A2, a family of secretory and cytosolic enzymes"
+"PLA2G4C",58,"Missense_Mutation",1,1,1,"cPLA2_Grp-IVC","catalytic domain","Group IVC cytoplasmic phospholipase A2"
+"PLA2G4D",336,"Missense_Mutation",1,1,1,"cPLA2_Grp-IVB-IVD-IVE-IVF","catalytic domain","Group IVB, IVD, IVE, and IVF cytosolic phospholipase A2"
+"PLCE1",584,"Missense_Mutation",1,4,0.25,"RasGEF","pfam00617","RasGEF domain"
+"PLCE1",238,"Missense_Mutation",1,4,0.25,"RasGEF","pfam00617","RasGEF domain"
+"PLCE1",696,"Missense_Mutation",1,4,0.25,"RasGEF","pfam00617","RasGEF domain"
+"PLCH2",274,"Missense_Mutation",1,1,1,"efhand_like","pfam09279","Phosphoinositide-specific phospholipase C, efhand-like"
+"PLCZ1",219,"Missense_Mutation",1,1,1,"PLN02952",NA,"phosphoinositide phospholipase C"
+"PLEC",4523,"Missense_Mutation",1,1,1,"Plectin","pfam00681","Plectin repeat"
+"PLEKHH1",620,"Missense_Mutation",1,2,0.5,"PH","cd00821","Pleckstrin homology (PH) domain"
+"PLRG1",481,"Missense_Mutation",1,1,1,"COG2319",NA,"FOG: WD40 repeat [General function prediction only]"
+"PLXNA4",1113,"Missense_Mutation",1,1,1,"IPT_plexin_repeat3","cd01181","Third repeat of the IPT domain of Plexins and Cell Surface Receptors (PCSR) . Plexins are involved in the regulation of cell proliferation and of cellular adhesion and repulsion receptors. In general, there are three copies of the IPT domain present..."
+"PMPCB",82,"Missense_Mutation",1,1,1,"PqqL","COG0612","Predicted Zn-dependent peptidases [General function prediction only]"
+"POC1A",232,"Missense_Mutation",1,1,1,"WD40","typically contains a GH dipeptide 11-24 residues from...","WD40 domain, found in a number of eukaryotic proteins that cover a wide variety of functions including adaptor/regulatory modules in signal transduction, pre-mRNA processing and cytoskeleton assembly"
+"POLA2",24,"Frame_Shift_Del",1,1,1,"Pol_alpha_B_N","pfam08418","DNA polymerase alpha subunit B N-terminal"
+"POLR2E",134,"Nonsense_Mutation",1,1,1,"PLN03111","Provisional","DNA-directed RNA polymerase II subunit family protein"
+"POLR3B",151,"Missense_Mutation",1,1,1,"RNA_pol_B_RPB2","cd00653","RNA polymerase beta subunit. RNA polymerases catalyse the DNA dependent polymerization of RNA. Prokaryotes contain a single RNA polymerase compared to three in eukaryotes (not including mitochondrial. and chloroplast polymerases). Each RNA polymerase..."
+"POSTN",423,"Missense_Mutation",1,1,1,"Fasciclin","pfam02469","Fasciclin domain"
+"POU5F1",239,"Missense_Mutation",1,1,1,"homeodomain","DNA binding domains involved in the transcriptional regulation of key eukaryotic developmental processes","Homeodomain"
+"PPAP2A",221,"Missense_Mutation",1,1,1,"PAP2_wunen","cd03384","PAP2, wunen subfamily. Most likely a family of membrane associated phosphatidic acid phosphatases. Wunen is a drosophila protein expressed in the central nervous system, which provides repellent activity towards primordial germ cells (PGCs), controls the..."
+"PPIC",158,"Missense_Mutation",1,1,1,"cyclophilin","cl00197","cyclophilin: cyclophilin-type peptidylprolyl cis- trans isomerases. This family contains eukaryotic, bacterial and archeal proteins which exhibit a peptidylprolyl cis- trans isomerases activity (PPIase, Rotamase) and in addition bind the..."
+"PPP2R2B",371,"Missense_Mutation",1,1,1,"CDC55","COG5170","Serine/threonine protein phosphatase 2A, regulatory subunit [Signal transduction mechanisms]"
+"PRKAA2",227,"Nonsense_Mutation",1,1,1,"S_TKc","smart00220","Serine/Threonine protein kinases, catalytic domain"
+"PRKCG",580,"Missense_Mutation",1,1,1,"STKc_cPKC","cd05587","Catalytic domain of the Protein Serine/Threonine Kinase, Classical Protein Kinase C"
+"PRODH2",95,"Nonsense_Mutation",1,1,1,"PLN02681",NA,"proline dehydrogenase"
+"PRPF3",373,"Missense_Mutation",1,1,1,"PRP3","pfam08572","pre-mRNA processing factor 3 (PRP3)"
+"PRPF8",687,"Missense_Mutation",1,2,0.5,"PRP8","COG5178","U5 snRNP spliceosome subunit [RNA processing and modification]"
+"PRPF8",1750,"Missense_Mutation",1,2,0.5,"PRP8","COG5178","U5 snRNP spliceosome subunit [RNA processing and modification]"
+"PRR21",53,"Missense_Mutation",1,1,1,"ROM1","COG5422","RhoGEF, Guanine nucleotide exchange factor for Rho/Rac/Cdc42-like GTPases [Signal transduction mechanisms]"
+"PTPN11",61,"Missense_Mutation",1,9,0.111111111111111,"SH2_N-SH2_SHP_like","cd10340","N-terminal Src homology 2 (N-SH2) domain found in SH2 domain Phosphatases (SHP) proteins"
+"PTPN11",491,"Missense_Mutation",1,9,0.111111111111111,"PTPc","smart00194","Protein tyrosine phosphatase, catalytic domain"
+"PTPN11",71,"Missense_Mutation",1,9,0.111111111111111,"SH2_N-SH2_SHP_like","cd10340","N-terminal Src homology 2 (N-SH2) domain found in SH2 domain Phosphatases (SHP) proteins"
+"PTPN11",60,"Missense_Mutation",1,9,0.111111111111111,"SH2_N-SH2_SHP_like","cd10340","N-terminal Src homology 2 (N-SH2) domain found in SH2 domain Phosphatases (SHP) proteins"
+"PTPN11",72,"Missense_Mutation",1,9,0.111111111111111,"SH2_N-SH2_SHP_like","cd10340","N-terminal Src homology 2 (N-SH2) domain found in SH2 domain Phosphatases (SHP) proteins"
+"PTPN11",502,"Missense_Mutation",1,9,0.111111111111111,"PTPc","smart00194","Protein tyrosine phosphatase, catalytic domain"
+"PTPN14",1042,"Missense_Mutation",1,1,1,"PTPc","smart00194","Protein tyrosine phosphatase, catalytic domain"
+"PTPRE",153,"Missense_Mutation",1,1,1,"PTPc","smart00194","Protein tyrosine phosphatase, catalytic domain"
+"PTPRT",1414,"Missense_Mutation",1,3,0.333333333333333,"PTPc","smart00194","Protein tyrosine phosphatase, catalytic domain"
+"PTPRT",981,"Missense_Mutation",1,3,0.333333333333333,"PTPc","smart00194","Protein tyrosine phosphatase, catalytic domain"
+"PTPRT",1213,"Missense_Mutation",1,3,0.333333333333333,"PTPc","smart00194","Protein tyrosine phosphatase, catalytic domain"
+"PUS1",191,"Missense_Mutation",1,1,1,"TruA","COG0101","Pseudouridylate synthase [Translation, ribosomal structure and biogenesis]"
+"PXDNL",851,"Missense_Mutation",1,1,1,"peroxidasin_like","cd09826","Animal heme peroxidase domain of peroxidasin and related proteins"
+"PYGO2",356,"Missense_Mutation",1,1,1,"PHD","pfam00628","PHD-finger"
+"RAB17",134,"Missense_Mutation",1,1,1,"Rab5_related","regulates early endosome fusion","Rab-related GTPase family includes Rab5 and Rab22"
+"RAB23",171,"Missense_Mutation",1,1,1,"PLN03108","Provisional","Rab family protein"
+"RAB25",41,"Missense_Mutation",1,1,1,"PLN03110","Provisional","Rab GTPase"
+"RAD21",49,"Splice_Site",1,5,0.2,"Rad21_Rec8_N","pfam04825","N terminus of Rad21 / Rec8 like protein"
+"RAP1B",12,"Missense_Mutation",1,1,1,"P-loop_NTPase","cl09099","P-loop containing Nucleoside Triphosphate Hydrolases"
+"RAP1GDS1",66,"Missense_Mutation",1,1,1,"ARM","these repeats were also found in the mammalian armadillo homolog beta-catenin","Armadillo/beta-catenin-like repeats. An approximately 40 amino acid long tandemly repeated sequence motif first identified in the Drosophila segment polarity gene armadillo"
+"RAPGEF2",157,"Nonsense_Mutation",1,1,1,"CAP_ED","members include CAP (or cAMP receptor protein (CRP)), which binds cAMP, FNR (fumarate and nitrate reduction), which uses an iron-sulfur cluster to sense oxygen) and CooA, a heme containing CO...","effector domain of the CAP family of transcription factors"
+"RASSF7",69,"Missense_Mutation",1,1,1,"RA","smart00314","Ras association (RalGDS/AF-6) domain"
+"RBKS",114,"Missense_Mutation",1,1,1,"ribokinase","cd01174","Ribokinase catalyses the phosphorylation of ribose to ribose-5-phosphate using ATP. This reaction is the first step in the ribose metabolism. It traps ribose within the cell after uptake and also prepares the sugar for use in the synthesis of nucleotides..."
+"RBM41",362,"Missense_Mutation",1,1,1,"COG0724",NA,"RNA-binding proteins (RRM domain) [General function prediction only]"
+"RBMX",5,"Missense_Mutation",1,1,1,"COG0724",NA,"RNA-binding proteins (RRM domain) [General function prediction only]"
+"RCAN2",197,"Missense_Mutation",1,1,1,"Calcipressin","pfam04847","Calcipressin"
+"RFC1",658,"Missense_Mutation",1,1,1,"HolB","COG0470","ATPase involved in DNA replication [DNA replication, recombination, and repair]"
+"RFC3",270,"Splice_Site",1,2,0.5,"PRK12402","Reviewed","replication factor C small subunit 2"
+"RFC3",168,"Missense_Mutation",1,2,0.5,"PRK12402","Reviewed","replication factor C small subunit 2"
+"RFX4",120,"Missense_Mutation",1,1,1,"RFX_DNA_binding","pfam02257","RFX DNA-binding domain"
+"RGL1",731,"Missense_Mutation",1,1,1,"RalGDS_RA","cd00153","Ubiquitin domain of  RalGDS-like factor (RLF) and related proteins"
+"RIMS1",968,"Missense_Mutation",1,2,0.5,"C2B_RIM1alpha","cd04028","C2 domain second repeat contained in Rab3-interacting molecule (RIM) proteins"
+"RIMS1",150,"Missense_Mutation",1,2,0.5,"C2B_RIM1alpha","cd04028","C2 domain second repeat contained in Rab3-interacting molecule (RIM) proteins"
+"RIT1",90,"Missense_Mutation",1,1,1,"P-loop_NTPase","cl09099","P-loop containing Nucleoside Triphosphate Hydrolases"
+"RPL32",44,"Missense_Mutation",1,1,1,"Ribosomal_L32_L32e","cd00513","Ribosomal_L32_L32e: L32 is a protein from the large subunit that contains a surface-exposed globular domain and a finger-like projection that extends into the RNA core to stabilize the tertiary structure. L32 does not appear to play a role in forming the..."
+"RPL4",143,"Missense_Mutation",1,1,1,"PTZ00428","Provisional","60S ribosomal protein L4"
+"RPL9",69,"Missense_Mutation",1,1,1,"PTZ00027","Provisional","60S ribosomal protein L6"
+"RTN4RL1",144,"Missense_Mutation",1,1,1,"LRR_8","pfam13855","Leucine rich repeat"
+"RUFY1",579,"Missense_Mutation",1,1,1,"FYVE","pfam01363","FYVE zinc finger"
+"RUNX1",114,"Frame_Shift_Ins",1,19,0.0526315789473684,"Runt","pfam00853","Runt domain"
+"RUNX1",140,"In_Frame_Del",1,19,0.0526315789473684,"Runt","pfam00853","Runt domain"
+"RUNX1",96,"Frame_Shift_Ins",1,19,0.0526315789473684,"Runt","pfam00853","Runt domain"
+"RUNX1",393,"Frame_Shift_Del",1,19,0.0526315789473684,"RunxI","pfam08504","Runx inhibition domain"
+"RUNX1",171,"Missense_Mutation",1,19,0.0526315789473684,"Runt","pfam00853","Runt domain"
+"RUNX1",114,"Missense_Mutation",1,19,0.0526315789473684,"Runt","pfam00853","Runt domain"
+"RUNX1",174,"Missense_Mutation",1,19,0.0526315789473684,"Runt","pfam00853","Runt domain"
+"RUNX1",86,"Missense_Mutation",1,19,0.0526315789473684,"Runt","pfam00853","Runt domain"
+"RUNX1",138,"Frame_Shift_Ins",1,19,0.0526315789473684,"Runt","pfam00853","Runt domain"
+"RUNX1T1",268,"Nonsense_Mutation",1,1,1,"TAFH","pfam07531","NHR1 homology to TAF"
+"RYR1",2264,"Missense_Mutation",1,1,1,"RYDR_ITPR","pfam01365","RIH domain"
+"RYR3",3806,"Missense_Mutation",1,2,0.5,"RIH_assoc","pfam08454","RyR and IP3R Homology associated"
+"SBF2",396,"Missense_Mutation",1,1,1,"dDENN","smart00801","Domain always found downstream of DENN domain, found in a variety of signalling proteins"
+"SCARA5",413,"Missense_Mutation",1,1,1,"SR","smart00202","Scavenger receptor Cys-rich"
+"SCARB1",82,"Missense_Mutation",1,1,1,"CD36","pfam01130","CD36 family"
+"SCEL",657,"Missense_Mutation",1,1,1,"LIM","cd08368","LIM is a small protein-protein interaction domain, containing two zinc fingers"
+"SCML2",47,"Missense_Mutation",1,1,1,"MBT","smart00561","Present in Drosophila Scm, l(3)mbt, and vertebrate SCML2"
+"SCTR",339,"Missense_Mutation",1,1,1,"7tm_2","pfam00002","7 transmembrane receptor (Secretin family)"
+"SDK1",625,"Missense_Mutation",1,1,1,"I-set","pfam07679","Immunoglobulin I-set domain"
+"SDR42E1",274,"Missense_Mutation",1,1,1,"3b-HSD_like_1_SDR_e","cd09812","3beta-hydroxysteroid dehydrogenase (3b-HSD)-like, subgroup1, extended (e) SDRs"
+"SEL1L2",341,"Missense_Mutation",1,1,1,"COG0790",NA,"FOG: TPR repeat, SEL1 subfamily [General function prediction only]"
+"SELENBP1",367,"Missense_Mutation",1,1,1,"SBP56","pfam05694","56kDa selenium binding protein (SBP56)"
+"SEMA3A",613,"Missense_Mutation",1,2,0.5,"Ig_Semaphorin_classIII","cd05871","Immunoglobulin (Ig)-like domain of class III semaphorin"
+"SEMA3A",366,"Missense_Mutation",1,2,0.5,"Sema_3A","cd11249","The Sema domain, a protein interacting module, of semaphorin 3A (Sema3A)"
+"SEMA4A",593,"Missense_Mutation",1,2,0.5,"Ig_Semaphorin_C","cd04979","Immunoglobulin (Ig)-like domain of semaphorin"
+"SEMA6D",254,"Missense_Mutation",1,1,1,"Sema","cl15693","The Sema domain, a protein interacting module, of semaphorins and plexins"
+"SERPINA12",93,"Missense_Mutation",1,1,1,"PHA02660","Provisional","serpin-like protein"
+"SERPINB12",401,"Missense_Mutation",1,1,1,"ovalbumin_like","cd02059","The ovalbumin_like group of serpins contains ovalbumin, the squamous cell carcinoma antigen 1 (SCCA1) and other closely related serpins of clade B of the serpin superfamily. Ovalbumin, the major protein component of avian egg white, is a non-inhibitory..."
+"SERPINB4",343,"Missense_Mutation",1,1,1,"ovalbumin_like","cd02059","The ovalbumin_like group of serpins contains ovalbumin, the squamous cell carcinoma antigen 1 (SCCA1) and other closely related serpins of clade B of the serpin superfamily. Ovalbumin, the major protein component of avian egg white, is a non-inhibitory..."
+"SF3B1",700,"Missense_Mutation",1,1,1,"HSH155","COG5181","U2 snRNP spliceosome subunit [RNA processing and modification]"
+"SH2B3",438,"Missense_Mutation",1,1,1,"SH2_SH2B3","cd10412","Src homology 2 (SH2) domain found in SH2B adapter proteins (SH2B1, SH2B2, SH2B3)"
+"SHANK1",2102,"Missense_Mutation",1,1,1,"SAM_Shank1,2,3","cd09506","SAM domain of Shank1,2,3 family proteins"
+"SHQ1",269,"Missense_Mutation",1,1,1,"SHQ1","pfam04925","SHQ1 protein"
+"SI",1292,"Missense_Mutation",1,2,0.5,"COG1501",NA,"Alpha-glucosidases, family 31 of glycosyl hydrolases [Carbohydrate transport and metabolism]"
+"SI",1342,"Missense_Mutation",1,2,0.5,"COG1501",NA,"Alpha-glucosidases, family 31 of glycosyl hydrolases [Carbohydrate transport and metabolism]"
+"SIDT2",712,"Missense_Mutation",1,1,1,"SID-1_RNA_chan","pfam13965","dsRNA-gated channel SID-1"
+"SIGLEC1",302,"Missense_Mutation",1,1,1,"Ig_2","pfam13895","Immunoglobulin domain"
+"SLAMF7",125,"Missense_Mutation",1,1,1,"Ig","cl11960","Immunoglobulin domain"
+"SLC12A1",508,"Missense_Mutation",1,1,1,"2a30","TIGR00930","K-Cl cotransporter"
+"SLC12A3",836,"Missense_Mutation",1,1,1,"2a30","TIGR00930","K-Cl cotransporter"
+"SLC13A1",553,"Missense_Mutation",1,1,1,"ArsB_NhaD_permease","cl15356","Anion permease ArsB/NhaD.  These permeases have been shown to translocate sodium, arsenate, antimonite, sulfate and organic anions across biological membranes in all three kingdoms of life.  A typical anion permease contains 8-13 transmembrane helices..."
+"SLC15A1",77,"Nonsense_Mutation",1,1,1,"MFS","cl11420","The Major Facilitator Superfamily (MFS) is a large and diverse group of secondary transporters that includes uniporters, symporters, and antiporters. MFS proteins facilitate the transport across cytoplasmic or internal membranes of a variety of..."
+"SLC16A14",314,"Nonsense_Mutation",1,1,1,"2A0113","TIGR00892","monocarboxylate transporter 1"
+"SLC17A3",279,"Missense_Mutation",1,1,1,"2A0114euk","TIGR00894","Na(+)-dependent inorganic phosphate cotransporter"
+"SLC18A2",141,"Missense_Mutation",1,1,1,"MFS_1","pfam07690","Major Facilitator Superfamily"
+"SLC1A1",309,"Missense_Mutation",1,1,1,"GltP","COG1301","Na+/H+-dicarboxylate symporters [Energy production and conversion]"
+"SLC24A4",160,"Splice_Site",1,1,1,"Na_Ca_ex","pfam01699","Sodium/calcium exchanger protein"
+"SLC27A6",333,"Missense_Mutation",1,1,1,"PRK08279","Validated","long-chain-acyl-CoA synthetase"
+"SLC30A6",356,"Missense_Mutation",1,1,1,"Cation_efflux","pfam01545","Cation efflux family"
+"SLC37A2",471,"Missense_Mutation",1,1,1,"UhpC","COG2271","Sugar phosphate permease [Carbohydrate transport and metabolism]"
+"SLC38A6",313,"Missense_Mutation",1,1,1,"Aa_trans","cl15776","Transmembrane amino acid transporter protein"
+"SLC6A20",70,"Missense_Mutation",1,1,1,"SLC6sbd_SIT1","solute-binding domain","Na(+)- and Cl(-)-dependent imino acid transporter SIT1"
+"SLC6A9",282,"Missense_Mutation",1,1,1,"SLC6sbd_GlyT1","solute-binding domain","Na(+)- and Cl(-)-dependent glycine transporter GlyT1"
+"SLC7A13",151,"Missense_Mutation",1,1,1,"AA_permease_2","pfam13520","Amino acid permease"
+"SLCO3A1",471,"Missense_Mutation",1,1,1,"OATP","pfam03137","Organic Anion Transporter Polypeptide (OATP) family"
+"SLPI",84,"Missense_Mutation",1,1,1,"WAP","cd00199","whey acidic protein-type four-disulfide core domains. Members of the family include whey acidic protein, elafin (elastase-specific inhibitor), caltrin-like protein (a calcium transport inhibitor) and other extracellular proteinase inhibitors. A group of..."
+"SMARCA2",753,"Missense_Mutation",1,1,1,"SNF2_N","pfam00176","SNF2 family N-terminal domain"
+"SMC1A",487,"Missense_Mutation",1,6,0.166666666666667,"SMC_N","pfam02463","RecF/RecN/SMC N terminal domain"
+"SMC1A",816,"Missense_Mutation",1,6,0.166666666666667,"SMC_N","pfam02463","RecF/RecN/SMC N terminal domain"
+"SMC1A",96,"Missense_Mutation",1,6,0.166666666666667,"SMC_N","pfam02463","RecF/RecN/SMC N terminal domain"
+"SMC1A",1120,"Missense_Mutation",1,6,0.166666666666667,"SMC_N","pfam02463","RecF/RecN/SMC N terminal domain"
+"SMC1A",855,"Splice_Site",1,6,0.166666666666667,"SMC_N","pfam02463","RecF/RecN/SMC N terminal domain"
+"SMC1A",819,"Missense_Mutation",1,6,0.166666666666667,"SMC_N","pfam02463","RecF/RecN/SMC N terminal domain"
+"SMC3",1174,"Missense_Mutation",1,7,0.142857142857143,"Smc","COG1196","Chromosome segregation ATPases [Cell division and chromosome partitioning]"
+"SMC3",254,"Nonsense_Mutation",1,7,0.142857142857143,"Smc","COG1196","Chromosome segregation ATPases [Cell division and chromosome partitioning]"
+"SMC3",661,"Missense_Mutation",1,7,0.142857142857143,"Smc","COG1196","Chromosome segregation ATPases [Cell division and chromosome partitioning]"
+"SMC3",1001,"Missense_Mutation",1,7,0.142857142857143,"Smc","COG1196","Chromosome segregation ATPases [Cell division and chromosome partitioning]"
+"SMC3",381,"Missense_Mutation",1,7,0.142857142857143,"Smc","COG1196","Chromosome segregation ATPases [Cell division and chromosome partitioning]"
+"SMC3",662,"Missense_Mutation",1,7,0.142857142857143,"Smc","COG1196","Chromosome segregation ATPases [Cell division and chromosome partitioning]"
+"SMC5",525,"Missense_Mutation",1,1,1,"Smc","COG1196","Chromosome segregation ATPases [Cell division and chromosome partitioning]"
+"SMG1",2215,"Missense_Mutation",1,3,0.333333333333333,"PIKKc_SMG1","The SMG-1 catalytic domain subfamily is part of a larger superfamily that includes the catalytic domains of other kinases such as the typical serine/threonine/tyrosine protein...","Suppressor of morphogenetic effect on genitalia-1 (SMG-1), catalytic domain"
+"SMG1",2336,"Missense_Mutation",1,3,0.333333333333333,"PIKKc_SMG1","The SMG-1 catalytic domain subfamily is part of a larger superfamily that includes the catalytic domains of other kinases such as the typical serine/threonine/tyrosine protein...","Suppressor of morphogenetic effect on genitalia-1 (SMG-1), catalytic domain"
+"SMG1",2202,"Missense_Mutation",1,3,0.333333333333333,"PIKKc_SMG1","The SMG-1 catalytic domain subfamily is part of a larger superfamily that includes the catalytic domains of other kinases such as the typical serine/threonine/tyrosine protein...","Suppressor of morphogenetic effect on genitalia-1 (SMG-1), catalytic domain"
+"SMURF2",105,"Missense_Mutation",1,1,1,"C2_Smurf-like","cd08382","C2 domain present in Smad ubiquitination-related factor (Smurf)-like proteins"
+"SNED1",938,"Missense_Mutation",1,1,1,"FN3","One of three types of internal repeats found in the plasma protein fibronectin. Its tenth fibronectin type III repeat contains an RGD cell recognition sequence in a flexible loop between 2 strands. Approximately 2% of all...","Fibronectin type 3 domain"
+"SORCS3",326,"Missense_Mutation",1,1,1,"VPS10","smart00602","VPS10 domain"
+"SPAM1",369,"Missense_Mutation",1,1,1,"Glyco_hydro_56","pfam01630","Hyaluronidase"
+"SPATS2L",368,"Missense_Mutation",1,1,1,"DUF1387","pfam07139","Protein of unknown function (DUF1387)"
+"SPEG",1684,"Nonsense_Mutation",1,1,1,"S_TKc","smart00220","Serine/Threonine protein kinases, catalytic domain"
+"SPTLC2",419,"Missense_Mutation",1,1,1,"BioF","COG0156","7-keto-8-aminopelargonate synthetase and related enzymes [Coenzyme metabolism]"
+"SRCRB4D",422,"Missense_Mutation",1,1,1,"SR","smart00202","Scavenger receptor Cys-rich"
+"SSTR4",170,"Missense_Mutation",1,1,1,"7tm_4","cl10458","Olfactory receptor"
+"ST8SIA4",122,"Missense_Mutation",1,1,1,"Glyco_transf_29","pfam00777","Glycosyltransferase family 29 (sialyltransferase)"
+"STEAP2",175,"Nonsense_Mutation",1,1,1,"COG2085",NA,"Predicted dinucleotide-binding enzymes [General function prediction only]"
+"STK32A",268,"Nonsense_Mutation",1,1,1,"STKc_Yank1","cd05578","Catalytic domain of the Protein Serine/Threonine Kinase, Yank1"
+"STK33",263,"Splice_Site",1,1,1,"S_TKc","smart00220","Serine/Threonine protein kinases, catalytic domain"
+"STRN",130,"Missense_Mutation",1,1,1,"Striatin","pfam08232","Striatin family"
+"STT3B",127,"Missense_Mutation",1,1,1,"STT3","pfam02516","Oligosaccharyl transferase STT3 subunit"
+"SULF1",544,"Missense_Mutation",1,1,1,"DUF3740","pfam12548","Sulfatase protein"
+"SULT1B1",158,"Missense_Mutation",1,1,1,"Sulfotransfer_3","cl14559","Sulfotransferase family"
+"SULT1C2",131,"Missense_Mutation",1,1,1,"Sulfotransfer_3","cl14559","Sulfotransferase family"
+"SUMO2",24,"Frame_Shift_Ins",1,1,1,"UBQ","cl00155","Ubiquitin-like proteins"
+"SUPT5H",133,"Missense_Mutation",1,1,1,"Spt5_N","pfam11942","Spt5 transcription elongation factor, acidic N-terminal"
+"SYNE1",1835,"Missense_Mutation",1,1,1,"Smc","COG1196","Chromosome segregation ATPases [Cell division and chromosome partitioning]"
+"SYNJ1",189,"Missense_Mutation",1,1,1,"COG5329",NA,"Phosphoinositide polyphosphatase (Sac family) [Signal transduction mechanisms]"
+"SYT17",385,"Missense_Mutation",1,1,1,"C2B_Synaptotagmin-17","cd08410","C2 domain second repeat present in Synaptotagmin 17"
+"SYTL4",517,"Missense_Mutation",1,1,1,"C2B_SLP_1-2-3-4","cd04020","C2 domain second repeat present in Synaptotagmin-like proteins 1-4"
+"TBC1D21",181,"Missense_Mutation",1,1,1,"TBC","smart00164","Domain in Tre-2, BUB2p, and Cdc16p. Probable Rab-GAPs"
+"TBC1D4",417,"Missense_Mutation",1,1,1,"PLX","cd01269","Pollux (PLX) Phosphotyrosine-binding (PTB) domain"
+"TBC1D8B",335,"Missense_Mutation",1,1,1,"GRAM","pfam02893","GRAM domain"
+"TBX15",165,"Missense_Mutation",1,1,1,"TBOX","cd00182","T-box DNA binding domain of the T-box family of transcriptional regulators. The T-box family is an ancient group that appears to play a critical role in development in all animal species. These genes were uncovered on the basis of similarity to the DNA..."
+"TBX18",325,"Missense_Mutation",1,1,1,"TBOX","cd00182","T-box DNA binding domain of the T-box family of transcriptional regulators. The T-box family is an ancient group that appears to play a critical role in development in all animal species. These genes were uncovered on the basis of similarity to the DNA..."
+"TCEANC",46,"Missense_Mutation",1,1,1,"TFSII","TIGR01385","transcription elongation factor S-II"
+"TCERG1L",567,"Missense_Mutation",1,1,1,"FF","cl02610","FF domain"
+"TCF4",609,"Frame_Shift_Ins",1,1,1,"HLH","60-100 amino acids long. A DNA-binding basic region is followed by two alpha-helices separated by a variable loop region","Helix-loop-helix domain, found in specific DNA- binding proteins that act as transcription factors"
+"TCL1A",17,"Missense_Mutation",1,1,1,"TCL1_MTCP1","pfam01840","TCL1/MTCP1 family"
+"TCTE3",144,"Missense_Mutation",1,1,1,"Tctex-1","pfam03645","Tctex-1 family"
+"TEK",990,"Missense_Mutation",1,1,1,"PTKc_Tie2","cd05088","Catalytic domain of the Protein Tyrosine Kinase, Tie2"
+"TET2",1381,"Frame_Shift_Ins",1,27,0.037037037037037,"Tet_JBP","pfam12851","Oxygenase domain of the 2OGFeDO superfamily"
+"TET2",1307,"Frame_Shift_Del",1,27,0.037037037037037,"Tet_JBP","pfam12851","Oxygenase domain of the 2OGFeDO superfamily"
+"TET2",1352,"Missense_Mutation",1,27,0.037037037037037,"Tet_JBP","pfam12851","Oxygenase domain of the 2OGFeDO superfamily"
+"TET2",1889,"Missense_Mutation",1,27,0.037037037037037,"Tet_JBP","pfam12851","Oxygenase domain of the 2OGFeDO superfamily"
+"TET2",1316,"Frame_Shift_Del",1,27,0.037037037037037,"Tet_JBP","pfam12851","Oxygenase domain of the 2OGFeDO superfamily"
+"TET2",1863,"Missense_Mutation",1,27,0.037037037037037,"Tet_JBP","pfam12851","Oxygenase domain of the 2OGFeDO superfamily"
+"TET2",1354,"Frame_Shift_Del",1,27,0.037037037037037,"Tet_JBP","pfam12851","Oxygenase domain of the 2OGFeDO superfamily"
+"TET2",1868,"Missense_Mutation",1,27,0.037037037037037,"Tet_JBP","pfam12851","Oxygenase domain of the 2OGFeDO superfamily"
+"TGFBI",612,"Missense_Mutation",1,1,1,"COG2335",NA,"Secreted and surface protein containing fasciclin-like repeats [Cell envelope biogenesis, outer membrane]"
+"THOC5",101,"Missense_Mutation",1,1,1,"FimP","pfam09766","Fms-interacting protein"
+"THRAP3",723,"Missense_Mutation",1,2,0.5,"THRAP3_BCLAF1",NA,NA
+"THRB",338,"Missense_Mutation",1,1,1,"NR_LBD_TR","cd06935","The ligand binding domain of thyroid hormone receptor, a members of a superfamily of nuclear receptors"
+"TJP1",1594,"Missense_Mutation",1,1,1,"ZU5","pfam00791","ZU5 domain"
+"TLE6",365,"Missense_Mutation",1,1,1,"WD40","typically contains a GH dipeptide 11-24 residues from...","WD40 domain, found in a number of eukaryotic proteins that cover a wide variety of functions including adaptor/regulatory modules in signal transduction, pre-mRNA processing and cytoskeleton assembly"
+"TLR4",304,"Frame_Shift_Del",1,1,1,"LRR_RI","cl15309","Leucine-rich repeats (LRRs), ribonuclease inhibitor (RI)-like subfamily. LRRs are 20-29 residue sequence motifs present in many proteins that participate in protein-protein interactions and have different functions and cellular locations. LRRs correspond..."
+"TM9SF4",554,"Missense_Mutation",1,1,1,"EMP70","pfam02990","Endomembrane protein 70"
+"TMCO5A",266,"Missense_Mutation",1,1,1,"TMCO5",NA,NA
+"TMEM231",206,"Missense_Mutation",1,1,1,"TM231","pfam10149","Transmembrane protein 231"
+"TMEM47",108,"Missense_Mutation",1,1,1,"Claudin_2","pfam13903","PMP-22/EMP/MP20/Claudin tight junction"
+"TMEM55A",234,"Missense_Mutation",1,1,1,"Tmemb_55A","pfam09788","Transmembrane protein 55A"
+"TMPRSS13",222,"Missense_Mutation",1,1,1,"SR","smart00202","Scavenger receptor Cys-rich"
+"TMTC2",805,"Missense_Mutation",1,1,1,"TPR","typically contains 34 amino acids [WLF]-X(2)-[LIM]-[GAS]-X(2)-[YLF]-X(8)-[ASE]-X(3)-[FYL]- X(2)-[ASL]-X(4)-[PKE] is the consensus sequence","Tetratricopeptide repeat domain"
+"TMTC4",574,"Missense_Mutation",1,1,1,"TPR_12","pfam13424","Tetratricopeptide repeat"
+"TNC",1871,"Missense_Mutation",1,2,0.5,"FN3","One of three types of internal repeats found in the plasma protein fibronectin. Its tenth fibronectin type III repeat contains an RGD cell recognition sequence in a flexible loop between 2 strands. Approximately 2% of all...","Fibronectin type 3 domain"
+"TNC",1751,"Missense_Mutation",1,2,0.5,"FN3","One of three types of internal repeats found in the plasma protein fibronectin. Its tenth fibronectin type III repeat contains an RGD cell recognition sequence in a flexible loop between 2 strands. Approximately 2% of all...","Fibronectin type 3 domain"
+"TNNC2",56,"Missense_Mutation",1,1,1,"PTZ00184","Provisional","calmodulin"
+"TOP3B",27,"Missense_Mutation",1,2,0.5,"TOPRIM_TopoIA_TopoIII","cd03362","TOPRIM_TopoIA_TopoIII: The topoisomerase-primase (TORPIM) domain found in members of the type IA family of DNA topoisomerases (Topo IA) similar to topoisomerase III. Type IA DNA topoisomerases remove (relax) negative supercoils in the DNA by: cleaving..."
+"TOP3B",147,"Missense_Mutation",1,2,0.5,"TOPRIM_TopoIA_TopoIII","cd03362","TOPRIM_TopoIA_TopoIII: The topoisomerase-primase (TORPIM) domain found in members of the type IA family of DNA topoisomerases (Topo IA) similar to topoisomerase III. Type IA DNA topoisomerases remove (relax) negative supercoils in the DNA by: cleaving..."
+"TP53",176,"Missense_Mutation",1,19,0.0526315789473684,"P53","cd08367","P53 DNA-binding domain"
+"TP53",223,"Frame_Shift_Ins",1,19,0.0526315789473684,"P53","cd08367","P53 DNA-binding domain"
+"TP53",280,"Missense_Mutation",1,19,0.0526315789473684,"P53","cd08367","P53 DNA-binding domain"
+"TP53",125,"Splice_Site",1,19,0.0526315789473684,"P53","cd08367","P53 DNA-binding domain"
+"TP53",40,"Frame_Shift_Ins",1,19,0.0526315789473684,"P53","cd08367","P53 DNA-binding domain"
+"TP53",215,"Missense_Mutation",1,19,0.0526315789473684,"P53","cd08367","P53 DNA-binding domain"
+"TP53",173,"Frame_Shift_Del",1,19,0.0526315789473684,"P53","cd08367","P53 DNA-binding domain"
+"TP53",193,"Missense_Mutation",1,19,0.0526315789473684,"P53","cd08367","P53 DNA-binding domain"
+"TP53",337,"Missense_Mutation",1,19,0.0526315789473684,"P53_tetramer","pfam07710","P53 tetramerisation motif"
+"TP53",317,"Nonsense_Mutation",1,19,0.0526315789473684,"P53_tetramer","pfam07710","P53 tetramerisation motif"
+"TP53",141,"Missense_Mutation",1,19,0.0526315789473684,"P53","cd08367","P53 DNA-binding domain"
+"TP53",248,"Missense_Mutation",1,19,0.0526315789473684,"P53","cd08367","P53 DNA-binding domain"
+"TP53",342,"Frame_Shift_Del",1,19,0.0526315789473684,"P53_tetramer","pfam07710","P53 tetramerisation motif"
+"TP53",179,"Missense_Mutation",1,19,0.0526315789473684,"P53","cd08367","P53 DNA-binding domain"
+"TP53",195,"Missense_Mutation",1,19,0.0526315789473684,"P53","cd08367","P53 DNA-binding domain"
+"TP53",273,"Missense_Mutation",1,19,0.0526315789473684,"P53","cd08367","P53 DNA-binding domain"
+"TP53",286,"Missense_Mutation",1,19,0.0526315789473684,"P53","cd08367","P53 DNA-binding domain"
+"TP73",195,"Missense_Mutation",1,1,1,"P53","cd08367","P53 DNA-binding domain"
+"TPH1",347,"Nonsense_Mutation",1,1,1,"Trp_5_monoox","TIGR01270","tryptophan 5-monooxygenase, tetrameric"
+"TPO",162,"Missense_Mutation",1,1,1,"An_peroxidase_like","cl14561","Animal heme peroxidases and related proteins"
+"TPTE2",339,"Missense_Mutation",1,1,1,"PTPc","they regulate phosphotyrosine levels in signal transduction pathways. The depth of the active site cleft renders the enzyme specific for phosphorylated Tyr","Protein tyrosine phosphatases (PTP) catalyze the dephosphorylation of phosphotyrosine peptides"
+"TRA2B",74,"Missense_Mutation",1,1,1,"COG0724",NA,"RNA-binding proteins (RRM domain) [General function prediction only]"
+"TRAM1L1",101,"Missense_Mutation",1,1,1,"TRAM1","pfam08390","TRAM1-like protein"
+"TRIM24",910,"Missense_Mutation",1,1,1,"Bromo_tif1_like","tif1_like subfamily. Tif1 (transcription intermediary factor 1) is a member of the tripartite motif (TRIM) protein family, which is characterized by a particular domain architecture. It functions by recruiting coactivators and/or...","Bromodomain"
+"TRIM45",161,"Missense_Mutation",1,1,1,"BBOX","zinc binding domain (CHC3H2)","B-Box-type zinc finger"
+"TRIO",131,"Missense_Mutation",1,1,1,"SEC14","cd00170","Sec14p-like lipid-binding domain. Found in secretory proteins, such as S. cerevisiae phosphatidylinositol transfer protein (Sec14p), and in lipid regulated proteins such as RhoGAPs, RhoGEFs and neurofibromin (NF1). SEC14 domain of Dbl is known to..."
+"TRNT1",416,"Missense_Mutation",1,1,1,"PcnB","COG0617","tRNA nucleotidyltransferase/poly(A) polymerase [Translation, ribosomal structure and biogenesis]"
+"TROAP",348,"Missense_Mutation",1,1,1,"PHA03247","Provisional","large tegument protein UL36"
+"TRPC1",432,"Missense_Mutation",1,1,1,"trp","TIGR00870","transient-receptor-potential calcium channel protein"
+"TRPM3",903,"Missense_Mutation",1,2,0.5,"Ion_trans","pfam00520","Ion transport protein"
+"TRPM3",891,"Missense_Mutation",1,2,0.5,"Ion_trans","pfam00520","Ion transport protein"
+"TSKS",503,"Missense_Mutation",1,1,1,"TSKS",NA,NA
+"TSPAN2",200,"Splice_Site",1,1,1,"Tetraspannin","pfam00335","Tetraspanin family"
+"TTBK1",241,"Missense_Mutation",1,2,0.5,"S_TKc","smart00220","Serine/Threonine protein kinases, catalytic domain"
+"TTN",3652,"Missense_Mutation",1,6,0.166666666666667,"I-set","pfam07679","Immunoglobulin I-set domain"
+"TTN",1029,"Missense_Mutation",1,6,0.166666666666667,"I-set","pfam07679","Immunoglobulin I-set domain"
+"TTN",11661,"Missense_Mutation",1,6,0.166666666666667,"FN3","One of three types of internal repeats found in the plasma protein fibronectin. Its tenth fibronectin type III repeat contains an RGD cell recognition sequence in a flexible loop between 2 strands. Approximately 2% of all...","Fibronectin type 3 domain"
+"TTN",13814,"Missense_Mutation",1,6,0.166666666666667,"I-set","pfam07679","Immunoglobulin I-set domain"
+"TTN",15190,"Missense_Mutation",1,6,0.166666666666667,"FN3","One of three types of internal repeats found in the plasma protein fibronectin. Its tenth fibronectin type III repeat contains an RGD cell recognition sequence in a flexible loop between 2 strands. Approximately 2% of all...","Fibronectin type 3 domain"
+"TTN",15945,"In_Frame_Ins",1,6,0.166666666666667,"FN3","One of three types of internal repeats found in the plasma protein fibronectin. Its tenth fibronectin type III repeat contains an RGD cell recognition sequence in a flexible loop between 2 strands. Approximately 2% of all...","Fibronectin type 3 domain"
+"TUBA1A",390,"Missense_Mutation",1,1,1,"PTZ00335","Provisional","tubulin alpha chain"
+"TUBA3C",180,"Missense_Mutation",1,2,0.5,"PTZ00335","Provisional","tubulin alpha chain"
+"TUBA3C",227,"Missense_Mutation",1,2,0.5,"PTZ00335","Provisional","tubulin alpha chain"
+"TUBGCP6",361,"Missense_Mutation",1,1,1,"Spc97_Spc98","pfam04130","Spc97 / Spc98 family"
+"TUFT1",214,"Missense_Mutation",1,1,1,"Smc","COG1196","Chromosome segregation ATPases [Cell division and chromosome partitioning]"
+"TYRO3",185,"Missense_Mutation",1,1,1,"Ig2_Tyro3_like","cd05749","Second immunoglobulin (Ig)-like domain of Axl/Tyro3 receptor tyrosine kinases (RTKs)"
+"U2AF1",157,"Missense_Mutation",1,8,0.125,"ZnF_C3H1","smart00356","zinc finger"
+"UGT1A10",164,"Missense_Mutation",1,1,1,"UDPGT","pfam00201","UDP-glucoronosyl and UDP-glucosyl transferase"
+"UNC45B",198,"Missense_Mutation",1,1,1,"ARM","these repeats were also found in the mammalian armadillo homolog beta-catenin","Armadillo/beta-catenin-like repeats. An approximately 40 amino acid long tandemly repeated sequence motif first identified in the Drosophila segment polarity gene armadillo"
+"UPF1",331,"Missense_Mutation",1,1,1,"COG1112",NA,"Superfamily I DNA and RNA helicases and helicase subunits [DNA replication, recombination, and repair]"
+"UQCC",131,"Missense_Mutation",1,1,1,"Ubiq_cyt_C_chap","pfam03981","Ubiquinol-cytochrome C chaperone"
+"USP11",774,"Missense_Mutation",1,1,1,"UCH","pfam00443","Ubiquitin carboxyl-terminal hydrolase"
+"VARS2",403,"Missense_Mutation",1,1,1,"ValS","COG0525","Valyl-tRNA synthetase [Translation, ribosomal structure and biogenesis]"
+"VCAM1",430,"Missense_Mutation",1,1,1,"Ig2_VCAM-1","cd07689","Second immunoglobulin (Ig)-like domain of vascular endothelial cell adhesion molecule-1 (VCAM-1, CD106) and intercellular cell adhesion molecule-1 (ICAM-1, CD54) and similar proteins"
+"VIPR1",31,"Missense_Mutation",1,1,1,"HormR","smart00008","Domain present in hormone receptors"
+"VPS26B",19,"Missense_Mutation",1,1,1,"Vps26","pfam03643","Vacuolar protein sorting-associated protein 26"
+"VPS72",124,"Missense_Mutation",1,1,1,"YL1","pfam05764","YL1 nuclear protein"
+"VWA3B",578,"Frame_Shift_Ins",1,1,1,"vWFA","cd00198","Von Willebrand factor type A (vWA) domain was originally found in the blood coagulation protein von Willebrand factor (vWF). Typically, the vWA domain is made up of approximately 200 amino acid residues folded into a classic a/b para-rossmann type of..."
+"WBSCR17",405,"Nonsense_Mutation",1,1,1,"COG1216",NA,"Predicted glycosyltransferases [General function prediction only]"
+"WDR27",712,"Missense_Mutation",1,1,1,"WD40","typically contains a GH dipeptide 11-24 residues from...","WD40 domain, found in a number of eukaryotic proteins that cover a wide variety of functions including adaptor/regulatory modules in signal transduction, pre-mRNA processing and cytoskeleton assembly"
+"WLS",99,"Missense_Mutation",1,1,1,"MIG-14_Wnt-bd","pfam06664","Wnt-binding factor required for Wnt secretion"
+"WNK3",359,"Missense_Mutation",1,1,1,"S_TKc","smart00220","Serine/Threonine protein kinases, catalytic domain"
+"WRN",1171,"Missense_Mutation",1,1,1,"HRDC","smart00341","Helicase and RNase D C-terminal"
+"WSCD1",520,"Missense_Mutation",1,1,1,"Sulfotransfer_1","pfam00685","Sulfotransferase domain"
+"WSCD2",131,"Missense_Mutation",1,1,1,"WSC","smart00321","present in yeast cell wall integrity and stress response component proteins"
+"WT1",170,"Frame_Shift_Ins",1,12,0.0833333333333333,"WT1","pfam02165","Wilm's tumour protein"
+"WT1",250,"Missense_Mutation",1,12,0.0833333333333333,"WT1","pfam02165","Wilm's tumour protein"
+"WT1",165,"Frame_Shift_Ins",1,12,0.0833333333333333,"WT1","pfam02165","Wilm's tumour protein"
+"WT1",253,"Missense_Mutation",1,12,0.0833333333333333,"WT1","pfam02165","Wilm's tumour protein"
+"WT1",159,"Frame_Shift_Ins",1,12,0.0833333333333333,"WT1","pfam02165","Wilm's tumour protein"
+"WT1",190,"Frame_Shift_Del",1,12,0.0833333333333333,"WT1","pfam02165","Wilm's tumour protein"
+"XKR4",399,"Missense_Mutation",1,1,1,"XK-related","pfam09815","XK-related protein"
+"ZBED4",151,"Missense_Mutation",1,1,1,"zf-BED","pfam02892","BED zinc finger"
+"ZBTB33",77,"Missense_Mutation",1,2,0.5,"BTB","pfam00651","BTB/POZ domain"
+"ZBTB7B",104,"Missense_Mutation",1,1,1,"BTB","pfam00651","BTB/POZ domain"
+"ZC3HC1",248,"Missense_Mutation",1,1,1,"Rsm1","pfam08600","Rsm1-like"
+"ZNF133",545,"Missense_Mutation",1,1,1,"COG5048",NA,"FOG: Zn-finger [General function prediction only]"
+"ZNF229",474,"Missense_Mutation",1,1,1,"COG5048",NA,"FOG: Zn-finger [General function prediction only]"
+"ZNF236",154,"Missense_Mutation",1,1,1,"COG5048",NA,"FOG: Zn-finger [General function prediction only]"
+"ZNF254",49,"Missense_Mutation",1,1,1,"KRAB_A-box","cd07765","KRAB (Kruppel-associated box) domain -A box"
+"ZNF260",362,"Missense_Mutation",1,1,1,"COG5048",NA,"FOG: Zn-finger [General function prediction only]"
+"ZNF311",345,"Missense_Mutation",1,1,1,"COG5048",NA,"FOG: Zn-finger [General function prediction only]"
+"ZNF324B",431,"Missense_Mutation",1,1,1,"COG5048",NA,"FOG: Zn-finger [General function prediction only]"
+"ZNF394",530,"Missense_Mutation",1,1,1,"zf-H2C2_2","pfam13465","Zinc-finger double domain"
+"ZNF420",240,"Nonsense_Mutation",1,1,1,"COG5048",NA,"FOG: Zn-finger [General function prediction only]"
+"ZNF43",376,"Missense_Mutation",1,1,1,"COG5048",NA,"FOG: Zn-finger [General function prediction only]"
+"ZNF460",368,"Missense_Mutation",1,1,1,"COG5048",NA,"FOG: Zn-finger [General function prediction only]"
+"ZNF485",348,"Missense_Mutation",1,1,1,"COG5048",NA,"FOG: Zn-finger [General function prediction only]"
+"ZNF486",185,"Missense_Mutation",1,1,1,"COG5048",NA,"FOG: Zn-finger [General function prediction only]"
+"ZNF502",433,"Missense_Mutation",1,1,1,"COG5048",NA,"FOG: Zn-finger [General function prediction only]"
+"ZNF616",732,"Missense_Mutation",1,1,1,"zf-H2C2_2","pfam13465","Zinc-finger double domain"
+"ZNF677",537,"Missense_Mutation",1,1,1,"COG5048",NA,"FOG: Zn-finger [General function prediction only]"
+"ZNF689",190,"Missense_Mutation",1,1,1,"COG5048",NA,"FOG: Zn-finger [General function prediction only]"
+"ZNF99",14,"Missense_Mutation",1,1,1,"KRAB_A-box","cd07765","KRAB (Kruppel-associated box) domain -A box"
+"ZPBP",305,"Missense_Mutation",1,1,1,"Sp38","pfam07354","Zona-pellucida-binding protein (Sp38)"
+"NPM1",288,"Frame_Shift_Ins",30,34,0.882352941176471,NA,NA,NA
+"GIGYF2",-770,"Frame_Shift_Ins",2,2,1,NA,NA,NA
+"NPM1",269,"Frame_Shift_Ins",2,34,0.0588235294117647,NA,NA,NA
+"TET2",1216,"Nonsense_Mutation",2,27,0.0740740740740741,NA,NA,NA
+"WT1",-169,"Frame_Shift_Ins",2,12,0.166666666666667,NA,NA,NA
+"ABL1",918,"Missense_Mutation",1,1,1,NA,NA,NA
+"ACVR2B",137,"Missense_Mutation",1,1,1,NA,NA,NA
+"ADAM11",717,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"ADAMTS12",597,"Missense_Mutation",1,1,1,NA,NA,NA
+"ADAMTS17",864,"Splice_Site",1,1,1,NA,NA,NA
+"ADAMTSL1",269,"Missense_Mutation",1,1,1,NA,NA,NA
+"ADCY3",797,"Missense_Mutation",1,1,1,NA,NA,NA
+"ADCY5",417,"Missense_Mutation",1,1,1,NA,NA,NA
+"ADNP",716,"Missense_Mutation",1,1,1,NA,NA,NA
+"AGBL2",402,"Missense_Mutation",1,1,1,NA,NA,NA
+"AKAP12",1406,"Missense_Mutation",1,1,1,NA,NA,NA
+"AKD1",1895,"Missense_Mutation",1,1,1,NA,NA,NA
+"ALG13",1087,"Missense_Mutation",1,1,1,NA,NA,NA
+"ALMS1",3188,"Missense_Mutation",1,1,1,NA,NA,NA
+"ALPK3",1320,"Missense_Mutation",1,1,1,NA,NA,NA
+"ALS2CR11",442,"Missense_Mutation",1,1,1,NA,NA,NA
+"AMOT",442,"Missense_Mutation",1,1,1,NA,NA,NA
+"ANG",7,"Missense_Mutation",1,1,1,NA,NA,NA
+"ANK2",1113,"Missense_Mutation",1,1,1,NA,NA,NA
+"ANKRD12",1134,"Missense_Mutation",1,1,1,NA,NA,NA
+"ANKRD13A",478,"Missense_Mutation",1,1,1,NA,NA,NA
+"ANKRD24",7,"Nonsense_Mutation",1,1,1,NA,NA,NA
+"ANKRD30A",649,"Missense_Mutation",1,1,1,NA,NA,NA
+"ANO2",967,"Missense_Mutation",1,1,1,NA,NA,NA
+"APOB",1432,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"APOB",1448,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"ARC",253,"Missense_Mutation",1,1,1,NA,NA,NA
+"ARHGAP18",244,"Frame_Shift_Del",1,1,1,NA,NA,NA
+"ARHGAP39",526,"Missense_Mutation",1,1,1,NA,NA,NA
+"ARHGEF1",816,"Missense_Mutation",1,1,1,NA,NA,NA
+"ARHGEF5",866,"Missense_Mutation",1,1,1,NA,NA,NA
+"ARID1A",1658,"Missense_Mutation",1,1,1,NA,NA,NA
+"ARID2",1637,"Nonsense_Mutation",1,1,1,NA,NA,NA
+"ARID4B",923,"Missense_Mutation",1,1,1,NA,NA,NA
+"ASTL",62,"Missense_Mutation",1,1,1,NA,NA,NA
+"ASXL1",738,"Frame_Shift_Del",1,5,0.2,NA,NA,NA
+"ASXL1",733,"Nonsense_Mutation",1,5,0.2,NA,NA,NA
+"ASXL1",-920,"Frame_Shift_Ins",1,5,0.2,NA,NA,NA
+"ASXL1",1415,"Nonsense_Mutation",1,5,0.2,NA,NA,NA
+"ASXL2",658,"Frame_Shift_Ins",1,1,1,NA,NA,NA
+"ATF7IP",936,"Frame_Shift_Del",1,1,1,NA,NA,NA
+"ATP6AP2",155,"Missense_Mutation",1,1,1,NA,NA,NA
+"ATRNL1",1277,"Missense_Mutation",1,1,1,NA,NA,NA
+"ATXN7L1",352,"Missense_Mutation",1,1,1,NA,NA,NA
+"B4GALNT3",462,"Missense_Mutation",1,1,1,NA,NA,NA
+"BAI1",1542,"Missense_Mutation",1,1,1,NA,NA,NA
+"BBS12",524,"Missense_Mutation",1,1,1,NA,NA,NA
+"BCOR",839,"Frame_Shift_Ins",1,2,0.5,NA,NA,NA
+"BCOR",247,"Frame_Shift_Del",1,2,0.5,NA,NA,NA
+"BCORL1",597,"Frame_Shift_Ins",1,1,1,NA,NA,NA
+"BICD1",964,"Missense_Mutation",1,1,1,NA,NA,NA
+"BLZF1",38,"Missense_Mutation",1,1,1,NA,NA,NA
+"BMP5",321,"Nonsense_Mutation",1,1,1,NA,NA,NA
+"BMPER",17,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"BNC2",486,"Missense_Mutation",1,1,1,NA,NA,NA
+"BOD1L",384,"Missense_Mutation",1,1,1,NA,NA,NA
+"BPTF",1454,"Missense_Mutation",1,1,1,NA,NA,NA
+"BRPF1",981,"Missense_Mutation",1,1,1,NA,NA,NA
+"BSN",870,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"BSN",3887,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"BTBD16",6,"Splice_Site",1,1,1,NA,NA,NA
+"BUB1",358,"Missense_Mutation",1,1,1,NA,NA,NA
+"C10orf120",330,"Missense_Mutation",1,1,1,NA,NA,NA
+"C10orf18",208,"Missense_Mutation",1,1,1,NA,NA,NA
+"C10orf28",275,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"C10orf28",417,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"C11orf41",916,"Missense_Mutation",1,1,1,NA,NA,NA
+"C11orf70",262,"Missense_Mutation",1,1,1,NA,NA,NA
+"C12orf11",574,"Nonsense_Mutation",1,1,1,NA,NA,NA
+"C12orf63",2649,"Splice_Site",1,1,1,NA,NA,NA
+"C13orf18",155,"Missense_Mutation",1,1,1,NA,NA,NA
+"C15orf57",44,"Missense_Mutation",1,1,1,NA,NA,NA
+"C15orf60",2,"Missense_Mutation",1,1,1,NA,NA,NA
+"C16orf57",162,"Missense_Mutation",1,1,1,NA,NA,NA
+"C19orf46",245,"Missense_Mutation",1,1,1,NA,NA,NA
+"C1orf103",598,"Missense_Mutation",1,1,1,NA,NA,NA
+"C1orf168",288,"Missense_Mutation",1,1,1,NA,NA,NA
+"C1orf183",63,"Missense_Mutation",1,1,1,NA,NA,NA
+"C1orf51",61,"Missense_Mutation",1,1,1,NA,NA,NA
+"C20orf24",135,"Missense_Mutation",1,1,1,NA,NA,NA
+"C20orf26",283,"Nonsense_Mutation",1,1,1,NA,NA,NA
+"C22orf42",37,"Missense_Mutation",1,1,1,NA,NA,NA
+"C2orf89",122,"Missense_Mutation",1,1,1,NA,NA,NA
+"C3orf67",621,"Splice_Site",1,1,1,NA,NA,NA
+"C5",1363,"Missense_Mutation",1,1,1,NA,NA,NA
+"C6orf118",53,"Missense_Mutation",1,1,1,NA,NA,NA
+"C6orf142",183,"Missense_Mutation",1,1,1,NA,NA,NA
+"C6orf170",1039,"Missense_Mutation",1,1,1,NA,NA,NA
+"C6orf174",745,"Missense_Mutation",1,1,1,NA,NA,NA
+"C8orf80",250,"Missense_Mutation",1,1,1,NA,NA,NA
+"C8orf84",88,"Missense_Mutation",1,1,1,NA,NA,NA
+"C9orf171",294,"Missense_Mutation",1,1,1,NA,NA,NA
+"C9orf78",270,"Missense_Mutation",1,1,1,NA,NA,NA
+"C9orf93",799,"Missense_Mutation",1,1,1,NA,NA,NA
+"CACNA1B",2309,"Missense_Mutation",1,3,0.333333333333333,NA,NA,NA
+"CACNA1B",2166,"Missense_Mutation",1,3,0.333333333333333,NA,NA,NA
+"CACNA1E",1893,"Missense_Mutation",1,3,0.333333333333333,NA,NA,NA
+"CACNA1S",363,"Missense_Mutation",1,1,1,NA,NA,NA
+"CACNA2D3",770,"Nonsense_Mutation",1,2,0.5,NA,NA,NA
+"CACNA2D3",806,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"CACNA2D4",744,"Missense_Mutation",1,1,1,NA,NA,NA
+"CADM2",381,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"CADPS",737,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"CADPS",479,"Splice_Site",1,2,0.5,NA,NA,NA
+"CAMK1G",378,"Missense_Mutation",1,1,1,NA,NA,NA
+"CAMKV",497,"Missense_Mutation",1,1,1,NA,NA,NA
+"CAMTA1",232,"Missense_Mutation",1,1,1,NA,NA,NA
+"CAND1",936,"Missense_Mutation",1,1,1,NA,NA,NA
+"CAPRIN2",24,"Nonsense_Mutation",1,1,1,NA,NA,NA
+"CASC5",1403,"Missense_Mutation",1,1,1,NA,NA,NA
+"CASP10",198,"Missense_Mutation",1,1,1,NA,NA,NA
+"CASZ1",525,"Missense_Mutation",1,1,1,NA,NA,NA
+"CBL",367,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"CBX7",-67,"Frame_Shift_Ins",1,2,0.5,NA,NA,NA
+"CBX7",-65,"Frame_Shift_Ins",1,2,0.5,NA,NA,NA
+"CCBE1",358,"Missense_Mutation",1,1,1,NA,NA,NA
+"CCDC24",200,"Missense_Mutation",1,1,1,NA,NA,NA
+"CCDC57",867,"Missense_Mutation",1,1,1,NA,NA,NA
+"CCDC60",472,"Missense_Mutation",1,1,1,NA,NA,NA
+"CCL16",18,"Missense_Mutation",1,1,1,NA,NA,NA
+"CCL21",2,"Missense_Mutation",1,1,1,NA,NA,NA
+"CCNG2",334,"Frame_Shift_Del",1,1,1,NA,NA,NA
+"CD74",10,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"CDON",691,"Missense_Mutation",1,1,1,NA,NA,NA
+"CEBPA",343,"Frame_Shift_Del",1,19,0.0526315789473684,NA,NA,NA
+"CEBPA",44,"Frame_Shift_Del",1,19,0.0526315789473684,NA,NA,NA
+"CEBPA",44,"Missense_Mutation",1,19,0.0526315789473684,NA,NA,NA
+"CEBPA",110,"Frame_Shift_Ins",1,19,0.0526315789473684,NA,NA,NA
+"CEBPA",23,"Frame_Shift_Del",1,19,0.0526315789473684,NA,NA,NA
+"CEBPA",142,"Frame_Shift_Del",1,19,0.0526315789473684,NA,NA,NA
+"CEBPA",46,"Frame_Shift_Del",1,19,0.0526315789473684,NA,NA,NA
+"CEBPA",68,"Frame_Shift_Del",1,19,0.0526315789473684,NA,NA,NA
+"CEBPA",59,"Nonsense_Mutation",1,19,0.0526315789473684,NA,NA,NA
+"CECR2",152,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"CECR2",789,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"CELSR3",320,"Missense_Mutation",1,1,1,NA,NA,NA
+"CEP170",176,"In_Frame_Ins",1,1,1,NA,NA,NA
+"CEP290",1318,"Missense_Mutation",1,1,1,NA,NA,NA
+"CFHR2",29,"Missense_Mutation",1,1,1,NA,NA,NA
+"CHD4",1173,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"CKAP4",429,"Missense_Mutation",1,1,1,NA,NA,NA
+"CLCN6",749,"Missense_Mutation",1,1,1,NA,NA,NA
+"CLPX",198,"Missense_Mutation",1,1,1,NA,NA,NA
+"CLVS2",311,"Missense_Mutation",1,1,1,NA,NA,NA
+"CMYA5",1022,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"CMYA5",3275,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"CNTNAP4",661,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"COL11A2",349,"Missense_Mutation",1,1,1,NA,NA,NA
+"COL22A1",956,"Missense_Mutation",1,1,1,NA,NA,NA
+"COL27A1",1243,"Missense_Mutation",1,1,1,NA,NA,NA
+"COL2A1",504,"Missense_Mutation",1,1,1,NA,NA,NA
+"COL5A3",346,"Missense_Mutation",1,1,1,NA,NA,NA
+"COL7A1",2361,"Missense_Mutation",1,1,1,NA,NA,NA
+"COL9A1",336,"Missense_Mutation",1,1,1,NA,NA,NA
+"COPS2",10,"Missense_Mutation",1,1,1,NA,NA,NA
+"CRISPLD1",261,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"CROCC",93,"Missense_Mutation",1,1,1,NA,NA,NA
+"CSF3R",618,"Missense_Mutation",1,1,1,NA,NA,NA
+"CSTF2T",205,"Missense_Mutation",1,1,1,NA,NA,NA
+"CUL3",12,"Missense_Mutation",1,1,1,NA,NA,NA
+"CUL9",969,"Missense_Mutation",1,1,1,NA,NA,NA
+"CXorf58",235,"Nonsense_Mutation",1,1,1,NA,NA,NA
+"CYLC1",330,"Missense_Mutation",1,1,1,NA,NA,NA
+"DAAM2",990,"Missense_Mutation",1,1,1,NA,NA,NA
+"DAB2",344,"Frame_Shift_Del",1,1,1,NA,NA,NA
+"DBX2",267,"Missense_Mutation",1,1,1,NA,NA,NA
+"DCAF8",72,"Missense_Mutation",1,1,1,NA,NA,NA
+"DCT",144,"Missense_Mutation",1,1,1,NA,NA,NA
+"DCTD",5,"Missense_Mutation",1,1,1,NA,NA,NA
+"DDR2",291,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"DDR2",222,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"DDX53",41,"Missense_Mutation",1,1,1,NA,NA,NA
+"DDX60",1676,"Missense_Mutation",1,1,1,NA,NA,NA
+"DIAPH2",1075,"Missense_Mutation",1,1,1,NA,NA,NA
+"DLX3",282,"Missense_Mutation",1,1,1,NA,NA,NA
+"DMRT3",339,"Missense_Mutation",1,1,1,NA,NA,NA
+"DNAH9",1016,"Missense_Mutation",1,3,0.333333333333333,NA,NA,NA
+"DNAJC7",457,"Missense_Mutation",1,1,1,NA,NA,NA
+"DNMT1",167,"Missense_Mutation",1,1,1,NA,NA,NA
+"DNMT3A",909,"Missense_Mutation",1,54,0.0185185185185185,NA,NA,NA
+"DOCK1",650,"Splice_Site",1,1,1,NA,NA,NA
+"DOCK10",631,"Missense_Mutation",1,1,1,NA,NA,NA
+"DOCK2",417,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"DOCK5",84,"Missense_Mutation",1,1,1,NA,NA,NA
+"DOPEY2",542,"Missense_Mutation",1,1,1,NA,NA,NA
+"DRD2",380,"Splice_Site",1,2,0.5,NA,NA,NA
+"DRD2",364,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"DST",5372,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"DUSP1",351,"Missense_Mutation",1,1,1,NA,NA,NA
+"DYNC1H1",835,"Missense_Mutation",1,1,1,NA,NA,NA
+"DYNC2H1",34,"Missense_Mutation",1,1,1,NA,NA,NA
+"DYSF",2020,"Missense_Mutation",1,1,1,NA,NA,NA
+"E2F8",363,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"E2F8",597,"Nonsense_Mutation",1,2,0.5,NA,NA,NA
+"EED",75,"Nonsense_Mutation",1,2,0.5,NA,NA,NA
+"EFCAB6",1008,"Missense_Mutation",1,1,1,NA,NA,NA
+"EGFL8",209,"Missense_Mutation",1,1,1,NA,NA,NA
+"EGFR",1141,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"ELF1",452,"Missense_Mutation",1,1,1,NA,NA,NA
+"ELL",426,"Missense_Mutation",1,1,1,NA,NA,NA
+"ELMOD1",52,"Missense_Mutation",1,1,1,NA,NA,NA
+"ELN",55,"Splice_Site",1,1,1,NA,NA,NA
+"EPB41L3",653,"Frame_Shift_Ins",1,1,1,NA,NA,NA
+"EPGN",23,"Missense_Mutation",1,1,1,NA,NA,NA
+"ESCO2",258,"Missense_Mutation",1,1,1,NA,NA,NA
+"EYA4",321,"Missense_Mutation",1,1,1,NA,NA,NA
+"EZH2",-739,"Frame_Shift_Ins",1,4,0.25,NA,NA,NA
+"EZH2",739,"Frame_Shift_Ins",1,4,0.25,NA,NA,NA
+"FAM123A",639,"Missense_Mutation",1,1,1,NA,NA,NA
+"FAM40B",115,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"FAM40B",182,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"FAM47A",108,"Missense_Mutation",1,1,1,NA,NA,NA
+"FAM48A",635,"Missense_Mutation",1,1,1,NA,NA,NA
+"FAM5C",530,"Missense_Mutation",1,6,0.166666666666667,NA,NA,NA
+"FAM5C",403,"Missense_Mutation",1,6,0.166666666666667,NA,NA,NA
+"FAM5C",487,"Missense_Mutation",1,6,0.166666666666667,NA,NA,NA
+"FAM5C",719,"Missense_Mutation",1,6,0.166666666666667,NA,NA,NA
+"FAM65A",968,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"FAM90A1",21,"Frame_Shift_Del",1,1,1,NA,NA,NA
+"FBN1",764,"Missense_Mutation",1,1,1,NA,NA,NA
+"FBXO30",529,"Missense_Mutation",1,1,1,NA,NA,NA
+"FCGBP",3826,"Missense_Mutation",1,3,0.333333333333333,NA,NA,NA
+"FGD6",394,"Missense_Mutation",1,1,1,NA,NA,NA
+"FILIP1",889,"Nonsense_Mutation",1,1,1,NA,NA,NA
+"FKBP8",63,"Missense_Mutation",1,1,1,NA,NA,NA
+"FLG",2885,"Missense_Mutation",1,1,1,NA,NA,NA
+"FLRT2",518,"Missense_Mutation",1,1,1,NA,NA,NA
+"FLT1",1254,"Missense_Mutation",1,1,1,NA,NA,NA
+"FNDC1",667,"Missense_Mutation",1,1,1,NA,NA,NA
+"FNIP2",212,"Missense_Mutation",1,1,1,NA,NA,NA
+"FOXP4",306,"Frame_Shift_Ins",1,1,1,NA,NA,NA
+"FSD2",135,"Missense_Mutation",1,1,1,NA,NA,NA
+"GATAD2B",179,"Nonsense_Mutation",1,1,1,NA,NA,NA
+"GCN1L1",2424,"Missense_Mutation",1,1,1,NA,NA,NA
+"GDPD4",121,"Nonsense_Mutation",1,1,1,NA,NA,NA
+"GDPD5",602,"Missense_Mutation",1,1,1,NA,NA,NA
+"GEMIN4",607,"Missense_Mutation",1,1,1,NA,NA,NA
+"GJB3",216,"Nonsense_Mutation",1,2,0.5,NA,NA,NA
+"GJB3",143,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"GLIS3",741,"Missense_Mutation",1,1,1,NA,NA,NA
+"GLRA1",6,"Missense_Mutation",1,1,1,NA,NA,NA
+"GPATCH8",1252,"Missense_Mutation",1,1,1,NA,NA,NA
+"GPBP1",233,"Frame_Shift_Ins",1,1,1,NA,NA,NA
+"GPR101",44,"Missense_Mutation",1,1,1,NA,NA,NA
+"GPR112",428,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"GPR112",1894,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"GPR115",274,"Nonsense_Mutation",1,1,1,NA,NA,NA
+"GPR125",1156,"Missense_Mutation",1,1,1,NA,NA,NA
+"GPR183",338,"Missense_Mutation",1,1,1,NA,NA,NA
+"GPR98",601,"Missense_Mutation",1,1,1,NA,NA,NA
+"GREM2",24,"Missense_Mutation",1,1,1,NA,NA,NA
+"GRIK2",874,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"GSTK1",5,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"GSTK1",3,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"GYG2",389,"Missense_Mutation",1,1,1,NA,NA,NA
+"HCLS1",6,"Missense_Mutation",1,1,1,NA,NA,NA
+"HCN1",838,"Missense_Mutation",1,1,1,NA,NA,NA
+"HEATR4",135,"Missense_Mutation",1,1,1,NA,NA,NA
+"HEATR7B2",208,"Missense_Mutation",1,1,1,NA,NA,NA
+"HELZ",1907,"Missense_Mutation",1,1,1,NA,NA,NA
+"HERC1",2610,"Missense_Mutation",1,1,1,NA,NA,NA
+"HERC2",3757,"Missense_Mutation",1,1,1,NA,NA,NA
+"HIVEP1",834,"Missense_Mutation",1,1,1,NA,NA,NA
+"HIVEP2",642,"Missense_Mutation",1,1,1,NA,NA,NA
+"HLA-B",7,"Missense_Mutation",1,1,1,NA,NA,NA
+"HPS5",617,"Missense_Mutation",1,1,1,NA,NA,NA
+"HYDIN",4328,"Missense_Mutation",1,1,1,NA,NA,NA
+"IFI44",291,"Missense_Mutation",1,1,1,NA,NA,NA
+"IGHMBP2",788,"Nonsense_Mutation",1,1,1,NA,NA,NA
+"IGSF5",216,"Missense_Mutation",1,1,1,NA,NA,NA
+"IKZF1",130,"Missense_Mutation",1,1,1,NA,NA,NA
+"IKZF4",40,"Missense_Mutation",1,1,1,NA,NA,NA
+"IL17RD",671,"Nonsense_Mutation",1,1,1,NA,NA,NA
+"IL1R1",566,"Missense_Mutation",1,1,1,NA,NA,NA
+"IL1RL2",573,"Missense_Mutation",1,1,1,NA,NA,NA
+"ILDR1",325,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"ILDR1",56,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"IMPG2",834,"Missense_Mutation",1,1,1,NA,NA,NA
+"ISLR",231,"Missense_Mutation",1,1,1,NA,NA,NA
+"ITGA10",1117,"Missense_Mutation",1,1,1,NA,NA,NA
+"ITGAV",110,"Nonsense_Mutation",1,1,1,NA,NA,NA
+"ITPR1",2171,"Missense_Mutation",1,1,1,NA,NA,NA
+"ITPR3",821,"Missense_Mutation",1,1,1,NA,NA,NA
+"JAK3",511,"Missense_Mutation",1,1,1,NA,NA,NA
+"JMJD1C",1421,"Missense_Mutation",1,1,1,NA,NA,NA
+"JMJD5",125,"Missense_Mutation",1,1,1,NA,NA,NA
+"KATNAL2",362,"Missense_Mutation",1,1,1,NA,NA,NA
+"KCNA4",98,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"KCNE3",28,"Missense_Mutation",1,1,1,NA,NA,NA
+"KCNH2",1097,"Missense_Mutation",1,1,1,NA,NA,NA
+"KCNH5",229,"Missense_Mutation",1,1,1,NA,NA,NA
+"KCNK13",389,"Frame_Shift_Ins",1,2,0.5,NA,NA,NA
+"KCNK13",377,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"KCNN3",413,"Missense_Mutation",1,1,1,NA,NA,NA
+"KCNT1",92,"Missense_Mutation",1,1,1,NA,NA,NA
+"KCNT2",1117,"Missense_Mutation",1,1,1,NA,NA,NA
+"KCNU1",7,"Nonsense_Mutation",1,2,0.5,NA,NA,NA
+"KCNU1",857,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"KDM2B",953,"Missense_Mutation",1,1,1,NA,NA,NA
+"KDM3B",938,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"KDM3B",827,"Frame_Shift_Del",1,2,0.5,NA,NA,NA
+"KDM6A",621,"Missense_Mutation",1,3,0.333333333333333,NA,NA,NA
+"KIAA0240",539,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"KIAA0240",850,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"KIAA0802",1150,"Missense_Mutation",1,1,1,NA,NA,NA
+"KIAA0831",213,"Missense_Mutation",1,1,1,NA,NA,NA
+"KIAA0892",536,"Missense_Mutation",1,1,1,NA,NA,NA
+"KIAA1109",2996,"Missense_Mutation",1,1,1,NA,NA,NA
+"KIAA1217",428,"Missense_Mutation",1,1,1,NA,NA,NA
+"KIAA1267",299,"Frame_Shift_Ins",1,1,1,NA,NA,NA
+"KIAA1529",581,"Missense_Mutation",1,1,1,NA,NA,NA
+"KIAA1683",478,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"KIAA1683",747,"Frame_Shift_Ins",1,2,0.5,NA,NA,NA
+"KIDINS220",1099,"Missense_Mutation",1,1,1,NA,NA,NA
+"KIF27",423,"Missense_Mutation",1,1,1,NA,NA,NA
+"KIF2B",47,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"KIT",418,"Missense_Mutation",1,10,0.1,NA,NA,NA
+"KIT",197,"Missense_Mutation",1,10,0.1,NA,NA,NA
+"KIT",416,"Frame_Shift_Del",1,10,0.1,NA,NA,NA
+"KIT",418,"Frame_Shift_Ins",1,10,0.1,NA,NA,NA
+"KIT",418,"In_Frame_Ins",1,10,0.1,NA,NA,NA
+"KLF15",133,"Missense_Mutation",1,1,1,NA,NA,NA
+"KLHDC7A",669,"Missense_Mutation",1,1,1,NA,NA,NA
+"KLRK1",5,"Missense_Mutation",1,1,1,NA,NA,NA
+"KPRP",579,"Missense_Mutation",1,1,1,NA,NA,NA
+"KRT27",70,"Missense_Mutation",1,1,1,NA,NA,NA
+"KRT79",495,"Missense_Mutation",1,1,1,NA,NA,NA
+"KRTAP10-8",141,"Missense_Mutation",1,1,1,NA,NA,NA
+"LAMA5",1823,"Missense_Mutation",1,1,1,NA,NA,NA
+"LARP4B",429,"Missense_Mutation",1,1,1,NA,NA,NA
+"LAS1L",220,"Missense_Mutation",1,1,1,NA,NA,NA
+"LBXCOR1",124,"Missense_Mutation",1,1,1,NA,NA,NA
+"LEO1",657,"Missense_Mutation",1,1,1,NA,NA,NA
+"LGTN",385,"Missense_Mutation",1,1,1,NA,NA,NA
+"LIMA1",161,"Frame_Shift_Ins",1,1,1,NA,NA,NA
+"LPPR1",325,"Missense_Mutation",1,1,1,NA,NA,NA
+"LPPR4",699,"Missense_Mutation",1,1,1,NA,NA,NA
+"LRBA",591,"Missense_Mutation",1,1,1,NA,NA,NA
+"LRCH3",289,"Missense_Mutation",1,1,1,NA,NA,NA
+"LRFN3",550,"Missense_Mutation",1,1,1,NA,NA,NA
+"LRIT1",602,"Missense_Mutation",1,1,1,NA,NA,NA
+"LRP1B",1920,"Splice_Site",1,1,1,NA,NA,NA
+"LRP5",65,"Missense_Mutation",1,1,1,NA,NA,NA
+"LRRC15",480,"Missense_Mutation",1,1,1,NA,NA,NA
+"LRRC37B",922,"Frame_Shift_Ins",1,1,1,NA,NA,NA
+"LRRC43",440,"Missense_Mutation",1,1,1,NA,NA,NA
+"LRRC58",360,"Missense_Mutation",1,1,1,NA,NA,NA
+"LRRFIP1",23,"Splice_Site",1,1,1,NA,NA,NA
+"LRWD1",136,"Missense_Mutation",1,1,1,NA,NA,NA
+"LYRM5",84,"Missense_Mutation",1,1,1,NA,NA,NA
+"LZTS1",192,"Missense_Mutation",1,1,1,NA,NA,NA
+"MAGEL2",278,"Missense_Mutation",1,1,1,NA,NA,NA
+"MAP1B",926,"Missense_Mutation",1,1,1,NA,NA,NA
+"MAP6",431,"Missense_Mutation",1,1,1,NA,NA,NA
+"MBOAT1",463,"Frame_Shift_Del",1,1,1,NA,NA,NA
+"MCART2",261,"Missense_Mutation",1,1,1,NA,NA,NA
+"MDM2",271,"Missense_Mutation",1,1,1,NA,NA,NA
+"MED12",1688,"Nonsense_Mutation",1,2,0.5,NA,NA,NA
+"MED12",961,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"MED14",1033,"Missense_Mutation",1,1,1,NA,NA,NA
+"MEFV",538,"Splice_Site",1,2,0.5,NA,NA,NA
+"MEPE",456,"Missense_Mutation",1,1,1,NA,NA,NA
+"METTL3",28,"Missense_Mutation",1,1,1,NA,NA,NA
+"MEX3B",402,"Missense_Mutation",1,1,1,NA,NA,NA
+"MGA",2339,"Frame_Shift_Del",1,1,1,NA,NA,NA
+"MLL2",4374,"Missense_Mutation",1,1,1,NA,NA,NA
+"MLL3",2793,"Nonsense_Mutation",1,1,1,NA,NA,NA
+"MLLT4",1417,"Missense_Mutation",1,1,1,NA,NA,NA
+"MORC3",185,"Missense_Mutation",1,1,1,NA,NA,NA
+"MPL",624,"Missense_Mutation",1,1,1,NA,NA,NA
+"MPND",246,"Missense_Mutation",1,1,1,NA,NA,NA
+"MRE11A",477,"Missense_Mutation",1,1,1,NA,NA,NA
+"MTMR8",138,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"MTMR8",644,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"MTUS2",570,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"MTUS2",918,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"MUC16",1240,"Missense_Mutation",1,3,0.333333333333333,NA,NA,NA
+"MUC16",8866,"Missense_Mutation",1,3,0.333333333333333,NA,NA,NA
+"MUC16",2367,"Missense_Mutation",1,3,0.333333333333333,NA,NA,NA
+"MUC17",4145,"Missense_Mutation",1,1,1,NA,NA,NA
+"MUC5B",4559,"Missense_Mutation",1,3,0.333333333333333,NA,NA,NA
+"MUC5B",3887,"Missense_Mutation",1,3,0.333333333333333,NA,NA,NA
+"MUC5B",4681,"Missense_Mutation",1,3,0.333333333333333,NA,NA,NA
+"MYCBP2",2242,"Missense_Mutation",1,1,1,NA,NA,NA
+"MYEOV",307,"Missense_Mutation",1,1,1,NA,NA,NA
+"MYH14",1334,"Missense_Mutation",1,1,1,NA,NA,NA
+"MYST4",600,"Missense_Mutation",1,1,1,NA,NA,NA
+"NAPA",202,"Missense_Mutation",1,1,1,NA,NA,NA
+"NCKAP5",191,"Missense_Mutation",1,1,1,NA,NA,NA
+"NCOA3",462,"Frame_Shift_Del",1,1,1,NA,NA,NA
+"NCOA7",584,"Missense_Mutation",1,1,1,NA,NA,NA
+"NEB",4574,"Missense_Mutation",1,1,1,NA,NA,NA
+"NECAB2",220,"Missense_Mutation",1,1,1,NA,NA,NA
+"NFKBIL2",104,"Missense_Mutation",1,1,1,NA,NA,NA
+"NID2",431,"Missense_Mutation",1,1,1,NA,NA,NA
+"NIPSNAP1",65,"Missense_Mutation",1,1,1,NA,NA,NA
+"NKRF",477,"Missense_Mutation",1,1,1,NA,NA,NA
+"NLRP8",508,"Missense_Mutation",1,1,1,NA,NA,NA
+"NMUR2",41,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"NOMO2",738,"Missense_Mutation",1,1,1,NA,NA,NA
+"NOTCH2",1698,"Missense_Mutation",1,1,1,NA,NA,NA
+"NOTCH2NL",74,"Nonsense_Mutation",1,1,1,NA,NA,NA
+"NPAS4",685,"Missense_Mutation",1,1,1,NA,NA,NA
+"NPM1",-287,"Frame_Shift_Ins",1,34,0.0294117647058824,NA,NA,NA
+"NPM1",263,"Missense_Mutation",1,34,0.0294117647058824,NA,NA,NA
+"NPNT",281,"Missense_Mutation",1,1,1,NA,NA,NA
+"NRK",1149,"Missense_Mutation",1,1,1,NA,NA,NA
+"ODZ2",2542,"Missense_Mutation",1,1,1,NA,NA,NA
+"ODZ3",1156,"Missense_Mutation",1,1,1,NA,NA,NA
+"OLFML3",16,"Missense_Mutation",1,1,1,NA,NA,NA
+"OR11H12",307,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"OR13H1",298,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"OR13H1",15,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"OR1J2",20,"Missense_Mutation",1,1,1,NA,NA,NA
+"OR4B1",36,"Missense_Mutation",1,1,1,NA,NA,NA
+"OR4Q3",36,"Missense_Mutation",1,1,1,NA,NA,NA
+"OR52D1",302,"Nonsense_Mutation",1,1,1,NA,NA,NA
+"OR52E8",60,"Missense_Mutation",1,1,1,NA,NA,NA
+"OR5M1",33,"Missense_Mutation",1,1,1,NA,NA,NA
+"OR6B2",299,"Missense_Mutation",1,1,1,NA,NA,NA
+"OSBP2",332,"Missense_Mutation",1,1,1,NA,NA,NA
+"OSTalpha",147,"Missense_Mutation",1,1,1,NA,NA,NA
+"OXA1L",55,"Missense_Mutation",1,1,1,NA,NA,NA
+"PAPPA2",1599,"Missense_Mutation",1,1,1,NA,NA,NA
+"PARD3",1318,"Missense_Mutation",1,1,1,NA,NA,NA
+"PCDH1",612,"Missense_Mutation",1,1,1,NA,NA,NA
+"PCDH15",1418,"Missense_Mutation",1,1,1,NA,NA,NA
+"PCDHA1",567,"Missense_Mutation",1,1,1,NA,NA,NA
+"PCDHB1",714,"Missense_Mutation",1,1,1,NA,NA,NA
+"PCDHGC4",452,"Missense_Mutation",1,1,1,NA,NA,NA
+"PCLO",4438,"Missense_Mutation",1,1,1,NA,NA,NA
+"PDGFRA",990,"Missense_Mutation",1,1,1,NA,NA,NA
+"PDS5B",1188,"Missense_Mutation",1,1,1,NA,NA,NA
+"PDXDC1",421,"Missense_Mutation",1,1,1,NA,NA,NA
+"PHACTR1",316,"Missense_Mutation",1,1,1,NA,NA,NA
+"PHF6",139,"Nonsense_Mutation",1,6,0.166666666666667,NA,NA,NA
+"PHF6",-213,"Frame_Shift_Ins",1,6,0.166666666666667,NA,NA,NA
+"PHF6",23,"Frame_Shift_Ins",1,6,0.166666666666667,NA,NA,NA
+"PI4KA",908,"Missense_Mutation",1,1,1,NA,NA,NA
+"PIWIL4",18,"Missense_Mutation",1,1,1,NA,NA,NA
+"PKHD1",2897,"Missense_Mutation",1,1,1,NA,NA,NA
+"PKHD1L1",3813,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"PKNOX1",351,"Missense_Mutation",1,1,1,NA,NA,NA
+"PLCE1",130,"Missense_Mutation",1,4,0.25,NA,NA,NA
+"PLEKHG2",690,"Missense_Mutation",1,1,1,NA,NA,NA
+"PLEKHH1",475,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"PLOD1",480,"Missense_Mutation",1,1,1,NA,NA,NA
+"PLXND1",675,"Frame_Shift_Ins",1,1,1,NA,NA,NA
+"POM121C",930,"Missense_Mutation",1,1,1,NA,NA,NA
+"POM121L12",159,"Missense_Mutation",1,1,1,NA,NA,NA
+"POU6F2",196,"Nonsense_Mutation",1,1,1,NA,NA,NA
+"PPL",1203,"Missense_Mutation",1,1,1,NA,NA,NA
+"PPP1R3A",454,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"PPP1R3A",719,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"PPP1R9A",751,"Missense_Mutation",1,1,1,NA,NA,NA
+"PPPDE2",89,"Missense_Mutation",1,1,1,NA,NA,NA
+"PRAMEF16",391,"Missense_Mutation",1,1,1,NA,NA,NA
+"PRAMEF2",246,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"PRAMEF2",190,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"PRDM16",588,"Missense_Mutation",1,1,1,NA,NA,NA
+"PRDM9",530,"Missense_Mutation",1,1,1,NA,NA,NA
+"PRKD3",884,"Missense_Mutation",1,1,1,NA,NA,NA
+"PRPF4B",675,"Splice_Site",1,1,1,NA,NA,NA
+"PRUNE2",2151,"Missense_Mutation",1,1,1,NA,NA,NA
+"PRX",421,"Missense_Mutation",1,1,1,NA,NA,NA
+"PSME4",1037,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"PSME4",1446,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"PTAR1",161,"Missense_Mutation",1,1,1,NA,NA,NA
+"PTPN11",545,"Missense_Mutation",1,9,0.111111111111111,NA,NA,NA
+"PTPN5",265,"Missense_Mutation",1,1,1,NA,NA,NA
+"PTPRG",43,"Missense_Mutation",1,1,1,NA,NA,NA
+"PTPRN",350,"Missense_Mutation",1,1,1,NA,NA,NA
+"QRICH2",1484,"Missense_Mutation",1,1,1,NA,NA,NA
+"R3HDM1",552,"Missense_Mutation",1,1,1,NA,NA,NA
+"RAB11FIP1",415,"Missense_Mutation",1,1,1,NA,NA,NA
+"RAD21",453,"Frame_Shift_Del",1,5,0.2,NA,NA,NA
+"RAD21",284,"Frame_Shift_Ins",1,5,0.2,NA,NA,NA
+"RAD21",255,"Nonsense_Mutation",1,5,0.2,NA,NA,NA
+"RAD21",212,"Nonsense_Mutation",1,5,0.2,NA,NA,NA
+"RALGAPA2",343,"Missense_Mutation",1,1,1,NA,NA,NA
+"RASSF9",198,"Missense_Mutation",1,1,1,NA,NA,NA
+"RBM16",1063,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"RBM16",1111,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"RBM9",76,"Missense_Mutation",1,1,1,NA,NA,NA
+"RCC2",403,"Splice_Site",1,1,1,NA,NA,NA
+"RFX3",399,"Missense_Mutation",1,1,1,NA,NA,NA
+"RGNEF",469,"Missense_Mutation",1,1,1,NA,NA,NA
+"RIF1",1144,"Missense_Mutation",1,1,1,NA,NA,NA
+"RIN2",565,"Missense_Mutation",1,1,1,NA,NA,NA
+"RNASEN",1239,"Missense_Mutation",1,1,1,NA,NA,NA
+"RNF111",605,"Nonsense_Mutation",1,1,1,NA,NA,NA
+"RNF213",2823,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"RNF213",3100,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"RNF25",17,"Missense_Mutation",1,1,1,NA,NA,NA
+"RP1",405,"Missense_Mutation",1,1,1,NA,NA,NA
+"RPL6",17,"Missense_Mutation",1,1,1,NA,NA,NA
+"RPS3A",5,"Missense_Mutation",1,1,1,NA,NA,NA
+"RPS6KA6",690,"Missense_Mutation",1,1,1,NA,NA,NA
+"RSRC2",187,"Missense_Mutation",1,1,1,NA,NA,NA
+"RUNX1",293,"Nonsense_Mutation",1,19,0.0526315789473684,NA,NA,NA
+"RYR3",2842,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"SACS",627,"Missense_Mutation",1,1,1,NA,NA,NA
+"SAGE1",266,"Missense_Mutation",1,1,1,NA,NA,NA
+"SAP130",247,"Missense_Mutation",1,1,1,NA,NA,NA
+"SCAND3",263,"Missense_Mutation",1,1,1,NA,NA,NA
+"SCARA3",418,"Missense_Mutation",1,1,1,NA,NA,NA
+"SCN1A",448,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"SCN1A",500,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"SCN3A",479,"Missense_Mutation",1,1,1,NA,NA,NA
+"SDK2",990,"Missense_Mutation",1,1,1,NA,NA,NA
+"SECISBP2L",643,"Missense_Mutation",1,1,1,NA,NA,NA
+"SENP7",111,"Nonsense_Mutation",1,1,1,NA,NA,NA
+"SETBP1",870,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"SETBP1",868,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"SETD2",325,"Frame_Shift_Ins",1,1,1,NA,NA,NA
+"SFRS2",95,"In_Frame_Del",1,1,1,NA,NA,NA
+"SFRS6",123,"Missense_Mutation",1,1,1,NA,NA,NA
+"SH3BP4",454,"Missense_Mutation",1,1,1,NA,NA,NA
+"SH3TC2",1012,"Missense_Mutation",1,1,1,NA,NA,NA
+"SHROOM2",1017,"Nonsense_Mutation",1,1,1,NA,NA,NA
+"SLC17A7",538,"Missense_Mutation",1,1,1,NA,NA,NA
+"SLC18A1",3,"Missense_Mutation",1,1,1,NA,NA,NA
+"SLC24A3",269,"Missense_Mutation",1,1,1,NA,NA,NA
+"SLC39A5",457,"Frame_Shift_Ins",1,1,1,NA,NA,NA
+"SLC43A1",532,"Missense_Mutation",1,1,1,NA,NA,NA
+"SLC7A7",506,"Missense_Mutation",1,1,1,NA,NA,NA
+"SLCO5A1",46,"Missense_Mutation",1,1,1,NA,NA,NA
+"SLFNL1",198,"Missense_Mutation",1,1,1,NA,NA,NA
+"SLITRK1",517,"Missense_Mutation",1,1,1,NA,NA,NA
+"SLTM",838,"Missense_Mutation",1,1,1,NA,NA,NA
+"SMAD9",166,"Missense_Mutation",1,1,1,NA,NA,NA
+"SMEK1",546,"Missense_Mutation",1,1,1,NA,NA,NA
+"SMOC2",293,"Missense_Mutation",1,1,1,NA,NA,NA
+"SNCAIP",756,"Missense_Mutation",1,1,1,NA,NA,NA
+"SNRNP200",102,"Missense_Mutation",1,1,1,NA,NA,NA
+"SON",1024,"Missense_Mutation",1,1,1,NA,NA,NA
+"SOS1",552,"Missense_Mutation",1,1,1,NA,NA,NA
+"SOX5",657,"Missense_Mutation",1,1,1,NA,NA,NA
+"SPACA1",76,"Missense_Mutation",1,1,1,NA,NA,NA
+"SPATA21",113,"Missense_Mutation",1,1,1,NA,NA,NA
+"SPDYA",6,"Missense_Mutation",1,1,1,NA,NA,NA
+"SPEN",2501,"Nonsense_Mutation",1,3,0.333333333333333,NA,NA,NA
+"SPEN",650,"Missense_Mutation",1,3,0.333333333333333,NA,NA,NA
+"SPEN",266,"Missense_Mutation",1,3,0.333333333333333,NA,NA,NA
+"SPESP1",263,"Missense_Mutation",1,1,1,NA,NA,NA
+"SPG11",8,"Missense_Mutation",1,1,1,NA,NA,NA
+"SPHKAP",24,"Missense_Mutation",1,1,1,NA,NA,NA
+"SPRR4",8,"Missense_Mutation",1,1,1,NA,NA,NA
+"SREBF2",554,"Missense_Mutation",1,1,1,NA,NA,NA
+"SRRM2",724,"Frame_Shift_Ins",1,1,1,NA,NA,NA
+"SSSCA1",158,"In_Frame_Del",1,1,1,NA,NA,NA
+"STAG2",801,"Nonsense_Mutation",1,6,0.166666666666667,NA,NA,NA
+"STAG2",614,"Nonsense_Mutation",1,6,0.166666666666667,NA,NA,NA
+"STAG2",1045,"Nonsense_Mutation",1,6,0.166666666666667,NA,NA,NA
+"STC2",278,"Frame_Shift_Ins",1,1,1,NA,NA,NA
+"STEAP1",42,"Missense_Mutation",1,1,1,NA,NA,NA
+"STK36",1111,"Missense_Mutation",1,1,1,NA,NA,NA
+"STRC",147,"Missense_Mutation",1,1,1,NA,NA,NA
+"STXBP5L",769,"Missense_Mutation",1,1,1,NA,NA,NA
+"SUDS3",255,"Missense_Mutation",1,1,1,NA,NA,NA
+"SUZ12",103,"Missense_Mutation",1,3,0.333333333333333,NA,NA,NA
+"SUZ12",308,"Frame_Shift_Del",1,3,0.333333333333333,NA,NA,NA
+"SUZ12",163,"Missense_Mutation",1,3,0.333333333333333,NA,NA,NA
+"SYT1",19,"Missense_Mutation",1,1,1,NA,NA,NA
+"SYTL5",216,"Missense_Mutation",1,1,1,NA,NA,NA
+"TACC2",2115,"Missense_Mutation",1,1,1,NA,NA,NA
+"TBC1D2",593,"Missense_Mutation",1,1,1,NA,NA,NA
+"TBC1D8",819,"Missense_Mutation",1,1,1,NA,NA,NA
+"TCEAL6",45,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"TCEAL6",75,"Nonsense_Mutation",1,2,0.5,NA,NA,NA
+"TCEB3B",187,"Missense_Mutation",1,1,1,NA,NA,NA
+"TCHHL1",879,"Missense_Mutation",1,1,1,NA,NA,NA
+"TDRD10",193,"Missense_Mutation",1,1,1,NA,NA,NA
+"TET1",1830,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"TET1",1040,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"TET2",315,"Frame_Shift_Del",1,27,0.037037037037037,NA,NA,NA
+"TET2",1439,"Frame_Shift_Del",1,27,0.037037037037037,NA,NA,NA
+"TET2",947,"Nonsense_Mutation",1,27,0.037037037037037,NA,NA,NA
+"TET2",880,"Frame_Shift_Del",1,27,0.037037037037037,NA,NA,NA
+"TET2",481,"Nonsense_Mutation",1,27,0.037037037037037,NA,NA,NA
+"TET2",274,"Frame_Shift_Del",1,27,0.037037037037037,NA,NA,NA
+"TET2",550,"Nonsense_Mutation",1,27,0.037037037037037,NA,NA,NA
+"TET2",958,"Frame_Shift_Ins",1,27,0.037037037037037,NA,NA,NA
+"TET2",1115,"Frame_Shift_Del",1,27,0.037037037037037,NA,NA,NA
+"TET2",125,"Frame_Shift_Del",1,27,0.037037037037037,NA,NA,NA
+"TET2",916,"Nonsense_Mutation",1,27,0.037037037037037,NA,NA,NA
+"TET2",1070,"Frame_Shift_Del",1,27,0.037037037037037,NA,NA,NA
+"TET2",1516,"Nonsense_Mutation",1,27,0.037037037037037,NA,NA,NA
+"TET2",1452,"Nonsense_Mutation",1,27,0.037037037037037,NA,NA,NA
+"TFAM",233,"Missense_Mutation",1,1,1,NA,NA,NA
+"THEG",165,"Missense_Mutation",1,1,1,NA,NA,NA
+"THRAP3",837,"Nonsense_Mutation",1,2,0.5,NA,NA,NA
+"TJAP1",27,"Missense_Mutation",1,1,1,NA,NA,NA
+"TM7SF4",416,"Missense_Mutation",1,1,1,NA,NA,NA
+"TMEM104",204,"Nonsense_Mutation",1,1,1,NA,NA,NA
+"TMEM108",552,"Missense_Mutation",1,1,1,NA,NA,NA
+"TMEM18",9,"Missense_Mutation",1,1,1,NA,NA,NA
+"TMEM198",263,"Missense_Mutation",1,1,1,NA,NA,NA
+"TMEM200A",172,"Missense_Mutation",1,1,1,NA,NA,NA
+"TPRG1",258,"Missense_Mutation",1,1,1,NA,NA,NA
+"TRIM48",178,"Missense_Mutation",1,1,1,NA,NA,NA
+"TRO",1152,"Missense_Mutation",1,1,1,NA,NA,NA
+"TRPC4AP",5,"Missense_Mutation",1,1,1,NA,NA,NA
+"TRPM4",998,"Missense_Mutation",1,1,1,NA,NA,NA
+"TRPM8",67,"Missense_Mutation",1,1,1,NA,NA,NA
+"TSHZ3",241,"Missense_Mutation",1,1,1,NA,NA,NA
+"TSPYL5",390,"Missense_Mutation",1,1,1,NA,NA,NA
+"TTBK1",539,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"TTC26",323,"Nonsense_Mutation",1,1,1,NA,NA,NA
+"TTLL2",427,"Missense_Mutation",1,1,1,NA,NA,NA
+"TUSC3",63,"Missense_Mutation",1,1,1,NA,NA,NA
+"UBE2R2",223,"In_Frame_Del",1,1,1,NA,NA,NA
+"UBN2",1169,"Missense_Mutation",1,1,1,NA,NA,NA
+"UBP1",278,"Missense_Mutation",1,1,1,NA,NA,NA
+"UNC5B",442,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"UNC5B",755,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"UQCR10",5,"Missense_Mutation",1,1,1,NA,NA,NA
+"USP10",386,"Frame_Shift_Del",1,1,1,NA,NA,NA
+"USP34",2652,"Nonsense_Mutation",1,1,1,NA,NA,NA
+"USP48",699,"Nonsense_Mutation",1,1,1,NA,NA,NA
+"USP6",944,"Splice_Site",1,1,1,NA,NA,NA
+"USP9X",853,"Frame_Shift_Ins",1,1,1,NA,NA,NA
+"VASH1",324,"Missense_Mutation",1,1,1,NA,NA,NA
+"VCAN",858,"Missense_Mutation",1,1,1,NA,NA,NA
+"VLDLR",861,"Missense_Mutation",1,1,1,NA,NA,NA
+"VPS13B",787,"Missense_Mutation",1,1,1,NA,NA,NA
+"VPS13C",3049,"Missense_Mutation",1,1,1,NA,NA,NA
+"VPS13D",3898,"Missense_Mutation",1,1,1,NA,NA,NA
+"VWCE",464,"Frame_Shift_Del",1,1,1,NA,NA,NA
+"WAC",-87,"Frame_Shift_Ins",1,2,0.5,NA,NA,NA
+"WAPAL",27,"Missense_Mutation",1,1,1,NA,NA,NA
+"WDR35",470,"Missense_Mutation",1,1,1,NA,NA,NA
+"WEE1",610,"Missense_Mutation",1,1,1,NA,NA,NA
+"WEE2",521,"Missense_Mutation",1,1,1,NA,NA,NA
+"WIPF1",399,"Missense_Mutation",1,1,1,NA,NA,NA
+"WNK1",561,"Missense_Mutation",1,1,1,NA,NA,NA
+"WNK4",669,"Missense_Mutation",1,1,1,NA,NA,NA
+"XIRP1",673,"Missense_Mutation",1,1,1,NA,NA,NA
+"XIRP2",3168,"Missense_Mutation",1,1,1,NA,NA,NA
+"YEATS2",1175,"Missense_Mutation",1,1,1,NA,NA,NA
+"ZBTB33",10,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"ZC3H18",360,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"ZC3H18",521,"Nonsense_Mutation",1,2,0.5,NA,NA,NA
+"ZFC3H1",672,"Missense_Mutation",1,1,1,NA,NA,NA
+"ZFHX3",3681,"Missense_Mutation",1,1,1,NA,NA,NA
+"ZFHX4",1651,"Missense_Mutation",1,1,1,NA,NA,NA
+"ZFP42",64,"Missense_Mutation",1,1,1,NA,NA,NA
+"ZMYND10",145,"Missense_Mutation",1,1,1,NA,NA,NA
+"ZNF213",147,"Missense_Mutation",1,1,1,NA,NA,NA
+"ZNF37A",123,"Missense_Mutation",1,1,1,NA,NA,NA
+"ZNF462",1680,"Missense_Mutation",1,1,1,NA,NA,NA
+"ZNF518B",807,"Missense_Mutation",1,1,1,NA,NA,NA
+"ZNF548",519,"Missense_Mutation",1,1,1,NA,NA,NA
+"ZNF638",1742,"Missense_Mutation",1,1,1,NA,NA,NA
+"ZNF642",457,"Missense_Mutation",1,1,1,NA,NA,NA
+"ZNF646",875,"Missense_Mutation",1,1,1,NA,NA,NA
+"ZNF687",554,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"ZNF687",363,"Missense_Mutation",1,2,0.5,NA,NA,NA
+"ZNF75D",5,"Missense_Mutation",1,1,1,NA,NA,NA
+"ZNF827",427,"Frame_Shift_Del",1,1,1,NA,NA,NA

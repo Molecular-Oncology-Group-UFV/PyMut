@@ -1,0 +1,3 @@
+status,retained,removed,count,percentage_of_initial,expression_threshold
+Expressed gene,30634,0,30634,69.31553343138364,0.5
+Low/no expression,0,13561,13561,30.684466568616358,0.5

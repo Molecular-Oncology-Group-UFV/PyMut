@@ -1,0 +1,40 @@
+Pfam domain analysis: pyMut vs. maftools - correlation report
+========================================================================
+
+Cohort: TCGA - PAAD
+------------------------------------------------------------------------
+  Domains found by pyMut only:      3
+  Domains found by maftools only:   1
+  Domains found by both tools:      4033
+
+  Variants per domain:
+    Pearson r (log10 scale)  = 0.9998  (p = 0.00e+00)
+    Spearman rho             = 0.9995  (p = 0.00e+00)
+    Exact count matches      = 4020/4033
+
+  Genes per domain:
+    Pearson r (log10 scale)  = 0.9999  (p = 0.00e+00)
+    Spearman rho             = 0.9996  (p = 0.00e+00)
+    Exact count matches      = 4025/4033
+
+  Domains only in pyMut (3): MMSDH, extracellular fragment, glycerol_kin
+
+  Domains only in maftools (1): ALDH_F6_MMSDH
+
+Cohort: TCGA-LAML
+------------------------------------------------------------------------
+  Domains found by pyMut only:      0
+  Domains found by maftools only:   0
+  Domains found by both tools:      503
+
+  Variants per domain:
+    Pearson r (log10 scale)  = 1.0000  (p = 0.00e+00)
+    Spearman rho             = 1.0000  (p = 0.00e+00)
+    Exact count matches      = 503/503
+
+  Genes per domain:
+    Pearson r (log10 scale)  = 1.0000  (p = 0.00e+00)
+    Spearman rho             = 1.0000  (p = 0.00e+00)
+    Exact count matches      = 503/503
+
+Note: any small discrepancies are most likely explained by differing default variant de-duplication behaviour between pyMut's read_maf(..., consolidate_variants=False) and maftools::read.maf() - see the header comment of run_maftools_pfam.R for details.

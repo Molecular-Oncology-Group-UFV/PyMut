@@ -1,0 +1,504 @@
+domain_label,pfam_id,pymut_n_variants,pymut_n_genes,maftools_n_variants,maftools_n_genes,in_both
+2A0113,TIGR00892,1,1,1,1,True
+2A0114euk,TIGR00894,1,1,1,1,True
+2A060601,TIGR00917,1,1,1,1,True
+2a30,TIGR00930,2,2,2,2,True
+3a01204,TIGR00955,1,1,1,1,True
+3b-HSD_HSDB1_like_SDR_e,cd09811,1,1,1,1,True
+3b-HSD_like_1_SDR_e,cd09812,1,1,1,1,True
+4.1m,smart00294,1,1,1,1,True
+7tm_1,pfam00001,24,24,24,24,True
+7tm_2,pfam00002,4,4,4,4,True
+7tm_3,pfam00003,3,2,3,2,True
+7tm_4,cl10458,3,3,3,3,True
+A2M_2,cd02897,1,1,1,1,True
+AAA,smart00382,1,1,1,1,True
+AAA_6,pfam12774,1,1,1,1,True
+AA_permease_2,pfam13520,1,1,1,1,True
+ABC2_membrane,pfam01061,1,1,1,1,True
+ABCG_White,cd03234,1,1,1,1,True
+ACAD,cl09933,1,1,1,1,True
+ADAM_spacer1,pfam05986,1,1,1,1,True
+ADDz_Dnmt3a,cd11729,2,1,2,1,True
+ADDz_Dnmt3b,cd11728,1,1,1,1,True
+ADP_ribosyl,cd01341,1,1,1,1,True
+AF-4,pfam05110,2,2,2,2,True
+ALDH_F1AB_F2_RALDH1,cd07141,1,1,1,1,True
+ANATO,"C3a, C4a and C5a anaphylatoxins are protein fragments generated enzymatically in serum during activation of complement molecules C3, C4, and C5. They induce smooth muscle contraction. These fragments are homologous to...",1,1,1,1,True
+ANK,"ankyrin repeats mediate protein-protein interactions in very diverse families of proteins. The number of ANK repeats in a protein can range from 2 to over 20 (ankyrins, for example). ANK repeats may occur in combinations with other...",1,1,1,1,True
+AP-1_Mu1A_Cterm,cd09258,1,1,1,1,True
+APG6,pfam04111,1,1,1,1,True
+APPBP1_RUB,cd01493,1,1,1,1,True
+ARM,these repeats were also found in the mammalian armadillo homolog beta-catenin,2,2,2,2,True
+ATPase-IIA1_Ca,TIGR01116,1,1,1,1,True
+ATPase-IIA2_Ca,TIGR01522,1,1,1,1,True
+ATPase-IIB_Ca,TIGR01517,1,1,1,1,True
+ATPase-Plipid,TIGR01652,1,1,1,1,True
+Aa_trans,cl15776,1,1,1,1,True
+Acs,COG0365,1,1,1,1,True
+Actin,pfam00022,2,2,2,2,True
+AcuC,COG0123,1,1,1,1,True
+Adaptin_N,pfam01602,1,1,1,1,True
+AdoMet_MTases,"AdoMet-MTases are enzymes that use S-adenosyl-L-methionine (SAM or AdoMet) as a substrate for methyltransfer, creating the product S-adenosyl-L-homocysteine (AdoHcy)",33,1,33,1,True
+Aldo_ket_red,cl00470,2,2,2,2,True
+Alg6_Alg8,pfam03155,1,1,1,1,True
+An_peroxidase_like,cl14561,1,1,1,1,True
+Ank_2,pfam12796,2,2,2,2,True
+Anoctamin,pfam04547,1,1,1,1,True
+Arl3,cd04155,1,1,1,1,True
+ArsB_NhaD_permease,cl15356,1,1,1,1,True
+AslA,COG3119,1,1,1,1,True
+Asx-hm,pfam13919,1,1,1,1,True
+BAAT_C,pfam08840,1,1,1,1,True
+BASIC,smart00520,1,1,1,1,True
+BBOX,zinc binding domain (CHC3H2),2,2,2,2,True
+BPS,pfam08947,1,1,1,1,True
+BTB,pfam00651,2,2,2,2,True
+BaeS,COG0642,1,1,1,1,True
+Beach,cd06071,1,1,1,1,True
+Beta_helix,pfam13229,1,1,1,1,True
+BioF,COG0156,1,1,1,1,True
+Bromo_WDR9_II,"WDR9 repeat II_like subfamily. WDR9 is a human gene located in the Down Syndrome critical region-2 of chromosome 21. It encodes for a nuclear protein containing WD40 repeats and two bromodomains, which may function as a transcriptional...",1,1,1,1,True
+Bromo_tif1_like,"tif1_like subfamily. Tif1 (transcription intermediary factor 1) is a member of the tripartite motif (TRIM) protein family, which is characterized by a particular domain architecture. It functions by recruiting coactivators and/or...",1,1,1,1,True
+C2,cl14603,1,1,1,1,True
+C2B_Copine,cd04047,1,1,1,1,True
+C2B_RIM1alpha,cd04028,2,1,2,1,True
+C2B_SLP_1-2-3-4,cd04020,1,1,1,1,True
+C2B_Synaptotagmin-17,cd08410,1,1,1,1,True
+C2_Smurf-like,cd08382,1,1,1,1,True
+C8,pfam08742,1,1,1,1,True
+CAP_ED,"members include CAP (or cAMP receptor protein (CRP)), which binds cAMP, FNR (fumarate and nitrate reduction), which uses an iron-sulfur cluster to sense oxygen) and CooA, a heme containing CO...",1,1,1,1,True
+CARD_CASP1-like,cd08325,1,1,1,1,True
+CA_like,cl15786,1,1,1,1,True
+CBF_beta,pfam02312,2,1,2,1,True
+CCP,cd00033,2,2,2,2,True
+CD36,pfam01130,1,1,1,1,True
+CDC55,COG5170,1,1,1,1,True
+CENP-N,pfam05238,1,1,1,1,True
+CH,"actin-binding domain which may be present as a single copy or in tandem repeats (which increases binding affinity). The CH domain is found in cytoskeletal and signal transduction proteins, including actin-binding proteins like...",1,1,1,1,True
+CHD,cd07302,1,1,1,1,True
+CHROMO,cd00024,1,1,1,1,True
+COG0724,,3,3,3,3,True
+COG0790,,1,1,1,1,True
+COG1100,,9,2,9,2,True
+COG1112,,1,1,1,1,True
+COG1216,,1,1,1,1,True
+COG1501,,3,2,3,2,True
+COG2085,,1,1,1,1,True
+COG2319,,9,8,9,8,True
+COG2335,,1,1,1,1,True
+COG4097,,1,1,1,1,True
+COG5048,,17,17,17,17,True
+COG5329,,1,1,1,1,True
+CRD_SFRP3,cd07441,1,1,1,1,True
+CRD_corin_2,cd07888,1,1,1,1,True
+CUB,extracellular domain,5,2,5,2,True
+Cadherin_repeat,cd11304,16,16,16,16,True
+CaiB,COG1804,1,1,1,1,True
+Calcipressin,pfam04847,1,1,1,1,True
+Calreticulin,pfam00262,1,1,1,1,True
+Calx-beta,cl02522,1,1,1,1,True
+Cation_efflux,pfam01545,1,1,1,1,True
+Chemokine_CC,"includes a number of secreted growth factors and interferons involved in mitogenic, chemotactic, and inflammatory activity",1,1,1,1,True
+Chemokine_CC_DCCL,includes a number of small inducible cytokines capable of reversibly inhibiting normal hematopoietic...,1,1,1,1,True
+ChtBD2,smart00494,1,1,1,1,True
+ClC_1_like,cd03683,1,1,1,1,True
+Clat_adaptor_s,pfam01217,1,1,1,1,True
+Claudin_2,pfam13903,1,1,1,1,True
+Connexin,pfam00029,1,1,1,1,True
+Crp,COG0664,1,1,1,1,True
+Cullin,pfam00888,2,1,2,1,True
+CypX,cl12078,1,1,1,1,True
+CysJ,COG0369,1,1,1,1,True
+CysPc,"calcium-dependent cytoplasmic cysteine proteinases, papain-like. Functions in cytoskeletal remodeling processes, cell differentiation, apoptosis and signal transduction",1,1,1,1,True
+DAOA,,1,1,1,1,True
+DAZAP2,pfam11029,1,1,1,1,True
+DDE_Tnp_1_7,pfam13843,1,1,1,1,True
+DHC_N1,pfam08385,1,1,1,1,True
+DHR2_DOCK,cl06123,1,1,1,1,True
+DHR2_DOCK9,cd11698,1,1,1,1,True
+DLP_2,cd09912,1,1,1,1,True
+DNA binding domain,,1,1,1,1,True
+DSPc,"Ser/Thr and Tyr protein phosphatases. Structurally similar to tyrosine-specific phosphatases but with a shallower active site cleft and a distinctive active site signature motif, HCxxGxxR. Characterized as VHR- or...",1,1,1,1,True
+DUF1387,pfam07139,1,1,1,1,True
+DUF1741,pfam08427,1,1,1,1,True
+DUF3740,pfam12548,1,1,1,1,True
+DUF4350,pfam14258,1,1,1,1,True
+DUF4548,,1,1,1,1,True
+DUF4647,,1,1,1,1,True
+Daxx,pfam03344,1,1,1,1,True
+Dcm,COG0270,15,1,15,1,True
+Deadenylase_CCR4a,cd10313,1,1,1,1,True
+Deadenylase_CCR4b,cd10312,1,1,1,1,True
+DuoxA,pfam10204,1,1,1,1,True
+Dynamin_M,pfam01031,1,1,1,1,True
+Dynein_heavy,pfam03028,1,1,1,1,True
+Dystroglycan_repeat,cd11303,1,1,1,1,True
+E1-E2_ATPase,pfam00122,1,1,1,1,True
+EF2,cd01885,1,1,1,1,True
+EGF_CA,cd00054,1,1,1,1,True
+EHD,cd09913,1,1,1,1,True
+EMI,pfam07546,2,2,2,2,True
+EMP70,pfam02990,1,1,1,1,True
+ERM,pfam00769,1,1,1,1,True
+ETR,cd08290,1,1,1,1,True
+Egl_like_exo,cd06148,1,1,1,1,True
+EphR_LBD_A2,cd10480,1,1,1,1,True
+Erf4,pfam10256,1,1,1,1,True
+Esterase_lipase,cd00312,1,1,1,1,True
+Ets,pfam00178,3,3,3,3,True
+F-BAR_FCHSD1,cd07678,1,1,1,1,True
+FA,pfam08736,1,1,1,1,True
+FA58C,"Cell surface-attached carbohydrate-binding domain, present in eukaryotes and assumed to have horizontally transferred to eubacterial genomes",2,2,2,2,True
+FAM194,,1,1,1,1,True
+FANCI,cd11720,1,1,1,1,True
+FBA,pfam04300,1,1,1,1,True
+FF,smart00441,2,2,2,2,True
+FIMAC,smart00057,1,1,1,1,True
+FN3,One of three types of internal repeats found in the plasma protein fibronectin. Its tenth fibronectin type III repeat contains an RGD cell recognition sequence in a flexible loop between 2 strands. Approximately 2% of all...,12,9,12,9,True
+FReD,"C terminal globular domain of fibrinogen. Fibrinogen is involved in blood clotting, being activated by thrombin to assemble into fibrin clots. The N-termini of 2 times 3 chains come together to form a globular...",1,1,1,1,True
+FYVE,pfam01363,1,1,1,1,True
+FadB,COG1250,1,1,1,1,True
+Fanconi_C,pfam02106,1,1,1,1,True
+Fasciclin,pfam02469,1,1,1,1,True
+Filament,pfam00038,3,3,3,3,True
+FimP,pfam09766,1,1,1,1,True
+Frizzled,pfam01534,1,1,1,1,True
+G-alpha,cd00066,1,1,1,1,True
+GBP,cd01851,1,1,1,1,True
+GBP_C,pfam02841,3,2,3,2,True
+GCM,pfam03615,1,1,1,1,True
+GRAM,pfam02893,1,1,1,1,True
+GSH_Peroxidase,"tetrameric selenoenzymes that catalyze the reduction of a variety of hydroperoxides including lipid peroxidases, using GSH as a specific electron donor substrate. GSH peroxidase contains one selenocysteine residue per...",1,1,1,1,True
+G_alpha,smart00275,1,1,1,1,True
+GabT,COG0160,1,1,1,1,True
+Galactosyl_T,pfam01762,1,1,1,1,True
+GltP,COG1301,1,1,1,1,True
+Glyco_hydro_56,pfam01630,2,2,2,2,True
+Glyco_transf_18,,1,1,1,1,True
+Glyco_transf_29,pfam00777,1,1,1,1,True
+Glyco_transf_54,pfam04666,1,1,1,1,True
+Guanylin,pfam02058,1,1,1,1,True
+HDAC2,cd10011,1,1,1,1,True
+HECTc,"C-terminal catalytic domain of a subclass of Ubiquitin-protein ligase (E3). It binds specific ubiquitin-conjugating enzymes (E2), accepts ubiquitin from E2, transfers ubiquitin to substrate lysine side chains, and transfers additional...",2,1,2,1,True
+HELICc,"associated with DEXDc-, DEAD-, and DEAH-box proteins, yeast initiation factor 4A, Ski2p, and Hepatitis C virus NS3 helicases",1,1,1,1,True
+HIN,pfam02760,1,1,1,1,True
+HLH,60-100 amino acids long. A DNA-binding basic region is followed by two alpha-helices separated by a variable loop region,2,2,2,2,True
+HOOK,pfam05622,1,1,1,1,True
+HP_HAP_like,contains a His residue which is phosphorylated during the reaction,1,1,1,1,True
+HR1,cl00087,1,1,1,1,True
+HRDC,smart00341,1,1,1,1,True
+HSH155,COG5181,1,1,1,1,True
+HSP70,pfam00012,1,1,1,1,True
+HSPA13-like_NBD,cd10237,1,1,1,1,True
+H_N_K_Ras_like,cd04138,15,1,15,1,True
+HolB,COG0470,1,1,1,1,True
+HormR,smart00008,1,1,1,1,True
+HrpA,COG1643,1,1,1,1,True
+I-set,pfam07679,9,7,9,7,True
+IG_like,smart00410,2,2,2,2,True
+IPT_plexin_repeat3,cd01181,1,1,1,1,True
+IRK,pfam01007,1,1,1,1,True
+IbpA,COG0071,1,1,1,1,True
+Ig,cl11960,3,3,3,3,True
+Ig2_Necl-1,cd07705,1,1,1,1,True
+Ig2_Tyro3_like,cd05749,1,1,1,1,True
+Ig2_VCAM-1,cd07689,1,1,1,1,True
+Ig_2,pfam13895,1,1,1,1,True
+Ig_Semaphorin_C,cd04979,1,1,1,1,True
+Ig_Semaphorin_classIII,cd05871,1,1,1,1,True
+Integrin_alpha2,pfam08441,1,1,1,1,True
+Ion_trans,pfam00520,9,7,9,7,True
+KCNQ_channel,pfam03520,1,1,1,1,True
+KISc_KIF1A_KIF1B,cd01365,1,1,1,1,True
+KISc_KIF2_like,alternative splice forms have been implicated in lysosomal translocation. This catalytic (head) domain...,1,1,1,1,True
+KRAB_A-box,cd07765,2,2,2,2,True
+Kelch_6,pfam13964,1,1,1,1,True
+Keratin_B2_2,,1,1,1,1,True
+LCCL,smart00603,1,1,1,1,True
+LCE,,1,1,1,1,True
+LDLa,the receptor protein binds LDL and transports it into cells by endocytosis,1,1,1,1,True
+LIC,TIGR00860,4,4,4,4,True
+LIM,cd08368,1,1,1,1,True
+LIM1_PINCH,cd09331,1,1,1,1,True
+LRR_8,pfam13855,2,2,2,2,True
+LRR_RI,cl15309,4,4,4,4,True
+LamG,"Laminin G-like domains are usually Ca++ mediated receptors that can have binding sites for steroids, beta1 integrins, heparin, sulfatides, fibulin-1, and alpha-dystroglycans. Proteins that contain LamG domains serve a variety of...",5,4,5,4,True
+Laminin_B,pfam00052,1,1,1,1,True
+Laminin_EGF,pfam00053,1,1,1,1,True
+Laminin_I,pfam06008,1,1,1,1,True
+Lig_chan,pfam00060,3,2,3,2,True
+Link_domain_CSPGs_modules_1_3,"this extracellular link domain is found in the first and third link modules of the chondroitin sulfate proteoglycan core protein (CSPG) aggrecan. In addition, it is found in the first link module of three other CSPGs:...",1,1,1,1,True
+M1_LTA4H,cd09599,1,1,1,1,True
+M60-like,pfam13402,1,1,1,1,True
+MACPF,smart00457,2,1,2,1,True
+MAP2_projctn,pfam08377,2,1,2,1,True
+MBT,smart00561,1,1,1,1,True
+MDFI,,1,1,1,1,True
+MDH_like,cd05295,1,1,1,1,True
+MFS,cl11420,2,2,2,2,True
+MFS_1,pfam07690,1,1,1,1,True
+MHCassoc_trimer,pfam08831,1,1,1,1,True
+MIG-14_Wnt-bd,pfam06664,1,1,1,1,True
+MIP,cd00333,1,1,1,1,True
+MOR2-PAG1_mid,pfam14228,1,1,1,1,True
+MPH1,COG1111,1,1,1,1,True
+MPN_BRCC36,cd08068,1,1,1,1,True
+MRP_assoc_pro,TIGR00957,1,1,1,1,True
+MYSc,smart00242,3,3,3,3,True
+Macro_Af1521_BAL_like,cd02907,1,1,1,1,True
+Maelstrom,pfam13017,1,1,1,1,True
+Mcm10,pfam09332,1,1,1,1,True
+Med21,pfam11221,1,1,1,1,True
+Mesothelin,pfam06060,1,1,1,1,True
+MgtA,COG0474,2,2,2,2,True
+Myc_N,pfam01056,1,1,1,1,True
+Myosin_tail_1,pfam01576,1,1,1,1,True
+Myotub-related,pfam06602,1,1,1,1,True
+NARP1,pfam12569,1,1,1,1,True
+NAT_SF,cd04301,1,1,1,1,True
+NBD_sugar-kinase_HSP70_actin,cl17037,1,1,1,1,True
+NCD3G,pfam07562,1,1,1,1,True
+NHP6B,COG5648,1,1,1,1,True
+NMNAT_Eukarya,cd09286,1,1,1,1,True
+NOX_Duox_like_FAD_NADP,cd06186,1,1,1,1,True
+NR_LBD_TR,cd06935,1,1,1,1,True
+NR_LBD_Tlx_PNR_like,cd06950,2,1,2,1,True
+Na_Ca_ex,pfam01699,1,1,1,1,True
+Na_K-ATPase,cl08255,1,1,1,1,True
+Nebulin,cl11595,1,1,1,1,True
+Nic96,pfam04097,1,1,1,1,True
+Nrf1_DNA-bind,pfam10491,1,1,1,1,True
+OATP,pfam03137,1,1,1,1,True
+OLF,cl02549,1,1,1,1,True
+Orai-1,pfam07856,1,1,1,1,True
+P-ATPase-V,TIGR01657,1,1,1,1,True
+P-loop_NTPase,cl09099,7,7,7,7,True
+P53,cd08367,15,2,15,2,True
+P53_tetramer,pfam07710,3,1,3,1,True
+PA14,cl08459,1,1,1,1,True
+PA2G4-like,cd01089,1,1,1,1,True
+PABP-1234,TIGR01628,1,1,1,1,True
+PAP2_glucose_6_phosphatase,cd03381,1,1,1,1,True
+PAP2_wunen,cd03384,1,1,1,1,True
+PBP1_GABAb_receptor,cd06366,1,1,1,1,True
+PBP1_GPC6A_like,cd06361,1,1,1,1,True
+PBP1_iGluR_Kainate_KA1_2,cd06394,1,1,1,1,True
+PBP1_mGluR_groupII,cd06375,1,1,1,1,True
+PBPb,cd00134,1,1,1,1,True
+PCBP_like_KH,cd02396,1,1,1,1,True
+PDCD2_C,pfam04194,2,1,2,1,True
+PDZ_signaling,cd00992,3,3,3,3,True
+PGM3,cd03086,1,1,1,1,True
+PH,cd00821,4,4,4,4,True
+PHA02660,Provisional,1,1,1,1,True
+PHA03098,Provisional,4,4,4,4,True
+PHA03247,Provisional,1,1,1,1,True
+PHD,pfam00628,1,1,1,1,True
+PI3K_p85B,pfam02192,1,1,1,1,True
+PIKKc_SMG1,The SMG-1 catalytic domain subfamily is part of a larger superfamily that includes the catalytic domains of other kinases such as the typical serine/threonine/tyrosine protein...,3,1,3,1,True
+PKD_channel,pfam08016,1,1,1,1,True
+PKI,pfam02827,1,1,1,1,True
+PKc,cd00180,1,1,1,1,True
+PKc_like,cl09925,55,5,55,5,True
+PLA2c,"the latter are either Ca dependent or Ca independent. PLA2 cleaves the sn-2 position of the glycerol backbone of phospholipids (PC or phosphatidylethanolamine), usually in a...",1,1,1,1,True
+PLN02153,,1,1,1,1,True
+PLN02681,,1,1,1,1,True
+PLN02952,,1,1,1,1,True
+PLN02959,,1,1,1,1,True
+PLN03108,Provisional,1,1,1,1,True
+PLN03110,Provisional,1,1,1,1,True
+PLN03111,Provisional,1,1,1,1,True
+PLX,cd01269,1,1,1,1,True
+PMG,pfam05287,2,2,2,2,True
+PMI_typeI,pfam01238,1,1,1,1,True
+PMP22_Claudin,cl15797,4,4,4,4,True
+PRK06182,Validated,1,1,1,1,True
+PRK06327,Validated,1,1,1,1,True
+PRK08279,Validated,1,1,1,1,True
+PRK12402,Reviewed,2,1,2,1,True
+PRP3,pfam08572,1,1,1,1,True
+PRP8,COG5178,2,1,2,1,True
+PTKc_EphR_A10,cd05064,1,1,1,1,True
+PTKc_Kit,cd05104,5,1,5,1,True
+PTKc_Tie2,cd05088,1,1,1,1,True
+PTKc_TrkC,cd05094,1,1,1,1,True
+PTKc_VEGFR2,cd05103,1,1,1,1,True
+PTPc,they regulate phosphotyrosine levels in signal transduction pathways. The depth of the active site cleft renders the enzyme specific for phosphorylated Tyr,10,5,10,5,True
+PTZ00018,Provisional,1,1,1,1,True
+PTZ00027,Provisional,1,1,1,1,True
+PTZ00057,Provisional,1,1,1,1,True
+PTZ00107,Provisional,1,1,1,1,True
+PTZ00184,Provisional,1,1,1,1,True
+PTZ00265,Provisional,1,1,1,1,True
+PTZ00335,Provisional,3,2,3,2,True
+PTZ00428,Provisional,1,1,1,1,True
+PTZ00435,Provisional,38,2,38,2,True
+PcnB,COG0617,1,1,1,1,True
+Pep_M12B_propep,pfam01562,1,1,1,1,True
+Peptidase_C54,pfam03416,1,1,1,1,True
+Periplasmic_Binding_Protein_Type_1,cl10011,1,1,1,1,True
+Peroxin-13_N,pfam04088,1,1,1,1,True
+Phd_like_Phd,"Phd is a cytosolic regulator of G protein functions. It specifically binds G protein betagamma (Gbg)-subunits with high affinity, resulting in the solubilization of Gbg from the plasma membrane. This impedes...",1,1,1,1,True
+Phd_like_VIAF,VIAF is a Phd-like protein that functions in caspase activation during apoptosis. It was identified as an IAP binding protein through a screen of a human...,1,1,1,1,True
+Pkinase_Tyr,pfam07714,2,2,2,2,True
+Plectin,pfam00681,1,1,1,1,True
+Pol_alpha_B_N,pfam08418,1,1,1,1,True
+PqqL,COG0612,1,1,1,1,True
+Preny group binding site; CAAX box,,1,1,1,1,True
+RA,smart00314,1,1,1,1,True
+RFX_DNA_binding,pfam02257,1,1,1,1,True
+RICIN,"Carbohydrate-binding domain formed from presumed gene triplication. The domain is found in a variety of molecules serving diverse functions such as enzymatic activity, inhibitory toxicity and signal transduction. Highly specific...",1,1,1,1,True
+RIH_assoc,pfam08454,1,1,1,1,True
+RNA_pol_B_RPB2,cd00653,1,1,1,1,True
+RNase_Zc3h12a,pfam11977,1,1,1,1,True
+ROM1,COG5422,1,1,1,1,True
+RPE65,pfam03055,1,1,1,1,True
+RRM,cd00590,1,1,1,1,True
+RS domain,,1,1,1,1,True
+RYDR_ITPR,pfam01365,1,1,1,1,True
+Rab5_related,regulates early endosome fusion,1,1,1,1,True
+Rad21_Rec8_N,pfam04825,1,1,1,1,True
+RalGDS_RA,cd00153,1,1,1,1,True
+RasGAP_Neurofibromin,cd05130,2,1,2,1,True
+RasGEF,pfam00617,3,1,3,1,True
+RhoGAP_DLC1,cd04375,1,1,1,1,True
+RhoGEF,Also called Dbl-homologous (DH) domain. It appears that PH domains invariably occur C-terminal to RhoGEF/DH domains,3,3,3,3,True
+Ribosomal_L32_L32e,cd00513,1,1,1,1,True
+Ricin_B_lectin,pfam00652,1,1,1,1,True
+Rsm1,pfam08600,1,1,1,1,True
+Runt,pfam00853,16,1,16,1,True
+RunxI,pfam08504,1,1,1,1,True
+SAM_2,pfam07647,2,2,2,2,True
+SAM_PNT-Tel_Yan,cd08535,1,1,1,1,True
+"SAM_Shank1,2,3",cd09506,1,1,1,1,True
+SANT,smart00717,4,3,4,3,True
+SBP56,pfam05694,1,1,1,1,True
+SEC14,cd00170,1,1,1,1,True
+SET,smart00317,1,1,1,1,True
+SF1_like-KH,cd02395,1,1,1,1,True
+SH2_N-SH2_SHP_like,cd10340,4,1,4,1,True
+SH2_SH2B3,cd10412,1,1,1,1,True
+SH3_ARHGEF5_19,cd11940,1,1,1,1,True
+SH3_BAIAP2L1,cd11913,1,1,1,1,True
+SHQ1,pfam04925,1,1,1,1,True
+SID-1_RNA_chan,pfam13965,1,1,1,1,True
+SLC6sbd_GlyT1,solute-binding domain,1,1,1,1,True
+SLC6sbd_SIT1,solute-binding domain,1,1,1,1,True
+SMC_N,pfam02463,6,1,6,1,True
+SMC_prok_B,TIGR02168,6,6,6,6,True
+SNF2_N,pfam00176,2,2,2,2,True
+SPEC,"family members include spectrin, alpha-actinin and dystrophin",1,1,1,1,True
+SPRY,pfam00622,1,1,1,1,True
+SR,smart00202,3,3,3,3,True
+STKc_ERK1_2_like,cd07849,1,1,1,1,True
+STKc_Yank1,cd05578,1,1,1,1,True
+STKc_cPKC,cd05587,1,1,1,1,True
+STKc_myosinIIIA,cd06638,1,1,1,1,True
+STOP,pfam05217,2,1,2,1,True
+STT3,pfam02516,1,1,1,1,True
+SXM1,COG5656,1,1,1,1,True
+S_TKc,smart00220,7,7,7,7,True
+SbcC,COG0419,1,1,1,1,True
+Sds3,pfam08598,1,1,1,1,True
+Sema,cl15693,1,1,1,1,True
+Sema_3A,cd11249,1,1,1,1,True
+Sema_RON,cd11279,1,1,1,1,True
+Smc,COG1196,9,4,9,4,True
+Sp38,pfam07354,1,1,1,1,True
+Spc97_Spc98,pfam04130,1,1,1,1,True
+Spt5_N,pfam11942,1,1,1,1,True
+Striatin,pfam08232,1,1,1,1,True
+Sulfotransfer_1,pfam00685,2,2,2,2,True
+Sulfotransfer_3,cl14559,2,2,2,2,True
+TAFA,pfam12020,1,1,1,1,True
+TAFH,pfam07531,1,1,1,1,True
+TBC,smart00164,1,1,1,1,True
+TBOX,cd00182,2,2,2,2,True
+TCL1_MTCP1,pfam01840,1,1,1,1,True
+TFSII,TIGR01385,1,1,1,1,True
+TGFB,smart00204,1,1,1,1,True
+TGFb_propeptide,pfam00688,2,2,2,2,True
+THRAP3_BCLAF1,,1,1,1,1,True
+TIL,pfam01826,2,1,2,1,True
+TLC,smart00724,2,1,2,1,True
+TM231,pfam10149,1,1,1,1,True
+TMCO5,,1,1,1,1,True
+TM_ErbB1,cd12093,1,1,1,1,True
+TNF,"TNF superfamily members include the cytokines: TNF (TNF-alpha), LT (lymphotoxin-alpha, TNF-beta), CD40 ligand, Apo2L (TRAIL), Fas ligand, and osteoprotegerin (OPG) ligand. These proteins generally have an intracellular N-terminal...",1,1,1,1,True
+TOPRIM_TopoIA_TopoIII,cd03362,2,1,2,1,True
+TPR,typically contains 34 amino acids [WLF]-X(2)-[LIM]-[GAS]-X(2)-[YLF]-X(8)-[ASE]-X(3)-[FYL]- X(2)-[ASL]-X(4)-[PKE] is the consensus sequence,1,1,1,1,True
+TPR_11,pfam13414,1,1,1,1,True
+TPR_12,pfam13424,1,1,1,1,True
+TRAM1,pfam08390,1,1,1,1,True
+TSKS,,1,1,1,1,True
+TSPN,smart00210,1,1,1,1,True
+Tctex-1,pfam03645,1,1,1,1,True
+Tet_JBP,pfam12851,10,1,10,1,True
+Tetraspannin,pfam00335,1,1,1,1,True
+Thioredoxin_like,cl00388,1,1,1,1,True
+Tmemb_55A,pfam09788,1,1,1,1,True
+Tropomodulin,,1,1,1,1,True
+Trp_5_monoox,TIGR01270,1,1,1,1,True
+TruA,COG0101,1,1,1,1,True
+Tryp_SPc,Many of these are synthesized as inactive precursor zymogens that are cleaved during limited proteolysis to generate their active forms. Alignment contains also inactive enzymes that have substitutions of the catalytic triad...,4,4,4,4,True
+UBA_4,,1,1,1,1,True
+UBQ,cl00155,1,1,1,1,True
+UCH,pfam00443,1,1,1,1,True
+UDPGT,pfam00201,1,1,1,1,True
+UPF0560,pfam10577,1,1,1,1,True
+Ubiq_cyt_C_chap,pfam03981,1,1,1,1,True
+UhpC,COG2271,1,1,1,1,True
+Uup,COG0488,1,1,1,1,True
+V-ATPase_C,pfam03223,1,1,1,1,True
+V-ATPase_G,cl03922,1,1,1,1,True
+V-set,pfam07686,2,2,2,2,True
+VPS10,smart00602,1,1,1,1,True
+VWC,pfam00093,1,1,1,1,True
+VWD,smart00216,1,1,1,1,True
+VacB,COG0557,3,1,3,1,True
+ValS,COG0525,1,1,1,1,True
+Vinculin,pfam01044,1,1,1,1,True
+Vps26,pfam03643,1,1,1,1,True
+WAP,cd00199,1,1,1,1,True
+WD40,typically contains a GH dipeptide 11-24 residues from...,7,7,7,7,True
+WGR_PARP2_like,cd08003,1,1,1,1,True
+WSC,smart00321,1,1,1,1,True
+WT1,pfam02165,8,1,8,1,True
+XK-related,pfam09815,1,1,1,1,True
+YL1,pfam05764,1,1,1,1,True
+ZU5,pfam00791,1,1,1,1,True
+ZnF_C3H1,smart00356,1,1,1,1,True
+ZnF_GATA,binds specifically to DNA consensus sequence [AT]GATA[AG] promoter elements,2,1,2,1,True
+ZnMc_ADAMTS_like,cd04273,1,1,1,1,True
+ZnMc_MMP,cd04278,1,1,1,1,True
+Zona_pellucida,pfam00100,1,1,1,1,True
+bZIP_2,pfam07716,10,1,10,1,True
+biotinidase_like,cd07567,1,1,1,1,True
+cPLA2_Grp-IVB-IVD-IVE-IVF,catalytic domain,1,1,1,1,True
+cPLA2_Grp-IVC,catalytic domain,1,1,1,1,True
+cadherin-type repeats region,,1,1,1,1,True
+central rod domain,,1,1,1,1,True
+cyclophilin,cl00197,1,1,1,1,True
+dDENN,smart00801,1,1,1,1,True
+domain,,1,1,1,1,True
+eRF1_1,pfam03463,1,1,1,1,True
+efhand_like,pfam09279,1,1,1,1,True
+homeodomain,DNA binding domains involved in the transcriptional regulation of key eukaryotic developmental processes,2,2,2,2,True
+metK,TIGR01034,1,1,1,1,True
+ovalbumin_like,cd02059,2,2,2,2,True
+p450,pfam00067,3,3,3,3,True
+pepsin_retropepsin_like,cl11403,1,1,1,1,True
+peroxidasin_like,cd09826,1,1,1,1,True
+pp-GalNAc-T,cd02510,1,1,1,1,True
+prpE,Provisional,1,1,1,1,True
+ribokinase,cd01174,1,1,1,1,True
+rim_protein,TIGR01257,1,1,1,1,True
+sigpep_I_bact,TIGR02227,1,1,1,1,True
+trp,TIGR00870,1,1,1,1,True
+vWA_collagen_alphaI-XII-like,cd01482,2,1,2,1,True
+vWFA,cd00198,2,2,2,2,True
+zf-BED,pfam02892,1,1,1,1,True
+zf-CCCH,pfam00642,7,1,7,1,True
+zf-H2C2_2,pfam13465,2,2,2,2,True
+zf-HC5HC2H,pfam13771,2,1,2,1,True
