@@ -1,9 +1,0 @@
-{
-  "assembly": "38",
-  "aa_column": "aa_pos",
-  "top_n": 10,
-  "include_synonymous": false,
-  "prefer_database": false,
-  "uniprot_alias": "uniprot",
-  "input_path": "tests/unit/io/fixtures/data/test_ALL.chr10.shapeit2_integrated_snvindels_v2a_27022019.GRCh38.phased_vep_protein_gene_variant_class_100variants.vcf"
-}
