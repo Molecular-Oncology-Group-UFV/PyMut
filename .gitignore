@@ -20,6 +20,11 @@ data/
 *.rds
 .pymut_cache/
 
+# --- Test fixtures (small, synthetic, versioned -- keep them) ---------------
+!tests/**/fixtures/data/
+!tests/**/fixtures/data/**
+tests/**/fixtures/data/.pymut_cache/
+
 # --- Validation generated outputs -------------------------------------------
 # Everything under validation/*/results/ is generated, EXCEPT the small
 # text reports (md/json/txt/csv), which are kept as evidence of the
