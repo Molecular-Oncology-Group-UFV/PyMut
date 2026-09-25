@@ -1,0 +1,10 @@
+{
+  "genome_size_bp": 60456963,
+  "variant_classification_column": null,
+  "schema": [
+    "Tumor_Sample_Barcode",
+    "total",
+    "total_perMB",
+    "total_perMB_log"
+  ]
+}

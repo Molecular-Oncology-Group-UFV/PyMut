@@ -1,0 +1,6 @@
+{
+  "strategy": "basic",
+  "db": "in-memory duckdb (no external annotation DB)",
+  "top_n": 10,
+  "include_synonymous": false
+}
