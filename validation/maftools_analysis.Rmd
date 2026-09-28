@@ -1,0 +1,664 @@
+---
+title: "Somatic Mutation Analysis with maftools — PAAD-TB Cohort"
+subtitle: "Data loading, TMB, oncoplot, mutational signatures, somatic interactions and lolliplots"
+author: "Generated with Claude"
+date: "`r format(Sys.Date(), '%d/%m/%Y')`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    number_sections: true
+    theme: flatly
+    code_folding: show
+    fig_width: 10
+    fig_height: 7
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  fig.align = "center"
+)
+```
+
+# Introduction
+
+This document reproduces, step by step, a somatic variant analysis workflow
+using the Bioconductor package **maftools** (Mayakonda *et al.*, 2018,
+*Genome Research*) on the MAF file of the **PAAD-TB** cohort
+(`PAAD-TB.final_analysis.maf`).
+
+`maftools` is designed to work directly with MAF files (Mutation
+Annotation Format), the standard format used by TCGA and many somatic
+variant calling pipelines (e.g., Mutect2/VarScan outputs annotated with
+Oncotator or VEP + `vcf2maf`). Each analysis in this document is documented
+with references to the official manual and the package tutorial
+("vignette"):
+
+- Official vignette: `vignette("maftools")` or
+  <https://bioconductor.org/packages/release/bioc/vignettes/maftools/inst/doc/maftools.html>
+- Reference manual (functions and parameters):
+  <https://bioconductor.org/packages/release/bioc/manuals/maftools/man/maftools.pdf>
+- Repository: <https://github.com/PoisonAlien/maftools>
+
+The workflow covers:
+
+1. MAF loading and summary (`read.maf`, `plotmafSummary`).
+2. **Tumor Mutational Burden (TMB)** calculation.
+3. Most mutated genes (`mafbarplot`, `getGeneSummary`).
+4. **Oncoplot** (mutation matrix by gene/sample).
+5. **Mutational signature** analysis (tri-nucleotide context,
+   NMF extraction, comparison with COSMIC signatures).
+6. Signature bar chart (`plotSignatures`).
+7. **Cosine similarity** heatmap.
+8. **Somatic interaction** heatmap (co-occurrence / mutual exclusivity).
+9. **Lolliplot** for `DNMT3A` (transcript `NM_022552`).
+10. Analysis of **Pfam domains** affected by the mutations.
+11. Additional analyses recommended by the package itself (Ti/Tv,
+    tumor heterogeneity, oncogenic pathways, rainfall plots, comparison
+    with TCGA, etc.).
+
+---
+
+# Required packages
+
+`maftools` depends on Bioconductor. For the mutational signature analysis
+we additionally need a reference genome (`BSgenome`) matching the assembly
+used in the MAF (here, GRCh37/hg19, as indicated by `assembly = "37"` in
+the original `read.maf`), and `NMF` for the non-negative matrix
+factorization underlying `extractSignatures`.
+
+```{r install-packages, eval=FALSE}
+# Run only if the packages are not installed.
+if (!requireNamespace("BiocManager", quietly = TRUE)) {
+  install.packages("BiocManager")
+}
+
+BiocManager::install(c(
+  "maftools",
+  "NMF",
+  "BSgenome.Hsapiens.UCSC.hg19",   # GRCh37/hg19 reference genome
+  "pheatmap",
+  "RColorBrewer"
+))
+```
+
+```{r libraries}
+library(maftools)
+library(NMF)
+library(BSgenome.Hsapiens.UCSC.hg19)
+library(pheatmap)
+library(RColorBrewer)
+library(R.utils)
+```
+
+---
+
+# Data loading
+
+## Directories and input file
+
+We replicate the indicated path configuration, adapted to R syntax
+(R has no `os.makedirs`/`Path`; we use `dir.create` and `file.path`).
+
+```{r paths}
+# Results directory (equivalent to os.makedirs("results_paad", exist_ok=TRUE))
+results_dir <- "results_laml_maftools"
+dir.create(results_dir, showWarnings = FALSE, recursive = TRUE)
+
+# Working directory (equivalent to WORKING_DIR = Path(...))
+WORKING_DIR <- "/home/albalopez/Documentos/PyMut_DocsAlba"
+
+# Path to the MAF
+maf_path <- file.path(WORKING_DIR, "data", "tcga_laml.maf.gz") #tcga_laml.maf.gz #PAAD-TB.final_analysis.maf
+maf_path 
+```
+
+## Reading the MAF with `read.maf`
+
+`read.maf()` is the entry point of the whole package: it validates the
+file, computes summary statistics per sample and per gene, classifies
+variants into silent/non-silent according to `vc_nonSyn`, and returns an
+S4 object of class `MAF` on which all other functions operate
+(`plotmafSummary`, `oncoplot`, `tmb`, `lollipopPlot`, etc.). See
+`?read.maf` for the full parameter details.
+
+Note: in R the correct function name is `read.maf` (with a dot), not
+`read_maf`. The genome assembly is not itself a parameter of
+`read.maf`; we will take it into account later when choosing the
+`BSgenome` (GRCh37/hg19) for the mutational signature analysis.
+
+```{r read-maf}
+mutations <- read.maf(
+  maf                       = maf_path,
+  removeDuplicatedVariants  = TRUE,   # maftools default behaviour
+  isTCGA                    = FALSE   # the barcode does not follow the 12+ character TCGA format
+)
+
+mutations
+```
+
+```{r maf-basic-info}
+# Quick summaries included in the MAF object
+getSampleSummary(mutations)
+getGeneSummary(mutations)
+getClinicalData(mutations)
+# getFields(mutations)
+```
+
+---
+
+# Summary Plot
+
+`plotmafSummary()` generates a composite figure with: (1) variant
+classification, (2) variant type, (3) SNV class, (4) variants per sample
+(stacked barplot), (5) boxplot of variants per classification, and (6) the
+most mutated genes. It is the recommended first "quality control" look
+from the official tutorial before any finer-grained analysis.
+
+```{r summary-plot, fig.height=8}
+plotmafSummary(
+  maf        = mutations,
+  rmOutlier  = TRUE,
+  addStat    = "median",
+  dashboard  = TRUE,
+  titvRaw    = FALSE
+)
+```
+
+---
+
+# TMB (Tumor Mutational Burden) calculation
+
+`tmb()` computes the mutational burden (non-silent mutations per megabase)
+for each sample, using maftools' default reference capture exome size
+(`captureSize = 50` Mb, adjustable to the actual sequencing kit if known).
+It is a key metric in precision oncology (associated with response to
+immunotherapy).
+
+```{r tmb}
+tmb_table <- tmb(
+  maf         = mutations,
+  captureSize = 50,   # Mb — adjust to the real panel/exome size if known
+  logScale    = TRUE
+)
+
+tmb_table
+write.csv(tmb_table, file.path(results_dir, "TMB_por_muestra.csv"), row.names = FALSE)
+```
+```{r}
+compute_stats <- function(x) {
+  c(
+    Count  = length(x),
+    Median = median(x, na.rm = TRUE),
+    Mean   = mean(x, na.rm = TRUE),
+    Min    = min(x, na.rm = TRUE),
+    Max    = max(x, na.rm = TRUE),
+    Q1     = quantile(x, 0.25, na.rm = TRUE),
+    Q3     = quantile(x, 0.75, na.rm = TRUE),
+    Std    = sd(x, na.rm = TRUE)
+  )
+}
+
+TMB_statistics <- rbind(
+  data.frame(Metric = "total", t(compute_stats(tmb_table$total))),
+  data.frame(Metric = "total_perMB", t(compute_stats(tmb_table$total_perMB)))
+)
+
+rownames(TMB_statistics) <- NULL
+TMB_statistics
+```
+```{r}
+write.csv(
+  TMB_statistics,
+  file = file.path(results_dir, "TMB_statistics.csv"),
+  row.names = FALSE
+)
+```
+
+The resulting plot shows, per sample, the TMB (log10 mutations/Mb) compared
+against the TMB distribution of TCGA cohorts, making it possible to
+contextualize whether the PAAD-TB cohort is hyper/hypomutated relative to
+other tumor types.
+
+---
+
+# Top mutated genes
+
+## `mafbarplot`: ranking of most mutated genes
+
+`mafbarplot()` produces a horizontal barplot with the N most frequently
+mutated genes (colored by variant type by default), a more compact
+alternative to the "top genes" section of `plotmafSummary`.
+
+```{r top-genes-barplot}
+mafbarplot(maf = mutations, n = 20, fontSize = 0.6, legendfontSize = 0.8)
+```
+
+## Table of most mutated genes
+
+```{r top-genes-table}
+gene_summary <- getGeneSummary(mutations)
+head(gene_summary[order(-MutatedSamples)], 20)
+write.csv(gene_summary, file.path(results_dir, "gene_summary.csv"), row.names = FALSE)
+```
+
+---
+
+# Oncoplot
+
+`oncoplot()` is maftools' flagship function: it draws a matrix of genes
+(rows) x samples (columns) colored by consequence type, with marginal bars
+of mutation frequency per gene and per sample, and optional clinical
+annotations. It is the R equivalent of the "waterfall plot"/OncoPrinter in
+cBioPortal.
+
+```{r oncoplot, fig.height=8}
+oncoplot(
+  maf          = mutations,
+  top          = 20,          # top 20 most mutated genes
+  removeNonMutated = TRUE,
+  showTumorSampleBarcodes = FALSE,
+  draw_titv    = TRUE         # adds Ti/Tv panel
+)
+```
+
+If the `mutations` object included clinical data (`clinicalData` in
+`read.maf`), column annotations could be added with the argument
+`clinicalFeatures` and the oncoplot sorted with `sortByAnnotation = TRUE`.
+
+---
+
+# Mutational signature analysis
+
+The mutational signature analysis follows the standard workflow described
+in the maftools vignette *"Mutational Signatures"*:
+
+1. `trinucleotideMatrix()`: extracts, for each SNP mutation, the
+   tri-nucleotide context (96 possible combinations) using the reference
+   genome. Here we use `BSgenome.Hsapiens.UCSC.hg19`, consistent with the
+   GRCh37 assembly indicated in the original MAF loading (`assembly="37"`).
+2. `estimateSignatures()`: runs NMF (non-negative matrix factorization)
+   for several values of *k* (number of signatures) and computes the
+   cophenetic correlation, which helps decide the optimal number of
+   signatures.
+3. `plotCophenetic()`: visualizes that metric to choose *k*.
+4. `extractSignatures()`: extracts de novo signatures for the chosen *k*.
+5. `compareSignatures()`: compares the extracted signatures against the
+   COSMIC reference signatures (v2 "legacy" or v3 SBS) by cosine
+   similarity, and suggests the best biological match (e.g., aging,
+   tobacco, mismatch-repair deficiency signatures, etc.).
+
+```{r trinucleotide-matrix}
+maf_tnm <- trinucleotideMatrix(
+  maf        = mutations,
+  ref_genome = "BSgenome.Hsapiens.UCSC.hg19",
+  prefix     = "chr",     # the UCSC genome uses the "chr" prefix; set to "" if the MAF already uses it
+  add        = TRUE,
+  useSyn     = TRUE
+)
+```
+
+```{r apobec-enrichment}
+# trinucleotideMatrix also reports the enrichment of the APOBEC signature,
+# of interest in many solid tumors.
+maf_tnm$APOBEC_scores
+```
+
+## Estimating the optimal number of signatures
+
+```{r estimate-signatures, results='hide'}
+sig_estimate <- estimateSignatures(
+  mat        = maf_tnm,
+  nTry       = 6,     # tries k = 1..6 signatures
+  pConstant  = 0.1
+)
+```
+
+```{r cophenetic-plot}
+plotCophenetic(res = sig_estimate)
+```
+
+The cophenetic correlation plot shows, for each *k*, the stability of the
+NMF solution; the usual criterion (official tutorial) is to choose the
+*k* just before the first notable drop in the correlation.
+
+## Extraction of de novo signatures
+
+```{r extract-signatures, results='hide'}
+# Adjust n_sig to the optimal value observed in plotCophenetic (example: 3)
+n_sig <- 3
+
+sig_extract <- extractSignatures(
+  mat   = maf_tnm,
+  n     = n_sig,
+  pConstant = 0.1
+)
+```
+
+## Comparison with COSMIC signatures (cosine similarity)
+
+```{r compare-signatures-v2}
+# Comparison against COSMIC v2 legacy signatures (30 "classic" signatures)
+sig_compare_v2 <- compareSignatures(
+  nmfRes = sig_extract,
+  sig_db = "legacy"
+)
+
+sig_compare_v2$best_match
+```
+
+```{r compare-signatures-v3}
+# Comparison against COSMIC v3 signatures (SBS, more recent and granular)
+sig_compare_v3 <- compareSignatures(
+  nmfRes = sig_extract,
+  sig_db = "SBS"
+)
+
+sig_compare_v3$best_match
+```
+
+---
+
+# Signature Bar Chart
+
+`plotSignatures()` draws, for each extracted signature, the 96
+tri-nucleotide context profile (bars colored by the 6 substitution
+classes: C>A, C>G, C>T, T>A, T>C, T>G), together with the name of the most
+similar COSMIC signature and its cosine similarity.
+
+```{r signature-barchart, fig.height=8}
+plot_signatures <- plotSignatures(
+  nmfRes = sig_extract,
+  title_size = 1.0,
+  sig_db = "SBS"
+)
+```
+```{r}
+# Output path inside the results folder
+png(file = file.path(results_dir, "signatures_SBS.png"), width = 2300, height = 1500, res = 300)
+plotSignatures(
+  nmfRes = sig_extract,
+  title_size = 1.4,
+  font_size = 1.2,
+  sig_db = "SBS"
+)
+dev.off()
+```
+
+---
+
+# Cosine Similarity Heatmap
+
+Besides the `best_match` returned by `compareSignatures()`, it is very
+informative to visualize the full cosine similarity matrix between the
+extracted signatures and all reference signatures, to detect secondary
+matches or composite signatures.
+
+```{r cosine-heatmap, fig.height=7}
+cosine_matrix <- sig_compare_v3$cosine_similarities
+
+pheatmap(
+  cosine_matrix,
+  cluster_rows       = TRUE,
+  cluster_cols       = TRUE,
+  color              = colorRampPalette(rev(brewer.pal(9, "RdBu")))(100),
+  main               = "Cosine similarity: de novo signatures vs. COSMIC SBS",
+  fontsize_row       = 10,
+  fontsize_col       = 6
+)
+```
+
+`maftools` also offers an equivalent built-in shortcut:
+
+```{r cosine-heatmap-builtin, fig.height=6}
+compareSignatures(
+  nmfRes  = sig_extract,
+  sig_db  = "SBS"
+  #input_sig_db = NULL
+)
+```
+
+---
+
+# Somatic interactions heatmap
+
+`somaticInteractions()` evaluates, for each pair of genes among the N most
+mutated, whether their co-mutation in the same sample occurs more often
+than expected by chance (co-occurrence) or less often (mutual exclusivity),
+using Fisher's exact test (or `pairwise.fisher.test`), and represents it
+as a triangular heatmap with significance asterisks.
+
+```{r somatic-interactions, fig.height=8}
+somatic_int <- somaticInteractions(
+  maf        = mutations,
+  top        = 20,
+  pvalue     = c(0.05, 0.01)
+)
+
+head(somatic_int)
+write.csv(somatic_int, file.path(results_dir, "somatic_interactions.csv"), row.names = FALSE)
+```
+
+---
+
+# Lolliplot — DNMT3A
+
+`lollipopPlot()` draws the mutations of a specific gene over its protein
+structure, marking the position of each amino-acid change as a "lollipop"
+whose height indicates its frequency. It requires the MAF to have a column
+with the amino-acid change (`aa_col`) and, optionally, the reference
+transcript can be fixed (`refSeqID`) to ensure that domain coordinates
+match the correct isoform.
+
+```{r lollipop-dnmt3a, fig.height=6}
+lollipopPlot(
+  maf          = mutations,
+  gene         = "DNMT3A",
+  AACol        = "Protein_Change",
+  refSeqID     = "NM_022552"
+#   showMutationRate = TRUE,
+#   labelPos     = 882,
+#   pointSize = 2
+ )
+```
+
+```{r}
+png(
+  filename = "dnmt3a_lollipop_300dpi.png",
+  units = "in",
+  width = 16,
+  height = 8,
+  res = 300
+)
+
+op <- par(oma = c(0, 0, 3, 0), mar = c(5, 4, 5, 2) + 0.1)
+
+lollipopPlot(
+  maf = mutations,
+  gene = "DNMT3A",
+  AACol = "Protein_Change",
+  labelPos = 882,
+  legendTxtSize = 1.4,
+  domainLabelSize = 1.1,
+  axisTextSize = c(1.2, 1.2),
+  titleSize = c(1.8, 1.2),
+  labPosSize = 1.4,
+  pointSize = 3.0,
+  showLegend = TRUE
+)
+
+par(op)
+dev.off()
+```
+
+If `refSeqID = "NM_022552"` does not find an exact match in maftools'
+internal Pfam domain database, the function automatically falls back to
+the canonical transcript available; it is advisable to check the console
+message to confirm which isoform was finally used.
+
+---
+
+# Pfam domain analysis
+
+`pfamDomains()` combines the amino-acid change annotation of the whole MAF
+with maftools' integrated Pfam domain database, indicating which protein
+domains concentrate the most mutations across the entire cohort (not just
+one gene), very useful for prioritizing functionally relevant domains
+(e.g., catalytic domains, DNA-binding domains, etc.).
+
+```{r pfam-domains, fig.height=7}
+pfam_result <- pfamDomains(
+  maf     = mutations,
+  AACol   = "Protein_Change",
+  top     = 10
+)
+
+pfam_result$proteinSummary
+pfam_result$domainSummary
+write.csv(pfam_result$domainSummary, file.path(results_dir, "pfam_domain_summary.csv"), row.names = FALSE)
+```
+
+---
+
+# Additional analyses recommended by maftools
+
+These analyses were not explicitly requested, but they are a standard part
+of the maftools tutorial and take advantage of the data already loaded in
+`mutations`, providing additional context for the biological
+interpretation.
+
+## Transitions / Transversions (Ti/Tv)
+
+```{r titv}
+titv_result <- titv(maf = mutations, plot = FALSE, useSyn = TRUE)
+plotTiTv(res = titv_result)
+```
+
+Classifies each SNV as a transition (purine<->purine or
+pyrimidine<->pyrimidine) or a transversion, and summarizes the proportion
+per sample; characteristic patterns (e.g., excess of C>T) may suggest
+specific mutagenic processes (UV light, tobacco, aging, 5-methylcytosine
+deamination).
+
+## Rainfall plot (localized hypermutation / kataegis)
+
+Useful if a specific sample has many mutations; it identifies genomic
+regions with localized hypermutation events ("kataegis"), frequently
+associated with APOBEC activity.
+
+```{r rainfall, eval=FALSE}
+# Run on a specific sample of interest, replacing "SAMPLE_ID"
+rainfallPlot(
+  maf        = mutations,
+  tsb        = "SAMPLE_ID",
+  detectChangePoints = TRUE,
+  pointSize  = 0.4
+)
+```
+
+## Comparison with TCGA cohorts
+
+`tcgaCompare()` places the TMB of the PAAD-TB cohort in the context of all
+TCGA cohorts, generating a comparative boxplot sorted by TMB median — a
+natural extension of the TMB calculation already performed.
+
+```{r tcga-compare, fig.height=7}
+tcga_compare <- tcgaCompare(
+  maf        = mutations,
+  cohortName = "PAAD-TB",
+  logscale   = TRUE,
+  capture_size = 50
+)
+```
+
+## Oncogenic pathways (OncoKB / canonical pathways)
+
+`OncogenicPathways()` summarizes the percentage of altered samples in each
+of the 10 oncogenic signaling pathways curated by Sanchez-Vega
+*et al.* 2018 (RTK-RAS, PI3K, WNT, TP53, etc.), and
+`PlotOncogenicPathways()` details, for a specific pathway, which genes
+contribute and with what exclusivity pattern.
+
+```{r oncogenic-pathways, fig.height=6}
+oncogenic_pathways <- OncogenicPathways(maf = mutations)
+oncogenic_pathways
+```
+
+```{r plot-oncogenic-pathway-example, fig.height=6}
+# Example with the RTK-RAS pathway, usually relevant in PAAD (KRAS)
+PlotOncogenicPathways(maf = mutations, pathways = "RTK-RAS")
+```
+
+## Tumor heterogeneity / clonality (VAF-based)
+
+`inferHeterogeneity()` estimates tumor heterogeneity clusters from the
+variant allele frequency (VAF), useful for exploring clonal/subclonal
+evolution; it requires allelic depth columns in the MAF (`t_depth`,
+`t_alt_count` or equivalents).
+
+```{r heterogeneity, fig.height=6}
+heterogeneity <- inferHeterogeneity(
+  maf     = mutations,
+  vafCol  = "t_AF"   # adjust to the real VAF column name in the MAF, if it exists
+)
+plotClusters(clusters = heterogeneity)
+```
+
+## VAF distribution by gene
+
+```{r plot-vaf, fig.height=6}
+plotVaf(maf = mutations, vafCol = "t_AF", top = 15)
+```
+
+## Potentially "driver" genes (dN/dS with `oncodrive`)
+
+`oncodrive()` implements the OncodriveCLUST algorithm, which identifies
+genes whose mutations cluster at specific protein positions more than
+expected by chance, an indicator of positive selection typical of driver
+genes.
+
+```{r oncodrive, fig.height=6}
+oncodrive_result <- oncodrive(
+  maf         = mutations,
+  AACol       = "Protein_Change",
+  minMut      = 5,
+  pvalMethod  = "zscore"
+)
+plotOncodrive(res = oncodrive_result, fdrCutOff = 0.1, useFraction = TRUE)
+```
+
+---
+
+# Saving results
+
+```{r save-maf-object}
+saveRDS(mutations, file.path(results_dir, "maf_object.rds"))
+```
+
+All csv/rds files generated in this document are stored in the
+`results_paad/` folder, analogous to the one created with
+`os.makedirs("results_paad", exist_ok=True)` in the original snippet.
+
+---
+
+# References
+
+- Mayakonda, A., Lin, D.C., Assenov, Y., Plass, C., Koeffler, H.P. (2018).
+  *Maftools: efficient and comprehensive analysis of somatic variants in
+  cancer*. Genome Research, 28:1747-1756.
+- Official maftools vignette:
+  <https://bioconductor.org/packages/release/bioc/vignettes/maftools/inst/doc/maftools.html>
+- Package page on Bioconductor:
+  <https://bioconductor.org/packages/release/bioc/html/maftools.html>
+- GitHub repository (issues, additional examples):
+  <https://github.com/PoisonAlien/maftools>
+- Sanchez-Vega, F. *et al.* (2018). *Oncogenic Signaling Pathways in The
+  Cancer Genome Atlas*. Cell, 173(2), 321-337 (basis of `OncogenicPathways`).
+
+```{r session-info}
+sessionInfo()
+```
