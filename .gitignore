@@ -38,3 +38,5 @@ validation/*/results/*
 # --- OS noise ---------------------------------------------------------------
 .DS_Store
 Thumbs.db
+.coverage
+htmlcov/
