@@ -48,10 +48,10 @@ These tools enable advanced genomic data processing capabilities that are not av
 
 ## 📚 Documentation
 
-- **[Complete Documentation]()** - Comprehensive guides and API reference
-- **[Installation Guide](https://luisruimor.github.io/pyMut/installation/)** - Detailed installation instructions
-- **[API Reference](https://luisruimor.github.io/pyMut/api/Core/pymutation_class/)** - Complete API documentation
-- **[Examples](https://luisruimor.github.io/pyMut/examples/data/input_read_maf/#example-loading-tcga-laml-maf-file)** - Real-world usage examples
+- **[Complete Documentation](https://Molecular-Oncology-Group-UFV.github.io/PyMut/)** - Comprehensive guides and API reference
+- **[Installation Guide](https://Molecular-Oncology-Group-UFV.github.io/PyMut/installation/)** - Detailed installation instructions
+- **[API Reference](https://Molecular-Oncology-Group-UFV.github.io/PyMut/api/Core/pymutation_class/)** - Complete API documentation
+- **[Examples](https://Molecular-Oncology-Group-UFV.github.io/PyMut/examples/data/input_read_maf/#example-loading-tcga-laml-maf-file)** - Real-world usage examples
 
 
 ## 📋 Requirements
