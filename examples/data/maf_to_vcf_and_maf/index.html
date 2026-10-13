@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -940,6 +940,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../api/Analysis%20Methods/smg_detection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SMG Detection (OncodriveCLUSTL)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../api/Analysis%20Methods/pfam_domains/" class="md-nav__link">
         
   
@@ -976,10 +1004,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_4" >
         
           
-          <label class="md-nav__link" for="__nav_3_6_3" id="__nav_3_6_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_6_4" id="__nav_3_6_4_label" tabindex="0">
             
   
   
@@ -997,8 +1025,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_6_3">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1560,6 +1588,62 @@
     
   
     Somatic Interactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/Visualization/tcga_compare/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TCGA Cohort Comparison
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/Visualization/pfam_plots/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pfam Domain Visualizations
   
 
     
@@ -2430,7 +2514,7 @@
   <span class="md-ellipsis">
     
   
-    PFAM Annotation Module
+    Pfam Annotation and Domain Analysis
   
 
     
@@ -3770,9 +3854,21 @@ except Exception as e:
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>2025-08-01 01:51:46,880 | INFO | pyMut.input | Starting MAF reading: ../../../src/pyMut/data/examples/MAF/tcga_laml.maf.gz
-2025-08-01 01:51:46,881 | INFO | pyMut.input | Loading from cache: ../../../src/pyMut/data/examples/MAF/.pymut_cache/tcga_laml.maf_8bfbda65c4b23428.parquet
-2025-08-01 01:51:46,910 | INFO | pyMut.input | Cache loaded successfully in 0.03 seconds
+<pre>2026-10-13 14:26:04,930 | INFO | pyMut.input | Starting MAF reading: ../../../src/pyMut/data/examples/MAF/tcga_laml.maf.gz
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:04,932 | INFO | pyMut.input | Loading from cache: ../../../src/pyMut/data/examples/MAF/.pymut_cache/tcga_laml.maf_8dc5feebdfe14cbc.parquet
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:05,034 | INFO | pyMut.input | Cache loaded successfully in 0.10 seconds
 </pre>
 </div>
 </div>
@@ -3889,75 +3985,75 @@ pymutation_obj.head(3)
 <tbody>
 <tr>
 <th>0</th>
-<td>chr9</td>
-<td>100077177</td>
+<td>chr17</td>
+<td>67170917</td>
 <td>.</td>
 <td>T</td>
 <td>C</td>
 <td>.</td>
 <td>.</td>
-<td>T|T</td>
+<td>T|C</td>
 <td>T|T</td>
 <td>T|T</td>
 <td>...</td>
 <td>+</td>
-<td>SILENT</td>
+<td>SPLICE_SITE</td>
 <td>SNP</td>
 <td>T</td>
 <td>T</td>
 <td>C</td>
-<td>TCGA-AB-2886</td>
-<td>p.T431T</td>
-<td>9.76</td>
-<td>NM_020893.1</td>
+<td>TCGA-AB-2988</td>
+<td>p.K960R</td>
+<td>45.66</td>
+<td>NM_080282.3</td>
 </tr>
 <tr>
 <th>1</th>
-<td>chr9</td>
-<td>100085148</td>
+<td>chr1</td>
+<td>94490594</td>
 <td>.</td>
-<td>G</td>
-<td>A</td>
+<td>C</td>
+<td>T</td>
 <td>.</td>
 <td>.</td>
-<td>G|G</td>
-<td>G|G</td>
-<td>G|G</td>
+<td>C|C</td>
+<td>C|T</td>
+<td>C|C</td>
 <td>...</td>
 <td>+</td>
 <td>MISSENSE_MUTATION</td>
 <td>SNP</td>
-<td>G</td>
-<td>G</td>
-<td>A</td>
-<td>TCGA-AB-2917</td>
-<td>p.R581H</td>
-<td>18.4</td>
-<td>NM_020893.1</td>
+<td>C</td>
+<td>C</td>
+<td>T</td>
+<td>TCGA-AB-2869</td>
+<td>p.R1517H</td>
+<td>38.12</td>
+<td>NM_000350.2</td>
 </tr>
 <tr>
 <th>2</th>
-<td>chr9</td>
-<td>100971322</td>
+<td>chr2</td>
+<td>169780250</td>
 <td>.</td>
+<td>G</td>
 <td>A</td>
-<td>C</td>
 <td>.</td>
 <td>.</td>
-<td>A|A</td>
-<td>A|A</td>
-<td>A|A</td>
+<td>G|G</td>
+<td>G|G</td>
+<td>G|A</td>
 <td>...</td>
 <td>+</td>
 <td>MISSENSE_MUTATION</td>
 <td>SNP</td>
+<td>G</td>
+<td>G</td>
 <td>A</td>
-<td>A</td>
-<td>C</td>
-<td>TCGA-AB-2841</td>
-<td>p.L593R</td>
-<td>45.83</td>
-<td>NM_018421.3</td>
+<td>TCGA-AB-3009</td>
+<td>p.A1283V</td>
+<td>46.972177</td>
+<td>NM_003742.2</td>
 </tr>
 </tbody>
 </table>
@@ -4119,8 +4215,14 @@ except Exception as e:
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>2025-08-01 01:51:47,147 | INFO | pyMut.output | Starting VCF export to: output/maf_to_vcf_output.vcf
-2025-08-01 01:51:47,150 | INFO | pyMut.output | Starting to process 2091 variants from 193 samples
+<pre>2026-10-13 14:26:05,102 | INFO | pyMut.output | Starting VCF export to: output/maf_to_vcf_output.vcf
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:05,109 | INFO | pyMut.output | Starting to process 2091 variants from 193 samples
 </pre>
 </div>
 </div>
@@ -4134,11 +4236,35 @@ except Exception as e:
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>2025-08-01 01:51:47,263 | INFO | pyMut.output | Processing genotype data to replace bases with indices
-2025-08-01 01:51:50,943 | INFO | pyMut.output | Writing 2091 variants to file
-2025-08-01 01:51:51,008 | INFO | pyMut.output | Progress: 2091/2091 variants written (100.0%)
-2025-08-01 01:51:51,011 | INFO | pyMut.output | VCF export completed successfully: 2091 variants processed and written to output/maf_to_vcf_output.vcf
-2025-08-01 01:51:51,012 | INFO | pyMut.output | Conversion summary: 193 samples, 2091 input variants, 2091 output variants
+<pre>2026-10-13 14:26:05,290 | INFO | pyMut.output | Processing genotype data to replace bases with indices
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:10,871 | INFO | pyMut.output | Writing 2091 variants to file
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:10,964 | INFO | pyMut.output | Progress: 2091/2091 variants written (100.0%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:10,966 | INFO | pyMut.output | VCF export completed successfully: 2091 variants processed and written to output/maf_to_vcf_output.vcf
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:10,966 | INFO | pyMut.output | Conversion summary: 193 samples, 2091 input variants, 2091 output variants
 </pre>
 </div>
 </div>
@@ -4230,17 +4356,63 @@ except Exception as e:
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>2025-08-01 01:51:51,038 | INFO | pyMut.output | Starting MAF export to: output/maf_to_maf_output.maf
-2025-08-01 01:51:51,039 | INFO | pyMut.output | Starting to process 2091 variants from 193 samples
-2025-08-01 01:51:51,043 | INFO | pyMut.output | Processing sample 1/193: TCGA-AB-2988 (0.5%)
-2025-08-01 01:51:51,056 | INFO | pyMut.output | Sample TCGA-AB-2988: 15 variants found
-2025-08-01 01:51:51,085 | INFO | pyMut.output | Processing sample 3/193: TCGA-AB-3009 (1.6%)
-2025-08-01 01:51:51,098 | INFO | pyMut.output | Sample TCGA-AB-3009: 42 variants found
-2025-08-01 01:51:51,132 | INFO | pyMut.output | Processing sample 6/193: TCGA-AB-2920 (3.1%)
-2025-08-01 01:51:51,144 | INFO | pyMut.output | Sample TCGA-AB-2920: 11 variants found
-2025-08-01 01:51:51,180 | INFO | pyMut.output | Processing sample 9/193: TCGA-AB-2999 (4.7%)
-2025-08-01 01:51:51,191 | INFO | pyMut.output | Sample TCGA-AB-2999: 11 variants found
-2025-08-01 01:51:51,224 | INFO | pyMut.output | Processing sample 12/193: TCGA-AB-2923 (6.2%)
+<pre>2026-10-13 14:26:10,997 | INFO | pyMut.output | Starting MAF export to: output/maf_to_maf_output.maf
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,000 | INFO | pyMut.output | Starting to process 2091 variants from 193 samples
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,008 | INFO | pyMut.output | Processing sample 1/193: TCGA-AB-2988 (0.5%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,022 | INFO | pyMut.output | Sample TCGA-AB-2988: 15 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,046 | INFO | pyMut.output | Processing sample 3/193: TCGA-AB-3009 (1.6%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,073 | INFO | pyMut.output | Sample TCGA-AB-3009: 42 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,118 | INFO | pyMut.output | Processing sample 6/193: TCGA-AB-2920 (3.1%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,129 | INFO | pyMut.output | Sample TCGA-AB-2920: 11 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,181 | INFO | pyMut.output | Processing sample 9/193: TCGA-AB-2999 (4.7%)
 </pre>
 </div>
 </div>
@@ -4254,136 +4426,924 @@ except Exception as e:
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>2025-08-01 01:51:51,235 | INFO | pyMut.output | Sample TCGA-AB-2923: 23 variants found
-2025-08-01 01:51:51,269 | INFO | pyMut.output | Processing sample 15/193: TCGA-AB-2931 (7.8%)
-2025-08-01 01:51:51,280 | INFO | pyMut.output | Sample TCGA-AB-2931: 11 variants found
-2025-08-01 01:51:51,312 | INFO | pyMut.output | Processing sample 18/193: TCGA-AB-2906 (9.3%)
-2025-08-01 01:51:51,322 | INFO | pyMut.output | Sample TCGA-AB-2906: 15 variants found
-2025-08-01 01:51:51,354 | INFO | pyMut.output | Processing sample 21/193: TCGA-AB-2945 (10.9%)
-2025-08-01 01:51:51,363 | INFO | pyMut.output | Sample TCGA-AB-2945: 13 variants found
-2025-08-01 01:51:51,396 | INFO | pyMut.output | Processing sample 24/193: TCGA-AB-2952 (12.4%)
-2025-08-01 01:51:51,407 | INFO | pyMut.output | Sample TCGA-AB-2952: 15 variants found
-2025-08-01 01:51:51,439 | INFO | pyMut.output | Processing sample 27/193: TCGA-AB-2862 (14.0%)
-2025-08-01 01:51:51,451 | INFO | pyMut.output | Sample TCGA-AB-2862: 11 variants found
-2025-08-01 01:51:51,485 | INFO | pyMut.output | Processing sample 30/193: TCGA-AB-2911 (15.5%)
-2025-08-01 01:51:51,496 | INFO | pyMut.output | Sample TCGA-AB-2911: 2 variants found
-2025-08-01 01:51:51,528 | INFO | pyMut.output | Processing sample 33/193: TCGA-AB-2910 (17.1%)
-2025-08-01 01:51:51,539 | INFO | pyMut.output | Sample TCGA-AB-2910: 12 variants found
-2025-08-01 01:51:51,572 | INFO | pyMut.output | Processing sample 36/193: TCGA-AB-2822 (18.7%)
-2025-08-01 01:51:51,583 | INFO | pyMut.output | Sample TCGA-AB-2822: 22 variants found
-2025-08-01 01:51:51,618 | INFO | pyMut.output | Processing sample 39/193: TCGA-AB-2807 (20.2%)
-2025-08-01 01:51:51,629 | INFO | pyMut.output | Sample TCGA-AB-2807: 29 variants found
-2025-08-01 01:51:51,662 | INFO | pyMut.output | Processing sample 42/193: TCGA-AB-2897 (21.8%)
-2025-08-01 01:51:51,673 | INFO | pyMut.output | Sample TCGA-AB-2897: 7 variants found
-2025-08-01 01:51:51,708 | INFO | pyMut.output | Processing sample 45/193: TCGA-AB-2929 (23.3%)
-2025-08-01 01:51:51,719 | INFO | pyMut.output | Sample TCGA-AB-2929: 16 variants found
-2025-08-01 01:51:51,752 | INFO | pyMut.output | Processing sample 48/193: TCGA-AB-2935 (24.9%)
-2025-08-01 01:51:51,763 | INFO | pyMut.output | Sample TCGA-AB-2935: 10 variants found
-2025-08-01 01:51:51,799 | INFO | pyMut.output | Processing sample 51/193: TCGA-AB-2889 (26.4%)
-2025-08-01 01:51:51,811 | INFO | pyMut.output | Sample TCGA-AB-2889: 5 variants found
-2025-08-01 01:51:51,848 | INFO | pyMut.output | Processing sample 54/193: TCGA-AB-2990 (28.0%)
-2025-08-01 01:51:51,859 | INFO | pyMut.output | Sample TCGA-AB-2990: 9 variants found
-2025-08-01 01:51:51,892 | INFO | pyMut.output | Processing sample 57/193: TCGA-AB-2864 (29.5%)
-2025-08-01 01:51:51,902 | INFO | pyMut.output | Sample TCGA-AB-2864: 16 variants found
-2025-08-01 01:51:51,929 | INFO | pyMut.output | Processing sample 60/193: TCGA-AB-2903 (31.1%)
-2025-08-01 01:51:51,934 | INFO | pyMut.output | Sample TCGA-AB-2903: 1 variants found
-2025-08-01 01:51:51,960 | INFO | pyMut.output | Processing sample 63/193: TCGA-AB-2959 (32.6%)
-2025-08-01 01:51:51,967 | INFO | pyMut.output | Sample TCGA-AB-2959: 27 variants found
-2025-08-01 01:51:51,988 | INFO | pyMut.output | Processing sample 66/193: TCGA-AB-2888 (34.2%)
-2025-08-01 01:51:51,993 | INFO | pyMut.output | Sample TCGA-AB-2888: 9 variants found
-2025-08-01 01:51:52,013 | INFO | pyMut.output | Processing sample 69/193: TCGA-AB-3002 (35.8%)
-2025-08-01 01:51:52,019 | INFO | pyMut.output | Sample TCGA-AB-3002: 27 variants found
-2025-08-01 01:51:52,042 | INFO | pyMut.output | Processing sample 72/193: TCGA-AB-2991 (37.3%)
-2025-08-01 01:51:52,048 | INFO | pyMut.output | Sample TCGA-AB-2991: 8 variants found
-2025-08-01 01:51:52,143 | INFO | pyMut.output | Processing sample 75/193: TCGA-AB-2874 (38.9%)
-2025-08-01 01:51:52,150 | INFO | pyMut.output | Sample TCGA-AB-2874: 15 variants found
-2025-08-01 01:51:52,171 | INFO | pyMut.output | Processing sample 78/193: TCGA-AB-2821 (40.4%)
-2025-08-01 01:51:52,176 | INFO | pyMut.output | Sample TCGA-AB-2821: 15 variants found
-2025-08-01 01:51:52,195 | INFO | pyMut.output | Processing sample 81/193: TCGA-AB-2814 (42.0%)
-2025-08-01 01:51:52,200 | INFO | pyMut.output | Sample TCGA-AB-2814: 10 variants found
-2025-08-01 01:51:52,221 | INFO | pyMut.output | Processing sample 84/193: TCGA-AB-2978 (43.5%)
-2025-08-01 01:51:52,226 | INFO | pyMut.output | Sample TCGA-AB-2978: 18 variants found
-2025-08-01 01:51:52,246 | INFO | pyMut.output | Processing sample 87/193: TCGA-AB-3006 (45.1%)
-2025-08-01 01:51:52,253 | INFO | pyMut.output | Sample TCGA-AB-3006: 19 variants found
-2025-08-01 01:51:52,274 | INFO | pyMut.output | Processing sample 90/193: TCGA-AB-2857 (46.6%)
-2025-08-01 01:51:52,279 | INFO | pyMut.output | Sample TCGA-AB-2857: 14 variants found
-2025-08-01 01:51:52,299 | INFO | pyMut.output | Processing sample 93/193: TCGA-AB-2813 (48.2%)
-2025-08-01 01:51:52,304 | INFO | pyMut.output | Sample TCGA-AB-2813: 16 variants found
-2025-08-01 01:51:52,323 | INFO | pyMut.output | Processing sample 96/193: TCGA-AB-2970 (49.7%)
-2025-08-01 01:51:52,329 | INFO | pyMut.output | Sample TCGA-AB-2970: 8 variants found
-2025-08-01 01:51:52,351 | INFO | pyMut.output | Processing sample 99/193: TCGA-AB-2971 (51.3%)
-2025-08-01 01:51:52,356 | INFO | pyMut.output | Sample TCGA-AB-2971: 11 variants found
-2025-08-01 01:51:52,376 | INFO | pyMut.output | Processing sample 102/193: TCGA-AB-2985 (52.8%)
-2025-08-01 01:51:52,383 | INFO | pyMut.output | Sample TCGA-AB-2985: 5 variants found
-2025-08-01 01:51:52,404 | INFO | pyMut.output | Processing sample 105/193: TCGA-AB-2851 (54.4%)
-2025-08-01 01:51:52,409 | INFO | pyMut.output | Sample TCGA-AB-2851: 7 variants found
-2025-08-01 01:51:52,428 | INFO | pyMut.output | Processing sample 108/193: TCGA-AB-2858 (56.0%)
-2025-08-01 01:51:52,434 | INFO | pyMut.output | Sample TCGA-AB-2858: 13 variants found
-2025-08-01 01:51:52,453 | INFO | pyMut.output | Processing sample 111/193: TCGA-AB-2868 (57.5%)
-2025-08-01 01:51:52,458 | INFO | pyMut.output | Sample TCGA-AB-2868: 13 variants found
-2025-08-01 01:51:52,478 | INFO | pyMut.output | Processing sample 114/193: TCGA-AB-2937 (59.1%)
-2025-08-01 01:51:52,484 | INFO | pyMut.output | Sample TCGA-AB-2937: 12 variants found
-2025-08-01 01:51:52,503 | INFO | pyMut.output | Processing sample 117/193: TCGA-AB-2881 (60.6%)
-2025-08-01 01:51:52,510 | INFO | pyMut.output | Sample TCGA-AB-2881: 9 variants found
-2025-08-01 01:51:52,531 | INFO | pyMut.output | Processing sample 120/193: TCGA-AB-2803 (62.2%)
-2025-08-01 01:51:52,536 | INFO | pyMut.output | Sample TCGA-AB-2803: 15 variants found
-2025-08-01 01:51:52,556 | INFO | pyMut.output | Processing sample 123/193: TCGA-AB-2806 (63.7%)
-2025-08-01 01:51:52,561 | INFO | pyMut.output | Sample TCGA-AB-2806: 17 variants found
-2025-08-01 01:51:52,580 | INFO | pyMut.output | Processing sample 126/193: TCGA-AB-2810 (65.3%)
-2025-08-01 01:51:52,587 | INFO | pyMut.output | Sample TCGA-AB-2810: 14 variants found
-2025-08-01 01:51:52,607 | INFO | pyMut.output | Processing sample 129/193: TCGA-AB-2849 (66.8%)
-2025-08-01 01:51:52,612 | INFO | pyMut.output | Sample TCGA-AB-2849: 26 variants found
-2025-08-01 01:51:52,632 | INFO | pyMut.output | Processing sample 132/193: TCGA-AB-2928 (68.4%)
-2025-08-01 01:51:52,638 | INFO | pyMut.output | Sample TCGA-AB-2928: 10 variants found
-2025-08-01 01:51:52,659 | INFO | pyMut.output | Processing sample 135/193: TCGA-AB-2843 (69.9%)
-2025-08-01 01:51:52,664 | INFO | pyMut.output | Sample TCGA-AB-2843: 12 variants found
-2025-08-01 01:51:52,685 | INFO | pyMut.output | Processing sample 138/193: TCGA-AB-2940 (71.5%)
-2025-08-01 01:51:52,691 | INFO | pyMut.output | Sample TCGA-AB-2940: 4 variants found
-2025-08-01 01:51:52,710 | INFO | pyMut.output | Processing sample 141/193: TCGA-AB-3007 (73.1%)
-2025-08-01 01:51:52,716 | INFO | pyMut.output | Sample TCGA-AB-3007: 8 variants found
-2025-08-01 01:51:52,736 | INFO | pyMut.output | Processing sample 144/193: TCGA-AB-2983 (74.6%)
-2025-08-01 01:51:52,741 | INFO | pyMut.output | Sample TCGA-AB-2983: 14 variants found
-2025-08-01 01:51:52,762 | INFO | pyMut.output | Processing sample 147/193: TCGA-AB-2829 (76.2%)
-2025-08-01 01:51:52,768 | INFO | pyMut.output | Sample TCGA-AB-2829: 10 variants found
-2025-08-01 01:51:52,788 | INFO | pyMut.output | Processing sample 150/193: TCGA-AB-2946 (77.7%)
-2025-08-01 01:51:52,794 | INFO | pyMut.output | Sample TCGA-AB-2946: 3 variants found
-2025-08-01 01:51:52,814 | INFO | pyMut.output | Processing sample 153/193: TCGA-AB-2809 (79.3%)
-2025-08-01 01:51:52,819 | INFO | pyMut.output | Sample TCGA-AB-2809: 4 variants found
-2025-08-01 01:51:52,838 | INFO | pyMut.output | Processing sample 156/193: TCGA-AB-2873 (80.8%)
-2025-08-01 01:51:52,843 | INFO | pyMut.output | Sample TCGA-AB-2873: 2 variants found
-2025-08-01 01:51:52,862 | INFO | pyMut.output | Processing sample 159/193: TCGA-AB-2919 (82.4%)
-2025-08-01 01:51:52,867 | INFO | pyMut.output | Sample TCGA-AB-2919: 11 variants found
-2025-08-01 01:51:52,888 | INFO | pyMut.output | Processing sample 162/193: TCGA-AB-2967 (83.9%)
-2025-08-01 01:51:52,893 | INFO | pyMut.output | Sample TCGA-AB-2967: 11 variants found
-2025-08-01 01:51:52,913 | INFO | pyMut.output | Processing sample 165/193: TCGA-AB-2981 (85.5%)
-2025-08-01 01:51:52,918 | INFO | pyMut.output | Sample TCGA-AB-2981: 6 variants found
-2025-08-01 01:51:52,939 | INFO | pyMut.output | Processing sample 168/193: TCGA-AB-2877 (87.0%)
-2025-08-01 01:51:52,946 | INFO | pyMut.output | Sample TCGA-AB-2877: 20 variants found
-2025-08-01 01:51:52,967 | INFO | pyMut.output | Processing sample 171/193: TCGA-AB-2998 (88.6%)
-2025-08-01 01:51:52,971 | INFO | pyMut.output | Sample TCGA-AB-2998: 10 variants found
-2025-08-01 01:51:52,991 | INFO | pyMut.output | Processing sample 174/193: TCGA-AB-2982 (90.2%)
-2025-08-01 01:51:52,997 | INFO | pyMut.output | Sample TCGA-AB-2982: 2 variants found
-2025-08-01 01:51:53,016 | INFO | pyMut.output | Processing sample 177/193: TCGA-AB-2840 (91.7%)
-2025-08-01 01:51:53,023 | INFO | pyMut.output | Sample TCGA-AB-2840: 1 variants found
-2025-08-01 01:51:53,044 | INFO | pyMut.output | Processing sample 180/193: TCGA-AB-2942 (93.3%)
-2025-08-01 01:51:53,050 | INFO | pyMut.output | Sample TCGA-AB-2942: 1 variants found
-2025-08-01 01:51:53,072 | INFO | pyMut.output | Processing sample 183/193: TCGA-AB-2826 (94.8%)
-2025-08-01 01:51:53,077 | INFO | pyMut.output | Sample TCGA-AB-2826: 4 variants found
-2025-08-01 01:51:53,099 | INFO | pyMut.output | Processing sample 186/193: TCGA-AB-2948 (96.4%)
-2025-08-01 01:51:53,105 | INFO | pyMut.output | Sample TCGA-AB-2948: 2 variants found
-2025-08-01 01:51:53,125 | INFO | pyMut.output | Processing sample 189/193: TCGA-AB-2941 (97.9%)
-2025-08-01 01:51:53,131 | INFO | pyMut.output | Sample TCGA-AB-2941: 5 variants found
-2025-08-01 01:51:53,152 | INFO | pyMut.output | Processing sample 192/193: TCGA-AB-2855 (99.5%)
-2025-08-01 01:51:53,158 | INFO | pyMut.output | Sample TCGA-AB-2855: 4 variants found
-2025-08-01 01:51:53,162 | INFO | pyMut.output | Processing sample 193/193: TCGA-AB-2933 (100.0%)
-2025-08-01 01:51:53,170 | INFO | pyMut.output | Sample TCGA-AB-2933: 1 variants found
-2025-08-01 01:51:53,226 | INFO | pyMut.output | Sample processing completed: 193/193 samples processed
-2025-08-01 01:51:53,226 | INFO | pyMut.output | Total variants found: 2207 variants
-2025-08-01 01:51:53,235 | INFO | pyMut.output | Using MAF_COL_ORDER.csv column order: 21 columns arranged
-2025-08-01 01:51:53,239 | INFO | pyMut.output | Writing 2207 variants to file
-2025-08-01 01:51:53,254 | INFO | pyMut.output | Progress: 2207/2207 variants written (100.0%)
-2025-08-01 01:51:53,255 | INFO | pyMut.output | MAF export completed successfully: 2207 variants processed and written to output/maf_to_maf_output.maf
-2025-08-01 01:51:53,255 | INFO | pyMut.output | Conversion summary: 193 samples, 2091 input variants, 2207 output variants
+<pre>2026-10-13 14:26:11,192 | INFO | pyMut.output | Sample TCGA-AB-2999: 11 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,227 | INFO | pyMut.output | Processing sample 12/193: TCGA-AB-2923 (6.2%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,250 | INFO | pyMut.output | Sample TCGA-AB-2923: 23 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,296 | INFO | pyMut.output | Processing sample 15/193: TCGA-AB-2931 (7.8%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,307 | INFO | pyMut.output | Sample TCGA-AB-2931: 11 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,341 | INFO | pyMut.output | Processing sample 18/193: TCGA-AB-2906 (9.3%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,351 | INFO | pyMut.output | Sample TCGA-AB-2906: 15 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,385 | INFO | pyMut.output | Processing sample 21/193: TCGA-AB-2945 (10.9%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,395 | INFO | pyMut.output | Sample TCGA-AB-2945: 13 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,450 | INFO | pyMut.output | Processing sample 24/193: TCGA-AB-2952 (12.4%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,461 | INFO | pyMut.output | Sample TCGA-AB-2952: 15 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,496 | INFO | pyMut.output | Processing sample 27/193: TCGA-AB-2862 (14.0%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,506 | INFO | pyMut.output | Sample TCGA-AB-2862: 11 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,539 | INFO | pyMut.output | Processing sample 30/193: TCGA-AB-2911 (15.5%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,549 | INFO | pyMut.output | Sample TCGA-AB-2911: 2 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,583 | INFO | pyMut.output | Processing sample 33/193: TCGA-AB-2910 (17.1%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,593 | INFO | pyMut.output | Sample TCGA-AB-2910: 12 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,646 | INFO | pyMut.output | Processing sample 36/193: TCGA-AB-2822 (18.7%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,658 | INFO | pyMut.output | Sample TCGA-AB-2822: 22 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,707 | INFO | pyMut.output | Processing sample 39/193: TCGA-AB-2807 (20.2%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,717 | INFO | pyMut.output | Sample TCGA-AB-2807: 29 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,774 | INFO | pyMut.output | Processing sample 42/193: TCGA-AB-2897 (21.8%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,786 | INFO | pyMut.output | Sample TCGA-AB-2897: 7 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,825 | INFO | pyMut.output | Processing sample 45/193: TCGA-AB-2929 (23.3%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,835 | INFO | pyMut.output | Sample TCGA-AB-2929: 16 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,870 | INFO | pyMut.output | Processing sample 48/193: TCGA-AB-2935 (24.9%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,876 | INFO | pyMut.output | Sample TCGA-AB-2935: 10 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,904 | INFO | pyMut.output | Processing sample 51/193: TCGA-AB-2889 (26.4%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,911 | INFO | pyMut.output | Sample TCGA-AB-2889: 5 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,939 | INFO | pyMut.output | Processing sample 54/193: TCGA-AB-2990 (28.0%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:11,957 | INFO | pyMut.output | Sample TCGA-AB-2990: 9 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,010 | INFO | pyMut.output | Processing sample 57/193: TCGA-AB-2864 (29.5%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,017 | INFO | pyMut.output | Sample TCGA-AB-2864: 16 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,046 | INFO | pyMut.output | Processing sample 60/193: TCGA-AB-2903 (31.1%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,062 | INFO | pyMut.output | Sample TCGA-AB-2903: 1 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,097 | INFO | pyMut.output | Processing sample 63/193: TCGA-AB-2959 (32.6%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,104 | INFO | pyMut.output | Sample TCGA-AB-2959: 27 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,131 | INFO | pyMut.output | Processing sample 66/193: TCGA-AB-2888 (34.2%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,138 | INFO | pyMut.output | Sample TCGA-AB-2888: 9 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,166 | INFO | pyMut.output | Processing sample 69/193: TCGA-AB-3002 (35.8%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,183 | INFO | pyMut.output | Sample TCGA-AB-3002: 27 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,222 | INFO | pyMut.output | Processing sample 72/193: TCGA-AB-2991 (37.3%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,236 | INFO | pyMut.output | Sample TCGA-AB-2991: 8 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,273 | INFO | pyMut.output | Processing sample 75/193: TCGA-AB-2874 (38.9%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,279 | INFO | pyMut.output | Sample TCGA-AB-2874: 15 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,309 | INFO | pyMut.output | Processing sample 78/193: TCGA-AB-2821 (40.4%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,316 | INFO | pyMut.output | Sample TCGA-AB-2821: 15 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,363 | INFO | pyMut.output | Processing sample 81/193: TCGA-AB-2814 (42.0%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,371 | INFO | pyMut.output | Sample TCGA-AB-2814: 10 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,420 | INFO | pyMut.output | Processing sample 84/193: TCGA-AB-2978 (43.5%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,428 | INFO | pyMut.output | Sample TCGA-AB-2978: 18 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,477 | INFO | pyMut.output | Processing sample 87/193: TCGA-AB-3006 (45.1%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,484 | INFO | pyMut.output | Sample TCGA-AB-3006: 19 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,512 | INFO | pyMut.output | Processing sample 90/193: TCGA-AB-2857 (46.6%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,519 | INFO | pyMut.output | Sample TCGA-AB-2857: 14 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,546 | INFO | pyMut.output | Processing sample 93/193: TCGA-AB-2813 (48.2%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,564 | INFO | pyMut.output | Sample TCGA-AB-2813: 16 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,599 | INFO | pyMut.output | Processing sample 96/193: TCGA-AB-2970 (49.7%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,606 | INFO | pyMut.output | Sample TCGA-AB-2970: 8 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,634 | INFO | pyMut.output | Processing sample 99/193: TCGA-AB-2971 (51.3%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,649 | INFO | pyMut.output | Sample TCGA-AB-2971: 11 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,700 | INFO | pyMut.output | Processing sample 102/193: TCGA-AB-2985 (52.8%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,717 | INFO | pyMut.output | Sample TCGA-AB-2985: 5 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,761 | INFO | pyMut.output | Processing sample 105/193: TCGA-AB-2851 (54.4%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,778 | INFO | pyMut.output | Sample TCGA-AB-2851: 7 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,886 | INFO | pyMut.output | Processing sample 108/193: TCGA-AB-2858 (56.0%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,902 | INFO | pyMut.output | Sample TCGA-AB-2858: 13 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,936 | INFO | pyMut.output | Processing sample 111/193: TCGA-AB-2868 (57.5%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,942 | INFO | pyMut.output | Sample TCGA-AB-2868: 13 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:12,993 | INFO | pyMut.output | Processing sample 114/193: TCGA-AB-2937 (59.1%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,000 | INFO | pyMut.output | Sample TCGA-AB-2937: 12 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,044 | INFO | pyMut.output | Processing sample 117/193: TCGA-AB-2881 (60.6%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,050 | INFO | pyMut.output | Sample TCGA-AB-2881: 9 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,093 | INFO | pyMut.output | Processing sample 120/193: TCGA-AB-2803 (62.2%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,105 | INFO | pyMut.output | Sample TCGA-AB-2803: 15 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,135 | INFO | pyMut.output | Processing sample 123/193: TCGA-AB-2806 (63.7%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,152 | INFO | pyMut.output | Sample TCGA-AB-2806: 17 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,203 | INFO | pyMut.output | Processing sample 126/193: TCGA-AB-2810 (65.3%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,210 | INFO | pyMut.output | Sample TCGA-AB-2810: 14 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,238 | INFO | pyMut.output | Processing sample 129/193: TCGA-AB-2849 (66.8%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,245 | INFO | pyMut.output | Sample TCGA-AB-2849: 26 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,299 | INFO | pyMut.output | Processing sample 132/193: TCGA-AB-2928 (68.4%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,309 | INFO | pyMut.output | Sample TCGA-AB-2928: 10 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,338 | INFO | pyMut.output | Processing sample 135/193: TCGA-AB-2843 (69.9%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,345 | INFO | pyMut.output | Sample TCGA-AB-2843: 12 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,373 | INFO | pyMut.output | Processing sample 138/193: TCGA-AB-2940 (71.5%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,380 | INFO | pyMut.output | Sample TCGA-AB-2940: 4 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,418 | INFO | pyMut.output | Processing sample 141/193: TCGA-AB-3007 (73.1%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,426 | INFO | pyMut.output | Sample TCGA-AB-3007: 8 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,454 | INFO | pyMut.output | Processing sample 144/193: TCGA-AB-2983 (74.6%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,470 | INFO | pyMut.output | Sample TCGA-AB-2983: 14 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,505 | INFO | pyMut.output | Processing sample 147/193: TCGA-AB-2829 (76.2%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,511 | INFO | pyMut.output | Sample TCGA-AB-2829: 10 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,540 | INFO | pyMut.output | Processing sample 150/193: TCGA-AB-2946 (77.7%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,546 | INFO | pyMut.output | Sample TCGA-AB-2946: 3 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,588 | INFO | pyMut.output | Processing sample 153/193: TCGA-AB-2809 (79.3%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,595 | INFO | pyMut.output | Sample TCGA-AB-2809: 4 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,637 | INFO | pyMut.output | Processing sample 156/193: TCGA-AB-2873 (80.8%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,645 | INFO | pyMut.output | Sample TCGA-AB-2873: 2 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,700 | INFO | pyMut.output | Processing sample 159/193: TCGA-AB-2919 (82.4%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,713 | INFO | pyMut.output | Sample TCGA-AB-2919: 11 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,753 | INFO | pyMut.output | Processing sample 162/193: TCGA-AB-2967 (83.9%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,770 | INFO | pyMut.output | Sample TCGA-AB-2967: 11 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,800 | INFO | pyMut.output | Processing sample 165/193: TCGA-AB-2981 (85.5%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,813 | INFO | pyMut.output | Sample TCGA-AB-2981: 6 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,857 | INFO | pyMut.output | Processing sample 168/193: TCGA-AB-2877 (87.0%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,864 | INFO | pyMut.output | Sample TCGA-AB-2877: 20 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,892 | INFO | pyMut.output | Processing sample 171/193: TCGA-AB-2998 (88.6%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,899 | INFO | pyMut.output | Sample TCGA-AB-2998: 10 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,927 | INFO | pyMut.output | Processing sample 174/193: TCGA-AB-2982 (90.2%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,943 | INFO | pyMut.output | Sample TCGA-AB-2982: 2 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,979 | INFO | pyMut.output | Processing sample 177/193: TCGA-AB-2840 (91.7%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:13,986 | INFO | pyMut.output | Sample TCGA-AB-2840: 1 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:14,036 | INFO | pyMut.output | Processing sample 180/193: TCGA-AB-2942 (93.3%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:14,043 | INFO | pyMut.output | Sample TCGA-AB-2942: 1 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:14,080 | INFO | pyMut.output | Processing sample 183/193: TCGA-AB-2826 (94.8%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:14,091 | INFO | pyMut.output | Sample TCGA-AB-2826: 4 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:14,121 | INFO | pyMut.output | Processing sample 186/193: TCGA-AB-2948 (96.4%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:14,127 | INFO | pyMut.output | Sample TCGA-AB-2948: 2 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:14,155 | INFO | pyMut.output | Processing sample 189/193: TCGA-AB-2941 (97.9%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:14,161 | INFO | pyMut.output | Sample TCGA-AB-2941: 5 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:14,188 | INFO | pyMut.output | Processing sample 192/193: TCGA-AB-2855 (99.5%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:14,195 | INFO | pyMut.output | Sample TCGA-AB-2855: 4 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:14,209 | INFO | pyMut.output | Processing sample 193/193: TCGA-AB-2933 (100.0%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:14,220 | INFO | pyMut.output | Sample TCGA-AB-2933: 1 variants found
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:14,277 | INFO | pyMut.output | Sample processing completed: 193/193 samples processed
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:14,278 | INFO | pyMut.output | Total variants found: 2207 variants
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:14,282 | INFO | pyMut.output | Using MAF_COL_ORDER.csv column order: 21 columns arranged
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:14,285 | INFO | pyMut.output | Writing 2207 variants to file
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:14,316 | INFO | pyMut.output | Progress: 2207/2207 variants written (100.0%)
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:14,318 | INFO | pyMut.output | MAF export completed successfully: 2207 variants processed and written to output/maf_to_maf_output.maf
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:26:14,318 | INFO | pyMut.output | Conversion summary: 193 samples, 2091 input variants, 2207 output variants
 </pre>
 </div>
 </div>
@@ -4391,7 +5351,7 @@ except Exception as e:
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>✅ MAF file created successfully: ./output/maf_to_maf_output.maf
-   File size: 0.35 MB
+   File size: 0.29 MB
 </pre>
 </div>
 </div>
@@ -4448,17 +5408,16 @@ print("🔍 First 10 lines of the exported VCF file:")
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>🔍 First 10 lines of the exported VCF file:
-/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
 ##fileformat=VCFv4.3
-##fileDate=20250801
+##fileDate=20261013
 ##source=https://github.com/Luisruimor/pyMut
 ##reference=37
 ##FILTER=&lt;ID=PASS,Description="All filters passed"&gt;
-##contig=&lt;ID=9&gt;
-##contig=&lt;ID=X&gt;
-##contig=&lt;ID=14&gt;
+##contig=&lt;ID=17&gt;
+##contig=&lt;ID=1&gt;
 ##contig=&lt;ID=2&gt;
-##contig=&lt;ID=12&gt;
+##contig=&lt;ID=16&gt;
+##contig=&lt;ID=6&gt;
 </pre>
 </div>
 </div>
@@ -4504,17 +5463,16 @@ print("🔍 First 10 lines of the exported MAF file:")
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>🔍 First 10 lines of the exported MAF file:
-/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
-Hugo_Symbol	Entrez_Gene_Id	Center	NCBI_Build	NCBI_Build	Chromosome	Start_Position	Start_Position	End_Position	Strand	Variant_Classification	Variant_Type	Reference_Allele	Reference_Allele	Tumor_Seq_Allele1	Tumor_Seq_Allele1	Tumor_Seq_Allele2	Tumor_Seq_Allele2	dbSNP_RS	Tumor_Sample_Barcode	Tumor_Sample_Barcode	FILTER	i_TumorVAF_WU	End_position	Protein_Change	i_transcript_name	QUAL
-BAAT	570	genome.wustl.edu	37	37	9	104124840	104124840	104124840	+	MISSENSE_MUTATION	SNP	G	G	G	G	A	A	.	TCGA-AB-2988	TCGA-AB-2988	.	48.35	104124840	p.T376M	NM_001701.1	.
-TKTL1	8277	genome.wustl.edu	37	37	X	153557894	153557894	153557894	+	SILENT	SNP	C	C	C	C	T	T	.	TCGA-AB-2988	TCGA-AB-2988	.	41.11	153557894	p.A549A	NM_012253.1	.
-ANG	283	genome.wustl.edu	37	37	14	21161742	21161742	21161742	+	MISSENSE_MUTATION	SNP	G	G	G	G	A	A	.	TCGA-AB-2988	TCGA-AB-2988	.	47.43	21161742	p.V7I	NM_001097577.2	.
-DNMT3A	1788	genome.wustl.edu	37	37	2	25457161	25457161	25457161	+	MISSENSE_MUTATION	SNP	A	A	A	A	C	C	.	TCGA-AB-2988	TCGA-AB-2988	.	45.44	25457161	p.F909C	NM_022552.3	.
-LRWD1	222229	genome.wustl.edu	37	37	7	102106693	102106693	102106693	+	MISSENSE_MUTATION	SNP	C	C	C	C	A	A	.	TCGA-AB-2988	TCGA-AB-2988	.	46.34	102106693	p.N136K	NM_152892.1	.
-GUCA2A	2980	genome.wustl.edu	37	37	1	42629190	42629190	42629190	+	MISSENSE_MUTATION	SNP	A	A	A	A	G	G	.	TCGA-AB-2988	TCGA-AB-2988	.	42.08	42629190	p.F56S	NM_033553.2	.
-SPTBN5	51332	genome.wustl.edu	37	37	15	42168393	42168393	42168393	+	SILENT	SNP	G	G	G	G	A	A	.	TCGA-AB-2988	TCGA-AB-2988	.	49.28	42168393	p.N1347N	NM_016642.2	.
-SLC17A3	10786	genome.wustl.edu	37	37	6	25850330	25850330	25850330	+	MISSENSE_MUTATION	SNP	G	G	G	G	A	A	.	TCGA-AB-2988	TCGA-AB-2988	.	44.82	25850330	p.L279F	NM_001098486.1	.
-NPM1	4869	genome.wustl.edu	37	37	5	170837547	170837547	170837547	+	FRAME_SHIFT_INS	INS	-	-	-	-	CATG	CATG	.	TCGA-AB-2988	TCGA-AB-2988	.		170837548	p.WQ288fs	NM_002520.1	.
+Hugo_Symbol	Entrez_Gene_Id	Center	NCBI_Build	Chromosome	Start_Position	End_Position	Strand	Variant_Classification	Variant_Type	Reference_Allele	Tumor_Seq_Allele1	Tumor_Seq_Allele2	dbSNP_RS	Tumor_Sample_Barcode	FILTER	i_transcript_name	Protein_Change	QUAL	i_TumorVAF_WU	End_position
+ABCA10	10349	genome.wustl.edu	37	17	67170917	67170917	+	SPLICE_SITE	SNP	T	T	C	.	TCGA-AB-2988	.	NM_080282.3	p.K960R	.	45.66	67170917
+ANG	283	genome.wustl.edu	37	14	21161742	21161742	+	MISSENSE_MUTATION	SNP	G	G	A	.	TCGA-AB-2988	.	NM_001097577.2	p.V7I	.	47.43	21161742
+BAAT	570	genome.wustl.edu	37	9	104124840	104124840	+	MISSENSE_MUTATION	SNP	G	G	A	.	TCGA-AB-2988	.	NM_001701.1	p.T376M	.	48.35	104124840
+CDH4	1002	genome.wustl.edu	37	20	60318829	60318829	+	MISSENSE_MUTATION	SNP	C	C	T	.	TCGA-AB-2988	.	NM_001794.2	p.P127L	.	48.02	60318829
+DNMT3A	1788	genome.wustl.edu	37	2	25457161	25457161	+	MISSENSE_MUTATION	SNP	A	A	C	.	TCGA-AB-2988	.	NM_022552.3	p.F909C	.	45.44	25457161
+GUCA2A	2980	genome.wustl.edu	37	1	42629190	42629190	+	MISSENSE_MUTATION	SNP	A	A	G	.	TCGA-AB-2988	.	NM_033553.2	p.F56S	.	42.08	42629190
+LRWD1	222229	genome.wustl.edu	37	7	102106693	102106693	+	MISSENSE_MUTATION	SNP	C	C	A	.	TCGA-AB-2988	.	NM_152892.1	p.N136K	.	46.34	102106693
+MUC5B	727897	genome.wustl.edu	37	11	1269769	1269769	+	MISSENSE_MUTATION	SNP	C	C	A	.	TCGA-AB-2988	.	NM_002458.1	p.P3887T	.	60.0	1269769
+MUC5B	727897	genome.wustl.edu	37	11	1272152	1272152	+	MISSENSE_MUTATION	SNP	C	C	T	.	TCGA-AB-2988	.	NM_002458.1	p.T4681I	.	100.0	1272152
 </pre>
 </div>
 </div>
@@ -4602,7 +5560,7 @@ NPM1	4869	genome.wustl.edu	37	37	5	170837547	170837547	170837547	+	FRAME_SHIFT_I
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.instant", "navigation.tracking", "search.highlight", "search.suggest"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

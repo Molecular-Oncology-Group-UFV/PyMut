@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -942,6 +942,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../Analysis%20Methods/smg_detection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SMG Detection (OncodriveCLUSTL)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../Analysis%20Methods/pfam_domains/" class="md-nav__link">
         
   
@@ -978,10 +1006,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_4" >
         
           
-          <label class="md-nav__link" for="__nav_3_6_3" id="__nav_3_6_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_6_4" id="__nav_3_6_4_label" tabindex="0">
             
   
   
@@ -999,8 +1027,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_6_3">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1813,6 +1841,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../tcga_compare/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TCGA Cohort Comparison
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pfam_plots/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pfam Domain Visualizations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../comut_plot/" class="md-nav__link">
         
   
@@ -2513,7 +2597,7 @@
   <span class="md-ellipsis">
     
   
-    PFAM Annotation Module
+    Pfam Annotation and Domain Analysis
   
 
     
@@ -3028,14 +3112,26 @@
 </ul>
 </li>
 <li>
-<p>COSMIC Catalog (optional, for signature comparison):</p>
+<p>COSMIC Catalog and Aetiology:</p>
 <ul>
-<li>TSV format with 96 rows representing trinucleotide contexts</li>
-<li>First column: context labels following COSMIC v3.x convention</li>
-<li>Row order must match COSMIC standard to ensure alignment between panels A and B</li>
-<li>Subsequent columns: COSMIC signatures (e.g., "SBS1", "SBS2")</li>
-<li>Download from: https://cancer.sanger.ac.uk/signatures/</li>
-<li>Recommended files: <code>COSMIC_v3.4_SBS_GRCh37.txt</code> or <code>COSMIC_v3.4_SBS_GRCh38.txt</code></li>
+<li>The <code>cosmic_path</code> parameter defines the reference catalog of single-base substitution (SBS) signatures. Supported values:<ul>
+<li><code>None</code> (default): Uses the official bundled COSMIC v3.4 SBS (GRCh37) reference catalog (86 signatures). No external file download or path configuration is required.</li>
+<li><code>"maftools"</code>: Uses the bundled legacy 67-signature COSMIC catalog distributed with <code>maftools</code>, reproducing signature deconvolution and cosine similarity matching identical to R <code>maftools</code>.</li>
+<li>Custom path (<code>str</code>): File path to a user-provided TSV matrix containing 96 trinucleotide contexts in rows and reference signatures in columns.</li>
+<li><code>False</code> (for <code>signature_bar_chart</code>): Explicitly disables COSMIC alignment, displaying raw NMF signature profiles without matching against COSMIC.</li>
+</ul>
+</li>
+<li>The <code>aetiology_path</code> parameter (available in <code>signature_bar_chart</code>) defines the signature proposed etiology mapping:<ul>
+<li><code>None</code> (default): No etiology line is displayed; panel titles only report <code>"SBSx-like (cos=..)"</code>.</li>
+<li><code>"maftools"</code>: Uses the bundled <code>maftools</code> SBS aetiology table (<code>maftools_SBS_aetiology.tsv</code>).</li>
+<li>Custom path (<code>str</code>): File path to a two-column TSV (<code>Signature</code>, <code>Aetiology</code>).</li>
+</ul>
+</li>
+<li>The <code>exclude_artifacts</code> parameter (available in <code>signature_bar_chart</code>):<ul>
+<li><code>True</code> (default): Known sequencing and library preparation artifacts (SBS27, SBS43, SBS45–SBS60, SBS95, and any signature labeled with "artefact" or suffix "c") are excluded when matching extracted profiles against COSMIC.</li>
+<li><code>False</code>: Allows matching against artifact signatures as well, matching <code>maftools</code>' <code>plotSignatures()</code> behavior.</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -3121,7 +3217,12 @@ Each visualization function internally recomputes the trinucleotide context matr
 <h3 id="mutational_signature_analysis"><code>mutational_signature_analysis()</code><a class="headerlink" href="#mutational_signature_analysis" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>ref_genome</code> (str): Path to reference genome FASTA file. Required to extract trinucleotide contexts from variant positions in <code>self.data</code>.  </li>
-<li><code>cosmic_path</code> (str): Path to COSMIC signature catalog TSV file. Required for Panel B comparison and signature annotation.  </li>
+<li><code>cosmic_path</code> (Optional[str], default=None): Path or identifier for the COSMIC signature catalog.<ul>
+<li><code>None</code> (default): Automatically uses the bundled official COSMIC v3.4 SBS (GRCh37) catalog (86 signatures).</li>
+<li><code>"maftools"</code>: Uses the bundled 67-signature catalog from <code>maftools</code>.</li>
+<li>Custom string path: Path to an external user-defined TSV catalog.</li>
+</ul>
+</li>
 <li><code>n_signatures</code> (int, default=3): Number of mutational signatures to extract from the data.  </li>
 <li><code>prefix</code> (str, optional): Prefix to add or remove from chromosome names to match the reference genome. Use when chromosome naming differs between your variants and FASTA (e.g., 'chr').  </li>
 <li><code>add</code> (bool, default=True): If True, adds the prefix to chromosome names; if False, removes it.  </li>
@@ -3136,14 +3237,34 @@ Each visualization function internally recomputes the trinucleotide context matr
 <ul>
 <li><code>ref_genome</code> (str): Path to reference genome FASTA file.  </li>
 <li><code>n_signatures</code> (int, default=3): Number of signatures to extract.  </li>
-<li><code>cosmic_path</code> (str, optional): Path to COSMIC catalog. If provided, signatures are reordered and renamed based on their best COSMIC match.  </li>
+<li><code>cosmic_path</code> (Optional[Union[str, bool]], default=None):<ul>
+<li><code>None</code> (default): Uses the bundled official COSMIC v3.4 catalog.</li>
+<li><code>"maftools"</code>: Uses the bundled <code>maftools</code> catalog (67 signatures).</li>
+<li>Custom file path: Path to a custom catalog TSV.</li>
+<li><code>False</code>: Skips COSMIC alignment entirely, displaying raw NMF signature profiles without matching.</li>
+</ul>
+</li>
+<li><code>aetiology_path</code> (Optional[str], default=None):<ul>
+<li><code>None</code> (default): No proposed etiology line is added to panel titles.</li>
+<li><code>"maftools"</code>: Uses the bundled <code>maftools</code> etiology catalog, adding a second line to each matched signature panel title (e.g., "Defective DNA mismatch repair").</li>
+<li>Custom file path: Path to a two-column TSV mapping <code>Signature</code> to <code>Aetiology</code>.</li>
+</ul>
+</li>
+<li><code>exclude_artifacts</code> (bool, default=True): If <code>True</code> (default), artifact/sequencing-noise signatures (SBS27, SBS43, SBS45–60, SBS95, and signatures with 'artefact' or 'c') are filtered out when finding the best COSMIC match. Set to <code>False</code> to include them, matching <code>maftools</code>' <code>plotSignatures()</code> default.</li>
+<li><code>ignoreChr</code> (Optional[list], default=None): Chromosomes to exclude before building the context matrix.</li>
+<li><code>pConstant</code> (Optional[float], default=None): Small positive pseudo-count added before NMF decomposition.</li>
 <li><code>figsize</code> (tuple, optional): Figure size. If not specified, automatically calculated as (12, 3 × n_signatures).  </li>
 <li><code>title</code> (str, default="Mutational Signature Profiles"): Figure title.  </li>
 </ul>
 <h3 id="cosine_similarity_heatmap"><code>cosine_similarity_heatmap()</code><a class="headerlink" href="#cosine_similarity_heatmap" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>ref_genome</code> (str): Path to reference genome FASTA file.  </li>
-<li><code>cosmic_path</code> (str): Path to COSMIC signature catalog (required).  </li>
+<li><code>cosmic_path</code> (Optional[str], default=None): Reference COSMIC signature catalog.<ul>
+<li><code>None</code> (default): Uses the official bundled COSMIC v3.4 SBS catalog (86 signatures).</li>
+<li><code>"maftools"</code>: Uses the bundled 67-signature <code>maftools</code> catalog.</li>
+<li>Custom path: Path to a custom reference catalog TSV.</li>
+</ul>
+</li>
 <li><code>n_signatures</code> (int, default=3): Number of signatures to extract.  </li>
 <li><code>prefix</code> (str, optional): Chromosome name prefix adjustment.  </li>
 <li><code>add</code> (bool, default=True): Whether to add or remove the prefix.  </li>
@@ -3252,7 +3373,7 @@ Each visualization function internally recomputes the trinucleotide context matr
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.instant", "navigation.tracking", "search.highlight", "search.suggest"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

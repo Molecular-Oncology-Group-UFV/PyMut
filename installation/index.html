@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -362,10 +362,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#option-2-full-installation-recommended-conda" class="md-nav__link">
+  <a href="#option-2-main-environment-conda" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Option 2: Full Installation (Recommended - Conda)
+        Option 2: Main environment (Conda)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vep-annotation-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VEP annotation environment
       
     </span>
   </a>
@@ -1009,6 +1020,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../api/Analysis%20Methods/smg_detection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SMG Detection (OncodriveCLUSTL)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../api/Analysis%20Methods/pfam_domains/" class="md-nav__link">
         
   
@@ -1045,10 +1084,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_4" >
         
           
-          <label class="md-nav__link" for="__nav_3_6_3" id="__nav_3_6_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_6_4" id="__nav_3_6_4_label" tabindex="0">
             
   
   
@@ -1066,8 +1105,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_6_3">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1629,6 +1668,62 @@
     
   
     Somatic Interactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/Visualization/tcga_compare/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TCGA Cohort Comparison
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/Visualization/pfam_plots/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pfam Domain Visualizations
   
 
     
@@ -2349,7 +2444,7 @@
   <span class="md-ellipsis">
     
   
-    PFAM Annotation Module
+    Pfam Annotation and Domain Analysis
   
 
     
@@ -2639,10 +2734,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#option-2-full-installation-recommended-conda" class="md-nav__link">
+  <a href="#option-2-main-environment-conda" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Option 2: Full Installation (Recommended - Conda)
+        Option 2: Main environment (Conda)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vep-annotation-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VEP annotation environment
       
     </span>
   </a>
@@ -2673,30 +2779,29 @@
 <h3 id="option-1-basic-installation-pip">Option 1: Basic Installation (pip)<a class="headerlink" href="#option-1-basic-installation-pip" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>PyMut-Library
 </code></pre></div>
-<p><strong>Note</strong>: The pip installation provides core functionality for mutation data visualization, but some advanced features may be limited as certain bioinformatics tools are not available through PyPI.
-https://raw.githubusercontent.com/Molecular-Oncology-Group-UFV/PyMut/main/environment.yml</p>
-<h3 id="option-2-full-installation-recommended-conda">Option 2: Full Installation (Recommended - Conda)<a class="headerlink" href="#option-2-full-installation-recommended-conda" title="Permanent link">&para;</a></h3>
-<p>For complete functionality including all bioinformatics tools, use the conda environment:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># 0) Descargar el environment.yml (elige curl o wget)</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/Molecular-Oncology-Group-UFV/PyMut/main/environment.yml<span class="w"> </span>-o<span class="w"> </span>environment.yml
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># ó:</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># wget -O environment.yml curl -fsSL https://raw.githubusercontent.com/Molecular-Oncology-Group-UFV/PyMut/main/environment.yml -o environment.yml</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1"># 1) crear el entorno (añade tus binarios al environment.yml)</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml
+<p><strong>Note</strong>: The pip installation provides core functionality for mutation data visualization, but some advanced features may be limited as certain bioinformatics tools are not available through PyPI.</p>
+<h3 id="option-2-main-environment-conda">Option 2: Main environment (Conda)<a class="headerlink" href="#option-2-main-environment-conda" title="Permanent link">&para;</a></h3>
+<p>The main environment is defined in <code>PyMut_env.yml</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Download the environment file</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/Molecular-Oncology-Group-UFV/PyMut/main/PyMut_env.yml<span class="w"> </span>-o<span class="w"> </span>PyMut_env.yml
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># or: wget -O PyMut_env.yml https://raw.githubusercontent.com/Molecular-Oncology-Group-UFV/PyMut/main/PyMut_env.yml</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># Create and activate the main environment</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>PyMut_env.yml
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>conda<span class="w"> </span>activate<span class="w"> </span>PyMut_env
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1"># 2) activar el entorno</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>conda<span class="w"> </span>activate<span class="w"> </span>NOMBRE-DEL-ENTORNO
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="c1"># 3) instalar tu librería desde PyPI en ese entorno</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>pip<span class="w"> </span>install<span class="w"> </span>PyMut-Library
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1"># Install pyMut from PyPI in this environment</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>PyMut-Library
 </code></pre></div>
-<p>The conda environment includes essential bioinformatics tools:
-- <strong>bcftools</strong>: VCF/BCF file manipulation
-- <strong>ensembl-vep</strong>: Variant Effect Predictor
-- <strong>htslib</strong>: High-throughput sequencing data processing
-- <strong>tabix</strong>: Generic indexer for TAB-delimited genome position files</p>
-<p>These tools enable advanced genomic data processing capabilities that are not available with pip-only installation.</p>
+<p>This environment includes <code>bcftools</code>, <code>htslib</code>, and <code>tabix</code> for workflows that use those command-line tools. It does not include Ensembl VEP.</p>
+<h3 id="vep-annotation-environment">VEP annotation environment<a class="headerlink" href="#vep-annotation-environment" title="Permanent link">&para;</a></h3>
+<p>Because of dependency conflicts, run pyMut's VEP annotation functions in the separate <code>pyMut_vep</code> environment:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/Molecular-Oncology-Group-UFV/PyMut/main/pyMut_vep.yml<span class="w"> </span>-o<span class="w"> </span>pyMut_vep.yml
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>pyMut_vep.yml
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>conda<span class="w"> </span>activate<span class="w"> </span>pyMut_vep
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>PyMut-Library
+</code></pre></div>
+<p>Keep <code>pyMut_vep</code> active while running VEP annotation; use <code>conda activate PyMut_env</code> to return to the main environment.</p>
 
 
 
@@ -2753,7 +2858,7 @@ https://raw.githubusercontent.com/Molecular-Oncology-Group-UFV/PyMut/main/enviro
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "navigation.instant", "navigation.tracking", "search.highlight", "search.suggest"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -940,6 +940,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../api/Analysis%20Methods/smg_detection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SMG Detection (OncodriveCLUSTL)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../api/Analysis%20Methods/pfam_domains/" class="md-nav__link">
         
   
@@ -976,10 +1004,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_4" >
         
           
-          <label class="md-nav__link" for="__nav_3_6_3" id="__nav_3_6_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_6_4" id="__nav_3_6_4_label" tabindex="0">
             
   
   
@@ -997,8 +1025,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_6_3">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1560,6 +1588,62 @@
     
   
     Somatic Interactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/Visualization/tcga_compare/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TCGA Cohort Comparison
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/Visualization/pfam_plots/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pfam Domain Visualizations
   
 
     
@@ -2375,7 +2459,7 @@
   <span class="md-ellipsis">
     
   
-    PFAM Annotation Module
+    Pfam Annotation and Domain Analysis
   
 
     
@@ -3553,9 +3637,21 @@ print(f"Unique samples: {py_mut.data['Tumor_Sample_Barcode'].nunique()}")
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>2025-08-01 02:03:35,885 | INFO | pyMut.input | Starting MAF reading: ../../../src/pyMut/data/examples/MAF/tcga_laml.maf.gz
-2025-08-01 02:03:35,886 | INFO | pyMut.input | Loading from cache: ../../../src/pyMut/data/examples/MAF/.pymut_cache/tcga_laml.maf_8bfbda65c4b23428.parquet
-2025-08-01 02:03:35,911 | INFO | pyMut.input | Cache loaded successfully in 0.03 seconds
+<pre>2026-10-13 14:29:22,838 | INFO | pyMut.input | Starting MAF reading: ../../../src/pyMut/data/examples/MAF/tcga_laml.maf.gz
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:29:22,841 | INFO | pyMut.input | Loading from cache: ../../../src/pyMut/data/examples/MAF/.pymut_cache/tcga_laml.maf_8dc5feebdfe14cbc.parquet
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:29:22,960 | INFO | pyMut.input | Cache loaded successfully in 0.12 seconds
 </pre>
 </div>
 </div>
@@ -3714,9 +3810,27 @@ print(f"NOT highly expressed in LAML: {len(filtered_not.data)} variants")
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Original TCGA data: 2091 variants
-LAML expressed (&gt;5): 0 variants
-Multi-tissue expressed: 915 variants
-NOT highly expressed in LAML: 2091 variants
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>LAML expressed (&gt;5): 0 variants
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Multi-tissue expressed: 915 variants
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>NOT highly expressed in LAML: 2091 variants
 </pre>
 </div>
 </div>
@@ -3875,7 +3989,7 @@ Columns: ['Index', 'Gene_Symbol', 'Expressed_in_Any_Tissue', 'LAML_expressed', '
 <tr>
 <th>0</th>
 <td>0</td>
-<td>KIAA1529</td>
+<td>ABCA10</td>
 <td>False</td>
 <td>False</td>
 <td>5</td>
@@ -3887,7 +4001,7 @@ Columns: ['Index', 'Gene_Symbol', 'Expressed_in_Any_Tissue', 'LAML_expressed', '
 <tr>
 <th>1</th>
 <td>1</td>
-<td>KIAA1529</td>
+<td>ABCA4</td>
 <td>False</td>
 <td>False</td>
 <td>5</td>
@@ -3899,19 +4013,19 @@ Columns: ['Index', 'Gene_Symbol', 'Expressed_in_Any_Tissue', 'LAML_expressed', '
 <tr>
 <th>2</th>
 <td>2</td>
-<td>TBC1D2</td>
-<td>True</td>
+<td>ABCB11</td>
+<td>False</td>
 <td>False</td>
 <td>5</td>
-<td>True</td>
+<td>False</td>
 <td>3</td>
-<td>True</td>
+<td>False</td>
 <td>4</td>
 </tr>
 <tr>
 <th>3</th>
 <td>3</td>
-<td>LPPR1</td>
+<td>ABCC11</td>
 <td>False</td>
 <td>False</td>
 <td>5</td>
@@ -3923,13 +4037,13 @@ Columns: ['Index', 'Gene_Symbol', 'Expressed_in_Any_Tissue', 'LAML_expressed', '
 <tr>
 <th>4</th>
 <td>4</td>
-<td>BAAT</td>
-<td>False</td>
+<td>ABCC3</td>
+<td>True</td>
 <td>False</td>
 <td>5</td>
 <td>False</td>
 <td>3</td>
-<td>False</td>
+<td>True</td>
 <td>4</td>
 </tr>
 <tr>
@@ -3947,19 +4061,19 @@ Columns: ['Index', 'Gene_Symbol', 'Expressed_in_Any_Tissue', 'LAML_expressed', '
 <tr>
 <th>2086</th>
 <td>2086</td>
-<td>FRAS1</td>
-<td>False</td>
+<td>TCEAL3</td>
+<td>True</td>
 <td>False</td>
 <td>5</td>
-<td>False</td>
+<td>True</td>
 <td>3</td>
-<td>False</td>
+<td>True</td>
 <td>4</td>
 </tr>
 <tr>
 <th>2087</th>
 <td>2087</td>
-<td>GPR78</td>
+<td>TET2</td>
 <td>False</td>
 <td>False</td>
 <td>5</td>
@@ -3971,7 +4085,7 @@ Columns: ['Index', 'Gene_Symbol', 'Expressed_in_Any_Tissue', 'LAML_expressed', '
 <tr>
 <th>2088</th>
 <td>2088</td>
-<td>MEPE</td>
+<td>U2AF1</td>
 <td>False</td>
 <td>False</td>
 <td>5</td>
@@ -3983,19 +4097,19 @@ Columns: ['Index', 'Gene_Symbol', 'Expressed_in_Any_Tissue', 'LAML_expressed', '
 <tr>
 <th>2089</th>
 <td>2089</td>
-<td>RAP1GDS1</td>
-<td>True</td>
+<td>U2AF1</td>
+<td>False</td>
 <td>False</td>
 <td>5</td>
-<td>True</td>
+<td>False</td>
 <td>3</td>
-<td>True</td>
+<td>False</td>
 <td>4</td>
 </tr>
 <tr>
 <th>2090</th>
 <td>2090</td>
-<td>SLC2A9</td>
+<td>WT1</td>
 <td>False</td>
 <td>False</td>
 <td>5</td>
@@ -4139,7 +4253,7 @@ Columns: ['Index', 'Gene_Symbol', 'Expressed_in_Any_Tissue', 'LAML_expressed', '
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.instant", "navigation.tracking", "search.highlight", "search.suggest"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

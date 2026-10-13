@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -942,6 +942,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../Analysis%20Methods/smg_detection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SMG Detection (OncodriveCLUSTL)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../Analysis%20Methods/pfam_domains/" class="md-nav__link">
         
   
@@ -978,10 +1006,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_4" >
         
           
-          <label class="md-nav__link" for="__nav_3_6_3" id="__nav_3_6_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_6_4" id="__nav_3_6_4_label" tabindex="0">
             
   
   
@@ -999,8 +1027,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_6_3">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1741,6 +1769,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../tcga_compare/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TCGA Cohort Comparison
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pfam_plots/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pfam Domain Visualizations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../comut_plot/" class="md-nav__link">
         
   
@@ -2441,7 +2525,7 @@
   <span class="md-ellipsis">
     
   
-    PFAM Annotation Module
+    Pfam Annotation and Domain Analysis
   
 
     
@@ -2864,6 +2948,8 @@
 <li><code>title</code>: Main title for the summary plot. Default is <code>"Mutation Summary"</code>.  </li>
 <li><code>max_samples</code>: Maximum number of samples to display in the "Variants per sample" panel. If None, all samples are shown. Default is <code>200</code>.  </li>
 <li><code>top_genes_count</code>: Number of top genes to display in the "Top mutated genes" panel. Default is <code>10</code>.  </li>
+<li><code>include_silent</code>: Boolean flag indicating whether to include silent (synonymous) mutations and non-coding variants across the dashboard panels. Default is <code>False</code> (matching <code>maftools</code>' non-synonymous filtering behavior <code>vc_nonSyn</code>). If set to <code>True</code>, all variants including <code>Silent</code>, synonymous, intronic, and non-coding alterations are retained and displayed.  </li>
+<li><code>non_syn_classifications</code>: Optional set of string variant classifications to treat as non-silent when <code>include_silent=False</code>. If None, pyMut uses standard non-synonymous categories (Missense_Mutation, Nonsense_Mutation, Frame_Shift_Del, Frame_Shift_Ins, In_Frame_Del, In_Frame_Ins, Splice_Site, etc.). Ignored when <code>include_silent=True</code>.  </li>
 </ul>
 <h2 id="input-data-formats">Input data formats<a class="headerlink" href="#input-data-formats" title="Permanent link">&para;</a></h2>
 <p>The function automatically detects and supports two input formats:</p>
@@ -2992,7 +3078,7 @@
 </li>
 </ol>
 <p><strong>Important note:</strong> In the <code>summary_plot()</code> dashboard, this panel always uses <code>mode='variants'</code>. The mode parameter is only available when calling the standalone <code>top_mutated_genes_plot()</code> function.</p>
-<p><strong>Note:</strong> By default, this panel includes silent (synonymous) mutations to match maftools behavior. Set <code>include_silent=False</code> to exclude them.</p>
+<p><strong>Note:</strong> By default, <code>top_mutated_genes_plot()</code> excludes silent (synonymous) mutations and non-coding variants (<code>include_silent=False</code>), aligning with <code>maftools</code> non-synonymous filtering conventions. Set <code>include_silent=True</code> if you wish to analyze the complete set of variants including synonymous alterations.</p>
 <p>This panel highlights recurrently mutated genes and reveals which types of mutations they tend to carry.</p>
 <p><strong>Parameters (standalone function only):</strong></p>
 <ul>
@@ -3003,7 +3089,8 @@
 <li><code>gene_column</code>: Column containing gene symbols. Default: <code>"Hugo_Symbol"</code></li>
 <li><code>sample_column</code>: Column containing sample identifiers. Default: <code>"Tumor_Sample_Barcode"</code></li>
 <li><code>count</code>: Number of top genes to display. Default: <code>10</code></li>
-<li><code>include_silent</code>: Whether to include silent/synonymous and non-coding variants. Default: <code>True</code></li>
+<li><code>include_silent</code>: Whether to include silent/synonymous and non-coding variants. Default: <code>False</code> (in earlier versions this defaulted to True; it is now False to match <code>maftools</code> defaults).</li>
+<li><code>non_syn_classifications</code>: Optional custom set of non-synonymous variant classifications to use when <code>include_silent=False</code>.</li>
 </ul>
 <p>Required data: <code>Hugo_Symbol</code>, <code>Tumor_Sample_Barcode</code> (in long format) or sample columns (in wide format), and <code>Variant_Classification</code>.</p>
 <hr />
@@ -3013,9 +3100,9 @@
 <li>Panels 1–3 describe what kinds of variants exist in the cohort (functional consequence, structural type, and base‑change patterns)  </li>
 <li><strong>Panels 1–2</strong> exclude silent mutations by default to focus on protein-altering variants</li>
 <li><strong>Panel 3</strong> includes silent mutations by default (important for mutational signature analysis) and normalizes SNVs to pyrimidine context</li>
-<li>Panel 4 shows how many variants each sample carries and how those variants are distributed across classifications (excludes silent mutations by default)</li>
-<li>Panel 5 summarizes per‑sample distributions for each classification type (excludes silent mutations by default)</li>
-<li>Panel 6 highlights which genes are recurrently mutated and what types of mutations they harbor (includes silent mutations by default to match maftools behavior)</li>
+<li>Panel 4 shows how many variants each sample carries and how those variants are distributed across classifications (excludes silent mutations by default, controlled by <code>include_silent=False</code>)</li>
+<li>Panel 5 summarizes per‑sample distributions for each classification type (excludes silent mutations by default, controlled by <code>include_silent=False</code>)</li>
+<li>Panel 6 highlights which genes are recurrently mutated and what types of mutations they harbor (excludes silent mutations by default, controlled by <code>include_silent=False</code>, matching maftools default non-synonymous filtering)</li>
 </ul>
 <p>Together, these six views provide a rapid assessment of the input data and a compact overview of the mutational landscape.</p>
 
@@ -3074,7 +3161,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.instant", "navigation.tracking", "search.highlight", "search.suggest"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

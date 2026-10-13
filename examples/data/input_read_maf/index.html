@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -940,6 +940,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../api/Analysis%20Methods/smg_detection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SMG Detection (OncodriveCLUSTL)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../api/Analysis%20Methods/pfam_domains/" class="md-nav__link">
         
   
@@ -976,10 +1004,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_4" >
         
           
-          <label class="md-nav__link" for="__nav_3_6_3" id="__nav_3_6_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_6_4" id="__nav_3_6_4_label" tabindex="0">
             
   
   
@@ -997,8 +1025,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_6_3">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1560,6 +1588,62 @@
     
   
     Somatic Interactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/Visualization/tcga_compare/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TCGA Cohort Comparison
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/Visualization/pfam_plots/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pfam Domain Visualizations
   
 
     
@@ -2342,7 +2426,7 @@
   <span class="md-ellipsis">
     
   
-    PFAM Annotation Module
+    Pfam Annotation and Domain Analysis
   
 
     
@@ -3451,9 +3535,21 @@ py_mut = read_maf(path=maf_path, assembly="37")
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>2025-08-01 01:44:49,103 | INFO | pyMut.input | Starting MAF reading: ../../../src/pyMut/data/examples/MAF/tcga_laml.maf.gz
-2025-08-01 01:44:49,105 | INFO | pyMut.input | Loading from cache: ../../../src/pyMut/data/examples/MAF/.pymut_cache/tcga_laml.maf_8bfbda65c4b23428.parquet
-2025-08-01 01:44:49,131 | INFO | pyMut.input | Cache loaded successfully in 0.03 seconds
+<pre>2026-10-13 14:25:54,165 | INFO | pyMut.input | Starting MAF reading: ../../../src/pyMut/data/examples/MAF/tcga_laml.maf.gz
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:25:54,168 | INFO | pyMut.input | Loading from cache: ../../../src/pyMut/data/examples/MAF/.pymut_cache/tcga_laml.maf_8dc5feebdfe14cbc.parquet
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>2026-10-13 14:25:54,272 | INFO | pyMut.input | Cache loaded successfully in 0.11 seconds
 </pre>
 </div>
 </div>
@@ -3540,123 +3636,123 @@ py_mut.head()
 <tbody>
 <tr>
 <th>0</th>
-<td>chr9</td>
-<td>100077177</td>
+<td>chr17</td>
+<td>67170917</td>
 <td>.</td>
 <td>T</td>
 <td>C</td>
 <td>.</td>
 <td>.</td>
+<td>T|C</td>
 <td>T|T</td>
 <td>T|T</td>
-<td>T|T</td>
+<td>...</td>
+<td>+</td>
+<td>SPLICE_SITE</td>
+<td>SNP</td>
+<td>T</td>
+<td>T</td>
+<td>C</td>
+<td>TCGA-AB-2988</td>
+<td>p.K960R</td>
+<td>45.66</td>
+<td>NM_080282.3</td>
+</tr>
+<tr>
+<th>1</th>
+<td>chr1</td>
+<td>94490594</td>
+<td>.</td>
+<td>C</td>
+<td>T</td>
+<td>.</td>
+<td>.</td>
+<td>C|C</td>
+<td>C|T</td>
+<td>C|C</td>
+<td>...</td>
+<td>+</td>
+<td>MISSENSE_MUTATION</td>
+<td>SNP</td>
+<td>C</td>
+<td>C</td>
+<td>T</td>
+<td>TCGA-AB-2869</td>
+<td>p.R1517H</td>
+<td>38.12</td>
+<td>NM_000350.2</td>
+</tr>
+<tr>
+<th>2</th>
+<td>chr2</td>
+<td>169780250</td>
+<td>.</td>
+<td>G</td>
+<td>A</td>
+<td>.</td>
+<td>.</td>
+<td>G|G</td>
+<td>G|G</td>
+<td>G|A</td>
+<td>...</td>
+<td>+</td>
+<td>MISSENSE_MUTATION</td>
+<td>SNP</td>
+<td>G</td>
+<td>G</td>
+<td>A</td>
+<td>TCGA-AB-3009</td>
+<td>p.A1283V</td>
+<td>46.972177</td>
+<td>NM_003742.2</td>
+</tr>
+<tr>
+<th>3</th>
+<td>chr16</td>
+<td>48244997</td>
+<td>.</td>
+<td>G</td>
+<td>A</td>
+<td>.</td>
+<td>.</td>
+<td>G|G</td>
+<td>G|G</td>
+<td>G|G</td>
 <td>...</td>
 <td>+</td>
 <td>SILENT</td>
 <td>SNP</td>
-<td>T</td>
-<td>T</td>
-<td>C</td>
-<td>TCGA-AB-2886</td>
-<td>p.T431T</td>
-<td>9.76</td>
-<td>NM_020893.1</td>
-</tr>
-<tr>
-<th>1</th>
-<td>chr9</td>
-<td>100085148</td>
-<td>.</td>
-<td>G</td>
-<td>A</td>
-<td>.</td>
-<td>.</td>
-<td>G|G</td>
-<td>G|G</td>
-<td>G|G</td>
-<td>...</td>
-<td>+</td>
-<td>MISSENSE_MUTATION</td>
-<td>SNP</td>
 <td>G</td>
 <td>G</td>
 <td>A</td>
-<td>TCGA-AB-2917</td>
-<td>p.R581H</td>
-<td>18.4</td>
-<td>NM_020893.1</td>
-</tr>
-<tr>
-<th>2</th>
-<td>chr9</td>
-<td>100971322</td>
-<td>.</td>
-<td>A</td>
-<td>C</td>
-<td>.</td>
-<td>.</td>
-<td>A|A</td>
-<td>A|A</td>
-<td>A|A</td>
-<td>...</td>
-<td>+</td>
-<td>MISSENSE_MUTATION</td>
-<td>SNP</td>
-<td>A</td>
-<td>A</td>
-<td>C</td>
-<td>TCGA-AB-2841</td>
-<td>p.L593R</td>
-<td>45.83</td>
-<td>NM_018421.3</td>
-</tr>
-<tr>
-<th>3</th>
-<td>chr9</td>
-<td>104086335</td>
-<td>.</td>
-<td>C</td>
-<td>T</td>
-<td>.</td>
-<td>.</td>
-<td>C|C</td>
-<td>C|C</td>
-<td>C|C</td>
-<td>...</td>
-<td>+</td>
-<td>MISSENSE_MUTATION</td>
-<td>SNP</td>
-<td>C</td>
-<td>C</td>
-<td>T</td>
-<td>TCGA-AB-2877</td>
-<td>p.T325I</td>
-<td>37.12</td>
-<td>NM_017753.2</td>
+<td>TCGA-AB-2830</td>
+<td>p.I490I</td>
+<td>34.27</td>
+<td>NM_032583.3</td>
 </tr>
 <tr>
 <th>4</th>
-<td>chr9</td>
-<td>104124840</td>
+<td>chr17</td>
+<td>48760974</td>
 <td>.</td>
-<td>G</td>
-<td>A</td>
+<td>C</td>
+<td>T</td>
 <td>.</td>
 <td>.</td>
-<td>G|A</td>
-<td>G|G</td>
-<td>G|G</td>
+<td>C|C</td>
+<td>C|C</td>
+<td>C|C</td>
 <td>...</td>
 <td>+</td>
 <td>MISSENSE_MUTATION</td>
 <td>SNP</td>
-<td>G</td>
-<td>G</td>
-<td>A</td>
-<td>TCGA-AB-2988</td>
-<td>p.T376M</td>
-<td>48.35</td>
-<td>NM_001701.1</td>
+<td>C</td>
+<td>C</td>
+<td>T</td>
+<td>TCGA-AB-2887</td>
+<td>p.P1271S</td>
+<td>56.41</td>
+<td>NM_003786.1</td>
 </tr>
 </tbody>
 </table>
@@ -3731,7 +3827,7 @@ py_mut.head()
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.instant", "navigation.tracking", "search.highlight", "search.suggest"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

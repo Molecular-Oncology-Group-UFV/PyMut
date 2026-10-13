@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -942,6 +942,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../smg_detection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SMG Detection (OncodriveCLUSTL)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../pfam_domains/" class="md-nav__link">
         
   
@@ -978,10 +1006,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_4" >
         
           
-          <label class="md-nav__link" for="__nav_3_6_3" id="__nav_3_6_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_6_4" id="__nav_3_6_4_label" tabindex="0">
             
   
   
@@ -999,8 +1027,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_6_3">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1434,6 +1462,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#strategies-when-to-use-each" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strategies: When to Use Each
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#return-value" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1456,10 +1495,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#minimal-usage-example" class="md-nav__link">
+  <a href="#usage-examples" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Minimal usage example
+        Usage Examples
       
     </span>
   </a>
@@ -1690,6 +1729,62 @@
     
   
     Somatic Interactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Visualization/tcga_compare/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TCGA Cohort Comparison
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Visualization/pfam_plots/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pfam Domain Visualizations
   
 
     
@@ -2410,7 +2505,7 @@
   <span class="md-ellipsis">
     
   
-    PFAM Annotation Module
+    Pfam Annotation and Domain Analysis
   
 
     
@@ -2732,6 +2827,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#strategies-when-to-use-each" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strategies: When to Use Each
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#return-value" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2754,10 +2860,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#minimal-usage-example" class="md-nav__link">
+  <a href="#usage-examples" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Minimal usage example
+        Usage Examples
       
     </span>
   </a>
@@ -2793,9 +2899,14 @@
 
 <h3 id="annotate_pfam">annotate_pfam<a class="headerlink" href="#annotate_pfam" title="Permanent link">&para;</a></h3>
 <h4 id="short-description">Short description<a class="headerlink" href="#short-description" title="Permanent link">&para;</a></h4>
-<p>Annotate PyMutation data with PFAM domains using database annotation or VEP data extraction.</p>
+<p>Annotates a <code>PyMutation</code> dataset with Pfam protein domains using either a standard gene-symbol mapping strategy (<code>basic</code>, matching <code>maftools</code>) or a comprehensive multi-tier resolution strategy (<code>extended</code>, leveraging VEP-derived UniProt IDs and domain fields).</p>
 <h4 id="signature">Signature<a class="headerlink" href="#signature" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">annotate_pfam</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db_conn</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">duckdb</span><span class="o">.</span><span class="n">DuckDBPyConnection</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">aa_column</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;aa_pos&#39;</span><span class="p">,</span> <span class="n">auto_extract</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">prefer_database</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">annotate_pfam</span><span class="p">(</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="bp">self</span><span class="p">,</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">db_conn</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">duckdb</span><span class="o">.</span><span class="n">DuckDBPyConnection</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="o">*</span><span class="p">,</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">strategy</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"basic"</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PyMutation</span><span class="p">:</span>
 </code></pre></div>
 <h4 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h4>
 <table>
@@ -2812,40 +2923,61 @@
 <td><code>db_conn</code></td>
 <td><code>Optional[duckdb.DuckDBPyConnection]</code></td>
 <td>No</td>
-<td>DuckDB connection for PFAM database. If None, will create one automatically.</td>
+<td>DuckDB connection for querying the internal Pfam and UniProt reference tables. If <code>None</code> (default), a database connection is created and closed automatically.</td>
 </tr>
 <tr>
-<td><code>aa_column</code></td>
+<td><code>strategy</code></td>
 <td><code>str</code></td>
 <td>No</td>
-<td>Name of the column containing amino acid positions. Default is 'aa_pos'.</td>
-</tr>
-<tr>
-<td><code>auto_extract</code></td>
-<td><code>bool</code></td>
-<td>No</td>
-<td>If True, automatically extract uniprot/aa_pos from VEP data when missing. Default is True.</td>
-</tr>
-<tr>
-<td><code>prefer_database</code></td>
-<td><code>bool</code></td>
-<td>No</td>
-<td>If True, prefer database annotation over VEP parsing when both are available. Default is True.</td>
+<td>Annotation strategy: <code>"basic"</code> (default) or <code>"extended"</code>.</td>
 </tr>
 </tbody>
 </table>
+<h4 id="strategies-when-to-use-each">Strategies: When to Use Each<a class="headerlink" href="#strategies-when-to-use-each" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p><strong><code>strategy="basic"</code> (Default, maftools-equivalent)</strong>:</p>
+<ul>
+<li><strong>How it works</strong>: Maps variants using gene symbol (<code>Hugo_Symbol</code>) and amino-acid change / position (parsed from <code>Protein_Change</code>, <code>HGVSp_Short</code>, or <code>HGVSp</code>) against the bundled gene-to-Pfam table. Variants that cannot be resolved stay unmapped without fallback.</li>
+<li><strong>When to use</strong>: Ideal for any standard MAF or cohort data (such as raw TCGA MAF files) where Ensembl VEP annotations are not present. Requires only <code>Hugo_Symbol</code> and a standard protein change column.</li>
+<li><strong>Performance</strong>: Fast and deterministic; logs the total count and percentage of successfully mapped variants.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>strategy="extended"</code> (Multi-tier resolution)</strong>:</p>
+<ul>
+<li><strong>How it works</strong>: Executes a multi-tier cascade across all variants:<ol>
+<li><strong>1a &amp; 1b</strong>: Maps gene symbols and VEP-derived UniProt identifiers simultaneously, prioritizing UniProt-specific matches (1b) when both resolve a variant.</li>
+<li><strong>2</strong>: Cascades unresolved variants into explicit VEP domain annotation fields (such as <code>DOMAINS</code> containing Pfam accessions).</li>
+<li><strong>3</strong>: Falls back to loose text parsing for any remaining unmapped variants.</li>
+</ol>
+</li>
+<li><strong>When to use</strong>: Use when working with VEP-annotated MAF datasets (such as <code>tcga_laml_VEP_annotated.maf.gz</code>). Requires VEP annotation fields; raises <code>ValueError</code> if run on a non-VEP annotated dataset without UniProt/domain fields.</li>
+<li><strong>Performance</strong>: Provides maximal domain coverage and logs a detailed breakdown of variants resolved at each tier (1a, 1b, 2, and 3).</li>
+</ul>
+</li>
+</ul>
 <h4 id="return-value">Return value<a class="headerlink" href="#return-value" title="Permanent link">&para;</a></h4>
-<p>Returns a new PyMutation object with PFAM domain annotations added as additional columns. Can return <code>None</code> if annotation fails.</p>
+<p>Returns a new <code>PyMutation</code> object containing the Pfam domain annotations added as columns (e.g. <code>PfamDomain</code>, <code>pfam_id</code>, <code>pfam_name</code>).</p>
 <h4 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">&para;</a></h4>
 <ul>
-<li><code>PfamAnnotationError</code>: if database connection fails or annotation process encounters errors.</li>
-<li><code>ValueError</code>: if required columns are missing or data format is invalid.</li>
+<li><code>ValueError</code>: If <code>strategy</code> is not <code>"basic"</code> or <code>"extended"</code>, or if <code>strategy="extended"</code> is requested on a non-VEP annotated dataset.</li>
+<li><code>PfamAnnotationError</code>: If database connection fails or required columns cannot be detected.</li>
 </ul>
-<h4 id="minimal-usage-example">Minimal usage example<a class="headerlink" href="#minimal-usage-example" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span><span class="w"> </span><span class="nn">pyMut.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">read_maf</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="o">&gt;&gt;&gt;</span> <span class="n">py_mut</span> <span class="o">=</span> <span class="n">read_maf</span><span class="p">(</span><span class="s2">&quot;mutations_vep_annotated.maf&quot;</span><span class="p">)</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="o">&gt;&gt;&gt;</span> <span class="n">annotated</span> <span class="o">=</span> <span class="n">py_mut</span><span class="o">.</span><span class="n">annotate_pfam</span><span class="p">()</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">annotated</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<h4 id="usage-examples">Usage Examples<a class="headerlink" href="#usage-examples" title="Permanent link">&para;</a></h4>
+<p><strong>Basic strategy (standard MAF):</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pyMut</span><span class="w"> </span><span class="kn">import</span> <span class="n">read_maf</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">py_mut</span> <span class="o">=</span> <span class="n">read_maf</span><span class="p">(</span><span class="s2">"src/pyMut/data/examples/MAF/tcga_laml.maf.gz"</span><span class="p">,</span> <span class="n">assembly</span><span class="o">=</span><span class="s2">"37"</span><span class="p">)</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">annotated_basic</span> <span class="o">=</span> <span class="n">py_mut</span><span class="o">.</span><span class="n">annotate_pfam</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">"basic"</span><span class="p">)</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">annotated_basic</span><span class="o">.</span><span class="n">data</span><span class="p">[[</span><span class="s2">"Hugo_Symbol"</span><span class="p">,</span> <span class="s2">"PfamDomain"</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</code></pre></div>
+<p><strong>Extended strategy (VEP-annotated MAF):</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pyMut</span><span class="w"> </span><span class="kn">import</span> <span class="n">read_maf</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">py_mut_vep</span> <span class="o">=</span> <span class="n">read_maf</span><span class="p">(</span><span class="s2">"src/pyMut/data/examples/MAF/tcga_laml_VEP_annotated.maf.gz"</span><span class="p">,</span> <span class="n">assembly</span><span class="o">=</span><span class="s2">"37"</span><span class="p">)</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">annotated_extended</span> <span class="o">=</span> <span class="n">py_mut_vep</span><span class="o">.</span><span class="n">annotate_pfam</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">"extended"</span><span class="p">)</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">annotated_extended</span><span class="o">.</span><span class="n">data</span><span class="p">[[</span><span class="s2">"Hugo_Symbol"</span><span class="p">,</span> <span class="s2">"PfamDomain"</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </code></pre></div>
 
 
@@ -2903,7 +3035,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.instant", "navigation.tracking", "search.highlight", "search.suggest"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>
