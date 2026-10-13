@@ -90,6 +90,7 @@ nav:
           - Tissue Expression Filter: api/Filters/tissue_expression_filter.md
       - Analysis Methods:
           - TMB Analysis: api/Analysis Methods/tmb_analysis.md
+          - SMG Detection (OncodriveCLUSTL): api/Analysis Methods/smg_detection.md
           - Pfam Domains Annotation: api/Analysis Methods/pfam_domains.md
           - Mutational Signatures:
               - Matriz Trinucleotide: api/Analysis Methods/Mutational Signatures/trinucleotideMatrix.md
@@ -109,6 +110,8 @@ nav:
           - Mutational Signature Analysis: api/Visualization/mutational_signature_analysis.md
           - Lollipop Plot: api/Visualization/lollipop_plot.md
           - Somatic Interactions: api/Visualization/somatic_interactions_plot.md
+          - TCGA Cohort Comparison: api/Visualization/tcga_compare.md
+          - Pfam Domain Visualizations: api/Visualization/pfam_plots.md
           - CoMut Plot: api/Visualization/comut_plot.md 
 
   - Example Usage:

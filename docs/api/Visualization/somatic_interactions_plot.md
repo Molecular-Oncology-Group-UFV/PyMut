@@ -112,8 +112,37 @@ This legend allows interpretation of both direction (which side of the scale) an
 - `title` (str or None, default: None): Custom plot title. If None, auto-generated as "Somatic Interactions (Top N Mutated Genes)".  
 - `vmin` (float, default: -3.0): Minimum value for color scale. Controls saturation for mutual exclusivity (negative values).  
 - `vmax` (float, default: 3.0): Maximum value for color scale. Controls saturation for co-occurrence (positive values).  
-- `pvalue` (tuple, default: (0.05, 0.1)): Tuple of two p-value thresholds for significance markers. The smaller value (typically 0.05) controls asterisks (*), the larger value (typically 0.1) controls dots (·). Order does not matter.  
+- `pvalue` (tuple, default: (0.05, 0.1)): Tuple of two p-value thresholds for significance markers. The smaller value (typically 0.05) controls asterisks (*), the larger value (typically 0.1) controls dots (·). Applied to whichever p-value metric is shown (raw or FDR-corrected). Order does not matter.  
 - `show_counts` (bool, default: True): Whether to display sample counts next to gene names in format "GENE [count]" (e.g., "TP53 [52]").  
+- `fdr_correction` (bool, default: False): If `False` (default), heatmap colors and significance markers are based on the raw Fisher's exact test p-values. If `True`, both the colors and significance markers reflect False Discovery Rate (FDR) adjusted p-values, computed across the $C(top\_genes, 2)$ pairwise tests performed. The colorbar label and legend automatically update to indicate whether raw or FDR-adjusted values are shown.
+- `fdr_method` (str, default: "fdr_bh"): Multiple-testing correction method forwarded to `statsmodels.stats.multitest.multipletests` (e.g., `"fdr_bh"` for Benjamini-Hochberg, `"bonferroni"`, `"holm"`). Only evaluated when `fdr_correction=True`.
+
+## `somatic_interactions_table()`
+
+In addition to the visual heatmap, pyMut provides the companion function `somatic_interactions_table()` to obtain the underlying numerical statistics in tabular form (`pd.DataFrame`).
+
+```python
+table = py_mut.somatic_interactions_table(
+    top_genes=25,
+    gene_column="Hugo_Symbol",
+    sample_column="Tumor_Sample_Barcode",
+    fdr_method="fdr_bh"
+)
+```
+
+### Table Output Columns
+
+- `gene1`, `gene2`: The pair of genes being tested.
+- `n_both`: Number of samples mutated in both genes.
+- `n_gene1_only`: Number of samples mutated only in gene 1.
+- `n_gene2_only`: Number of samples mutated only in gene 2.
+- `n_neither`: Number of samples wild-type for both genes.
+- `odds_ratio`: Odds ratio from Fisher's exact test ($>1$ indicates co-occurrence, $<1$ indicates mutual exclusivity).
+- `p_value`: Raw p-value from Fisher's exact test.
+- `fdr`: Adjusted p-value using the specified multiple testing correction method (e.g., Benjamini-Hochberg).
+- `event`: Classification string (`"Co-occurrence"`, `"Mutually Exclusive"`, or `"None"`).
+
+Because `somatic_interactions_table()` uses the exact same filtering, sample population, and gene selection criteria as `somatic_interactions()`, the tabular values directly reflect what is displayed in the plot.
 
 ## Interpreting the Plot
 

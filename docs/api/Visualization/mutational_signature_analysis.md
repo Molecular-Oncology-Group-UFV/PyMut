@@ -33,13 +33,19 @@ To generate mutational signature visualizations, you need:
       * Examples: `hs37d5.fa`, `hg38.fa`, `GRCh38.primary_assembly.genome.fa`
       * Used to extract the upstream and downstream bases for each SNV
 
-3. COSMIC Catalog (optional, for signature comparison):
-      * TSV format with 96 rows representing trinucleotide contexts
-      * First column: context labels following COSMIC v3.x convention
-      * Row order must match COSMIC standard to ensure alignment between panels A and B
-      * Subsequent columns: COSMIC signatures (e.g., "SBS1", "SBS2")
-      * Download from: https://cancer.sanger.ac.uk/signatures/
-      * Recommended files: `COSMIC_v3.4_SBS_GRCh37.txt` or `COSMIC_v3.4_SBS_GRCh38.txt`
+3. COSMIC Catalog and Aetiology:
+      * The `cosmic_path` parameter defines the reference catalog of single-base substitution (SBS) signatures. Supported values:
+          * `None` (default): Uses the official bundled COSMIC v3.4 SBS (GRCh37) reference catalog (86 signatures). No external file download or path configuration is required.
+          * `"maftools"`: Uses the bundled legacy 67-signature COSMIC catalog distributed with `maftools`, reproducing signature deconvolution and cosine similarity matching identical to R `maftools`.
+          * Custom path (`str`): File path to a user-provided TSV matrix containing 96 trinucleotide contexts in rows and reference signatures in columns.
+          * `False` (for `signature_bar_chart`): Explicitly disables COSMIC alignment, displaying raw NMF signature profiles without matching against COSMIC.
+      * The `aetiology_path` parameter (available in `signature_bar_chart`) defines the signature proposed etiology mapping:
+          * `None` (default): No etiology line is displayed; panel titles only report `"SBSx-like (cos=..)"`.
+          * `"maftools"`: Uses the bundled `maftools` SBS aetiology table (`maftools_SBS_aetiology.tsv`).
+          * Custom path (`str`): File path to a two-column TSV (`Signature`, `Aetiology`).
+      * The `exclude_artifacts` parameter (available in `signature_bar_chart`):
+          * `True` (default): Known sequencing and library preparation artifacts (SBS27, SBS43, SBS45–SBS60, SBS95, and any signature labeled with "artefact" or suffix "c") are excluded when matching extracted profiles against COSMIC.
+          * `False`: Allows matching against artifact signatures as well, matching `maftools`' `plotSignatures()` behavior.
 
 4. Number of signatures: Specified via the `n_signatures` parameter
       * Must be set manually based on your dataset characteristics
@@ -158,7 +164,10 @@ Parameters fall into three categories:
 ### `mutational_signature_analysis()`
 
 - `ref_genome` (str): Path to reference genome FASTA file. Required to extract trinucleotide contexts from variant positions in `self.data`.  
-- `cosmic_path` (str): Path to COSMIC signature catalog TSV file. Required for Panel B comparison and signature annotation.  
+- `cosmic_path` (Optional[str], default=None): Path or identifier for the COSMIC signature catalog.
+    - `None` (default): Automatically uses the bundled official COSMIC v3.4 SBS (GRCh37) catalog (86 signatures).
+    - `"maftools"`: Uses the bundled 67-signature catalog from `maftools`.
+    - Custom string path: Path to an external user-defined TSV catalog.
 - `n_signatures` (int, default=3): Number of mutational signatures to extract from the data.  
 - `prefix` (str, optional): Prefix to add or remove from chromosome names to match the reference genome. Use when chromosome naming differs between your variants and FASTA (e.g., 'chr').  
 - `add` (bool, default=True): If True, adds the prefix to chromosome names; if False, removes it.  
@@ -173,14 +182,28 @@ Parameters fall into three categories:
 
 - `ref_genome` (str): Path to reference genome FASTA file.  
 - `n_signatures` (int, default=3): Number of signatures to extract.  
-- `cosmic_path` (str, optional): Path to COSMIC catalog. If provided, signatures are reordered and renamed based on their best COSMIC match.  
+- `cosmic_path` (Optional[Union[str, bool]], default=None):
+    - `None` (default): Uses the bundled official COSMIC v3.4 catalog.
+    - `"maftools"`: Uses the bundled `maftools` catalog (67 signatures).
+    - Custom file path: Path to a custom catalog TSV.
+    - `False`: Skips COSMIC alignment entirely, displaying raw NMF signature profiles without matching.
+- `aetiology_path` (Optional[str], default=None):
+    - `None` (default): No proposed etiology line is added to panel titles.
+    - `"maftools"`: Uses the bundled `maftools` etiology catalog, adding a second line to each matched signature panel title (e.g., "Defective DNA mismatch repair").
+    - Custom file path: Path to a two-column TSV mapping `Signature` to `Aetiology`.
+- `exclude_artifacts` (bool, default=True): If `True` (default), artifact/sequencing-noise signatures (SBS27, SBS43, SBS45–60, SBS95, and signatures with 'artefact' or 'c') are filtered out when finding the best COSMIC match. Set to `False` to include them, matching `maftools`' `plotSignatures()` default.
+- `ignoreChr` (Optional[list], default=None): Chromosomes to exclude before building the context matrix.
+- `pConstant` (Optional[float], default=None): Small positive pseudo-count added before NMF decomposition.
 - `figsize` (tuple, optional): Figure size. If not specified, automatically calculated as (12, 3 × n_signatures).  
 - `title` (str, default="Mutational Signature Profiles"): Figure title.  
 
 ### `cosine_similarity_heatmap()`
 
 - `ref_genome` (str): Path to reference genome FASTA file.  
-- `cosmic_path` (str): Path to COSMIC signature catalog (required).  
+- `cosmic_path` (Optional[str], default=None): Reference COSMIC signature catalog.
+    - `None` (default): Uses the official bundled COSMIC v3.4 SBS catalog (86 signatures).
+    - `"maftools"`: Uses the bundled 67-signature `maftools` catalog.
+    - Custom path: Path to a custom reference catalog TSV.
 - `n_signatures` (int, default=3): Number of signatures to extract.  
 - `prefix` (str, optional): Chromosome name prefix adjustment.  
 - `add` (bool, default=True): Whether to add or remove the prefix.  

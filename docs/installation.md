@@ -7,31 +7,35 @@ pip install PyMut-Library
 ```
 
 **Note**: The pip installation provides core functionality for mutation data visualization, but some advanced features may be limited as certain bioinformatics tools are not available through PyPI.
-https://raw.githubusercontent.com/Molecular-Oncology-Group-UFV/PyMut/main/environment.yml
-### Option 2: Full Installation (Recommended - Conda)
 
-For complete functionality including all bioinformatics tools, use the conda environment:
+### Option 2: Main environment (Conda)
+
+The main environment is defined in `PyMut_env.yml`:
 
 ```bash
-# 0) Descargar el environment.yml (elige curl o wget)
-curl -fsSL https://raw.githubusercontent.com/Molecular-Oncology-Group-UFV/PyMut/main/environment.yml -o environment.yml
-# ó:
-# wget -O environment.yml curl -fsSL https://raw.githubusercontent.com/Molecular-Oncology-Group-UFV/PyMut/main/environment.yml -o environment.yml
+# Download the environment file
+curl -fsSL https://raw.githubusercontent.com/Molecular-Oncology-Group-UFV/PyMut/main/PyMut_env.yml -o PyMut_env.yml
+# or: wget -O PyMut_env.yml https://raw.githubusercontent.com/Molecular-Oncology-Group-UFV/PyMut/main/PyMut_env.yml
 
-# 1) crear el entorno (añade tus binarios al environment.yml)
-conda env create -f environment.yml
+# Create and activate the main environment
+conda env create -f PyMut_env.yml
+conda activate PyMut_env
 
-# 2) activar el entorno
-conda activate NOMBRE-DEL-ENTORNO
-
-# 3) instalar tu librería desde PyPI en ese entorno
-pip install PyMut-Library
+# Install pyMut from PyPI in this environment
+python -m pip install PyMut-Library
 ```
 
-The conda environment includes essential bioinformatics tools:
-- **bcftools**: VCF/BCF file manipulation
-- **ensembl-vep**: Variant Effect Predictor
-- **htslib**: High-throughput sequencing data processing
-- **tabix**: Generic indexer for TAB-delimited genome position files
+This environment includes `bcftools`, `htslib`, and `tabix` for workflows that use those command-line tools. It does not include Ensembl VEP.
 
-These tools enable advanced genomic data processing capabilities that are not available with pip-only installation.
+### VEP annotation environment
+
+Because of dependency conflicts, run pyMut's VEP annotation functions in the separate `pyMut_vep` environment:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Molecular-Oncology-Group-UFV/PyMut/main/pyMut_vep.yml -o pyMut_vep.yml
+conda env create -f pyMut_vep.yml
+conda activate pyMut_vep
+python -m pip install PyMut-Library
+```
+
+Keep `pyMut_vep` active while running VEP annotation; use `conda activate PyMut_env` to return to the main environment.

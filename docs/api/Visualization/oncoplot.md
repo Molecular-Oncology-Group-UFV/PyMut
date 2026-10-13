@@ -167,6 +167,8 @@ Maps variant classifications to colors:
 - `alt_column` (str, default: "ALT"): Column name containing alternative alleles.
 - `top_genes_count` (int, default: 10): Number of top mutated genes to display. Only genes with at least one mutation are included.
 - `max_samples` (int, default: 180): Maximum number of samples to display. When the cohort exceeds this limit, only the first N samples after sorting are shown.
+- `include_silent` (bool, default: False): Whether to include silent/synonymous mutations and non-coding alterations. If `False` (default, matching `maftools` non-synonymous filtering behavior), silent mutations are filtered out before gene ranking and matrix construction. If `True`, all variant classifications (including `Silent`) are preserved.
+- `non_syn_classifications` (Optional[Set[str]], default: None): Explicit set of variant classifications to treat as non-silent when `include_silent=False`. If None, uses standard non-synonymous classifications. Ignored when `include_silent=True`.
 
 ## Usage
 
@@ -180,7 +182,8 @@ fig = py_mut.oncoplot(
     ref_column="REF",
     alt_column="ALT",
     top_genes_count=20,
-    max_samples=100
+    max_samples=100,
+    include_silent=False
 )
 fig.savefig('oncoplot.png', dpi=300)
 ```

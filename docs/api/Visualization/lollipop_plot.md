@@ -120,7 +120,11 @@ Optional:
 - `domains_source` (str): Source for domain annotations. Use "pfam" to query PFAM domains, or None to skip domain visualization. Default: "pfam"  
 - `custom_domains` (List[Dict]): Custom domain definitions that override automatic domain resolution. Format: [{"start": 100, "end": 200, "name": "Kinase"}, ...]. Recommended for reproducible figures. Default: None  
 - `count_by` (str): How to count mutations. Use "mutations" to count all mutation events, or "samples" to count unique samples (deduplicates). Default: "mutations"  
-- `label_top_n` (int): Number of top mutated positions to label. Default: 20  
+- `label_top_n` (int): Number of top mutated positions to label. Default: 20. Ignored when `label_pos` is provided.  
+- `label_pos` (Optional[Union[int, List[int], str]]): Specifies exact protein positions to label, mirroring `maftools`' `labelPos` argument:
+    - `None` (default): Labels the top `label_top_n` most frequently mutated positions.
+    - `"all"`: Labels every mutated position along the protein.
+    - `int` or `List[int]`: Labels only the specified amino acid positions (e.g., `882` or `[132, 882]`).
 - `show_lollipops` (bool): If True (default), show mutation lollipops; if False, show only protein domains. Default: True  
 - `figsize` (Tuple[int, int]): Figure size as (width, height) in inches. Default: (16, 6)  
 - `title` (str): Custom plot title. Default: None (auto-generated)  

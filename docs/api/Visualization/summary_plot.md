@@ -16,6 +16,8 @@ The `summary_plot()` function accepts the following parameters:
 - `title`: Main title for the summary plot. Default is `"Mutation Summary"`.  
 - `max_samples`: Maximum number of samples to display in the "Variants per sample" panel. If None, all samples are shown. Default is `200`.  
 - `top_genes_count`: Number of top genes to display in the "Top mutated genes" panel. Default is `10`.  
+- `include_silent`: Boolean flag indicating whether to include silent (synonymous) mutations and non-coding variants across the dashboard panels. Default is `False` (matching `maftools`' non-synonymous filtering behavior `vc_nonSyn`). If set to `True`, all variants including `Silent`, synonymous, intronic, and non-coding alterations are retained and displayed.  
+- `non_syn_classifications`: Optional set of string variant classifications to treat as non-silent when `include_silent=False`. If None, pyMut uses standard non-synonymous categories (Missense_Mutation, Nonsense_Mutation, Frame_Shift_Del, Frame_Shift_Ins, In_Frame_Del, In_Frame_Ins, Splice_Site, etc.). Ignored when `include_silent=True`.  
 
 ## Input data formats
 
@@ -185,7 +187,7 @@ Two counting modes are available:
 
 **Important note:** In the `summary_plot()` dashboard, this panel always uses `mode='variants'`. The mode parameter is only available when calling the standalone `top_mutated_genes_plot()` function.
 
-**Note:** By default, this panel includes silent (synonymous) mutations to match maftools behavior. Set `include_silent=False` to exclude them.
+**Note:** By default, `top_mutated_genes_plot()` excludes silent (synonymous) mutations and non-coding variants (`include_silent=False`), aligning with `maftools` non-synonymous filtering conventions. Set `include_silent=True` if you wish to analyze the complete set of variants including synonymous alterations.
 
 This panel highlights recurrently mutated genes and reveals which types of mutations they tend to carry.
 
@@ -198,7 +200,8 @@ This panel highlights recurrently mutated genes and reveals which types of mutat
 - `gene_column`: Column containing gene symbols. Default: `"Hugo_Symbol"`
 - `sample_column`: Column containing sample identifiers. Default: `"Tumor_Sample_Barcode"`
 - `count`: Number of top genes to display. Default: `10`
-- `include_silent`: Whether to include silent/synonymous and non-coding variants. Default: `True`
+- `include_silent`: Whether to include silent/synonymous and non-coding variants. Default: `False` (in earlier versions this defaulted to True; it is now False to match `maftools` defaults).
+- `non_syn_classifications`: Optional custom set of non-synonymous variant classifications to use when `include_silent=False`.
 
 Required data: `Hugo_Symbol`, `Tumor_Sample_Barcode` (in long format) or sample columns (in wide format), and `Variant_Classification`.
 
@@ -211,8 +214,8 @@ The `summary_plot()` dashboard combines sample‑level, gene‑level, and cohort
 - Panels 1–3 describe what kinds of variants exist in the cohort (functional consequence, structural type, and base‑change patterns)  
   - **Panels 1–2** exclude silent mutations by default to focus on protein-altering variants
   - **Panel 3** includes silent mutations by default (important for mutational signature analysis) and normalizes SNVs to pyrimidine context
-- Panel 4 shows how many variants each sample carries and how those variants are distributed across classifications (excludes silent mutations by default)
-- Panel 5 summarizes per‑sample distributions for each classification type (excludes silent mutations by default)
-- Panel 6 highlights which genes are recurrently mutated and what types of mutations they harbor (includes silent mutations by default to match maftools behavior)
+- Panel 4 shows how many variants each sample carries and how those variants are distributed across classifications (excludes silent mutations by default, controlled by `include_silent=False`)
+- Panel 5 summarizes per‑sample distributions for each classification type (excludes silent mutations by default, controlled by `include_silent=False`)
+- Panel 6 highlights which genes are recurrently mutated and what types of mutations they harbor (excludes silent mutations by default, controlled by `include_silent=False`, matching maftools default non-synonymous filtering)
 
 Together, these six views provide a rapid assessment of the input data and a compact overview of the mutational landscape.
