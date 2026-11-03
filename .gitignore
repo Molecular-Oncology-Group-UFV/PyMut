@@ -19,6 +19,8 @@ data/
 *.vcf.gz
 *.rds
 .pymut_cache/
+.cache/*
+site/*
 
 # --- Test fixtures (small, synthetic, versioned -- keep them) ---------------
 !tests/**/fixtures/data/
